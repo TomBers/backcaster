@@ -22,6 +22,7 @@ defmodule BackcasterWeb.Router do
 
     live "/", PageLive, :index
     live "/hello", ExampleLive, :index
+    live "/backcast/:id", BackcastLive, :index
   end
 
   # Other scopes may use custom stacks.

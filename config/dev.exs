@@ -57,6 +57,7 @@ config :backcaster, BackcasterWeb.Endpoint,
       ~r"priv/static/.*(js|css|png|jpeg|jpg|gif|svg)$",
       ~r"priv/gettext/.*(po)$",
       ~r"lib/backcaster_web/(live|views)/.*(ex)$",
+      ~r"lib/backcaster_web/(live|views)/.*(sface)$",
       ~r"lib/backcaster_web/templates/.*(eex)$",
       ~r"lib/backcaster_web/templates/.*(sface)$"
     ]
