@@ -7,4 +7,8 @@ defmodule Backcaster.SampleData do
       "Another" => "Another Category"
     }
   end
+
+  def possible_sections do
+    ["A section", "B section", "C section"]
+  end
 end

@@ -3,3 +3,5 @@
 {#for {key, value} <- Enum.reverse(@backcast)}
     <Section title={key} value={value} submit="update_field" id={key} />
 {/for}
+
+<CreateSection click="add_field" id="create" />
