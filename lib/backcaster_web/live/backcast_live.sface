@@ -1,7 +1,7 @@
-<h1>Hello</h1>
-
-{#for {key, value} <- Enum.reverse(@backcast)}
-    <Section title={key} value={value} submit="update_field" id={key} />
-{/for}
+<div class="grid grid-cols-1 gap-6 lg:p-10 xl:grid-cols-3 lg:bg-base-200 rounded-box">
+    {#for {key, card} <- Enum.sort(@backcast, fn {k1, v1}, {k2, v2} -> v1["order"] <= v2["order"] end) }
+        <Section title={key} value={card["content"]} submit="update_field" id={key} />
+    {/for}
+</div>
 
 <CreateSection click="add_field" id="create" />
