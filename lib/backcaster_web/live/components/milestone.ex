@@ -4,7 +4,7 @@ defmodule Milestone do
   alias Surface.Components.Form.{TextInput, DateInput, Label, Field}
 
   prop title, :string
-  prop date, :string
+  prop date, :date
 
   data vals, :map, default: %{"name" => "", "email" => ""}
 
@@ -16,7 +16,7 @@ defmodule Milestone do
     <div class="card shadow-lg md:card-side bg-secondary">
       <div class="card-body">
         <h2 class="card-title">{@title}</h2>
-        <p>{@date}</p>
+        <p>{@date} ({Date.diff(Date.from_iso8601!(@date), Date.utc_today())} days to go)</p>
         <div class="justify-end card-actions">
           <button class="btn-sm btn-secondary" :on-click="edit">
                 Edit
@@ -26,7 +26,7 @@ defmodule Milestone do
           </button>
         </div>
         <div :if={@edit}>
-          <MilestoneForm title={@title} date={@date} submit={@submit} id={@id} edit="edit" />
+          <MilestoneForm title={@title} date={@date} submit={@submit} id={@id} button_text="Update" edit="edit" />
         </div>
       </div>
     </div>

@@ -11,6 +11,7 @@
         {#for {id, milestone} <- @backcast["milestones"]}
             <Milestone title={milestone["title"]} date={milestone["date"]} submit="update_milestone" id={id} />
         {/for}
+        <CreateMilestone submit="create_milestone" id={length(Map.keys(@backcast["milestones"])) + 1} />
     </div>
 </div>
 

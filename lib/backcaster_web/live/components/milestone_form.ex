@@ -5,6 +5,7 @@ defmodule MilestoneForm do
 
   prop title, :string
   prop date, :string
+  prop button_text, :string
 
   data vals, :map, default: %{"name" => "", "email" => ""}
 
@@ -14,8 +15,6 @@ defmodule MilestoneForm do
   def render(assigns) do
     ~F"""
       <div class="card-body">
-        <h2 class="card-title">{@title}</h2>
-        <p>{@date}</p>
         <div class="justify-end card-actions">
         </div>
           <Form for={:vals} submit={@submit} opts={autocomplete: "off"}>
@@ -30,7 +29,7 @@ defmodule MilestoneForm do
           <Field class="field" name="date">
             <div class="control">
               <DateInput class="input" value={@date}/>
-              <input class="btn" type="submit" value="Update" :on-click={@edit} >
+              <input class="btn" type="submit" value={@button_text} :on-click={@edit} >
             </div>
           </Field>
         </Form>

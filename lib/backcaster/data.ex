@@ -31,6 +31,10 @@ defmodule Backcaster.SampleData do
     update_in(backcast["milestones"][id], fn _old -> %{"date" => date, "title" => title} end)
   end
 
+  def add_milestone(backcast, id, title, date) do
+    put_in(backcast["milestones"][id], %{"date" => date, "title" => title})
+  end
+
   def persist_board(dat, board) do
     Backcast.update_board(board, %{content: dat})
   end
