@@ -8,7 +8,7 @@
         <CreateSection click="add_field" id="create" />
     </div>
     <div class="flex-auto">
-        {#for {id, milestone} <- @backcast["milestones"]}
+        {#for {id, milestone} <- sort_milestones(@backcast["milestones"])}
             <Milestone title={milestone["title"]} date={milestone["date"]} submit="update_milestone" id={id} />
         {/for}
         <CreateMilestone submit="create_milestone" id={length(Map.keys(@backcast["milestones"])) + 1} />
