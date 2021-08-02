@@ -27,7 +27,7 @@ defmodule Section do
         </div>
         <div :if={@edit}>
           <Form for={:vals} submit={@submit} opts={autocomplete: "off"}>
-          <Field class="field" name="new value">
+          <Field class="field" name="new_value">
             <Label class="label"/>
             <div class="control">
               <TextInput class="input" value={@value}/>

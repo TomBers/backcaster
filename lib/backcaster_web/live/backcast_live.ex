@@ -27,7 +27,7 @@ defmodule BackcasterWeb.BackcastLive do
     {:noreply, assign(socket, :should_save, false)}
   end
 
-  def handle_event("update_field", %{"vals" => %{"new value" => new_val, "title" => title}}, socket) do
+  def handle_event("update_field", %{"vals" => %{"new_value" => new_val, "title" => title}}, socket) do
     socket =
       socket
       |> assign(:backcast, SampleData.update_field(socket.assigns.backcast, title, new_val))
@@ -51,7 +51,7 @@ defmodule BackcasterWeb.BackcastLive do
     {:noreply, socket}
   end
 
-  def handle_event("create_milestone", %{"vals" => %{"date" => date, "title" => title, "id" => id}} = event, socket) do
+  def handle_event("create_milestone", %{"vals" => %{"date" => date, "title" => title, "id" => id}}, socket) do
     socket =
       socket
       |> assign(:backcast, SampleData.add_milestone(socket.assigns.backcast, id, title, date))

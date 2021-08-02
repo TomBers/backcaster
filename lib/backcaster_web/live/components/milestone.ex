@@ -1,7 +1,5 @@
 defmodule Milestone do
   use Surface.LiveComponent
-  alias Surface.Components.Form
-  alias Surface.Components.Form.{TextInput, DateInput, Label, Field}
 
   prop title, :string
   prop date, :date
@@ -16,7 +14,7 @@ defmodule Milestone do
     <div class="card shadow-lg md:card-side bg-secondary">
       <div class="card-body">
         <h2 class="card-title">{@title}</h2>
-        <p>{@date} ({Date.diff(Date.from_iso8601!(@date), Date.utc_today())} days to go)</p>
+        <p>{@date} ({calc_date_diff(@date)} days to go)</p>
         <div class="justify-end card-actions">
           <button class="btn-sm btn-secondary" :on-click="edit">
                 Edit
@@ -35,6 +33,14 @@ defmodule Milestone do
 
   def handle_event("edit", _, socket) do
     {:noreply, update(socket, :edit, fn _ -> !socket.assigns.edit end)}
+  end
+
+  def calc_date_diff(date) when is_bitstring(date) do
+    Date.diff(Date.from_iso8601!(date), Date.utc_today())
+  end
+
+  def calc_date_diff(date) do
+    Date.diff(date, Date.utc_today())
   end
 
 end
