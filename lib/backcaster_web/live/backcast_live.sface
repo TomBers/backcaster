@@ -1,7 +1,16 @@
-<div class="grid grid-cols-1 gap-6 lg:p-10 xl:grid-cols-3 lg:bg-base-200 rounded-box">
-    {#for {key, card} <- Enum.sort(@backcast, fn {k1, v1}, {k2, v2} -> v1["order"] <= v2["order"] end) }
-        <Section title={key} value={card["content"]} submit="update_field" id={key} />
-    {/for}
+<h1>Due date : {@board.goal_date} time to go: {Date.diff(@board.goal_date, Date.utc_today())} days</h1>
+
+<div class="flex">
+    <div class="grid grid-cols-1 gap-6 lg:p-10 xl:grid-cols-3 lg:bg-base-200 rounded-box">
+        {#for {key, card} <- Enum.sort(@backcast["cards"], fn {k1, v1}, {k2, v2} -> v1["order"] <= v2["order"] end) }
+            <Section title={key} value={card["content"]} submit="update_field" id={key} />
+        {/for}
+        <CreateSection click="add_field" id="create" />
+    </div>
+    <div class="flex-auto">
+        {#for {id, milestone} <- @backcast["milestones"]}
+            <Milestone title={milestone["title"]} date={milestone["date"]} submit="update_milestone" id={id} />
+        {/for}
+    </div>
 </div>
 
-<CreateSection click="add_field" id="create" />
