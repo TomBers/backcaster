@@ -1,4 +1,4 @@
-const test = "testEEE"
+const test = "testA"
 const wait = 5000
 
 
@@ -8,10 +8,10 @@ const wait = 5000
      })
 
     it('can create a milestone', () => {
-        cy.get('.add-milestone').click({force: true})
+        cy.get('#add-milestone').click({force: true})
         cy.wait(wait)
         cy.get('#vals_title').type("A new Milestone")
-        cy.get('#vals_date').clear().type("2021-11-17")
+        cy.get('#vals_date').clear().type("2021-10-31")
         cy.get('.milestone-submit').click({force: true})
         cy.wait(wait)
     })

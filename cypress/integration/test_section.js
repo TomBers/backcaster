@@ -1,4 +1,4 @@
-const test = "testEEE"
+const test = "testA"
 const wait = 5000
 
 describe('Create and Edit a section', () => {
