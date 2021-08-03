@@ -16,12 +16,12 @@ defmodule CreateSection do
           <br>
             <div class="btn-group" :on-click="edit">
               {#for item <- SampleData.possible_sections}
-                <button class="btn btn-outline btn-lg" :on-click={@click} phx-value-type={item}>{item}</button>
+                <button class="btn btn-outline btn-lg create-section-btn" :on-click={@click} phx-value-type={item}>{item}</button>
               {/for}
             </div>
           </div>
         {#else}
-          <button class="button is-info" :on-click="edit">Add</button>
+          <button class="button is-info" id="add-section-btn" :on-click="edit">Add</button>
         {/if}
       </div>
     </div>
