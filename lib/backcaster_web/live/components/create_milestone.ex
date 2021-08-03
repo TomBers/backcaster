@@ -1,7 +1,5 @@
 defmodule CreateMilestone do
   use Surface.LiveComponent
-  alias Surface.Components.Form
-  alias Surface.Components.Form.{TextInput, DateInput, Label, Field}
 
   prop title, :string
   prop date, :string
