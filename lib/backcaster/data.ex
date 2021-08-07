@@ -4,10 +4,12 @@ defmodule Backcaster.SampleData do
   def sample do
     %{
       "cards" => %{
-        "Title" => %{"title" => "Title", "content" => "A sample title", "order" => 1},
-        "Quote" => %{"title" => "Quote", "content" => "Quote", "order" => 2},
-        "CustomerComments" => %{"title" => "CustomerComments", "content" => "Best thing ever, changed my life", "order" => 3},
-        "Another" => %{"title" => "Another", "content" => "Another Category", "order" => 4}
+        "ProductName" => %{"title" => "Product Name", "content" => "A sample title", "order" => 1},
+        "IntendedCustomer" => %{"title" => "Intended Customer", "content" => "Quote", "order" => 2},
+        "ProblemsSolved" => %{"title" => "The Problem it solves", "content" => "Best thing ever, changed my life", "order" => 3},
+        "CustomerBenefits" => %{"title" => "Customer benefits", "content" => "Another Category", "order" => 4},
+        "Quote" => %{"title" => "Inspirational Quote", "content" => "Another Category", "order" => 5},
+        "CallToAction" => %{"title" => "Call to Action", "content" => "Another Category", "order" => 6}
       },
       "milestones" => %{
         "1" => %{"date" => Date.add(Date.utc_today(), 4), "title" => "A milestone"}

@@ -15,8 +15,6 @@ defmodule Section do
     ~F"""
     <div class="card shadow-lg md:card-side bg-secondary">
       <div class="card-body">
-        <h2 class="card-title">{@title}</h2>
-        <p>{@value}</p>
         <div class="justify-end card-actions">
           <button class="btn-sm btn-secondary edit-section" :on-click="edit">
                 Edit
