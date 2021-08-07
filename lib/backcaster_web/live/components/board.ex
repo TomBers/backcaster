@@ -3,6 +3,7 @@ defmodule Board do
 
   prop cards, :map
   prop submit, :event, required: true
+  prop add_field, :event, required: true
 
   def render(assigns) do
     ~F"""
@@ -16,13 +17,18 @@ defmodule Board do
       </tr>
     </thead>
     <tbody>
-     {#for {key, card} <- @cards}
+     {#for {key, card} <- Enum.sort(@cards, fn {_k1, v1}, {_k2, v2} -> v1["order"] <= v2["order"] end)}
         <tr class="">
           <td>{card["title"]}</td>
           <td>{card["content"]}</td>
           <td><Section title={key} value={card["content"]} submit={@submit} id={key} /></td>
         </tr>
         {/for}
+        <tr>
+          <td colspan="3">
+            <CreateSection click={@add_field} id="create" />
+          </td>
+        </tr>
     </tbody>
     </table>
     </div>
