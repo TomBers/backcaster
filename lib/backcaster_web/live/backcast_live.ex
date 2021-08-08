@@ -59,6 +59,12 @@ defmodule BackcasterWeb.BackcastLive do
     {:noreply, socket}
   end
 
+  def handle_event("store_image", params, socket) do
+    IO.inspect("SSSstore_image")
+    IO.inspect(socket)
+    {:noreply, socket}
+  end
+
   def sort_milestones(milestones) do
     Enum.sort(milestones, fn {_k1, v1}, {_k2, v2} -> v1["date"] <= v2["date"] end)
   end
