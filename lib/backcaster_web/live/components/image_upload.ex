@@ -4,18 +4,12 @@ defmodule ImageUpload do
   alias Surface.Components.Form.{TextInput, DateInput, Label, Field}
 
   prop store_image, :event, required: true
-  prop test, :string
+  prop parent_pid, :string
   data changeset, :map, default: %{"name" => "", "email" => ""}
 
   @impl true
   def mount(socket) do
     {:ok, allow_upload(socket, :images, accept: ~w(.png .jpg .jpeg), max_entries: 2)}
-  end
-
-  def handle_event("test", params, socket) do
-    IO.inspect("Test")
-    IO.inspect(socket.assigns.store_image)
-    {:noreply, socket}
   end
 
   def handle_event("validate", params, socket) do
@@ -40,7 +34,7 @@ defmodule ImageUpload do
         # TODO - think of a better way to deal with temp files
         dest = Path.join("priv/static/images", "#{entry.uuid}.#{ext(entry)}")
         File.cp!(meta.path, dest)
-#        TODO - store the new file location against the board
+        send(socket.assigns.parent_pid, Map.put(socket.assigns.store_image, "path", dest))
       end
     )
   end

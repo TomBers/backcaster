@@ -59,9 +59,10 @@ defmodule BackcasterWeb.BackcastLive do
     {:noreply, socket}
   end
 
-  def handle_event("store_image", params, socket) do
-    IO.inspect("SSSstore_image")
-    IO.inspect(socket)
+  @impl true
+  def handle_info(%{"path" => path, name: "store_image"}, socket) do
+#    TODO update the board to have the image path
+    IO.inspect "Store_image #{path}"
     {:noreply, socket}
   end
 

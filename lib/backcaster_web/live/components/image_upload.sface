@@ -1,5 +1,3 @@
-<a href="#" :on-click={@store_image}>TEST</a>
-
 <Form for={:changeset} change="validate" submit="save">
         {#for {_ref, msg} <- @uploads.images.errors}
         <p class="alert alert-danger">{ Phoenix.Naming.humanize(msg) }</p>
