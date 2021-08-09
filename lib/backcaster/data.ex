@@ -38,9 +38,15 @@ defmodule Backcaster.SampleData do
     put_in(backcast["milestones"][id], %{"date" => date, "title" => title})
   end
 
-  def add_image(backcast, image_path) do
+  def add_image(backcast, web_path, file_path) do
     id = length(Map.keys(backcast["images"])) + 1
-    put_in(backcast["images"]["#{id}"], %{"path" => image_path})
+    put_in(backcast["images"]["#{id}"], %{"web_path" => web_path, "file_path" => file_path})
+  end
+
+  def delete_image(backcast, img_id) do
+    { del_image, new_backcast } = pop_in(backcast["images"]["#{img_id}"])
+    File.rm(del_image["file_path"])
+    new_backcast
   end
 
   def persist_board(dat, board) do
