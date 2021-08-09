@@ -9,7 +9,7 @@ defmodule ImageUpload do
 
   @impl true
   def mount(socket) do
-    {:ok, allow_upload(socket, :images, accept: ~w(.png .jpg .jpeg), max_entries: 2)}
+    {:ok, allow_upload(socket, :images, accept: ~w(.png .jpg .jpeg), max_entries: 3)}
   end
 
   def handle_event("validate", params, socket) do
@@ -34,7 +34,8 @@ defmodule ImageUpload do
         # TODO - think of a better way to deal with temp files
         dest = Path.join("priv/static/images", "#{entry.uuid}.#{ext(entry)}")
         File.cp!(meta.path, dest)
-        send(socket.assigns.parent_pid, Map.put(socket.assigns.store_image, "path", dest))
+        path =  Path.join("/images", "#{entry.uuid}.#{ext(entry)}")
+        send(socket.assigns.parent_pid, Map.put(socket.assigns.store_image, "path", path))
       end
     )
   end

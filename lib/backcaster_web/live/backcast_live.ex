@@ -15,7 +15,6 @@ defmodule BackcasterWeb.BackcastLive do
       |> assign(:board, board)
       |> assign(:should_save, false)
 
-
     {:ok, socket}
   end
 
@@ -61,8 +60,12 @@ defmodule BackcasterWeb.BackcastLive do
 
   @impl true
   def handle_info(%{"path" => path, name: "store_image"}, socket) do
-#    TODO update the board to have the image path
-    IO.inspect "Store_image #{path}"
+    socket =
+      socket
+      |> assign(:backcast, SampleData.add_image(socket.assigns.backcast, path))
+
+    Task.start(fn -> SampleData.persist_board(socket.assigns.backcast, socket.assigns.board) end)
+
     {:noreply, socket}
   end
 

@@ -13,7 +13,8 @@ defmodule Backcaster.SampleData do
       },
       "milestones" => %{
         "1" => %{"date" => Date.add(Date.utc_today(), 4), "title" => "A milestone"}
-      }
+      },
+      "images" => %{}
     }
   end
 
@@ -35,6 +36,11 @@ defmodule Backcaster.SampleData do
 
   def add_milestone(backcast, id, title, date) do
     put_in(backcast["milestones"][id], %{"date" => date, "title" => title})
+  end
+
+  def add_image(backcast, image_path) do
+    id = length(Map.keys(backcast["images"])) + 1
+    put_in(backcast["images"]["#{id}"], %{"path" => image_path})
   end
 
   def persist_board(dat, board) do
