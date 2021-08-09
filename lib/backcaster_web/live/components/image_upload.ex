@@ -5,7 +5,7 @@ defmodule ImageUpload do
 
   prop store_image, :event, required: true
   prop parent_pid, :string
-  data changeset, :map, default: %{"name" => "", "email" => ""}
+  data changeset, :map, default: %{"images" => ""}
 
   @impl true
   def mount(socket) do
@@ -31,7 +31,6 @@ defmodule ImageUpload do
       socket,
       :images,
       fn meta, entry ->
-        # TODO - think of a better way to deal with temp files
         dest = Path.join("priv/static/images", "#{entry.uuid}.#{ext(entry)}")
         File.cp!(meta.path, dest)
         path =  Path.join("/images", "#{entry.uuid}.#{ext(entry)}")
