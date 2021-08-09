@@ -1,8 +1,7 @@
 <h1>Due date : {@board.goal_date} time to go: {Date.diff(@board.goal_date, Date.utc_today())} days</h1>
-    {#for {id, image} <- @backcast["images"]}
-        <img src={image["path"]} />
-    {/for}
-<ImageUpload store_image="store_image" parent_pid={self()} id="imageUploads" />
+
+<Images images={@backcast["images"]} store_image="store_image" parent_pid={self()} id="imageUploads"  />
+
 <div class="flex gap-6">
     <Board cards={@backcast["cards"]} submit="update_field" add_field="add_field" id="board" />
     <div class="flex-auto">
