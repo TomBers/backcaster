@@ -12,14 +12,14 @@ defmodule Images do
           {#if length(Map.keys(@images)) == 0 }
           <ImageUpload store_image={@store_image} parent_pid={@parent_pid} id="imageUploads" />
           {#else}
-          <div class="flex w-auto space-x-10 flex-nowrap">
+          <div class="grid grid-cols-2 gap-2 p-2 pt-4 bg-base-100">
               {#for {id, image} <- @images}
-              <div class="artboard artboard-demo">
+                <div>
                   <img src={image["web_path"]} />
                   <button class="btn-sm is-info" :on-click={@delete_image} phx-value-id={id}>
-                      X
-                  </button>
-              </div>
+                        X
+                    </button>
+                </div>
               {/for}
           </div>
           {/if}

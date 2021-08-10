@@ -83,7 +83,7 @@ defmodule BackcasterWeb.BackcastLive do
       socket
       |> assign(:backcast, SampleData.add_image(socket.assigns.backcast, web_path, file_path))
 
-    Task.start(fn -> SampleData.persist_board(socket.assigns.backcast, socket.assigns.board) end)
+    SampleData.persist_board(socket.assigns.backcast, socket.assigns.board)
 
     {:noreply, socket}
   end
