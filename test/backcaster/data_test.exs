@@ -5,9 +5,9 @@ defmodule Backcaster.DataTest do
   describe "test the board data structure" do
     test "update a section" do
       test_val = "Test Content"
-      new_data = SampleData.update_field(SampleData.sample(), "Title", test_val)
-      new_dict = new_data["cards"]["Title"]
-      assert new_dict == %{"content" => "Test Content", "order" => 1, "title" => "Title"}
+      new_data = SampleData.update_field(SampleData.sample(), "ProductName", test_val)
+      new_dict = new_data["cards"]["ProductName"]
+      assert new_dict == %{"content" => "Test Content", "order" => 1, "title" => "Product Name"}
     end
 
     test "create a section" do
