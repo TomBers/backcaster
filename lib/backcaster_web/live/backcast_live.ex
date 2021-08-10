@@ -67,13 +67,23 @@ defmodule BackcasterWeb.BackcastLive do
     {:noreply, socket}
   end
 
+
+
+  def handle_event("change_active", %{"id" => id}, socket) do
+    socket =
+      socket
+    |> assign(:backcast, SampleData.toggle_milestone(socket.assigns.backcast, id))
+    |> assign(:should_save, true)
+    {:noreply, socket}
+  end
+
   @impl true
   def handle_info(%{"web_path" => web_path, "file_path" => file_path, name: "store_image"}, socket) do
     socket =
       socket
       |> assign(:backcast, SampleData.add_image(socket.assigns.backcast, web_path, file_path))
 
-    Task.start(fn -> SampleData.persist_board(socket.assigns.backcast, socket.assigns.board) end)
+    SampleData.persist_board(socket.assigns.backcast, socket.assigns.board)
 
     {:noreply, socket}
   end

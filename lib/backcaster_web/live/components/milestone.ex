@@ -3,18 +3,26 @@ defmodule Milestone do
 
   prop title, :string
   prop date, :date
+  prop milestone_id, :string
+  prop checked, :boolean
 
   data vals, :map, default: %{"name" => "", "email" => ""}
 
   data edit, :boolean, default: false
   prop submit, :event, required: true
+  prop change_active, :event, required: true
 
   def render(assigns) do
     ~F"""
-    <div class="card shadow-lg md:card-side bg-secondary">
+    {#if @checked}
+    <div class="card shadow-lg bg-secondary">
       <div class="card-body">
+      <div class="justify-end card-actions">
+            <input type="checkbox" checked="checked" :on-click={@change_active} phx-value-id={@milestone_id} class="toggle toggle-secondary">
+      </div>
         <h2 class="card-title">{@title}</h2>
         <p>{@date} ({calc_date_diff(@date)} days to go)</p>
+
         <div class="justify-end card-actions">
           <button class="btn-sm btn-secondary edit-milestone" :on-click="edit">
                 Edit
@@ -28,6 +36,16 @@ defmodule Milestone do
         </div>
       </div>
     </div>
+    {#else}
+    <div class="card shadow-lg md:card-side">
+      <div class="card-body">
+      <div class="justify-end card-actions">
+            <input type="checkbox" :on-click={@change_active} phx-value-id={@milestone_id} class="toggle toggle-secondary">
+      </div>
+        <h2 class="card-title faded">{@title}</h2>
+      </div>
+      </div>
+    {/if}
     """
   end
 
