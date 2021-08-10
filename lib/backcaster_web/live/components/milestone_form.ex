@@ -14,26 +14,27 @@ defmodule MilestoneForm do
 
   def render(assigns) do
     ~F"""
-      <div class="card-body">
-        <div class="justify-end card-actions">
-        </div>
+        <div class="form-control">
+      <br>
           <Form for={:vals} submit={@submit} opts={autocomplete: "off"}>
           <Field class="field" name="title">
             <div class="control">
-              <TextInput class="input" value={@title}/>
+              <TextInput class="input input-sm" value={@title}/>
             </div>
           </Field>
           <Field name="id">
             <TextInput class="hidden" value={@id}/>
           </Field>
+      <br>
           <Field class="field" name="date">
             <div class="control">
-              <DateInput class="input" value={@date}/>
+              <DateInput class="input input-sm" value={@date}/>
+      <br><br>
               <input class="btn milestone-submit" type="submit" value={@button_text} :on-click={@edit} >
             </div>
           </Field>
         </Form>
-      </div>
+    </div>
     """
   end
 

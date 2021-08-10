@@ -11,7 +11,7 @@ defmodule Board do
     <table class="table w-full">
     <thead>
       <tr>
-        <th>Category</th>
+        <th>Goals</th>
         <th></th>
         <th></th>
       </tr>

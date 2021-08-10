@@ -15,7 +15,7 @@ defmodule Milestone do
   def render(assigns) do
     ~F"""
     {#if @checked}
-    <div class="card shadow-lg md:card-side bg-secondary">
+    <div class="card shadow-lg bg-secondary">
       <div class="card-body">
       <div class="justify-end card-actions">
             <input type="checkbox" checked="checked" :on-click={@change_active} phx-value-id={@milestone_id} class="toggle toggle-secondary">

@@ -7,26 +7,24 @@ defmodule Images do
 
   def render(assigns) do
     ~F"""
-        <div class="card bg-secondary">
-          <div class="card-body">
-    {#if length(Map.keys(@images)) == 0 }
-      <ImageUpload store_image={@store_image} parent_pid={@parent_pid} id="imageUploads" />
-    {#else}
-    <div class="flex w-auto space-x-10 flex-nowrap">
-        {#for {id, image} <- @images}
-    <div class="artboard phone-1 artboard-demo">
-          <img src={image["web_path"]} />
-          <button class="btn-sm is-info" :on-click={@delete_image} phx-value-id={id}>
-                X
-          </button>
+    <div class="card bg-secondary">
+      <div class="card-body">
+          {#if length(Map.keys(@images)) == 0 }
+          <ImageUpload store_image={@store_image} parent_pid={@parent_pid} id="imageUploads" />
+          {#else}
+          <div class="flex w-auto space-x-10 flex-nowrap">
+              {#for {id, image} <- @images}
+              <div class="artboard artboard-demo">
+                  <img src={image["web_path"]} />
+                  <button class="btn-sm is-info" :on-click={@delete_image} phx-value-id={id}>
+                      X
+                  </button>
+              </div>
+              {/for}
+          </div>
+          {/if}
+      </div>
     </div>
-      {/for}
-    </div>
-    {/if}
-
-  </div>
-    </div>
-
   """
     end
 

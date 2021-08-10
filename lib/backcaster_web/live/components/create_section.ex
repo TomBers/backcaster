@@ -12,7 +12,13 @@ defmodule CreateSection do
       <div class="card-body">
         {#if @edit}
           <div>
-          <button class="button is-info" :on-click="edit">Close</button>
+            <div class="justify-end card-actions">
+              <button class="btn btn-secondary btn-square" :on-click="edit">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" class="inline-block w-6 h-6 stroke-current">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                </svg>
+              </button>
+            </div>
           <br>
             <div class="btn-group" :on-click="edit">
               {#for item <- SampleData.possible_sections}
