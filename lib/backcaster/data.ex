@@ -12,7 +12,7 @@ defmodule Backcaster.SampleData do
         "CallToAction" => %{"title" => "Call to Action", "content" => "Another Category", "order" => 6}
       },
       "milestones" => %{
-        "1" => %{"date" => Date.add(Date.utc_today(), 4), "title" => "A milestone"}
+        "1" => %{"date" => Date.add(Date.utc_today(), 4), "title" => "A milestone", "active" => true}
       },
       "images" => %{}
     }
@@ -31,11 +31,15 @@ defmodule Backcaster.SampleData do
   end
 
   def update_milestone(backcast, id, title, date) do
-    update_in(backcast["milestones"][id], fn _old -> %{"date" => date, "title" => title} end)
+    update_in(backcast["milestones"][id], fn old -> %{"date" => date, "title" => title, "active" => old["active"]} end)
   end
 
   def add_milestone(backcast, id, title, date) do
-    put_in(backcast["milestones"][id], %{"date" => date, "title" => title})
+    put_in(backcast["milestones"][id], %{"date" => date, "title" => title, "active" => true})
+  end
+
+  def toggle_milestone(backcast, id) do
+    update_in(backcast["milestones"][id], fn old -> %{"date" => old["date"], "title" => old["title"], "active" => !old["active"] } end)
   end
 
   def add_image(backcast, web_path, file_path) do

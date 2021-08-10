@@ -7,7 +7,7 @@
     <div class="flex-auto">
         <div class="grid grid-cols-1 gap-6 lg:p-10 xl:grid-cols-3 lg:bg-base-200 rounded-box">
             {#for {id, milestone} <- sort_milestones(@backcast["milestones"])}
-                <Milestone title={milestone["title"]} date={milestone["date"]} submit="update_milestone" id={id} />
+                <Milestone milestone_id={id} title={milestone["title"]} checked={milestone["active"]} change_active="change_active" date={milestone["date"]} submit="update_milestone" id={id} />
             {/for}
             <CreateMilestone submit="create_milestone" id={length(Map.keys(@backcast["milestones"])) + 1} />
         </div>
