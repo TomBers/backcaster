@@ -9,7 +9,7 @@ defmodule ImageUpload do
 
   @impl true
   def mount(socket) do
-    {:ok, allow_upload(socket, :images, accept: ~w(.png .jpg .jpeg), max_entries: 3)}
+    {:ok, allow_upload(socket, :images, accept: ~w(.png .jpg .jpeg), max_entries: 4)}
   end
 
   def handle_event("validate", params, socket) do
