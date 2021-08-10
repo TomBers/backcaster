@@ -15,7 +15,6 @@ defmodule BackcasterWeb.BackcastLive do
       |> assign(:board, board)
       |> assign(:should_save, false)
 
-
     {:ok, socket}
   end
 
@@ -56,6 +55,26 @@ defmodule BackcasterWeb.BackcastLive do
       socket
       |> assign(:backcast, SampleData.add_milestone(socket.assigns.backcast, id, title, date))
       |> assign(:should_save, true)
+    {:noreply, socket}
+  end
+
+  def handle_event("delete_image", %{"id" => img_id}, socket) do
+    socket =
+      socket
+      |> assign(:backcast, SampleData.delete_image(socket.assigns.backcast, img_id))
+
+    Task.start(fn -> SampleData.persist_board(socket.assigns.backcast, socket.assigns.board) end)
+    {:noreply, socket}
+  end
+
+  @impl true
+  def handle_info(%{"web_path" => web_path, "file_path" => file_path, name: "store_image"}, socket) do
+    socket =
+      socket
+      |> assign(:backcast, SampleData.add_image(socket.assigns.backcast, web_path, file_path))
+
+    Task.start(fn -> SampleData.persist_board(socket.assigns.backcast, socket.assigns.board) end)
+
     {:noreply, socket}
   end
 

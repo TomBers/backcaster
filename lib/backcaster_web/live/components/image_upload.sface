@@ -1,0 +1,28 @@
+<Form for={:changeset} change="validate" submit="save">
+        {#for {_ref, msg} <- @uploads.images.errors}
+        <p class="alert alert-danger">{ Phoenix.Naming.humanize(msg) }</p>
+        {/for}
+        <h1>Add images</h1>
+        <div class="container dropzone" phx-drop-target="{ @uploads.images.ref }">
+            { live_file_input @uploads.images }
+        </div>
+
+        {#for entry <- @uploads.images.entries}
+        <div class="row">
+            <div class="column">
+                {live_img_preview entry, height: 80}
+            </div>
+            <div class="column">
+                <progress max="100" value="{ entry.progress }" />
+            </div>
+            <div class="column">
+                <a href="#" :on-click={@store_image}>
+                    cancel
+                </a>
+            </div>
+        </div>
+        {/for}
+
+        <br>
+        <input class="btn milestone-submit" type="submit" value="Submit" />
+</Form>
