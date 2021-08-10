@@ -4,12 +4,12 @@ defmodule Backcaster.SampleData do
   def sample do
     %{
       "cards" => %{
-        "ProductName" => %{"title" => "Product Name", "content" => "A sample title", "order" => 1},
-        "IntendedCustomer" => %{"title" => "Intended Customer", "content" => "Quote", "order" => 2},
-        "ProblemsSolved" => %{"title" => "The Problem it solves", "content" => "Best thing ever, changed my life", "order" => 3},
-        "CustomerBenefits" => %{"title" => "Customer benefits", "content" => "Another Category", "order" => 4},
-        "Quote" => %{"title" => "Inspirational Quote", "content" => "Another Category", "order" => 5},
-        "CallToAction" => %{"title" => "Call to Action", "content" => "Another Category", "order" => 6}
+#        "ProductName" => %{"title" => "Product Name", "content" => "A sample title", "order" => 1},
+#        "IntendedCustomer" => %{"title" => "Intended Customer", "content" => "Quote", "order" => 2},
+#        "ProblemsSolved" => %{"title" => "The Problem it solves", "content" => "Best thing ever, changed my life", "order" => 3},
+#        "CustomerBenefits" => %{"title" => "Customer benefits", "content" => "Another Category", "order" => 4},
+#        "Quote" => %{"title" => "Inspirational Quote", "content" => "Another Category", "order" => 5},
+#        "CallToAction" => %{"title" => "Call to Action", "content" => "Another Category", "order" => 6}
       },
       "milestones" => %{
         "1" => %{"date" => Date.add(Date.utc_today(), 4), "title" => "A milestone", "active" => true}
@@ -19,7 +19,7 @@ defmodule Backcaster.SampleData do
   end
 
   def possible_sections do
-    ["A section", "B section", "C section", "RANDOM"]
+    ["Product Name", "Intended Customer", "The Problem it solves", "Customer benefits", "Inspirational Quote", "Call to Action"]
   end
 
   def update_field(backcast, title, new_val) do
