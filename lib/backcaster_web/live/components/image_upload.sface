@@ -24,5 +24,7 @@
         {/for}
 
         <br>
-        <input class="btn milestone-submit" type="submit" value="Submit" />
+        {#if length(@uploads.images.entries) > 0}
+            <input class="btn milestone-submit" type="submit" value="Submit" />
+        {/if}
 </Form>

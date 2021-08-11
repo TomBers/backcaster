@@ -30,6 +30,11 @@ defmodule Backcaster.SampleData do
     put_in(backcast["cards"][type], %{"title" => type, "content" => "", "order" => length(Map.keys(backcast["cards"])) + 1})
   end
 
+  def delete_field(backcast, label) do
+    { _old, new_backcast } = pop_in(backcast["cards"][label])
+   new_backcast
+  end
+
   def update_milestone(backcast, id, title, date) do
     update_in(backcast["milestones"][id], fn old -> %{"date" => date, "title" => title, "active" => old["active"]} end)
   end

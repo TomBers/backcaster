@@ -42,6 +42,15 @@ defmodule BackcasterWeb.BackcastLive do
     {:noreply, socket}
   end
 
+  def handle_event("delete_field", %{"label" => label}, socket) do
+    socket =
+      socket
+      |> assign(:backcast, SampleData.delete_field(socket.assigns.backcast, label))
+      |> assign(:should_save, true)
+    {:noreply, socket}
+  end
+
+
   def handle_event("update_milestone", %{"vals" => %{"date" => date, "title" => title, "id" => id}}, socket) do
     socket =
       socket

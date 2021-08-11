@@ -4,6 +4,7 @@ defmodule Board do
   prop cards, :map
   prop submit, :event, required: true
   prop add_field, :event, required: true
+  prop delete_field, :event, required: true
 
   def render(assigns) do
     ~F"""
@@ -14,6 +15,7 @@ defmodule Board do
         <th>Goals</th>
         <th></th>
         <th></th>
+        <th></th>
       </tr>
     </thead>
     <tbody>
@@ -22,6 +24,13 @@ defmodule Board do
           <td>{card["title"]}</td>
           <td>{card["content"]}</td>
           <td><Section title={key} value={card["content"]} submit={@submit} id={key} /></td>
+          <td>
+              <button class="btn btn-circle btn-xs" :on-click={@delete_field} phx-value-label={key}>
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" class="inline-block w-4 h-4 stroke-current">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+              </svg>
+    </button>
+          </td>
         </tr>
         {/for}
         <tr>
