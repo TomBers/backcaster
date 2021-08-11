@@ -4,6 +4,18 @@
    opacity: 40%;
 }
 
+.example-ad {
+    width: 100%;
+    background-color: white;
+    color: black;
+    padding: 10px;
+}
+
+.example-link {
+    color: #1a0dab;
+}
+
+
 /* Alerts and form errors used by phx.new */
 .alert {
   padding: 15px;

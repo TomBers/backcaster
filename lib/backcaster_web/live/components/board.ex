@@ -14,15 +14,15 @@ defmodule Board do
       <tr>
         <th class="w-1/4">Goals</th>
         <th class="w-1/2"></th>
-        <th class="w-1/8"></th>
-        <th class="w-1/8"></th>
+        <th></th>
+        <th></th>
       </tr>
     </thead>
     <tbody>
      {#for {key, card} <- Enum.sort(@cards, fn {_k1, v1}, {_k2, v2} -> v1["order"] <= v2["order"] end)}
         <tr class="">
           <td>{card["title"]}</td>
-          <td>{card["content"]}</td>
+          <td style="white-space: revert;">{card["content"]}</td>
           <td><Section title={key} value={card["content"]} submit={@submit} id={key} /></td>
           <td>
               <button class="btn btn-circle btn-xs" :on-click={@delete_field} phx-value-label={key}>

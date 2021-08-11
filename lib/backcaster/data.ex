@@ -19,7 +19,7 @@ defmodule Backcaster.SampleData do
   end
 
   def possible_sections do
-    ["Product Name", "Intended Customer", "The Problem it solves", "Customer benefits", "Inspirational Quote", "Call to Action"]
+    ["Project Name", "Project Type", "Intended Audience", "The Problem it solves", "Benefits", "Inspirational Quote", "Call to Action"]
   end
 
   def update_field(backcast, title, new_val) do
