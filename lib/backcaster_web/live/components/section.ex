@@ -13,27 +13,29 @@ defmodule Section do
 
   def render(assigns) do
     ~F"""
-    <button class="btn btn-sm btn-secondary edit-section" :on-click="edit">
-    Edit
-    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" class="inline-block w-6 h-6 ml-2 stroke-current">
-        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
-    </svg>
-    </button>
-    <div :if={@edit}>
-    <Form for={:vals} submit={@submit} opts={autocomplete: "off"}>
-    <Field class="field" name="new_value">
-        <Label class="label"/>
-        <div class="control">
-            <TextInput class="input input-secondary input-bordered" value={@value}/>
-                <input class="btn update-section" type="submit" value="Update" :on-click="edit">
-        </div>
-    </Field>
-    <Field class="field" name="title">
-        <div class="control">
-            <TextInput class="hidden" value={@title}/>
-        </div>
-    </Field>
-    </Form>
+    <label for="my-modal-2" class="btn btn-sm btn-secondary modal-button">Edit</label>
+    <input type="checkbox" id="my-modal-2" class="modal-toggle">
+    <div class="modal">
+    <div class="modal-box">
+            <Form for={:vals} submit={@submit} opts={autocomplete: "off"}>
+            <Field class="field" name="new_value">
+                <div class="control">
+                    <TextInput class="input input-secondary input-bordered" value={@value}/>
+                        <input class="btn update-section mx-4" type="submit" value="Update" :on-click="edit">
+                        <label for="my-modal-2" class="btn btn-circle btn-xs">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" class="inline-block w-4 h-4 stroke-current">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                </svg>
+              </label>
+                </div>
+            </Field>
+            <Field class="field" name="title">
+                <div class="control">
+                    <TextInput class="hidden" value={@title}/>
+                </div>
+            </Field>
+            </Form>
+    </div>
     </div>
 
     """
