@@ -1,3 +1,2 @@
-Set theme ??
 S3 Image uploads
-Deploy to Fly??
+Deploy to Fly.io??
