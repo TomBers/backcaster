@@ -19,8 +19,10 @@ defmodule Summary do
     card["content"]
   end
 
+  def a_or_an(nil) do "a" end
+
   def a_or_an(type) do
-    if String.starts_with?(type["content"], ["a", "A"]) do
+    if String.starts_with?(type, ["a", "A"]) do
       "an"
       else
       "a"
@@ -36,7 +38,7 @@ defmodule Summary do
         <h1 class="title">{count_milestones(@backcast["milestones"], false)} Complete milestones</h1>
         </div>
         <div class="card shadow-lglg:p-10 xl:grid-cols-2 lg:bg-base-200 rounded-box p-8 text-xl">
-          <p><span class="emphasis">{get_card_or_tbc(@backcast["cards"]["Project Name"])}</span> is {a_or_an(@backcast["cards"]["Project Type"])} <span class="emphasis">{get_card_or_tbc(@backcast["cards"]["Project Type"])}</span> for <span class="emphasis">{get_card_or_tbc(@backcast["cards"]["Intended Audience"])}</span>.</p>
+          <p><span class="emphasis">{get_card_or_tbc(@backcast["cards"]["Project Name"])}</span> is {a_or_an(@backcast["cards"]["Project Type"]["content"])} <span class="emphasis">{get_card_or_tbc(@backcast["cards"]["Project Type"])}</span> for <span class="emphasis">{get_card_or_tbc(@backcast["cards"]["Intended Audience"])}</span>.</p>
           <br>
           <p>It solves the problem of <span class="emphasis">{get_card_or_tbc(@backcast["cards"]["The Problem it solves"])}</span>, which allows <span class="emphasis">{get_card_or_tbc(@backcast["cards"]["Benefits"])}</span>.</p>
 
