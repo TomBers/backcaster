@@ -19,18 +19,26 @@ defmodule Summary do
     card["content"]
   end
 
+  def a_or_an(type) do
+    if String.starts_with?(type["content"], ["a", "A"]) do
+      "an"
+      else
+      "a"
+    end
+  end
+
   def render(assigns) do
     ~F"""
-    <div class="grid grid-cols-2 gap-6 lg:p-10 xl:grid-cols-2 lg:bg-base-200 rounded-box">
+    <div class="grid grid-cols-2 gap-2 p-6 lg:bg-base-200 rounded-box my-2">
         <h1 class="title">Due date : {@board.goal_date}</h1>
-        <h1 class="title">Time remaining: {Date.diff(@board.goal_date, Date.utc_today())} days</h1>
+        <h1 class="title">Time remaining : {Date.diff(@board.goal_date, Date.utc_today())} days</h1>
         <h1 class="title">{count_milestones(@backcast["milestones"], true)} Active milestones</h1>
         <h1 class="title">{count_milestones(@backcast["milestones"], false)} Complete milestones</h1>
         </div>
-        <div class="card shadow-lglg:p-10 xl:grid-cols-2 lg:bg-base-200 rounded-box p-8">
-          {get_card_or_tbc(@backcast["cards"]["Project Name"])} is a {get_card_or_tbc(@backcast["cards"]["Project Type"])} for {get_card_or_tbc(@backcast["cards"]["Intended Audience"])}.
+        <div class="card shadow-lglg:p-10 xl:grid-cols-2 lg:bg-base-200 rounded-box p-8 text-xl">
+          <p><span class="emphasis">{get_card_or_tbc(@backcast["cards"]["Project Name"])}</span> is {a_or_an(@backcast["cards"]["Project Type"])} <span class="emphasis">{get_card_or_tbc(@backcast["cards"]["Project Type"])}</span> for <span class="emphasis">{get_card_or_tbc(@backcast["cards"]["Intended Audience"])}</span>.</p>
           <br>
-          It solves the problem of {get_card_or_tbc(@backcast["cards"]["The Problem it solves"])}, which allows {get_card_or_tbc(@backcast["cards"]["Benefits"])}.
+          <p>It solves the problem of <span class="emphasis">{get_card_or_tbc(@backcast["cards"]["The Problem it solves"])}</span>, which allows <span class="emphasis">{get_card_or_tbc(@backcast["cards"]["Benefits"])}</span>.</p>
 
           <div class="card shadow-2xl lg:card-side bg-secondary text-secondary-content my-6">
             <div class="card-body">

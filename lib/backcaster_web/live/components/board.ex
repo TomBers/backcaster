@@ -6,6 +6,8 @@ defmodule Board do
   prop add_field, :event, required: true
   prop delete_field, :event, required: true
 
+  data edit, :boolean, default: false
+
   def render(assigns) do
     ~F"""
       <div class="overflow-x-auto">
@@ -15,15 +17,15 @@ defmodule Board do
         <th class="w-1/4">Goals</th>
         <th class="w-1/2"></th>
         <th></th>
-        <th></th>
+        <th><button class="btn-sm btn-secondary edit-milestone" :on-click="edit">{#if @edit}Done {#else}Edit{/if}</button></th>
       </tr>
     </thead>
     <tbody>
      {#for {key, card} <- Enum.sort(@cards, fn {_k1, v1}, {_k2, v2} -> v1["order"] <= v2["order"] end)}
         <tr class="">
-          <td>{card["title"]}</td>
-          <td style="white-space: revert;">{card["content"]}</td>
-          <td><Section title={key} value={card["content"]} submit={@submit} id={key} /></td>
+          <td style="white-space: revert;">{card["title"]}</td>
+          <td style="white-space: revert;"><Section section={card} submit={@submit} edit={@edit} id={key} /></td>
+          <td></td>
           <td>
               <button class="btn btn-circle btn-xs" :on-click={@delete_field} phx-value-label={key}>
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" class="inline-block w-4 h-4 stroke-current">
@@ -34,7 +36,7 @@ defmodule Board do
         </tr>
         {/for}
         <tr>
-          <td colspan="3">
+          <td colspan="4">
             <CreateSection click={@add_field} id="create" />
           </td>
         </tr>
@@ -43,4 +45,8 @@ defmodule Board do
     </div>
     """
     end
+
+  def handle_event("edit", _, socket) do
+    {:noreply, update(socket, :edit, fn _ -> !socket.assigns.edit end)}
+  end
 end

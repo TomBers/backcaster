@@ -4,6 +4,10 @@
    opacity: 40%;
 }
 
+.emphasis {
+    font-weight: bold;
+}
+
 .example-ad {
     width: 100%;
     background-color: white;

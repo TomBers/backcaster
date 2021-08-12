@@ -14,6 +14,7 @@ defmodule BackcasterWeb.BackcastLive do
       |> Date.add(44)
 
     board = Backcast.get_or_create_board!(id, goal_date, SampleData.sample())
+
     socket =
       socket
       |> assign(:backcast, board.content)
