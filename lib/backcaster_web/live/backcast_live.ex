@@ -8,7 +8,11 @@ defmodule BackcasterWeb.BackcastLive do
 
   def mount(%{"id" => id}, _session, socket) do
     if connected?(socket), do: Process.send_after(self(), :update, @save_time)
-    board = Backcast.get_or_create_board!(id, SampleData.sample())
+    goal_date =
+      Date.utc_today()
+      |> Date.add(44)
+
+    board = Backcast.get_or_create_board!(id, goal_date, SampleData.sample())
     socket =
       socket
       |> assign(:backcast, board.content)

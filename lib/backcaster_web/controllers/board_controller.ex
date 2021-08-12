@@ -3,8 +3,29 @@ defmodule BackcasterWeb.BoardController do
 
   alias Backcaster.Backcast
   alias Backcaster.Backcast.Board
+  alias Backcaster.SampleData
+
 
   action_fallback BackcasterWeb.FallbackController
+
+  def create_new(conn, %{"project-length" => plength}) do
+    days_in_future =
+      case plength do
+        "Short" -> 31
+        "Medium" -> 100
+        "Large" -> 365
+        "Moon Shot" -> 730
+      end
+    
+    id = Ecto.UUID.generate()
+    goal_date =
+      Date.utc_today()
+      |> Date.add(days_in_future)
+
+    Backcast.get_or_create_board!(id, goal_date, SampleData.sample())
+
+    redirect(conn, to: "/backcast/#{id}")
+  end
 
   def index(conn, _params) do
     boards = Backcast.list_boards()

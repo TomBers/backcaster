@@ -1,4 +1,4 @@
-<div class="container mx-auto">
+<div class="container mx-auto my-6">
     <div class="grid grid-cols-2 gap-4">
         <div><Summary board={@board} backcast={@backcast} id="summary" /> </div>
         <div><Images images={@backcast["images"]} store_image="store_image" delete_image="delete_image" parent_pid={self()} id="imageUploads"  /></div>
@@ -6,7 +6,7 @@
         <div>
             <div class="grid grid-cols-1 gap-6 lg:p-10 xl:grid-cols-3 lg:bg-base-200 rounded-box">
                 {#for {id, milestone} <- sort_milestones(@backcast["milestones"])}
-                <Milestone milestone_id={id} title={milestone["title"]} checked={milestone["active"]} change_active="change_active" date={milestone["date"]} submit="update_milestone" id={id} />
+                <Milestone milestone_id={id} title={milestone["title"]} checked={milestone["active"]} change_active="change_active" date={milestone["date"]} completed={milestone["completed"]} submit="update_milestone" id={id} />
                 {/for}
                 <CreateMilestone submit="create_milestone" id={length(Map.keys(@backcast["milestones"])) + 1} />
             </div>

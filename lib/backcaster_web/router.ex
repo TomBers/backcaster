@@ -20,11 +20,12 @@ defmodule BackcasterWeb.Router do
   scope "/", BackcasterWeb do
     pipe_through :browser
 
-    resources "/boards", BoardController, except: [:new, :edit]
+#    resources "/boards", BoardController, except: [:new, :edit]
 
     live "/", PageLive, :index
-    live "/hello", ExampleLive, :index
     live "/backcast/:id", BackcastLive, :index
+
+    post "/create-board", BoardController, :create_new
   end
 
   # Other scopes may use custom stacks.

@@ -1,9 +1,14 @@
-<button class="btn">neutral</button>
-<button class="btn btn-primary">primary</button>
-<button class="btn btn-secondary">secondary</button>
-<button class="btn btn-accent">accent</button>
-<button class="btn btn-ghost">ghost</button>
-<button class="btn btn-link">link</button>
-
-
-<Hello name="John Doe"/>
+<div class="container mx-auto my-6">
+    <h1>Welcome to Backcaster</h1>
+    <p>Generate new board</p>
+    <%= form_tag("/create-board", method: :post) %>
+        <select class="select select-bordered select-secondary w-full max-w-xs" name="project-length">
+            <option disabled="disabled" selected="selected">Choose your project length</option>
+            <option>Short</option>
+            <option>Medium</option>
+            <option>Large</option>
+            <option>Moon Shot</option>
+        </select>
+        <input class="btn milestone-submit" type="submit" value="Create" />
+    </form>
+</div>

@@ -37,11 +37,7 @@ defmodule Backcaster.Backcast do
   """
   def get_board!(id), do: Repo.get!(Board, id)
 
-  def get_or_create_board!(name, content \\ %{}) do
-    goal_date =
-      Date.utc_today()
-      |> Date.add(44)
-
+  def get_or_create_board!(name, goal_date, content \\ %{}) do
     case Repo.get_by(Board, name: name) do
       nil -> create_board_quietly(%{name: name, content: content, goal_date: goal_date})
       board -> board

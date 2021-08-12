@@ -29,6 +29,7 @@ defmodule Summary do
         </div>
         <div class="card shadow-lglg:p-10 xl:grid-cols-2 lg:bg-base-200 rounded-box p-8">
           {get_card_or_tbc(@backcast["cards"]["Project Name"])} is a {get_card_or_tbc(@backcast["cards"]["Project Type"])} for {get_card_or_tbc(@backcast["cards"]["Intended Audience"])}.
+          <br>
           It solves the problem of {get_card_or_tbc(@backcast["cards"]["The Problem it solves"])}, which allows {get_card_or_tbc(@backcast["cards"]["Benefits"])}.
 
           <div class="card shadow-2xl lg:card-side bg-secondary text-secondary-content my-6">

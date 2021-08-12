@@ -3,6 +3,7 @@ defmodule Milestone do
 
   prop title, :string
   prop date, :date
+  prop completed, :date
   prop milestone_id, :string
   prop checked, :boolean
 
@@ -43,6 +44,7 @@ defmodule Milestone do
             <input type="checkbox" :on-click={@change_active} phx-value-id={@milestone_id} class="toggle toggle-secondary">
       </div>
         <h2 class="card-title faded">{@title}</h2>
+        <p class="faded">Done: {@completed}</p>
       </div>
       </div>
     {/if}
