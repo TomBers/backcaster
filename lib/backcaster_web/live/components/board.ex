@@ -17,7 +17,7 @@ defmodule Board do
         <th class="w-1/4">Goals</th>
         <th class="w-1/2"></th>
         <th></th>
-        <th><button class="btn-sm btn-secondary edit-milestone" :on-click="edit">{#if @edit}Done {#else}Edit{/if}</button></th>
+        <th><button class="btn btn-sm btn-secondary edit-milestone" :on-click="edit">{#if @edit}Done {#else}Edit{/if}</button></th>
       </tr>
     </thead>
     <tbody>
