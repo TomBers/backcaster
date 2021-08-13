@@ -160,5 +160,6 @@
     <orderEntry type="library" name="configparser_ex" level="project" />
     <orderEntry type="library" name="jsx" level="project" />
     <orderEntry type="library" name="mox" level="project" />
+    <orderEntry type="library" name="inch_ex" level="project" />
   </component>
 </module>
