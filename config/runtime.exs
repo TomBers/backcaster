@@ -29,7 +29,7 @@ if config_env() == :prod do
       For example: ecto://USER:PASS@HOST/DATABASE
       """
 
-  config :backcaster, BackcasterWeb.Repo,
+  config :backcaster, Backcaster.Repo,
          url: database_url,
            # IMPORTANT: Or it won't find the DB server
          socket_options: [:inet6],
