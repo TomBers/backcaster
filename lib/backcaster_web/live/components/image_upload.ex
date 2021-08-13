@@ -3,6 +3,8 @@ defmodule ImageUpload do
   alias Surface.Components.Form
   alias Surface.Components.Form.{TextInput, DateInput, Label, Field}
 
+  alias Backcaster.Images
+
   prop store_image, :event, required: true
   prop parent_pid, :string
   data changeset, :map, default: %{"images" => ""}
@@ -31,13 +33,17 @@ defmodule ImageUpload do
       socket,
       :images,
       fn meta, entry ->
-        dest = Path.join("priv/static/images", "#{entry.uuid}.#{ext(entry)}")
+        file_name = "#{entry.uuid}.#{ext(entry)}"
+        dest = Path.join("priv/static/images", file_name)
         File.cp!(meta.path, dest)
-        path =  Path.join("/images", "#{entry.uuid}.#{ext(entry)}")
+        Task.start(fn ->
+          Images.store(dest)
+          File.rm(dest)
+        end)
         params =
           socket.assigns.store_image
-          |> Map.put("web_path", path)
-          |> Map.put("file_path", dest)
+          |> Map.put("web_path", file_name)
+          |> Map.put("file_path", file_name)
 
         send(socket.assigns.parent_pid, params)
       end

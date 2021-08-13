@@ -47,6 +47,19 @@ config :logger, :console,
 # Use Jason for JSON parsing in Phoenix
 config :phoenix, :json_library, Jason
 
+
+config :waffle,
+       storage: Waffle.Storage.S3,
+       bucket: {:system, "AWS_BUCKET_NAME"},           # or {:system, "AWS_S3_BUCKET"}
+       asset_host: {:system, "ASSET_HOST"}
+
+config :ex_aws,
+       json_codec: Jason,
+       access_key_id: {:system, "AWS_ACCESS_KEY_ID"},
+       secret_access_key: {:system, "AWS_SECRET_ACCESS_KEY"},
+       region: {:system, "AWS_REGION"}
+
+
 # Import environment specific config. This must remain at the bottom
 # of this file so it overrides the configuration defined above.
 import_config "#{config_env()}.exs"
