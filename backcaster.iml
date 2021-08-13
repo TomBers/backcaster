@@ -155,5 +155,10 @@
     <orderEntry type="library" name="sweet_xml" level="project" />
     <orderEntry type="library" name="myxql" level="project" />
     <orderEntry type="library" name="tds" level="project" />
+    <orderEntry type="library" name="mock" level="project" />
+    <orderEntry type="library" name="credo" level="project" />
+    <orderEntry type="library" name="configparser_ex" level="project" />
+    <orderEntry type="library" name="jsx" level="project" />
+    <orderEntry type="library" name="mox" level="project" />
   </component>
 </module>
