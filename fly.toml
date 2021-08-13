@@ -1,6 +1,6 @@
-# fly.toml file generated for fragrant-wildflower-2742 on 2021-08-13T12:14:28+01:00
+# fly.toml file generated for floral-mountain-3062 on 2021-08-13T14:34:55+01:00
 
-app = "fragrant-wildflower-2742"
+app = "floral-mountain-3062"
 
 kill_signal = "SIGINT"
 kill_timeout = 5
@@ -8,7 +8,7 @@ kill_timeout = 5
 [env]
 
 [deploy]
-release_command = "/app/bin/backcaster eval Backcaster.Release.migrate"
+  release_command = "/app/bin/backcaster eval Backcaster.Release.migrate"
 
 [experimental]
   allowed_public_ports = []

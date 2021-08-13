@@ -1,1 +1,2 @@
 Deploy to Fly.io??
+Setup Analytics
