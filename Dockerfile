@@ -60,6 +60,5 @@ COPY --from=build --chown=nobody:nobody /app/_build/prod/rel/backcaster ./
 ENV HOME=/app
 ENV MIX_ENV=prod
 ENV SECRET_KEY_BASE=nokey
-ENV PORT=4000
 
 CMD ["/app/bin/backcaster", "start"]
