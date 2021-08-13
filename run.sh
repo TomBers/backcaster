@@ -1,0 +1,1 @@
+AWS_BUCKET_NAME='unstuck-image-store' AWS_ACCESS_KEY_ID='AKIA2QMRZMQU3NIBYD7X' AWS_SECRET_ACCESS_KEY='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' AWS_REGION='eu-west-1' ASSET_HOST='https://unstuck-image-store.s3-eu-west-1.amazonaws.com' BROWSER_TIMEOUT=6000 mix phx.server

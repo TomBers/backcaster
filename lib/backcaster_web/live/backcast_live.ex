@@ -7,6 +7,7 @@ defmodule BackcasterWeb.BackcastLive do
   @save_time 5000 # check to see if we should save to DB every 5 seconds
 
   def mount(%{"id" => id} = params, _session, socket) do
+
     theme = Map.get(params, "theme", "synthwave")
     if connected?(socket), do: Process.send_after(self(), :update, @save_time)
     goal_date =

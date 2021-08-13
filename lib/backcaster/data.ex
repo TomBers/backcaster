@@ -1,6 +1,8 @@
 defmodule Backcaster.SampleData do
   alias Backcaster.Backcast
 
+  alias Backcaster.Images
+
   def sample do
     %{
       "cards" => %{
@@ -68,7 +70,7 @@ defmodule Backcaster.SampleData do
 
   def delete_image(backcast, img_id) do
     { del_image, new_backcast } = pop_in(backcast["images"]["#{img_id}"])
-    File.rm(del_image["file_path"])
+    Images.delete(Images.url(del_image["web_path"]))
     new_backcast
   end
 
