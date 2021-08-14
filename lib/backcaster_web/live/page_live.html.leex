@@ -1,6 +1,9 @@
-<div class="container mx-auto my-6">
-    <h1>Welcome to Backcaster</h1>
-    <p>Generate new board</p>
+<div class="box-border w-auto lg:w-1/2 mx-auto my-8 p-6">
+    <h1 class="front-page-header">Welcome to Backcaster</h1>
+    <br>
+    <p>A tool to keep projects on track; define the goal(s) of the project and record key milestones along the way.</p>
+    <br><br><p>Try it out</p>
+    <br>
     <%= form_tag("/create-board", method: :post) %>
         <select class="select select-bordered select-secondary w-full max-w-xs" name="project-length">
             <option disabled="disabled" selected="selected">Choose your project length</option>

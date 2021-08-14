@@ -8,6 +8,11 @@
     font-weight: bold;
 }
 
+.front-page-header {
+    font-weight: bold;
+    font-size: x-large;
+}
+
 .example-ad {
     width: 100%;
     background-color: white;

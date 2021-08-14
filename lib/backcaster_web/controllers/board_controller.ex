@@ -27,6 +27,10 @@ defmodule BackcasterWeb.BoardController do
     redirect(conn, to: "/backcast/#{id}")
   end
 
+  def create_new(conn, _params) do
+    redirect(conn, to: "/")
+  end
+
   def index(conn, _params) do
     boards = Backcast.list_boards()
     render(conn, "index.json", boards: boards)
