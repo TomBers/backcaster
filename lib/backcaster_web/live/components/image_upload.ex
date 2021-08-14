@@ -34,7 +34,7 @@ defmodule ImageUpload do
       :images,
       fn meta, entry ->
         file_name = "#{entry.uuid}.#{ext(entry)}"
-        dest = Path.join("priv/static/images", file_name)
+        dest = Path.join("tmp", file_name)
         File.cp!(meta.path, dest)
         Task.start(fn ->
           Images.store(dest)

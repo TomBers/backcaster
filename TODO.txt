@@ -1,2 +1,2 @@
-S3 Image uploads
 Deploy to Fly.io??
+Setup Analytics
