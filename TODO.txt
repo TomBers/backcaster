@@ -1,2 +1,3 @@
-Deploy to Fly.io??
-Setup Analytics
+Write Home page copy
+Do a board for backcaster - add as an example
+Meta-tags?

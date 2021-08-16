@@ -1,8 +1,10 @@
 <div class="box-border w-auto lg:w-1/2 mx-auto my-8 p-6">
     <h1 class="front-page-header">Welcome to Backcaster</h1>
     <br>
-    <p>A tool to keep projects on track; define the goal(s) of the project and record key milestones along the way.</p>
-    <br><br><p>Try it out</p>
+    <p>Backcaster is a website for makers.</p>
+    <p>It solves the problem of losing sight of what matters, allowing you to track your progress in one dashboard.</p>
+    <p><a href="/backcast/2f5304da-da7e-4afa-9a7b-fe59a1fa628f?theme=cyberpunk" target="_blank" class="link">See example</a></p>
+    <br><br><p>Make your own</p>
     <br>
     <%= form_tag("/create-board", method: :post) %>
         <select class="select select-bordered select-secondary w-full max-w-xs" name="project-length">
