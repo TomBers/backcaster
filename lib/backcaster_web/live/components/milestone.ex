@@ -39,7 +39,7 @@ defmodule Milestone do
     </div>
     {#else}
     <div class="card shadow-lg md:card-side">
-      <div class="card-body">
+      <div class="card-body milestone-closed">
       <div class="justify-end card-actions">
             <input type="checkbox" :on-click={@change_active} phx-value-id={@milestone_id} class="toggle toggle-secondary">
       </div>
