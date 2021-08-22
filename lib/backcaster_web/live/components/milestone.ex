@@ -16,13 +16,13 @@ defmodule Milestone do
   def render(assigns) do
     ~F"""
     {#if @checked}
-    <div class="card shadow-lg bg-secondary text-primary-content">
+    <div class="card shadow-lg bg-secondary">
       <div class="card-body">
       <div class="justify-end card-actions">
             <input type="checkbox" checked="checked" :on-click={@change_active} phx-value-id={@milestone_id} class="toggle toggle-secondary">
       </div>
-        <h2 class="card-title">{@title}</h2>
-        <p>{@date} ({calc_date_diff(@date)} days to go)</p>
+        <h2 class="card-title text-primary-content">{@title}</h2>
+        <p class="text-primary-content">{@date} ({calc_date_diff(@date)} days to go)</p>
 
         <div class="justify-end card-actions">
           <button class="btn-sm btn-secondary edit-milestone" :on-click="edit">
