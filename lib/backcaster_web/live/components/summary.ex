@@ -40,7 +40,7 @@ defmodule Summary do
         <div class="card shadow-lglg:p-10 xl:grid-cols-2 lg:bg-base-200 rounded-box p-8 text-xl">
           <p><span class="emphasis">{get_card_or_tbc(@backcast["cards"]["Project Name"])}</span> is {a_or_an(@backcast["cards"]["Project Type"]["content"])} <span class="emphasis">{get_card_or_tbc(@backcast["cards"]["Project Type"])}</span> for <span class="emphasis">{get_card_or_tbc(@backcast["cards"]["Intended Audience"])}</span>.</p>
           <br>
-          <p>It solves the problem of <span class="emphasis">{get_card_or_tbc(@backcast["cards"]["The Problem it solves"])}</span>, allowing you to <span class="emphasis">{get_card_or_tbc(@backcast["cards"]["Benefits"])}</span>.</p>
+          <p>Solving the problem of <span class="emphasis">{get_card_or_tbc(@backcast["cards"]["The Problem it solves"])}</span>, leading to <span class="emphasis">{get_card_or_tbc(@backcast["cards"]["Benefits"])}</span>.</p>
 
           <div class="card shadow-2xl lg:card-side bg-secondary text-secondary-content my-6">
             <div class="card-body">

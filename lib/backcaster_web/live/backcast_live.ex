@@ -22,6 +22,7 @@ defmodule BackcasterWeb.BackcastLive do
       |> assign(:board, board)
       |> assign(:should_save, false)
       |> assign(:theme, theme)
+      |> assign(:show_image_processing, false)
 
     {:ok, socket}
   end
@@ -106,7 +107,7 @@ defmodule BackcasterWeb.BackcastLive do
 
     SampleData.persist_board(socket.assigns.backcast, socket.assigns.board)
 
-    {:noreply, socket}
+    {:noreply, assign(socket, :show_image_processing, true)}
   end
 
   def sort_milestones(milestones) do

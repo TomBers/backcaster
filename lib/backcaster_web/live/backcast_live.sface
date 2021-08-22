@@ -5,7 +5,7 @@
 <div class="container mx-auto my-6">
     <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
         <div><Summary board={@board} backcast={@backcast} id="summary" /> </div>
-        <div><Images images={@backcast["images"]} store_image="store_image" delete_image="delete_image" parent_pid={self()} id="imageUploads"  /></div>
+        <div><Images images={@backcast["images"]} store_image="store_image" delete_image="delete_image" parent_pid={self()} image_processing={@show_image_processing} id="imageUploads"  /></div>
         <div><Board cards={@backcast["cards"]} submit="update_fields" add_field="add_field" delete_field="delete_field" id="board" /></div>
         <div>
             <div class="grid grid-cols-1 gap-6 lg:p-10 xl:grid-cols-3 lg:bg-base-200 rounded-box">
