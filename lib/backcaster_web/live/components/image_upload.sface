@@ -1,3 +1,4 @@
+<img src="/images/wireframe.jpg" style="max-width: 500px" />
 <Form for={:changeset} change="validate" submit="save">
         {#for {_ref, msg} <- @uploads.images.errors}
         <p class="alert alert-danger">{ Phoenix.Naming.humanize(msg) }</p>

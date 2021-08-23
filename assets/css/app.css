@@ -13,6 +13,38 @@
     font-size: x-large;
 }
 
+.blur {
+   -webkit-filter: blur(5px); /* Safari 6.0 - 9.0 */
+     filter: blur(5px);
+}
+
+
+.milestone-closed {
+    animation-name: stretch;
+    animation-duration: 1s;
+    animation-timing-function: ease-out;
+    animation-delay: 0s;
+    animation-direction: alternate;
+    animation-iteration-count: 1;
+    animation-fill-mode: none;
+    animation-play-state: running;
+}
+
+@keyframes stretch {
+   0% {
+      transform: scale(.3);
+      background-color: red;
+      border-radius: 100%;
+    }
+    50% {
+      background-color: orange;
+    }
+    100% {
+      transform: scale(1.5);
+      background-color: yellow;
+    }
+}
+
 .example-ad {
     width: 100%;
     background-color: white;
