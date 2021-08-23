@@ -39,20 +39,49 @@ defmodule Milestone do
     </div>
     {#else}
     <div class="card shadow-lg md:card-side">
-      <div class="card-body milestone-closed">
-      <div class="justify-end card-actions">
-            <input type="checkbox" :on-click={@change_active} phx-value-id={@milestone_id} class="toggle toggle-secondary">
-      </div>
-        <h2 class="card-title faded">{@title}</h2>
-        <p class="faded">Done: {@completed}</p>
-      </div>
+      {#if is_just_completed(@completed) }
+        <div class="card-body milestone-closed">
+        <div class="justify-end card-actions">
+              <input type="checkbox" :on-click={@change_active} phx-value-id={@milestone_id} class="toggle toggle-secondary">
+        </div>
+          <h2 class="card-title faded">{@title}</h2>
+          <p class="faded">Done: {date_completed(@completed)}</p>
+        </div>
+      {#else}
+        <div class="card-body">
+        <div class="justify-end card-actions">
+              <input type="checkbox" :on-click={@change_active} phx-value-id={@milestone_id} class="toggle toggle-secondary">
+        </div>
+          <h2 class="card-title faded">{@title}</h2>
+          <p class="faded">Done: {date_completed(@completed)}</p>
+        </div>
+      {/if}
       </div>
     {/if}
     """
   end
 
+  def is_just_completed(complete) when is_bitstring(complete) do
+    {:ok, datetime, 0} = DateTime.from_iso8601(complete)
+    is_just_completed(datetime)
+  end
+
+  def is_just_completed(complete) do
+    diff = DateTime.diff(DateTime.utc_now(), complete)
+    diff < 2
+  end
+
   def handle_event("edit", _, socket) do
     {:noreply, update(socket, :edit, fn _ -> !socket.assigns.edit end)}
+  end
+
+  def date_completed(complete) when is_bitstring(complete) do
+    {:ok, datetime, 0} = DateTime.from_iso8601(complete)
+    date_completed(datetime)
+  end
+
+  def date_completed(complete) do
+    DateTime.to_date(complete)
   end
 
   def calc_date_diff(date) when is_bitstring(date) do

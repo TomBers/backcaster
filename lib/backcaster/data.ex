@@ -52,15 +52,19 @@ defmodule Backcaster.SampleData do
   end
 
   def update_milestone(backcast, id, title, date) do
-    update_in(backcast["milestones"][id], fn old -> %{"date" => date, "title" => title, "active" => old["active"], "completed" => Date.utc_today() } end)
+    update_in(backcast["milestones"][id], fn old -> %{"date" => date, "title" => title, "active" => old["active"], "completed" => completed_at() } end)
   end
 
   def add_milestone(backcast, id, title, date) do
-    put_in(backcast["milestones"][id], %{"date" => date, "title" => title, "active" => true, "completed" => Date.utc_today()})
+    put_in(backcast["milestones"][id], %{"date" => date, "title" => title, "active" => true, "completed" => completed_at() })
   end
 
   def toggle_milestone(backcast, id) do
-    update_in(backcast["milestones"][id], fn old -> %{"date" => old["date"], "title" => old["title"], "active" => !old["active"], "completed" => Date.utc_today() } end)
+    update_in(backcast["milestones"][id], fn old -> %{"date" => old["date"], "title" => old["title"], "active" => !old["active"], "completed" => completed_at() } end)
+  end
+
+  def completed_at do
+    DateTime.utc_now()
   end
 
   def add_image(backcast, web_path, file_path) do
