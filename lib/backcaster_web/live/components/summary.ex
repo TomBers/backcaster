@@ -137,13 +137,13 @@ defmodule Summary do
 
   def render(assigns) do
     ~F"""
-    <div class="grid grid-cols-2 gap-2 p-6 lg:bg-base-200 rounded-box my-2">
+    <div class="grid grid-cols-2 gap-2 p-6 lg:bg-base-200 rounded-box">
         <h1 class="title">Due date : {@board.goal_date}</h1>
         <h1 class="title">Time remaining : {Date.diff(@board.goal_date, Date.utc_today())} days</h1>
         <h1 class="title">{count_milestones(@backcast["milestones"], true)} Active milestones</h1>
         <h1 class="title">{count_milestones(@backcast["milestones"], false)} Complete milestones</h1>
         </div>
-        <div class="card shadow-lglg:p-10 xl:grid-cols-2 lg:bg-base-200 rounded-box p-8 text-xl">
+        <div class="card shadow-lglg:p-10 xl:grid-cols-2 lg:bg-base-200 rounded-box p-8 text-xl my-2">
           <p><span class="emphasis">{get_card_or_tbc(@backcast["cards"]["Project Name"])}</span> is {a_or_an(@backcast["cards"]["Project Type"]["content"])} <span class="emphasis">{get_card_or_tbc(@backcast["cards"]["Project Type"])}</span> for <span class="emphasis">{get_card_or_tbc(@backcast["cards"]["Intended Audience"])}</span>.</p>
           <br>
 
