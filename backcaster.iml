@@ -161,5 +161,6 @@
     <orderEntry type="library" name="jsx" level="project" />
     <orderEntry type="library" name="mox" level="project" />
     <orderEntry type="library" name="inch_ex" level="project" />
+    <orderEntry type="library" name="surface_formatter" level="project" />
   </component>
 </module>
