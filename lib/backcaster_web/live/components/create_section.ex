@@ -27,7 +27,7 @@ defmodule CreateSection do
             </div>
           </div>
         {#else}
-          <button class="btn" id="add-section-btn" :on-click="edit"><svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <button class="btn btn-outline" id="add-section-btn" :on-click="edit"><svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path
                 stroke-linecap="round"
                 stroke-linejoin="round"
