@@ -1,0 +1,72 @@
+{#if !is_nil(@board_id) }
+<div tabindex="0" class="m-1 normal-case btn-ghost btn">
+    <a href={ "backcast/#{@board_id}" }>
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+        </svg>
+    </a>
+</div>
+{/if}
+
+<div tabindex="0" class="m-1 normal-case btn-ghost btn">
+    <a href="/"><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"
+        />
+    </svg></a>
+</div>
+
+<div class="container mx-auto">
+        <div class="card bg-primary m-12">
+            <div class="card-body">
+                <h1 class="card-title">What?</h1>
+                <p>A dashboard that tracks your project, helps write a problem statement and set milestones along the way.</p>
+                <br>
+                <h1 class="card-title">Why?</h1>
+                <p>It is easy to get lost in the details.  Keep your focus by having one place to write down your goal, who it is for and the problem it solves.</p>
+                <p>Write your 'elevator pitch' and keep track of the milestones you will need to achieve it.</p>
+            </div>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 m-12">
+        <div class="card bg-primary m-6">
+            <figure>
+                <img src="/images/goals.png">
+            </figure>
+            <div class="justify-end card-body">
+                <h2 class="card-title">1. Set Goals</h2>
+                <p>Describe your goal (who it is for, the problem it solves)</p>
+            </div>
+        </div>
+        <div class="card bg-primary m-6">
+            <figure>
+                <img src="/images/milestones.png">
+            </figure>
+            <div class="justify-end card-body">
+                <h2 class="card-title">2. Add milestones</h2>
+                <p>Set markers along the way</p>
+            </div>
+        </div>
+        <div class="card bg-primary m-6">
+            <figure>
+                <img src="/images/image_upload.png">
+            </figure>
+            <div class="justify-end card-body">
+                <h2 class="card-title">3. Add images</h2>
+                <p>Show your designs / mockups</p>
+            </div>
+        </div>
+        <div class="card bg-primary m-6">
+            <figure>
+                <img src="/images/result.png">
+            </figure>
+            <div class="justify-end card-body">
+                <h2 class="card-title">4. Keep track</h2>
+                <p>Set your goal and see your progress</p>
+            </div>
+        </div>
+    </div>
+</div>
