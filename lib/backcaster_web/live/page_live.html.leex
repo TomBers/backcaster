@@ -1,19 +1,33 @@
+<div tabindex="0" class="m-1 normal-case btn-ghost btn">
+    <a href="/info">
+    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+        />
+    </svg>
+    </a>
+</div>
+
+
+
 <div class="box-border w-auto lg:w-1/2 mx-auto my-8 p-6">
     <h1 class="front-page-header">Welcome to Backcaster</h1>
     <br>
     <p>Backcaster is a website for makers.</p>
-    <p>It solves the problem of losing sight of what matters, allowing you to track your progress in one dashboard.</p>
+    <p>Solves the problem of losing sight of what matters, allowing you to track progress in one place.</p>
     <p><a href="/backcast/2f5304da-da7e-4afa-9a7b-fe59a1fa628f?theme=cyberpunk" target="_blank" class="link">See example</a></p>
-    <br><br><p>Make your own</p>
     <br>
     <%= form_tag("/create-board", method: :post) %>
-        <select class="select select-bordered select-secondary w-full max-w-xs" name="project-length">
-            <option disabled="disabled" selected="selected">Choose your project length</option>
+        <select class="select select-bordered select-primary w-full max-w-xs m-2" name="project-length">
+            <option disabled="disabled" selected="selected">Project length</option>
             <option>Short</option>
             <option>Medium</option>
             <option>Large</option>
             <option>Moon Shot</option>
         </select>
-        <input class="btn milestone-submit" type="submit" value="Create" />
+        <input class="btn btn-primary milestone-submit" type="submit" value="Create" />
     </form>
 </div>

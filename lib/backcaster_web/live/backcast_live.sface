@@ -8,6 +8,20 @@
       />
     </svg></a>
 </div>
+
+<div tabindex="0" class="m-1 normal-case btn-ghost btn">
+  <a href={ "/info?board=#{@board.name}" }>
+    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+      <path
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        stroke-width="2"
+        d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+      />
+    </svg>
+  </a>
+</div>
+
 <div title="Change Theme" class="dropdown dropdown-end"><div tabindex="0" class="m-1 normal-case btn-ghost btn"><svg
       xmlns="http://www.w3.org/2000/svg"
       fill="none"
@@ -39,7 +53,7 @@
       /></div>
     <div><Board cards={@backcast["cards"]} submit="update_fields" add_field="add_field" delete_field="delete_field" id="board" /></div>
     <div>
-      <div class="grid grid-cols-1 gap-6 lg:p-10 xl:grid-cols-3 lg:bg-base-200 rounded-box">
+      <div class="grid grid-cols-1 gap-6 lg:p-4 xl:grid-cols-3 bg-base-200 rounded-box">
         {#for {id, milestone} <- sort_milestones(@backcast["milestones"])}
           <Milestone
             milestone_id={id}

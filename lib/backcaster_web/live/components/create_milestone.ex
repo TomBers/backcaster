@@ -13,15 +13,14 @@ defmodule CreateMilestone do
     ~F"""
     <div class="card shadow-lg md:card-side">
       <div class="card-body">
-        <button class="btn-sm is-info" id="add-milestone" :on-click="edit">
-          Add
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            fill="none"
-            viewBox="0 0 24 24"
-            class="inline-block w-6 h-6 ml-2 stroke-current"
-          >
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+        <button class="btn btn-outline" id="add-milestone" :on-click="edit">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M12 9v3m0 0v3m0-3h3m-3 0H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z"
+            />
           </svg>
         </button>
         <div :if={@edit}>

@@ -14,12 +14,12 @@ defmodule MilestoneForm do
 
   def render(assigns) do
     ~F"""
-    <div class="form-control">
+    <div class="form-control justify-left">
       <br>
       <Form for={:vals} submit={@submit} opts={autocomplete: "off"}>
         <Field class="field" name="title">
           <div class="control">
-            <TextInput class="input input-sm" value={@title} />
+            <TextInput class="input" value={@title} />
           </div>
         </Field>
         <Field name="id">
@@ -28,9 +28,9 @@ defmodule MilestoneForm do
         <br>
         <Field class="field" name="date">
           <div class="control">
-            <DateInput class="input input-sm" value={@date} />
+            <DateInput class="input" value={@date} />
             <br><br>
-            <input class="btn milestone-submit" type="submit" value={@button_text} :on-click={@edit}>
+            <input class="btn btn-secondary btn-block milestone-submit" type="submit" value={@button_text} :on-click={@edit}>
           </div>
         </Field>
       </Form>
