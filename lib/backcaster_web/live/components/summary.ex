@@ -145,18 +145,18 @@ defmodule Summary do
       <h1 class="title">{count_milestones(@backcast["milestones"], false)} Complete milestones</h1>
     </div>
     <div class="card shadow-lglg:p-10 xl:grid-cols-2 lg:bg-base-200 rounded-box p-8 text-xl my-2">
-      <p><InlineEdit backcast={@backcast} category="Project Name" parent_pid={@parent_pid} id="name" /> is {a_or_an(@backcast["cards"]["Project Type"]["content"])} <span class="emphasis">{get_card_or_tbc(@backcast["cards"]["Project Type"])}</span> for <span class="emphasis">{get_card_or_tbc(@backcast["cards"]["Intended Audience"])}</span>.</p>
+      <p><InlineEdit backcast={@backcast} category="Project Name" parent_pid={@parent_pid} id="project_name" /> is {a_or_an(@backcast["cards"]["Project Type"]["content"])} <InlineEdit backcast={@backcast} category="Project Type" parent_pid={@parent_pid} id="type" /> for <InlineEdit backcast={@backcast} category="Intended Audience" parent_pid={@parent_pid} id="audience" />.</p>
       <br>
 
 
 
-     <p class="">Solving the problem of <InlineEdit backcast={@backcast} category="The Problem it solves" parent_pid={@parent_pid} id="problem_solves" />, leading to <span class="emphasis">{get_card_or_tbc(@backcast["cards"]["Benefits"])}</span>.</p>
+     <p class="">Solving the problem of <InlineEdit backcast={@backcast} category="The Problem it solves" parent_pid={@parent_pid} id="problem_solves" />, leading to <InlineEdit backcast={@backcast} category="Benefits" parent_pid={@parent_pid} id="benefits" />.</p>
 
 
       {#if !is_nil(@backcast["cards"]["Inspirational Quote"])}
-        <div class="card shadow-2xl lg:card-side bg-secondary text-secondary-content my-6">
+        <div class="card shadow-2xl lg:card-side bg-secondary my-6">
           <div class="card-body">
-            <q>{get_card_or_tbc(@backcast["cards"]["Inspirational Quote"])}</q> - {quote_author()}
+            <q><InlineEdit backcast={@backcast} category="Inspirational Quote" parent_pid={@parent_pid} id="quote" /></q> - {quote_author()}
           </div>
         </div>
       {#else}

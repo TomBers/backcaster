@@ -35,30 +35,11 @@ defmodule BackcasterWeb.BackcastLive do
     {:noreply, assign(socket, :should_save, false)}
   end
 
+#  Handles updating problem statement, the handle_info is because we want to close the field after editing, so a message is sent
   def handle_info(%{"vals" => fields}, socket) do
     socket =
       socket
       |> assign(:backcast, SampleData.update_fields(socket.assigns.backcast, fields))
-      |> assign(:should_save, true)
-    {:noreply, socket}
-  end
-
-  def handle_event("update_fields", _params, socket) do
-    {:noreply, socket}
-  end
-
-  def handle_event("add_field", %{"type" => type}, socket) do
-    socket =
-      socket
-      |> assign(:backcast, SampleData.add_field(socket.assigns.backcast, type))
-      |> assign(:should_save, true)
-    {:noreply, socket}
-  end
-
-  def handle_event("delete_field", %{"label" => label}, socket) do
-    socket =
-      socket
-      |> assign(:backcast, SampleData.delete_field(socket.assigns.backcast, label))
       |> assign(:should_save, true)
     {:noreply, socket}
   end

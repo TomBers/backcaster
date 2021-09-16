@@ -22,14 +22,14 @@ defmodule InlineEdit do
         {#if @edit}
           <Form for={:vals} submit="submit" >
             <Field class="field" name="content">
-                <TextInput class="input input-secondary input-bordered" value={get_content(@backcast, @category)} id="user-content"  />
+                <TextInput class="input" value={get_content(@backcast, @category)} id={@category}  />
             </Field>
             <Field class="field" name="category">
                 <HiddenInput value={@category} />
             </Field>
           </Form>
         {#else}
-          {get_content_or_placeholder(@backcast, @category)} <button class="btn btn-xs btn-square" :on-click="edit">
+          {get_content_or_placeholder(@backcast, @category)} <button class="btn btn-ghost btn-xs" :on-click="edit" >
             <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path
                 stroke-linecap="round"
