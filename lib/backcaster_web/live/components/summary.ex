@@ -154,7 +154,7 @@ defmodule Summary do
 
 
       {#if !is_nil(@backcast["cards"]["Inspirational Quote"])}
-        <div class="card shadow-2xl lg:card-side bg-secondary my-6">
+        <div class="card shadow-2xl lg:card-side bg-secondary text-secondary-content my-6">
           <div class="card-body">
             <q><InlineEdit backcast={@backcast} category="Inspirational Quote" parent_pid={@parent_pid} id="quote" /></q> - {quote_author()}
           </div>

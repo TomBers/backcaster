@@ -1,9 +1,10 @@
-<img src="/images/wireframe.jpg" style="max-width: 500px">
+<h1 class="front-page-header text-secondary-content">What does success look like?</h1>
+
+<img src="/images/wireframe.jpg" style="max-width: 350px">
 <Form for={:changeset} change="validate" submit="save">
   {#for {_ref, msg} <- @uploads.images.errors}
     <p class="alert alert-danger">{Phoenix.Naming.humanize(msg)}</p>
   {/for}
-  <h1>Add images</h1>
   <div class="container dropzone" phx-drop-target="{ @uploads.images.ref }">
     {live_file_input(@uploads.images)}
   </div>
