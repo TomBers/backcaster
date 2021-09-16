@@ -3,6 +3,7 @@ defmodule Summary do
 
   prop board, :map
   prop backcast, :map
+  prop parent_pid, :string
 
 
   def count_milestones(milestones, cond) do
@@ -144,14 +145,13 @@ defmodule Summary do
       <h1 class="title">{count_milestones(@backcast["milestones"], false)} Complete milestones</h1>
     </div>
     <div class="card shadow-lglg:p-10 xl:grid-cols-2 lg:bg-base-200 rounded-box p-8 text-xl my-2">
-      <p><span class="emphasis">{get_card_or_tbc(@backcast["cards"]["Project Name"])}</span> is {a_or_an(@backcast["cards"]["Project Type"]["content"])} <span class="emphasis">{get_card_or_tbc(@backcast["cards"]["Project Type"])}</span> for <span class="emphasis">{get_card_or_tbc(@backcast["cards"]["Intended Audience"])}</span>.</p>
+      <p><InlineEdit backcast={@backcast} category="Project Name" parent_pid={@parent_pid} id="name" /> is {a_or_an(@backcast["cards"]["Project Type"]["content"])} <span class="emphasis">{get_card_or_tbc(@backcast["cards"]["Project Type"])}</span> for <span class="emphasis">{get_card_or_tbc(@backcast["cards"]["Intended Audience"])}</span>.</p>
       <br>
 
-      {#if !is_nil(@backcast["cards"]["The Problem it solves"]) and !is_nil(@backcast["cards"]["Benefits"])}
-        <p class="">Solving the problem of <span class="emphasis">{get_card_or_tbc(@backcast["cards"]["The Problem it solves"])}</span>, leading to <span class="emphasis">{get_card_or_tbc(@backcast["cards"]["Benefits"])}</span>.</p>
-      {#else}
-        <p class="blur">Solving the problem of <span class="emphasis">{get_card_or_tbc(@backcast["cards"]["The Problem it solves"])}</span>, leading to <span class="emphasis">{get_card_or_tbc(@backcast["cards"]["Benefits"])}</span>.</p>
-      {/if}
+
+
+     <p class="">Solving the problem of <InlineEdit backcast={@backcast} category="The Problem it solves" parent_pid={@parent_pid} id="problem_solves" />, leading to <span class="emphasis">{get_card_or_tbc(@backcast["cards"]["Benefits"])}</span>.</p>
+
 
       {#if !is_nil(@backcast["cards"]["Inspirational Quote"])}
         <div class="card shadow-2xl lg:card-side bg-secondary text-secondary-content my-6">
