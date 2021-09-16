@@ -19,7 +19,7 @@ defmodule MilestoneForm do
       <Form for={:vals} submit={@submit} opts={autocomplete: "off"}>
         <Field class="field" name="title">
           <div class="control">
-            <TextInput class="input" value={@title} />
+            <TextInput class="input" value={@title} placeholder="Title" />
           </div>
         </Field>
         <Field name="id">

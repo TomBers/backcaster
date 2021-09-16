@@ -5,9 +5,7 @@ defmodule Backcaster.SampleData do
 
   def sample do
     %{
-      "cards" => %{
-        "Project Name" => %{"title" => "Project Name", "content" => "Project Name", "order" => 1}
-      },
+      "cards" => make_cards(),
       "milestones" => %{
         "1" => %{"date" => Date.add(Date.utc_today(), 4), "title" => "A milestone", "active" => true, "completed" => Date.utc_today()}
       },
@@ -15,40 +13,18 @@ defmodule Backcaster.SampleData do
     }
   end
 
+  def make_cards do
+    possible_sections()
+    |> Enum.flat_map(fn section -> %{section => %{"title" => section, "content" => ""}} end)
+    |> Map.new()
+  end
+
   def possible_sections do
     ["Project Name", "Project Type", "Intended Audience", "The Problem it solves", "Benefits", "Inspirational Quote", "Call to Action"]
   end
 
-  def update_fields(backcast, fields) do
-    new_fields =
-      fields
-      |> Enum.map(fn {k,v} -> params = String.split(k, "__"); %{"title" => List.first(params), "content" => v, "order" => String.to_integer(List.last(params))} end)
-      |> Map.new(fn e -> {e["title"], e} end)
-
-    update_in(backcast["cards"], fn old -> new_fields end)
-  end
-
-  def add_field(backcast, type) do
-    case backcast["cards"][type] do
-      nil -> put_in(backcast["cards"][type], %{"title" => type, "content" => "", "order" => get_field_order(backcast["cards"]) })
-      _ -> backcast
-    end
-  end
-
-
-  def get_field_order(cards) do
-    if length(Map.keys(cards)) > 0 do
-      {_k, max} = cards
-        |> Enum.max_by(fn {k, v} -> v["order"]  end)
-      max["order"] + 1
-    else
-      1
-      end
-  end
-
-  def delete_field(backcast, label) do
-    { _old, new_backcast } = pop_in(backcast["cards"][label])
-   new_backcast
+  def update_fields(backcast, %{"content" => content, "category" => category}) do
+    update_in(backcast["cards"][category], fn old -> %{"title" => category, "content" => content} end)
   end
 
   def update_milestone(backcast, id, title, date) do
