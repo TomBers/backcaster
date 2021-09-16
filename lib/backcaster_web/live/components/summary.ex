@@ -139,7 +139,7 @@ defmodule Summary do
   def render(assigns) do
     ~F"""
     <div class="grid grid-cols-2 gap-2 p-6 lg:bg-base-200 rounded-box">
-      <h1 class="title">Due date : {@board.goal_date}</h1>
+      <h1 class="title">Due date : <DateEdit date={@board.goal_date} parent_pid={@parent_pid} id="date_edit_id" /></h1>
       <h1 class="title">Time remaining : {Date.diff(@board.goal_date, Date.utc_today())} days</h1>
       <h1 class="title">{count_milestones(@backcast["milestones"], true)} Active milestones</h1>
       <h1 class="title">{count_milestones(@backcast["milestones"], false)} Complete milestones</h1>

@@ -44,6 +44,11 @@ defmodule BackcasterWeb.BackcastLive do
     {:noreply, socket}
   end
 
+  def handle_info(%{"due_date" => %{"new_date" => new_date}}, socket) do
+    {:ok, board} = Backcast.update_board(socket.assigns.board, %{goal_date: new_date})
+    {:noreply, assign(socket, :board, board)}
+  end
+
 
   def handle_event("update_milestone", %{"vals" => %{"date" => date, "title" => title, "id" => id}}, socket) do
     socket =
