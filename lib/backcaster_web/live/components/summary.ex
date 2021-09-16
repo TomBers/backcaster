@@ -158,7 +158,7 @@ defmodule Summary do
       <div>Example Advert</div>
         <div class="example-ad">
           Ad <span style="padding:0 5px">·</span> <a href="#">https://{get_card_or_tbc(@backcast["cards"]["Project Name"])}.com</a><br>
-          <a href="#" class="example-link">{get_card_or_tbc(@backcast["cards"]["Project Name"])} | {get_card_or_tbc(@backcast["cards"]["The Problem it solves"])} solved!</a><br>
+          <a href="#" class="example-link">{get_card_or_tbc(@backcast["cards"]["Project Name"])} | {get_card_or_tbc(@backcast["cards"]["The Problem it solves"])} for {get_card_or_tbc(@backcast["cards"]["Intended Audience"])} solved!</a><br>
           {get_card_or_tbc(@backcast["cards"]["Call to Action"])}
         </div>
     </div>
