@@ -47,15 +47,22 @@
     <div>
         <Summary board={@board} backcast={@backcast} parent_pid={self()} id="summary" />
         <Images
-                images={@backcast["images"]}
-                store_image="store_image"
-                delete_image="delete_image"
-                parent_pid={self()}
-                image_processing={@show_image_processing}
-                id="imageUploads"
+            images={@backcast["images"]}
+            store_image="store_image"
+            delete_image="delete_image"
+            parent_pid={self()}
+            image_processing={@show_image_processing}
+            id="imageUploads"
         />
     </div>
     <div>
+        <div class="grid grid-cols-2 gap-2 p-6 lg:bg-base-200 rounded-box">
+            <h1 class="title">Due date : <DateEdit date={@board.goal_date} parent_pid={self()} id="date_edit_id" /></h1>
+            <h1 class="title">Time remaining : {Date.diff(@board.goal_date, Date.utc_today())} days</h1>
+            <h1 class="title">{count_milestones(@backcast["milestones"], true)} Active milestones</h1>
+            <h1 class="title">{count_milestones(@backcast["milestones"], false)} Complete milestones</h1>
+        </div>
+        <br>
         <div class="grid grid-cols-1 gap-6 lg:p-4 xl:grid-cols-3 bg-base-200 rounded-box">
             {#for {id, milestone} <- sort_milestones(@backcast["milestones"])}
             <Milestone

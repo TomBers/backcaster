@@ -100,5 +100,11 @@ defmodule BackcasterWeb.BackcastLive do
     Enum.sort(milestones, fn {_k1, v1}, {_k2, v2} -> v1["date"] <= v2["date"] end)
   end
 
+  def count_milestones(milestones, cond) do
+    milestones
+    |> Enum.filter(fn {k, m} -> m["active"] == cond end)
+    |> length()
+  end
+
 
 end
