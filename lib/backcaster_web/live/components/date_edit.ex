@@ -20,7 +20,7 @@ defmodule DateEdit do
         {#if @edit}
           <Form for={:due_date} submit="submit" >
             <Field class="field" name="new_date">
-                <DateInput class="input" value={@date} id="date_edit"  />
+                <DateInput class="input btn-block" value={@date} id="date_edit"  />
             </Field>
             <input class="btn btn-secondary btn-block milestone-submit" type="submit" value="update">
           </Form>
