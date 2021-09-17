@@ -75,6 +75,14 @@ defmodule BackcasterWeb.BackcastLive do
     {:noreply, socket}
   end
 
+  def handle_event("change_template", %{"theme" => %{"template" => template}}, socket) do
+    socket =
+      socket
+      |> assign(:backcast, SampleData.set_theme(socket.assigns.backcast, template))
+      |> assign(:should_save, true)
+    {:noreply, socket}
+  end
+
 
 
   def handle_event("change_active", %{"id" => id}, socket) do

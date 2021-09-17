@@ -1,7 +1,6 @@
 defmodule Startup do
   use Surface.LiveComponent
 
-  prop board, :map
   prop backcast, :map
   prop parent_pid, :string
 
@@ -131,7 +130,6 @@ defmodule Startup do
 
   def render(assigns) do
     ~F"""
-    <div class="card shadow-lglg:p-10 xl:grid-cols-2 lg:bg-base-200 rounded-box p-8 text-xl">
       <p><InlineEdit backcast={@backcast} category="Project Name" parent_pid={@parent_pid} id="project_name" /> is {a_or_an(@backcast["cards"]["Project Type"]["content"])} <InlineEdit backcast={@backcast} category="Project Type" parent_pid={@parent_pid} id="type" /> for <InlineEdit backcast={@backcast} category="Intended Audience" parent_pid={@parent_pid} id="audience" />.</p>
       <br>
 
@@ -154,7 +152,6 @@ defmodule Startup do
           <a href="#" class="example-link">{get_card_or_tbc(@backcast["cards"]["Project Name"])} | {get_card_or_tbc(@backcast["cards"]["The Problem it solves"])} for {get_card_or_tbc(@backcast["cards"]["Intended Audience"])} solved!</a><br>
           {get_card_or_tbc(@backcast["cards"]["Call to Action"])}
         </div>
-    </div>
     """
     end
 

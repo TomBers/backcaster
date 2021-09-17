@@ -45,7 +45,7 @@
 <div class="container mx-auto">
   <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
     <div>
-        <Summary board={@board} backcast={@backcast} parent_pid={self()} id="summary" />
+        <Summary backcast={@backcast} parent_pid={self()} change_template="change_template" id="summary" />
         <br>
         <Images
             images={@backcast["images"]}
