@@ -18,7 +18,7 @@ defmodule InlineEdit do
 
   def render(assigns) do
     ~F"""
-    <span>
+    <span class="emphasis">
       {#if @edit}
         <Form for={:vals} submit="submit">
           <Field class="field" name="content">
