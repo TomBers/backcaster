@@ -1,27 +1,26 @@
 <a href="/">
   <div tabindex="0" class="m-1 normal-case btn-ghost btn">
     <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-        <path
-          stroke-linecap="round"
-          stroke-linejoin="round"
-          stroke-width="2"
-          d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"
-        />
-      </svg>
+      <path
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        stroke-width="2"
+        d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"
+      />
+    </svg>
   </div>
 </a>
 
-<a href={ "/info?board=#{@board.name}" }>
+<a href={"/info?board=#{@board.name}"}>
   <div tabindex="0" class="m-1 normal-case btn-ghost btn">
-
-      <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-        <path
-          stroke-linecap="round"
-          stroke-linejoin="round"
-          stroke-width="2"
-          d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
-        />
-      </svg>
+    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+      <path
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        stroke-width="2"
+        d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+      />
+    </svg>
   </div>
 </a>
 
@@ -45,43 +44,42 @@
 <div class="container mx-auto">
   <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
     <div>
-        <Summary backcast={@backcast} parent_pid={self()} change_template="change_template" id="summary" />
-        <br>
-        <Images
-            images={@backcast["images"]}
-            store_image="store_image"
-            delete_image="delete_image"
-            parent_pid={self()}
-            image_processing={@show_image_processing}
-            id="imageUploads"
-        />
+      <Summary backcast={@backcast} parent_pid={self()} change_template="change_template" id="summary" />
+      <br>
+      <Images
+        images={@backcast["images"]}
+        store_image="store_image"
+        delete_image="delete_image"
+        parent_pid={self()}
+        image_processing={@show_image_processing}
+        id="imageUploads"
+      />
     </div>
     <div>
-        <div class="grid grid-cols-2 gap-2 p-6 lg:bg-base-200 rounded-box">
-            <h1 class="title">Due date : <DateEdit date={@board.goal_date} parent_pid={self()} id="date_edit_id" /></h1>
-            <h1 class="title">Time remaining : {Date.diff(@board.goal_date, Date.utc_today())} days</h1>
-            <h1 class="title">{count_milestones(@backcast["milestones"], true)} Active milestones</h1>
-            <h1 class="title">{count_milestones(@backcast["milestones"], false)} Complete milestones</h1>
-        </div>
-        <br>
-        <div class="grid grid-cols-1 gap-6 lg:p-4 xl:grid-cols-3 bg-base-200 rounded-box">
-            {#for {id, milestone} <- sort_milestones(@backcast["milestones"])}
-            <Milestone
-                milestone_id={id}
-                title={milestone["title"]}
-                checked={milestone["active"]}
-                change_active="change_active"
-                date={milestone["date"]}
-                completed={milestone["completed"]}
-                submit="update_milestone"
-                id={id}
-            />
-            {/for}
-            <CreateMilestone submit="create_milestone" id={length(Map.keys(@backcast["milestones"])) + 1} />
-        </div>
+      <div class="grid grid-cols-2 gap-2 p-6 lg:bg-base-200 rounded-box">
+        <h1 class="title">Due date : <DateEdit date={@board.goal_date} parent_pid={self()} id="date_edit_id" /></h1>
+        <h1 class="title">Time remaining : {Date.diff(@board.goal_date, Date.utc_today())} days</h1>
+        <h1 class="title">{count_milestones(@backcast["milestones"], true)} Active milestones</h1>
+        <h1 class="title">{count_milestones(@backcast["milestones"], false)} Complete milestones</h1>
+      </div>
+      <br>
+      <div class="grid grid-cols-1 gap-6 lg:p-4 xl:grid-cols-3 bg-base-200 rounded-box">
+        {#for {id, milestone} <- sort_milestones(@backcast["milestones"])}
+          <Milestone
+            milestone_id={id}
+            title={milestone["title"]}
+            checked={milestone["active"]}
+            change_active="change_active"
+            date={milestone["date"]}
+            completed={milestone["completed"]}
+            submit="update_milestone"
+            id={id}
+          />
+        {/for}
+        <CreateMilestone submit="create_milestone" id={length(Map.keys(@backcast["milestones"])) + 1} />
+      </div>
     </div>
     <div>
-
     </div>
   </div>
 </div>
