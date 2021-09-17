@@ -46,6 +46,7 @@
   <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
     <div>
         <Summary board={@board} backcast={@backcast} parent_pid={self()} id="summary" />
+        <br>
         <Images
             images={@backcast["images"]}
             store_image="store_image"
