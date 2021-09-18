@@ -5,12 +5,17 @@ defmodule Backcaster.SampleData do
 
   def sample do
     %{
-      "cards" => make_cards(),
+      "template" => List.first(templates()),
+      "cards" => %{},
       "milestones" => %{
         "1" => %{"date" => Date.add(Date.utc_today(), 4), "title" => "A milestone", "active" => true, "completed" => Date.utc_today()}
       },
       "images" => %{}
     }
+  end
+
+  def templates() do
+    ["startup", "simple", "fivew", "swot"]
   end
 
   def make_cards do
@@ -37,6 +42,10 @@ defmodule Backcaster.SampleData do
 
   def toggle_milestone(backcast, id) do
     update_in(backcast["milestones"][id], fn old -> %{"date" => old["date"], "title" => old["title"], "active" => !old["active"], "completed" => completed_at() } end)
+  end
+
+  def set_theme(backcast, template) do
+    update_in(backcast["template"], fn _old -> template end)
   end
 
   def completed_at do

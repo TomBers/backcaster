@@ -18,29 +18,29 @@ defmodule InlineEdit do
 
   def render(assigns) do
     ~F"""
-      <span>
-        {#if @edit}
-          <Form for={:vals} submit="submit" >
-            <Field class="field" name="content">
-                <TextInput class="input" value={get_content(@backcast, @category)} id={@category}  />
-            </Field>
-            <Field class="field" name="category">
-                <HiddenInput value={@category} />
-            </Field>
-          </Form>
-        {#else}
-          {get_content_or_placeholder(@backcast, @category)} <button class="btn btn-ghost btn-xs" :on-click="edit" >
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="2"
-                d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z"
-              />
-            </svg>
-          </button>
-        {/if}
-      </span>
+    <span class="emphasis">
+      {#if @edit}
+        <Form for={:vals} submit="submit">
+          <Field class="field" name="content">
+            <TextInput class="input btn-block" value={get_content(@backcast, @category)} id={@category} />
+          </Field>
+          <Field class="field" name="category">
+            <HiddenInput value={@category} />
+          </Field>
+        </Form>
+      {#else}
+        {get_content_or_placeholder(@backcast, @category)} <button class="btn btn-ghost btn-xs" :on-click="edit">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z"
+            />
+          </svg>
+        </button>
+      {/if}
+    </span>
     """
   end
 
@@ -54,7 +54,8 @@ defmodule InlineEdit do
   end
 
   def get_content(backcast, category) do
-    content = backcast["cards"][category]["content"]
+    card = Map.get(backcast["cards"], category, %{"content" => ""})
+    card["content"]
   end
 
   def get_content_or_placeholder(backcast, category) do
