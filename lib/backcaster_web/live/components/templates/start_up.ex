@@ -4,11 +4,9 @@ defmodule Startup do
   prop backcast, :map
   prop parent_pid, :string
 
-  def get_card_or_tbc(nil) do
-    "??"
-  end
 
-  def get_card_or_tbc(card) do
+  def get_card_or_tbc(cards, key) do
+    card = Map.get(cards, key, %{"content" => ""})
     card["content"]
   end
 
@@ -130,7 +128,7 @@ defmodule Startup do
 
   def render(assigns) do
     ~F"""
-    <p><InlineEdit backcast={@backcast} category="Project Name" parent_pid={@parent_pid} id="project_name" /> is {a_or_an(@backcast["cards"]["Project Type"]["content"])} <InlineEdit backcast={@backcast} category="Project Type" parent_pid={@parent_pid} id="type" /> for <InlineEdit backcast={@backcast} category="Intended Audience" parent_pid={@parent_pid} id="audience" />.</p>
+    <p><InlineEdit backcast={@backcast} category="Project Name" parent_pid={@parent_pid} id="project_name" /> is {a_or_an(get_card_or_tbc(@backcast["cards"], "Project Type"))} <InlineEdit backcast={@backcast} category="Project Type" parent_pid={@parent_pid} id="type" /> for <InlineEdit backcast={@backcast} category="Intended Audience" parent_pid={@parent_pid} id="audience" />.</p>
     <br>
 
     <p class="">Solving the problem of <InlineEdit backcast={@backcast} category="The Problem it solves" parent_pid={@parent_pid} id="problem_solves" />, leading to <InlineEdit backcast={@backcast} category="Benefits" parent_pid={@parent_pid} id="benefits" />.</p>
@@ -145,9 +143,9 @@ defmodule Startup do
 
     <div>Example Advert</div>
     <div class="example-ad">
-      Ad <span style="padding:0 5px">·</span> <a href="#">https://{get_card_or_tbc(@backcast["cards"]["Project Name"])}.com</a><br>
-      <a href="#" class="example-link">{get_card_or_tbc(@backcast["cards"]["Project Name"])} | {get_card_or_tbc(@backcast["cards"]["The Problem it solves"])} for {get_card_or_tbc(@backcast["cards"]["Intended Audience"])} solved!</a><br>
-      {get_card_or_tbc(@backcast["cards"]["Call to Action"])}
+      Ad <span style="padding:0 5px">·</span> <a href="#">https://{get_card_or_tbc(@backcast["cards"], "Project Name")}.com</a><br>
+      <a href="#" class="example-link">{get_card_or_tbc(@backcast["cards"], "Project Name")} | {get_card_or_tbc(@backcast["cards"], "The Problem it solves")} for {get_card_or_tbc(@backcast["cards"], "Intended Audience")} solved!</a><br>
+      {get_card_or_tbc(@backcast["cards"], "Call to Action")}
     </div>
     """
     end

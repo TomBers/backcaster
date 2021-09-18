@@ -30,8 +30,14 @@ defmodule Summary do
       {#case @backcast["template"]}
         {#match "startup"}
           <Startup board={@board} backcast={@backcast} parent_pid={self()} id="startup" />
-        {#match "art"}
-          <Art board={@board} backcast={@backcast} parent_pid={self()} id="art" />
+        {#match "simple"}
+          <Simple board={@board} backcast={@backcast} parent_pid={self()} id="art" />
+      {#match "fivew"}
+          <FiveW board={@board} backcast={@backcast} parent_pid={self()} id="fivew" />
+      {#match "swot"}
+          <Swot board={@board} backcast={@backcast} parent_pid={self()} id="swot" />
+      {#match _}
+        <Startup board={@board} backcast={@backcast} parent_pid={self()} id="startup" />
       {/case}
     </div>
     """

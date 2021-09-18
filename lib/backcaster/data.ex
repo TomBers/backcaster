@@ -6,7 +6,7 @@ defmodule Backcaster.SampleData do
   def sample do
     %{
       "template" => List.first(templates()),
-      "cards" => make_cards(),
+      "cards" => %{},
       "milestones" => %{
         "1" => %{"date" => Date.add(Date.utc_today(), 4), "title" => "A milestone", "active" => true, "completed" => Date.utc_today()}
       },
@@ -15,7 +15,7 @@ defmodule Backcaster.SampleData do
   end
 
   def templates() do
-    ["startup", "art"]
+    ["startup", "simple", "fivew", "swot"]
   end
 
   def make_cards do

@@ -22,7 +22,7 @@ defmodule InlineEdit do
       {#if @edit}
         <Form for={:vals} submit="submit">
           <Field class="field" name="content">
-            <TextInput class="input" value={get_content(@backcast, @category)} id={@category} />
+            <TextInput class="input btn-block" value={get_content(@backcast, @category)} id={@category} />
           </Field>
           <Field class="field" name="category">
             <HiddenInput value={@category} />
@@ -54,7 +54,8 @@ defmodule InlineEdit do
   end
 
   def get_content(backcast, category) do
-    content = backcast["cards"][category]["content"]
+    card = Map.get(backcast["cards"], category, %{"content" => ""})
+    card["content"]
   end
 
   def get_content_or_placeholder(backcast, category) do
