@@ -133,7 +133,7 @@ defmodule Startup do
 
     <p class="">Solving the problem of <InlineEdit backcast={@backcast} category="The Problem it solves" parent_pid={@parent_pid} id="problem_solves" />, leading to <InlineEdit backcast={@backcast} category="Benefits" parent_pid={@parent_pid} id="benefits" />.</p>
 
-    <div class="card shadow-2xl lg:card-side bg-secondary my-6">
+    <div class="card shadow-xl lg:card-side my-6 bg-secondary text-secondary-content">
       <div class="card-body">
         <h1 class="card-title">What people are saying</h1>
         <q><InlineEdit backcast={@backcast} category="Inspirational Quote" parent_pid={@parent_pid} id="quote" /></q>

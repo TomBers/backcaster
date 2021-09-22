@@ -50,7 +50,7 @@ defmodule Milestone do
     {#else}
       <div class="card shadow-lg md:card-side">
         {#if is_just_completed(@completed)}
-          <div class="card-body milestone-closed">
+          <div class="card-body jello-horizontal">
             <div class="justify-end card-actions">
               <input type="checkbox" :on-click={@change_active} phx-value-id={@milestone_id} class="toggle toggle-secondary">
             </div>
