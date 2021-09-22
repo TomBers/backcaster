@@ -64,11 +64,11 @@
           </div>
           <div class="stat place-items-center place-content-center">
             <div class="stat-title">Active milestones</div>
-            <div class="stat-value text-success">{count_milestones(@backcast["milestones"], true)}</div>
-            <div class="stat-desc text-success"> / {Map.keys(@backcast["milestones"]) |> length()}</div>
+            <div class="stat-value">{count_milestones(@backcast["milestones"], true)}</div>
+            <div class="stat-desc"> / {Map.keys(@backcast["milestones"]) |> length()}</div>
           </div>
         </div>
-
+      <br>
       <br>
       <div class="grid grid-cols-1 gap-6 lg:p-4 xl:grid-cols-3 bg-base-200 rounded-box">
         {#for {id, milestone} <- sort_milestones(@backcast["milestones"])}
