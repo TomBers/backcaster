@@ -1,7 +1,7 @@
 <h1>BurnList</h1>
 <ol class="list-decimal mx-8 my-6">
     {#for item <- Enum.reverse(@history.current.items)}
-        <li>{item.text}</li>
+        <li><BurnListEdit content={item.text} id={item.uuid} parent_pid={self()} /></li>
     {/for}
 </ol>
 <Form for={:current} change="set_current">
