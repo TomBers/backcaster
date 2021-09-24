@@ -5,5 +5,5 @@
     {/for}
 </ol>
 <Form for={:current} change="set_current">
-    <RangeInput min="1" max={length(@history.past)} step="1" id="set_current" />
+    <RangeInput min="1" max={length(@history.past)} step="1" value={length(@history.past)} id="set_current" class="range range-lg range-accent" />
 </Form>
