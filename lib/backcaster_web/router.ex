@@ -24,6 +24,7 @@ defmodule BackcasterWeb.Router do
 
     live "/", PageLive, :index
     live "/backcast/:id", BackcastLive, :index
+    live "/burnlist", BurnListLive, :index
     live "/info", InfoLive, :index
 
     post "/create-board", BoardController, :create_new
