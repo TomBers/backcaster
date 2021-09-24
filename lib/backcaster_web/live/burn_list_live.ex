@@ -21,6 +21,13 @@ defmodule BackcasterWeb.BurnListLive do
     {:noreply, socket}
   end
 
+  def handle_event("add_item", %{"add_item" => %{"content" => text}}, socket) do
+    socket =
+      socket
+      |> assign(:history, BurnListHistory.add_item(socket.assigns.history, BurnListItem.make_item(text)))
+    {:noreply, socket}
+  end
+
   def handle_info(%{"edit_item" => %{"content" => text, "uuid" => uuid}}, socket) do
     history = socket.assigns.history
     old_item =

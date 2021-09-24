@@ -4,6 +4,9 @@
         <li><BurnListEdit content={item.text} id={item.uuid} parent_pid={self()} /></li>
     {/for}
 </ol>
+
+<BurnListAdd add_item_event="add_item" id="add_item" />
+
 <Form for={:current} change="set_current">
     <RangeInput min="1" max={length(@history.past)} step="1" value={length(@history.past)} id="set_current" class="range range-lg range-accent" />
 </Form>
