@@ -4,15 +4,15 @@ defmodule Backcaster.Todos do
     board = %BurnListBoard{
       created_at: Date.utc_today(),
       items: [
-        %BurnListItem{text: "TodoItem 1"},
-        %BurnListItem{text: "Item 2"}
+        BurnListItem.make_item("TodoItem 1"),
       ]
     }
 
-    %BurnListHistory{
+    history = %BurnListHistory{
       current: board,
       past: [board]
     }
+    BurnListHistory.add_item(history,  BurnListItem.make_item("Second Item"))
   end
 
 end
