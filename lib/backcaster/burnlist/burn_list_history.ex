@@ -15,8 +15,8 @@ defmodule BurnListHistory do
     }
   end
 
-  def add_item(history, item) do
-    add_new_board(history, BurnListBoard.add_item(history.current, item))
+  def add_items(history, items) do
+    add_new_board(history, BurnListBoard.add_items(history.current, items))
   end
 
   def edit_item(history, old_item, new_item) do

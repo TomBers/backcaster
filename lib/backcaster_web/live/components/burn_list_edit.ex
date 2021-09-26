@@ -6,6 +6,7 @@ defmodule BurnListEdit do
 
   prop content, :string
   prop parent_pid, :string
+  prop delete_item, :event
 
   data edit, :boolean, default: false
   data edit_item,
@@ -38,6 +39,11 @@ defmodule BurnListEdit do
             />
           </svg>
         </button>
+      <button class="btn btn-ghost btn-xs" :on-click={@delete_item} value={@id} >
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z" />
+          </svg>
+      </button>
       {/if}
     </span>
     """

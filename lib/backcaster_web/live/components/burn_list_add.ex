@@ -2,31 +2,23 @@ defmodule BurnListAdd do
   use Surface.LiveComponent
 
   alias Surface.Components.Form
-  alias Surface.Components.Form.{TextInput, HiddenInput, Label, Field}
+  alias Surface.Components.Form.{TextArea, HiddenInput, Label, Field}
 
   prop add_item_event, :event
-
-  data text_val, :string, default: ""
-
   data add_item,
        :map,
        default: %{
          "content" => ""
        }
 
-# TODO - the input is not clearing on submit
-  def handle_event("clear", _params, socket) do
-    {:noreply, socket |> assign(:text_val, "")}
-  end
-
   def render(assigns) do
     ~F"""
     <span class="emphasis">
-        <Form for={:add_item} submit={@add_item_event}>
+        <Form for={:add_item} submit={@add_item_event} opts={autocomplete: "off"}>
           <Field class="field" name="content">
-            <TextInput class="input btn-block text-neutral-content bg-neutral" value={@text_val} id={@id} />
+            <TextArea class="textarea h-24" id={@id} rows="4"  opts={placeholder: "(Each line is a new item)"}/>
           </Field>
-            <input class="btn btn-primary btn-block milestone-submit" type="submit" value="Add" :on-click="clear">
+            <input class="btn milestone-submit" type="submit" value="Submit">
         </Form>
     </span>
     """

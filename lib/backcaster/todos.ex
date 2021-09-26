@@ -12,8 +12,8 @@ defmodule Backcaster.Todos do
       current: board,
       past: [board]
     }
-    BurnListHistory.add_item(history,  BurnListItem.make_item("Second Item"))
-    |> BurnListHistory.add_item(BurnListItem.make_item("Third Item"))
+    BurnListHistory.add_items(history,  BurnListItem.make_item("Second Item"))
+    |> BurnListHistory.add_items(BurnListItem.make_item("Third Item"))
   end
 
 end

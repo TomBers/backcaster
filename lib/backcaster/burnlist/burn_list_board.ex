@@ -8,10 +8,17 @@ defmodule BurnListBoard do
     }
   end
 
-  def add_item(board, item) do
+  def add_items(board, items) when is_list(items) do
     %BurnListBoard{
       created_at: Date.utc_today(),
-      items: [item | board.items]
+      items: items ++ board.items
+    }
+  end
+
+  def add_items(board, items) do
+    %BurnListBoard{
+      created_at: Date.utc_today(),
+      items: [items | board.items]
     }
   end
 

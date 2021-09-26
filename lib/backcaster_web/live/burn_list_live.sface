@@ -1,11 +1,12 @@
 <h1>BurnList</h1>
 <ol class="list-decimal mx-8 my-6">
-    {#for item <- Enum.reverse(@history.current.items)}
-        <li><BurnListEdit content={item.text} id={item.uuid} parent_pid={self()} /></li>
+    {#for item <- filter_items(@history.current.items)}
+        <li><BurnListEdit content={item.text} id={item.uuid} parent_pid={self()} delete_item="delete_item" /></li>
     {/for}
 </ol>
+<BurnListAdd add_item_event="add_item" id={length(@history.current.items)} />
 
-<BurnListAdd add_item_event="add_item" id="add_item" />
+
 
 <Form for={:current} change="set_current">
     <RangeInput min="1" max={length(@history.past)} step="1" value={length(@history.past)} id="set_current" class="range range-lg range-accent" />

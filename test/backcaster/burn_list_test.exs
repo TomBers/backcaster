@@ -26,9 +26,21 @@ defmodule Backcaster.BurnListTest do
       board = BurnListBoard.create_board([BurnListItem.make_item("Test")])
       history = BurnListHistory.add_new_board(nil, board)
 
-      new_history = BurnListHistory.add_item(history, BurnListItem.make_item("Added Item"))
+      new_history = BurnListHistory.add_items(history, BurnListItem.make_item("Added Item"))
 
       assert new_history.current.items |> length == 2
+      assert new_history.past |> length == 2
+
+    end
+
+    test "add multiple items" do
+      board = BurnListBoard.create_board([BurnListItem.make_item("Test")])
+      history = BurnListHistory.add_new_board(nil, board)
+
+      new_history = BurnListHistory.add_items(history, [BurnListItem.make_item("Added Item"), BurnListItem.make_item("Second Added Item")])
+
+
+      assert new_history.current.items |> length == 3
       assert new_history.past |> length == 2
 
     end
@@ -63,7 +75,7 @@ defmodule Backcaster.BurnListTest do
 
       assert history.current == board
 
-      new_history = BurnListHistory.add_item(history, BurnListItem.make_item("Added Item"))
+      new_history = BurnListHistory.add_items(history, BurnListItem.make_item("Added Item"))
       assert new_history.current != board
 
       assert BurnListHistory.set_current(new_history, 1).current == board
