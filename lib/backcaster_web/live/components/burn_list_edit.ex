@@ -4,7 +4,7 @@ defmodule BurnListEdit do
   alias Surface.Components.Form
   alias Surface.Components.Form.{TextInput, HiddenInput, Label, Field}
 
-  prop content, :string
+  prop item, :map
   prop parent_pid, :string
   prop delete_item, :event
 
@@ -22,14 +22,14 @@ defmodule BurnListEdit do
       {#if @edit}
         <Form for={:edit_item} submit="submit">
           <Field class="field" name="content">
-            <TextInput class="input btn-block text-neutral-content bg-neutral" value={@content} id={@id} />
+            <TextInput class="input btn-block text-neutral-content bg-neutral" value={@item.text} id={@id} />
           </Field>
           <Field class="field" name="uuid">
             <HiddenInput value={@id} />
           </Field>
         </Form>
       {#else}
-        {@content} <button class="btn btn-ghost btn-xs" :on-click="edit">
+        <div>{@item.text} <button class="btn btn-ghost btn-xs" :on-click="edit">
           <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path
               stroke-linecap="round"
@@ -44,6 +44,8 @@ defmodule BurnListEdit do
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z" />
           </svg>
       </button>
+      <p>({calc_age(@item.created_at)} days old)</p>
+      </div>
       {/if}
     </span>
     """
@@ -56,6 +58,10 @@ defmodule BurnListEdit do
   def handle_event("submit", params, socket) do
     send(socket.assigns.parent_pid, params)
     {:noreply, update(socket, :edit, fn _ -> !socket.assigns.edit end)}
+  end
+
+  def calc_age(created_at) do
+    Date.diff(Date.utc_today(), created_at)
   end
 
 end

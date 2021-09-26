@@ -2,7 +2,7 @@
     <h1>BurnList</h1>
     <ol class="list-decimal mx-8 my-6">
         {#for item <- filter_items(@history.current.items)}
-            <li class="burnlist-item"><BurnListEdit content={item.text} id={item.uuid} parent_pid={self()} delete_item="delete_item" /></li>
+            <li class="burnlist-item"><BurnListEdit item={item} parent_pid={self()} delete_item="delete_item" id={item.uuid} /></li>
         {/for}
     </ol>
     <BurnListAdd add_item_event="add_item" id={length(@history.current.items)} />
