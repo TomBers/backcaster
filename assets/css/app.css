@@ -4,6 +4,14 @@
    opacity: 40%;
 }
 
+.burnlist-item {
+    font-size: 2em;
+}
+
+.fix-height {
+    min-height: 750px;
+}
+
 .emphasis {
     font-weight: bold;
 }
