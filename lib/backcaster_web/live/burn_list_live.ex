@@ -21,11 +21,12 @@ defmodule BackcasterWeb.BurnListLive do
     {:noreply, socket}
   end
 
-  def handle_event("add_item", %{"add_item" => %{"content" => text}}, socket) do
+  def handle_event("add_item", %{"add_item" => %{"content" => text, "category" => category}}, socket) do
+
     items =
       Regex.split( ~r/\r|\n|\r\n/, String.trim(text))
       |> Enum.filter(fn x -> x != "" end)
-      |> Enum.map(fn txt -> BurnListItem.make_item(txt) end)
+      |> Enum.map(fn txt -> BurnListItem.make_item(txt, category) end)
       |> Enum.reverse()
 
     socket =
@@ -55,9 +56,9 @@ defmodule BackcasterWeb.BurnListLive do
     {:noreply, socket}
   end
 
-  def filter_items(items) do
+  def filter_items(items, category) do
     items
-    |> Enum.filter(fn item -> item.state == :active end)
+    |> Enum.filter(fn item -> item.state == :active and item.category == category end)
     |> Enum.reverse()
   end
 

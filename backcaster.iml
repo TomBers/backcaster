@@ -179,5 +179,7 @@
     <orderEntry type="library" name="inch_ex" level="project" />
     <orderEntry type="library" name="surface_formatter" level="project" />
     <orderEntry type="library" name="uuid" level="project" />
+    <orderEntry type="library" name="earmark" level="project" />
+    <orderEntry type="library" name="benchfella" level="project" />
   </component>
 </module>

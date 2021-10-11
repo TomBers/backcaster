@@ -1,5 +1,5 @@
 defmodule BurnListHistory do
-  defstruct [current: nil, past: []]
+  defstruct [current: nil, past: [], categories: []]
 
   def add_new_board(nil, board) do
     %BurnListHistory{
@@ -10,6 +10,7 @@ defmodule BurnListHistory do
 
   def add_new_board(history, board) do
     %BurnListHistory{
+      categories: history.categories,
       current: board,
       past: [board | history.past]
     }
@@ -29,6 +30,7 @@ defmodule BurnListHistory do
 
   def set_current(history, index) do
     %BurnListHistory{
+      categories: history.categories,
       current: Enum.at(history.past, index),
       past: history.past
     }
