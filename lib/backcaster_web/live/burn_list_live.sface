@@ -3,7 +3,7 @@
         {#for category <- @history.current.categories}
         <div class="card lg:card-side bordered">
             <div class="card-body">
-            <h1 class="card-title"><BurnListCategoryEdit category={category} parent_pid={self()} delete_item="delete_item" id={category.uuid} /></h1>
+            <h1 class="card-title"><BurnListCategoryEdit category={category} parent_pid={self()} delete_item="remove_category" id={category.uuid} /></h1>
             <ol class="list-decimal mx-8 my-6">
                 {#for item <- filter_items(@history.current.items, category)}
                 <li class="burnlist-item"><BurnListEdit item={item} parent_pid={self()} delete_item="delete_item" id={item.uuid} /></li>

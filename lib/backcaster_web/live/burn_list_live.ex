@@ -28,6 +28,12 @@ defmodule BackcasterWeb.BurnListLive do
     {:noreply, socket}
   end
 
+  def handle_event("remove_category", %{"value" => uuid}, socket) do
+#    TODO - remove category
+    IO.inspect(uuid)
+    {:noreply, socket}
+  end
+
   def handle_event("add_item", %{"add_item" => %{"content" => text, "category" => category_uuid}}, socket) do
     category = Enum.find(socket.assigns.history.current.categories, fn x -> x.uuid == category_uuid end)
     items =
