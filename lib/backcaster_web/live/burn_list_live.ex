@@ -29,8 +29,9 @@ defmodule BackcasterWeb.BurnListLive do
   end
 
   def handle_event("remove_category", %{"value" => uuid}, socket) do
-#    TODO - remove category
-    IO.inspect(uuid)
+    socket =
+      socket
+      |> assign(:history, BurnListHistory.remove_category(socket.assigns.history, uuid))
     {:noreply, socket}
   end
 

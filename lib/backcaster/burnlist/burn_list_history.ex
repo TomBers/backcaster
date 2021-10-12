@@ -23,6 +23,10 @@ defmodule BurnListHistory do
     add_new_board(history, BurnListBoard.edit_category(history.current, text, uuid))
   end
 
+  def remove_category(history, uuid) do
+    add_new_board(history, BurnListBoard.remove_category(history.current, uuid))
+  end
+
   def add_items(history, items) do
     add_new_board(history, BurnListBoard.add_items(history.current, items))
   end

@@ -50,4 +50,12 @@ defmodule BurnListBoard do
     }
   end
 
+  def remove_category(board, uuid) do
+    %BurnListBoard{
+      created_at: Date.utc_today(),
+      items: board.items |> Enum.filter(fn x -> x.uuid != uuid end),
+      categories: board.categories |> Enum.filter(fn x -> x.uuid != uuid end)
+    }
+  end
+
 end
