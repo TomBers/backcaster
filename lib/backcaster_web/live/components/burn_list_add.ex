@@ -5,7 +5,7 @@ defmodule BurnListAdd do
   alias Surface.Components.Form.{TextArea, HiddenInput, Label, Field}
 
   prop add_item_event, :event
-  prop category, :string
+  prop category, :map
   data add_item,
        :map,
        default: %{
@@ -20,7 +20,7 @@ defmodule BurnListAdd do
             <TextArea class="textarea h-24" id={@id} rows="4"  opts={placeholder: "(Each line is a new item)"}/>
           </Field>
         <Field class="field" name="category">
-            <HiddenInput value={@category} />
+            <HiddenInput value={@category.uuid} />
           </Field>
             <input class="btn milestone-submit" type="submit" value="Submit">
         </Form>

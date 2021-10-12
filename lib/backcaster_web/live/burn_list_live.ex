@@ -21,8 +21,15 @@ defmodule BackcasterWeb.BurnListLive do
     {:noreply, socket}
   end
 
-  def handle_event("add_item", %{"add_item" => %{"content" => text, "category" => category}}, socket) do
+  def handle_event("add_category", _params, socket) do
+    socket =
+      socket
+      |> assign(:history, BurnListHistory.add_category(socket.assigns.history))
+    {:noreply, socket}
+  end
 
+  def handle_event("add_item", %{"add_item" => %{"content" => text, "category" => category_uuid}}, socket) do
+    category = Enum.find(socket.assigns.history.current.categories, fn x -> x.uuid == category_uuid end)
     items =
       Regex.split( ~r/\r|\n|\r\n/, String.trim(text))
       |> Enum.filter(fn x -> x != "" end)
@@ -51,14 +58,22 @@ defmodule BackcasterWeb.BurnListLive do
       Enum.find(history.current.items, fn x -> x.uuid == uuid end)
     socket =
       socket
-      |> assign(:history, BurnListHistory.edit_item(history, old_item, BurnListItem.make_item(text)))
+      |> assign(:history, BurnListHistory.edit_item(history, old_item, BurnListItem.make_item(text, old_item.category)))
 
     {:noreply, socket}
   end
 
+  def handle_info(%{"edit_category" => %{"content" => content, "uuid" => uuid}}, socket) do
+    socket =
+      socket
+      |> assign(:history, BurnListHistory.edit_category(socket.assigns.history, content, uuid))
+    {:noreply, socket}
+  end
+
+
   def filter_items(items, category) do
     items
-    |> Enum.filter(fn item -> item.state == :active and item.category == category end)
+    |> Enum.filter(fn item -> item.state == :active and item.category.uuid == category.uuid end)
     |> Enum.reverse()
   end
 
