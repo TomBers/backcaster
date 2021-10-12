@@ -9,7 +9,7 @@ defmodule BurnListAdd do
   data add_item,
        :map,
        default: %{
-         "content" => ""
+         "content" => "", "category" => ""
        }
 
   def render(assigns) do
@@ -20,7 +20,7 @@ defmodule BurnListAdd do
             <TextArea class="textarea h-24" id={@id} rows="4"  opts={placeholder: "(Each line is a new item)"}/>
           </Field>
         <Field class="field" name="category">
-            <HiddenInput value={@category.uuid} />
+            <HiddenInput value={@category.uuid} id={@id} />
           </Field>
             <input class="btn milestone-submit" type="submit" value="Submit">
         </Form>
