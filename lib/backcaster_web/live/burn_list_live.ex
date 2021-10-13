@@ -77,6 +77,13 @@ defmodule BackcasterWeb.BurnListLive do
     {:noreply, socket}
   end
 
+  def handle_event("reorder", %{"category_uid" => category_uuid, "new_index" => new_index, "old_index" => old_index}, socket) do
+    socket =
+      socket
+      |> assign(:history, BurnListHistory.reorder_item(socket.assigns.history, category_uuid, old_index, new_index))
+    {:noreply, socket}
+  end
+
 
   def filter_items(items, category) do
     items

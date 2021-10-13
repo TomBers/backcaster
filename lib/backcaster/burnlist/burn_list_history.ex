@@ -35,6 +35,10 @@ defmodule BurnListHistory do
     add_new_board(history, BurnListBoard.edit_item(history.current, old_item, new_item))
   end
 
+  def reorder_item(history, category_uuid, old_index, new_index) do
+    add_new_board(history, BurnListBoard.reorder_item(history.current, category_uuid, old_index, new_index))
+  end
+
   def delete_item(history, item) do
     add_new_board(history, BurnListBoard.edit_item(history.current, item, %{item | state: :deleted}))
   end
