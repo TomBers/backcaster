@@ -30,8 +30,21 @@ import topbar from "../vendor/topbar"
 let Hooks = {}
 Hooks.reorder = {
     mounted(){
-    console.log('Hook mounted');
-    window.addEventListener("reorder", e => {
+
+    const id = this.el.dataset.category_uuid;
+
+    Sortable.create(document.getElementById(id), {
+     group: 'shared',
+     onAdd: (evt) => {
+//     TODO - Item added from another list
+        console.log("Add")
+     },
+     onEnd: (evt) => {
+        window.dispatchEvent(new CustomEvent(id, {detail : evt}), false)
+    }
+    });
+
+    window.addEventListener(id, e => {
         console.log(e)
         const categoryUid = e.detail.from.dataset.category_uuid;
         const oldIndex = e.detail.oldIndex;

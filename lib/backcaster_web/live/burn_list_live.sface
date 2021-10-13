@@ -5,14 +5,15 @@
             <div class="card lg:card-side bordered">
                 <div class="card-body">
                 <h1 class="card-title"><BurnListCategoryEdit category={category} parent_pid={self()} delete_item="remove_category" id={category.uuid} /></h1>
-                <ol id="simpleList" class="list-group mx-8 my-6" phx-hook="reorder" data-category_uuid={category.uuid}>
+                <ol id={category.uuid} class="list-group mx-8 my-6" phx-hook="reorder" data-category_uuid={category.uuid}>
                     {#for item <- filter_items(@history.current.items, category)}
-                    <li class="list-group-item"><BurnListEdit item={item} parent_pid={self()} delete_item="delete_item" id={item.uuid} /></li>
+                        <li class="list-group-item"><BurnListEdit item={item} parent_pid={self()} delete_item="delete_item" id={item.uuid} /></li>
                     {/for}
                 </ol>
                 <BurnListAdd add_item_event="add_item" category={category} id={"#{category.text}_#{length(@history.current.items)}"} />
                 </div>
             </div>
+
             {/for}
             <div class="card lg:card-side bordered">
                 <div class="card-body">
@@ -29,12 +30,3 @@
 </Form>
 </div>
 
-<script>
-    // Simple list
-    const list = document.getElementById('simpleList')
-    Sortable.create(list, {
-     onChange: (evt) => {
-        window.dispatchEvent(new CustomEvent('reorder', {detail : evt}))
-         }
-     });
-</script>
