@@ -49,7 +49,8 @@ defmodule BurnListBoard do
     }
   end
 
-#  From the front end we get a visual index (which order the item was drawn, but that does not correspond to the index in the board so we need to look it up
+#  From the front end we get a visual index (which order the item was drawn)
+#  This that does not correspond to the index in the board so reproduce the steps needed, filter by caregory and visible and reverse
   def get_actual_index(items, category_uid, visual_index) do
     {item, index} =
       items
