@@ -35,10 +35,6 @@ Hooks.reorder = {
 
     Sortable.create(document.getElementById(id), {
      group: 'shared',
-     onAdd: (evt) => {
-//     TODO - Item added from another list
-        console.log("Add")
-     },
      onEnd: (evt) => {
         window.dispatchEvent(new CustomEvent(id, {detail : evt}), false)
     }
@@ -46,10 +42,11 @@ Hooks.reorder = {
 
     window.addEventListener(id, e => {
         console.log(e)
-        const categoryUid = e.detail.from.dataset.category_uuid;
+        const fromCategoryUid = e.detail.from.dataset.category_uuid;
+        const toCategoryUid = e.detail.to.dataset.category_uuid
         const oldIndex = e.detail.oldIndex;
         const newIndex = e.detail.newIndex;
-        this.pushEvent("reorder", {category_uid: categoryUid, old_index: oldIndex, new_index: newIndex})
+        this.pushEvent("reorder", {from_category_uid: fromCategoryUid, to_category_id: toCategoryUid, old_index: oldIndex, new_index: newIndex})
        }, false)
     }
 }
