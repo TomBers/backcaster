@@ -52,10 +52,7 @@ defmodule BurnListBoard do
 
   def reorder_item(board, from_category_uid, to_category_uid, old_visual_index, new_visual_index)  do
     old_index = get_actual_index(board.items, from_category_uid, old_visual_index)
-    IO.inspect("OLD index: #{old_index}")
-    IO.inspect(new_visual_index)
     new_index = get_actual_index(board.items, to_category_uid, new_visual_index)
-    IO.inspect("NEW index: #{new_index}")
     category = board.categories |> Enum.find(fn x -> x.uuid == to_category_uid end)
     reordered_board(board, category, old_index, new_index)
   end
@@ -72,7 +69,7 @@ defmodule BurnListBoard do
 
       case Enum.at(visible_items, visual_index) do
         {_item, index} -> index
-        nil -> length(visible_items)
+        nil -> 0
     end
   end
 
