@@ -1,4 +1,5 @@
 defmodule BurnListBoard do
+  @derive {Jason.Encoder, except: []}
   defstruct [created_at: nil, items: [], categories: []]
 
   def create_board(items) do

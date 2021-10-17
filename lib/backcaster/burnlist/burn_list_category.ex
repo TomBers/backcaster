@@ -1,4 +1,5 @@
 defmodule BurnListCategory do
+  @derive {Jason.Encoder, except: []}
   defstruct [text: "", uuid: nil, created_at: nil]
 
   def new_category() do
