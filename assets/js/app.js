@@ -42,11 +42,10 @@ Hooks.reorder = {
 
     window.addEventListener(id, e => {
         console.log(e)
-        const fromCategoryUid = e.detail.from.dataset.category_uuid;
-        const toCategoryUid = e.detail.to.dataset.category_uuid
-        const oldIndex = e.detail.oldIndex;
+        const toCategoryUid = e.detail.to.dataset.category_uuid;
+        const itemUid = e.detail.item.dataset.item_uuid;
         const newIndex = e.detail.newIndex;
-        this.pushEvent("reorder", {from_category_uid: fromCategoryUid, to_category_id: toCategoryUid, old_index: oldIndex, new_index: newIndex})
+        this.pushEvent("reorder", {to_category_id: toCategoryUid, new_index: newIndex, item_uid: itemUid})
        }, false)
     }
 }

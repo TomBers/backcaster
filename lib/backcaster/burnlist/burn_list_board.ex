@@ -35,12 +35,11 @@ defmodule BurnListBoard do
 
 
 
-  def reordered_board(board, category, old_index, new_index) do
-    item = Enum.at(board.items, old_index)
+  def reordered_board(board, new_index, new_item, old_item_uid) do
     new_items =
       board.items
-      |> List.delete_at(old_index)
-      |> List.insert_at(new_index, BurnListItem.make_item(item.text, category))
+      |> List.insert_at(new_index, new_item)
+      |> Enum.filter(fn items -> items.uuid != old_item_uid end)
 
     %BurnListBoard{
       created_at: Date.utc_today(),
@@ -50,11 +49,12 @@ defmodule BurnListBoard do
   end
 
 
-  def reorder_item(board, from_category_uid, to_category_uid, old_visual_index, new_visual_index)  do
-    old_index = get_actual_index(board.items, from_category_uid, old_visual_index)
+  def reorder_item(board, to_category_uid, new_visual_index, item_uid)  do
     new_index = get_actual_index(board.items, to_category_uid, new_visual_index)
     category = board.categories |> Enum.find(fn x -> x.uuid == to_category_uid end)
-    reordered_board(board, category, old_index, new_index)
+    old_item = board.items |> Enum.find(fn itm -> itm.uuid == item_uid end)
+    new_item = BurnListItem.make_item(old_item.text, category)
+    reordered_board(board, new_index, new_item, item_uid)
   end
 
 #  From the front end we get a visual index (which order the item was drawn)
