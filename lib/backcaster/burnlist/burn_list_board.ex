@@ -68,7 +68,7 @@ defmodule BurnListBoard do
     |> Enum.reverse
 
       case Enum.at(visible_items, visual_index) do
-        {_item, index} -> index
+        {_item, index} -> if visual_index <= index do index + 1 else index - 1 end
         nil -> 0
     end
   end
