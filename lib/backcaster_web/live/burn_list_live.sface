@@ -1,0 +1,32 @@
+<div class="container mx-auto">
+    <div class="h-auto">
+        <div class="grid grid-cols-3 gap-4">
+            {#for category <- @history.current.categories}
+            <div class="card lg:card-side bordered">
+                <div class="card-body">
+                <h1 class="card-title"><BurnListCategoryEdit category={category} parent_pid={self()} delete_item="remove_category" id={category.uuid} /></h1>
+                <ol id={category.uuid} class="list-group mx-8 my-6" phx-hook="reorder" data-category_uuid={category.uuid}>
+                    {#for item <- filter_items(@history.current.items, category)}
+                        <li class="list-group-item" data-item_uuid={item.uuid}><BurnListEdit item={item} parent_pid={self()} delete_item="delete_item" id={item.uuid} /></li>
+                    {/for}
+                </ol>
+                <BurnListAdd add_item_event="add_item" category={category} id={"#{category.text}_#{length(@history.current.items)}"} />
+                </div>
+            </div>
+
+            {/for}
+            <div class="card lg:card-side bordered">
+                <div class="card-body">
+                    <h1 class="card-title">Add</h1>
+                    <button :on-click="add_category">+</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+<Form for={:current} change="set_current">
+    <RangeInput min="1" max={length(@history.past)} step="1" value={length(@history.past)} id="set_current" class="range range-lg range-accent" />
+</Form>
+</div>
+
