@@ -41,7 +41,6 @@ defmodule BackcasterWeb.BurnListLive do
       Regex.split( ~r/\r|\n|\r\n/, String.trim(text))
       |> Enum.filter(fn x -> x != "" end)
       |> Enum.map(fn txt -> BurnListItem.make_item(txt, category) end)
-      |> Enum.reverse()
 
     socket =
       socket
@@ -77,11 +76,11 @@ defmodule BackcasterWeb.BurnListLive do
     {:noreply, socket}
   end
 
-  def handle_event("reorder", %{"to_category_id" => to_category_id, "new_index" => new_index, "item_uid" => item_uid} = params, socket) do
+  def handle_event("reorder", %{"to_category_id" => to_category_id, "old_index" => old_index, "new_index" => new_index, "item_uid" => item_uid} = params, socket) do
 #    IO.inspect(params)
     socket =
       socket
-      |> assign(:history, BurnListHistory.reorder_item(socket.assigns.history, to_category_id, new_index, item_uid))
+      |> assign(:history, BurnListHistory.reorder_item(socket.assigns.history, to_category_id, old_index, new_index, item_uid))
     {:noreply, socket}
   end
 
@@ -89,7 +88,6 @@ defmodule BackcasterWeb.BurnListLive do
   def filter_items(items, category) do
     items
     |> Enum.filter(fn item -> item.state == :active and item.category.uuid == category.uuid end)
-    |> Enum.reverse()
   end
 
 end

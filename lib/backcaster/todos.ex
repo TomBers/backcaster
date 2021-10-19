@@ -9,9 +9,9 @@ defmodule Backcaster.Todos do
 #        BurnListItem.make_item("Item 3", category),
 #        BurnListItem.make_item("Item 2", category),
         BurnListItem.make_item("Item 1", category),
-        BurnListItem.make_item("CCCC", category_2),
-        BurnListItem.make_item("BBBB", category_2),
         BurnListItem.make_item("AAAA", category_2),
+        BurnListItem.make_item("BBBB", category_2),
+        BurnListItem.make_item("CCCC", category_2)
       ],
       categories: [category, category_2],
     }
