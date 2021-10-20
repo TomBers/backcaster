@@ -11,7 +11,7 @@ defmodule BurnListBoard do
   def add_items(board, items) when is_list(items) do
     %BurnListBoard{
       created_at: Date.utc_today(),
-      items: items ++ board.items,
+      items: board.items ++ items,
       categories: board.categories
     }
   end
@@ -19,7 +19,7 @@ defmodule BurnListBoard do
   def add_items(board, items) do
     %BurnListBoard{
       created_at: Date.utc_today(),
-      items: [items | board.items],
+      items: [board.items | items],
       categories: board.categories
     }
   end
@@ -49,8 +49,8 @@ defmodule BurnListBoard do
   end
 
 
-  def reorder_item(board, to_category_uid, new_visual_index, item_uid)  do
-    new_index = get_actual_index(board.items, to_category_uid, new_visual_index)
+  def reorder_item(board, to_category_uid, old_visual_index, new_visual_index, item_uid)  do
+    new_index = get_actual_index(board.items, to_category_uid, old_visual_index,  new_visual_index)
     category = board.categories |> Enum.find(fn x -> x.uuid == to_category_uid end)
     old_item = board.items |> Enum.find(fn itm -> itm.uuid == item_uid end)
     new_item = BurnListItem.make_item(old_item.text, category)
@@ -60,17 +60,36 @@ defmodule BurnListBoard do
 #  From the front end we get a visual index (which order the item was drawn)
 #  This that does not correspond to the index in the board so reproduce the steps needed,
 #  filter by category and visible and reverse
-  def get_actual_index(items, category_uid, visual_index) do
+  def get_actual_index(items, category_uid, old_visual_index, visual_index) do
     visible_items =
       items
     |> Enum.with_index
     |> Enum.filter(fn {x, index} -> x.category.uuid == category_uid and x.state == :active end)
-    |> Enum.reverse
 
       case Enum.at(visible_items, visual_index) do
-        {_item, index} -> if visual_index <= index do index + 1 else index - 1 end
-        nil -> 0
+        {_item, index} -> work_out_index(index, old_visual_index, visual_index)
+        nil -> calc_no_match_index(visible_items)
     end
+  end
+
+  def calc_no_match_index(items) do
+    case List.last(items) do
+      {_item, indx} -> indx + 1
+      nil -> length(items)
+    end
+
+  end
+
+  def work_out_index(item_index, old_visual_index, 0) do
+    0
+  end
+
+  def work_out_index(item_index, old_visual_index, visual_index) do
+      if old_visual_index >= visual_index do
+          item_index
+        else
+          item_index + 1
+      end
   end
 
   def add_category(board) do
