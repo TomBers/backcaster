@@ -22,7 +22,11 @@ defmodule InlineEdit do
       {#if @edit}
         <Form for={:vals} submit="submit">
           <Field class="field" name="content">
-            <TextInput class="input btn-block text-neutral-content bg-neutral" value={get_content(@backcast, @category)} id={@category} />
+            <TextInput
+              class="input btn-block text-neutral-content bg-neutral"
+              value={get_content(@backcast, @category)}
+              id={@category}
+            />
           </Field>
           <Field class="field" name="category">
             <HiddenInput value={@category} />

@@ -90,4 +90,10 @@ defmodule BackcasterWeb.BurnListLive do
     |> Enum.filter(fn item -> item.state == :active and item.category.uuid == category.uuid end)
   end
 
+  def calc_closed(items, category) do
+    items
+    |> Enum.filter(fn item -> item.state != :active and item.category.uuid == category.uuid end)
+    |> length()
+  end
+
 end

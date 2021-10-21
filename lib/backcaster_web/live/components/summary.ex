@@ -32,12 +32,12 @@ defmodule Summary do
           <Startup board={@board} backcast={@backcast} parent_pid={self()} id="startup" />
         {#match "simple"}
           <Simple board={@board} backcast={@backcast} parent_pid={self()} id="art" />
-      {#match "fivew"}
+        {#match "fivew"}
           <FiveW board={@board} backcast={@backcast} parent_pid={self()} id="fivew" />
-      {#match "swot"}
+        {#match "swot"}
           <Swot board={@board} backcast={@backcast} parent_pid={self()} id="swot" />
-      {#match _}
-        <Startup board={@board} backcast={@backcast} parent_pid={self()} id="startup" />
+        {#match _}
+          <Startup board={@board} backcast={@backcast} parent_pid={self()} id="startup" />
       {/case}
     </div>
     """
