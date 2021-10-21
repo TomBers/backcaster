@@ -2,7 +2,7 @@
   <div class="h-auto">
     <div class="grid grid-cols-3 gap-4">
       {#for category <- @history.current.categories}
-        <div class="card lg:card-side bordered">
+        <div class="card lg:card-side bordered compact">
           <div class="card-body">
             <h1 class="card-title"><BurnListCategoryEdit category={category} parent_pid={self()} delete_item="remove_category" id={category.uuid} /></h1>
             <div class="w-full shadow stats">

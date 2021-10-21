@@ -31,7 +31,7 @@ defmodule BurnListEdit do
       {#else}
         <div class="card lg:card-side bordered compact my-2">
           <div class="grid grid-cols-12">
-            <div class={get_handle_colour(calc_age(@item.created_at))} />
+            <div class={get_handle_colour(calc_age(@item.updated_at))} />
           <div class="col-span-10 p-2">{@item.text}</div>
           <div class="py-2">
             <button class="btn btn-ghost btn-xs" :on-click="edit">
