@@ -32,7 +32,7 @@ defmodule BackcasterWeb.BurnListLive do
   def handle_info(:persist, socket) do
     Process.send_after(self(), :persist, @save_time)
 
-#    Task.start(fn -> SampleData.persist_board(socket.assigns.history, socket.assigns.board) end)
+    Task.start(fn -> SampleData.persist_board(socket.assigns.history, socket.assigns.board) end)
 
     {:noreply, socket}
   end
