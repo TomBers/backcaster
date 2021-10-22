@@ -18,7 +18,7 @@ defmodule BackcasterWeb.BurnListLive do
     parent_board = Map.get(params, "board", "")
 
     {is_new?, board} =
-      Backcast.get_or_create_board!(id, Date.utc_today(), Backcaster.Todos.simple())
+      Backcast.get_or_create_board!(id, Date.utc_today(), Backcaster.Todos.sample())
 
     history = board.content |> Backcaster.Todos.hydrate(is_new?)
 
