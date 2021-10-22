@@ -20,8 +20,8 @@ defmodule Backcaster.Todos do
     board = %BurnListBoard{
       created_at: Date.utc_today(),
       items: [
-        BurnListItem.make_item("Item 3", category),
-        BurnListItem.make_item("Item 2", category),
+#        BurnListItem.make_item("Item 3", category),
+#        BurnListItem.make_item("Item 2", category),
         BurnListItem.make_item("Item 1", category),
         BurnListItem.make_item("AAAA", category_2),
         BurnListItem.make_item("BBBB", category_2),

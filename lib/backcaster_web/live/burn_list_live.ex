@@ -16,7 +16,7 @@ defmodule BackcasterWeb.BurnListLive do
     theme = Map.get(params, "theme", "synthwave")
 
     {is_new?, board} =
-      Backcast.get_or_create_board!(id, Date.utc_today(), Backcaster.Todos.simple())
+      Backcast.get_or_create_board!(id, Date.utc_today(), Backcaster.Todos.sample())
 
     history = board.content |> Backcaster.Todos.hydrate(is_new?)
 
@@ -32,7 +32,7 @@ defmodule BackcasterWeb.BurnListLive do
   def handle_info(:persist, socket) do
     Process.send_after(self(), :persist, @save_time)
 
-    Task.start(fn -> SampleData.persist_board(socket.assigns.history, socket.assigns.board) end)
+#    Task.start(fn -> SampleData.persist_board(socket.assigns.history, socket.assigns.board) end)
 
     {:noreply, socket}
   end
