@@ -1,4 +1,5 @@
 defmodule BurnListHistory do
+  @derive {Jason.Encoder, except: []}
   defstruct [current: nil, past: []]
 
   def add_new_board(nil, board) do

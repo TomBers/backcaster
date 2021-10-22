@@ -1,5 +1,5 @@
 defmodule BurnListItem do
-  @enforce_keys [:text]
+  @derive {Jason.Encoder, except: []}
   defstruct [text: "", state: :active, uuid: nil, created_at: nil, updated_at: nil, category: "default"]
 
   def make_item(text, %BurnListCategory{} = category) do

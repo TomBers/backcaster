@@ -1,16 +1,37 @@
 defmodule BackcasterWeb.BurnListLive do
   use Surface.LiveView
 
+  alias Backcaster.SampleData
+  alias Backcaster.Backcast
+
   alias Surface.Components.Form
   alias Surface.Components.Form.{RangeInput}
 
-  def mount(_params, _session, socket) do
+  @save_time 5_000
+
+  def mount(%{"id" => id}, _session, socket) do
+
+    if connected?(socket), do: Process.send_after(self(), :persist, @save_time)
+
+    {is_new?, board} =
+      Backcast.get_or_create_board!(id, Date.utc_today(), Backcaster.Todos.simple())
+
+    history = board.content |> Backcaster.Todos.hydrate(is_new?)
 
     socket =
       socket
-      |> assign(:history, Backcaster.Todos.sample())
+      |> assign(:history, history)
+      |> assign(:board, board)
 
     {:ok, socket}
+  end
+
+  def handle_info(:persist, socket) do
+    Process.send_after(self(), :persist, @save_time)
+
+    Task.start(fn -> SampleData.persist_board(socket.assigns.history, socket.assigns.board) end)
+
+    {:noreply, socket}
   end
 
   def handle_event("set_current", %{"current" => [current]}, socket) do
