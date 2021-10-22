@@ -28,11 +28,12 @@ defmodule Milestone do
             />
           </div>
           <h2 class="card-title text-primary-content">{@title}</h2>
-          <p class="text-primary-content">{@date} ({calc_date_diff(@date)} days to go)</p>
-
+          <p class="text-primary-content">({calc_date_diff(@date)} days to go)</p>
+          <br>
+          <br>
           <div class="justify-end card-actions">
             <button class="btn-sm btn-secondary edit-milestone" :on-click="edit">
-              <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path
                   stroke-linecap="round"
                   stroke-linejoin="round"
@@ -41,6 +42,19 @@ defmodule Milestone do
                 />
               </svg>
             </button>
+
+            <a href={"/burnlist/#{@milestone_id}"} target="blank">
+              <button class="btn-sm btn-secondary edit-milestone">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01"
+                  />
+                </svg>
+              </button>
+            </a>
           </div>
           <div :if={@edit}>
             <MilestoneForm title={@title} date={@date} submit={@submit} id={@id} button_text="Update" edit="edit" />
