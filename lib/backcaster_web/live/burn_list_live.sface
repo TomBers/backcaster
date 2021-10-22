@@ -1,15 +1,14 @@
-
 <div class="container mx-auto">
   <div class="h-auto">
     {#if !is_nil(@parent_board)}
-    <a href={"/backcast/#{@parent_board}"}>
-      <div tabindex="0" class="btn-ghost btn compact">
-        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
-        </svg>
-        <p>{@title}</p>
-      </div>
-    </a>
+      <a href={"/backcast/#{@parent_board}?theme=#{@theme}"}>
+        <div tabindex="0" class="btn-ghost btn compact">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+          </svg>
+          <p>{@title}</p>
+        </div>
+      </a>
     {/if}
 
     <div class="grid grid-cols-3 gap-4">
@@ -36,7 +35,18 @@
       <div class="card lg:card-side bordered">
         <div class="card-body">
           <h1 class="card-title">Add</h1>
-          <button :on-click="add_category">+</button>
+          <br>
+          <br>
+          <div class="justify-center card-actions">
+            <button :on-click="add_category" class="btn"><svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M12 9v3m0 0v3m0-3h3m-3 0H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z"
+                />
+              </svg></button>
+          </div>
         </div>
       </div>
     </div>

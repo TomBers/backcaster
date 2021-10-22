@@ -29,16 +29,18 @@ defmodule BackcasterWeb.BurnListLive do
       |> assign(:theme, theme)
       |> assign(:title, title)
       |> assign(:parent_board, parent_board)
+      |> assign(:should_save, false)
 
     {:ok, socket}
   end
 
   def handle_info(:persist, socket) do
     Process.send_after(self(), :persist, @save_time)
+    if socket.assigns.should_save do
+      Task.start(fn -> SampleData.persist_board(socket.assigns.history, socket.assigns.board) end)
+    end
 
-    Task.start(fn -> SampleData.persist_board(socket.assigns.history, socket.assigns.board) end)
-
-    {:noreply, socket}
+    {:noreply, assign(socket, :should_save, false)}
   end
 
   def handle_event("set_current", %{"current" => [current]}, socket) do
@@ -46,6 +48,7 @@ defmodule BackcasterWeb.BurnListLive do
     socket =
       socket
       |> assign(:history, BurnListHistory.set_current(socket.assigns.history, index))
+      |> assign(:should_save, true)
     {:noreply, socket}
   end
 
@@ -53,6 +56,7 @@ defmodule BackcasterWeb.BurnListLive do
     socket =
       socket
       |> assign(:history, BurnListHistory.add_category(socket.assigns.history))
+      |> assign(:should_save, true)
     {:noreply, socket}
   end
 
@@ -60,6 +64,7 @@ defmodule BackcasterWeb.BurnListLive do
     socket =
       socket
       |> assign(:history, BurnListHistory.remove_category(socket.assigns.history, uuid))
+      |> assign(:should_save, true)
     {:noreply, socket}
   end
 
@@ -73,6 +78,7 @@ defmodule BackcasterWeb.BurnListLive do
     socket =
       socket
       |> assign(:history, BurnListHistory.add_items(socket.assigns.history, items))
+      |> assign(:should_save, true)
     {:noreply, socket}
   end
 
@@ -83,6 +89,7 @@ defmodule BackcasterWeb.BurnListLive do
     socket =
       socket
       |> assign(:history, BurnListHistory.delete_item(history, old_item))
+      |> assign(:should_save, true)
     {:noreply, socket}
   end
 
@@ -93,6 +100,7 @@ defmodule BackcasterWeb.BurnListLive do
     socket =
       socket
       |> assign(:history, BurnListHistory.edit_item(history, old_item, BurnListItem.make_item(text, old_item)))
+      |> assign(:should_save, true)
 
     {:noreply, socket}
   end
@@ -101,14 +109,15 @@ defmodule BackcasterWeb.BurnListLive do
     socket =
       socket
       |> assign(:history, BurnListHistory.edit_category(socket.assigns.history, content, uuid))
+      |> assign(:should_save, true)
     {:noreply, socket}
   end
 
   def handle_event("reorder", %{"to_category_id" => to_category_id, "old_index" => old_index, "new_index" => new_index, "item_uid" => item_uid} = params, socket) do
-#    IO.inspect(params)
     socket =
       socket
       |> assign(:history, BurnListHistory.reorder_item(socket.assigns.history, to_category_id, old_index, new_index, item_uid))
+      |> assign(:should_save, true)
     {:noreply, socket}
   end
 
