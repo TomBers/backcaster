@@ -29,23 +29,29 @@ defmodule BurnListEdit do
           </Field>
         </Form>
       {#else}
-        <div>{@item.text} <button class="btn btn-ghost btn-xs" :on-click="edit">
-          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              stroke-width="2"
-              d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z"
-            />
-          </svg>
-        </button>
-      <button class="btn btn-ghost btn-xs" :on-click={@delete_item} value={@id} >
-          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z" />
-          </svg>
-      </button>
-      <p>({calc_age(@item.created_at)} days old)</p>
-      </div>
+        <div class="card lg:card-side bordered compact my-2">
+          <div class="grid grid-cols-12">
+            <div class={get_handle_colour(calc_age(@item.updated_at))} />
+            <div class="col-span-10 p-2">{@item.text}</div>
+            <div class="py-2">
+              <button class="btn btn-ghost btn-xs" :on-click="edit">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z"
+                  />
+                </svg>
+              </button>
+              <button class="btn btn-ghost btn-xs" :on-click={@delete_item} value={@id}>
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+              </button>
+            </div>
+          </div>
+        </div>
       {/if}
     </span>
     """
@@ -62,6 +68,18 @@ defmodule BurnListEdit do
 
   def calc_age(created_at) do
     Date.diff(Date.utc_today(), created_at)
+  end
+
+  def get_handle_colour(age) when age > 7 do
+    "red"
+  end
+
+  def get_handle_colour(age) when age > 3 do
+    "yellow"
+  end
+
+  def get_handle_colour(age) do
+    "blue"
   end
 
 end

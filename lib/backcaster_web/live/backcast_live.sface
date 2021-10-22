@@ -56,18 +56,19 @@
       />
     </div>
     <div>
-        <div class="w-full shadow stats">
-          <div class="stat place-items-center place-content-center">
-            <div class="stat-title">Time remaining</div>
-            <div class="stat-value">{Date.diff(@board.goal_date, Date.utc_today())} days</div>
-            <div class="stat-desc">Due date : <DateEdit date={@board.goal_date} parent_pid={self()} id="date_edit_id" /></div>
-          </div>
-          <div class="stat place-items-center place-content-center">
-            <div class="stat-title">Active milestones</div>
-            <div class="stat-value">{count_milestones(@backcast["milestones"], true)}</div>
-            <div class="stat-desc"> / {Map.keys(@backcast["milestones"]) |> length()}</div>
-          </div>
+      <div class="w-full shadow stats">
+        <div class="stat place-items-center place-content-center">
+          <div class="stat-title">Time remaining</div>
+          <div class="stat-value">{Date.diff(@board.goal_date, Date.utc_today())} days</div>
+          <div class="stat-desc">Due date : <DateEdit date={@board.goal_date} parent_pid={self()} id="date_edit_id" /></div>
         </div>
+        <div class="stat place-items-center place-content-center">
+          <div class="stat-title">Active milestones</div>
+          <div class="stat-value">{count_milestones(@backcast["milestones"], true)}</div>
+          <div class="stat-desc">
+            / {Map.keys(@backcast["milestones"]) |> length()}</div>
+        </div>
+      </div>
       <br>
       <br>
       <div class="grid grid-cols-1 gap-6 lg:p-4 xl:grid-cols-3 bg-base-200 rounded-box">

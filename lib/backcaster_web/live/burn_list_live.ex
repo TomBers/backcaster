@@ -64,7 +64,7 @@ defmodule BackcasterWeb.BurnListLive do
       Enum.find(history.current.items, fn x -> x.uuid == uuid end)
     socket =
       socket
-      |> assign(:history, BurnListHistory.edit_item(history, old_item, BurnListItem.make_item(text, old_item.category)))
+      |> assign(:history, BurnListHistory.edit_item(history, old_item, BurnListItem.make_item(text, old_item)))
 
     {:noreply, socket}
   end
@@ -88,6 +88,12 @@ defmodule BackcasterWeb.BurnListLive do
   def filter_items(items, category) do
     items
     |> Enum.filter(fn item -> item.state == :active and item.category.uuid == category.uuid end)
+  end
+
+  def calc_closed(items, category) do
+    items
+    |> Enum.filter(fn item -> item.state != :active and item.category.uuid == category.uuid end)
+    |> length()
   end
 
 end
