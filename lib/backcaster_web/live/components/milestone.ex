@@ -7,6 +7,7 @@ defmodule Milestone do
   prop milestone_id, :string
   prop uuid, :string
   prop theme, :string
+  prop board_name, :string
   prop checked, :boolean
 
   data vals, :map, default: %{"name" => "", "email" => ""}
@@ -32,7 +33,7 @@ defmodule Milestone do
               </svg>
             </button>
 
-            <a href={"/burnlist/#{@uuid}?theme=#{@theme}"} target="_blank">
+            <a href={"/burnlist/#{@uuid}?theme=#{@theme}&title=#{@title}&board=#{@board_name}"} target="_blank">
               <button class="btn-sm btn-secondary edit-milestone">
                 <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path
