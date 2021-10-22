@@ -5,7 +5,7 @@ defmodule Backcaster.Todos do
       created_at: Date.utc_today(),
       items: [
       ],
-      categories: [BurnListCategory.new_category("Present"), BurnListCategory.new_category("Future")]
+      categories: [BurnListCategory.new_category("Future"), BurnListCategory.new_category("Present")]
     }
 
     %BurnListHistory{
@@ -59,6 +59,7 @@ defmodule Backcaster.Todos do
   def hydrate_item(item) do
     %BurnListItem{
       created_at: Date.from_iso8601!(item["created_at"]),
+      updated_at: Date.from_iso8601!(item["updated_at"]),
       text: item["text"],
       uuid: item["uuid"],
       state: String.to_atom(item["state"]),

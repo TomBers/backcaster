@@ -41,7 +41,6 @@ Hooks.reorder = {
     });
 
     window.addEventListener(id, e => {
-        console.log(e)
         const toCategoryUid = e.detail.to.dataset.category_uuid;
         const itemUid = e.detail.item.dataset.item_uuid;
         const oldIndex = e.detail.oldIndex;

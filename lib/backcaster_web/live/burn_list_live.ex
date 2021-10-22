@@ -9,9 +9,11 @@ defmodule BackcasterWeb.BurnListLive do
 
   @save_time 5_000
 
-  def mount(%{"id" => id}, _session, socket) do
+  def mount(%{"id" => id} = params, _session, socket) do
 
     if connected?(socket), do: Process.send_after(self(), :persist, @save_time)
+
+    theme = Map.get(params, "theme", "synthwave")
 
     {is_new?, board} =
       Backcast.get_or_create_board!(id, Date.utc_today(), Backcaster.Todos.simple())
@@ -22,6 +24,7 @@ defmodule BackcasterWeb.BurnListLive do
       socket
       |> assign(:history, history)
       |> assign(:board, board)
+      |> assign(:theme, theme)
 
     {:ok, socket}
   end

@@ -14,7 +14,7 @@ defmodule BackcasterWeb.BoardController do
       Date.utc_today()
       |> Date.add(31)
 
-    Backcast.get_or_create_board!(id, goal_date, SampleData.sample())
+    Backcast.get_or_create_board!(id, goal_date, SampleData.simple())
 
     redirect(conn, to: "/backcast/#{id}")
   end

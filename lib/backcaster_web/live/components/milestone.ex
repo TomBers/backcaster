@@ -5,6 +5,8 @@ defmodule Milestone do
   prop date, :date
   prop completed, :date
   prop milestone_id, :string
+  prop uuid, :string
+  prop theme, :string
   prop checked, :boolean
 
   data vals, :map, default: %{"name" => "", "email" => ""}
@@ -16,24 +18,11 @@ defmodule Milestone do
   def render(assigns) do
     ~F"""
     {#if @checked}
-      <div class="card shadow-lg bg-secondary">
+      <div class="card text-center bg-secondary shadow-2xl compact m-2">
         <div class="card-body">
-          <div class="justify-end card-actions">
-            <input
-              type="checkbox"
-              checked="checked"
-              :on-click={@change_active}
-              phx-value-id={@milestone_id}
-              class="toggle toggle-secondary"
-            />
-          </div>
-          <h2 class="card-title text-primary-content">{@title}</h2>
-          <p class="text-primary-content">({calc_date_diff(@date)} days to go)</p>
-          <br>
-          <br>
-          <div class="justify-end card-actions">
+          <div class="justify-center card-actions">
             <button class="btn-sm btn-secondary edit-milestone" :on-click="edit">
-              <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path
                   stroke-linecap="round"
                   stroke-linejoin="round"
@@ -43,9 +32,9 @@ defmodule Milestone do
               </svg>
             </button>
 
-            <a href={"/burnlist/#{@milestone_id}"} target="blank">
+            <a href={"/burnlist/#{@uuid}?theme=#{@theme}"} target="_blank">
               <button class="btn-sm btn-secondary edit-milestone">
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path
                     stroke-linecap="round"
                     stroke-linejoin="round"
@@ -55,14 +44,23 @@ defmodule Milestone do
                 </svg>
               </button>
             </a>
+            <input
+              type="checkbox"
+              checked="checked"
+              :on-click={@change_active}
+              phx-value-id={@milestone_id}
+              class="toggle toggle-secondary"
+            />
           </div>
+          <h2 class="card-title word-break">{@title}</h2>
+          <p>({calc_date_diff(@date)} days to go)</p>
           <div :if={@edit}>
             <MilestoneForm title={@title} date={@date} submit={@submit} id={@id} button_text="Update" edit="edit" />
           </div>
         </div>
       </div>
     {#else}
-      <div class="card shadow-lg md:card-side">
+      <div class="card shadow-lg md:card-side m-2">
         {#if is_just_completed(@completed)}
           <div class="card-body jello-horizontal">
             <div class="justify-end card-actions">

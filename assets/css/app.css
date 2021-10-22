@@ -8,6 +8,10 @@
     font-size: 2em;
 }
 
+.word-break {
+   word-wrap: break-word;
+}
+
 .red {
     background: #C6FFDD;  /* fallback for old browsers */
        background: -webkit-linear-gradient(to right, #f7797d, #FBD786);  /* Chrome 10-25, Safari 5.1-6 */
