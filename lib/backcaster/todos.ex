@@ -1,13 +1,11 @@
 defmodule Backcaster.Todos do
 
   def simple do
-    category = BurnListCategory.new_category("A list")
     board = %BurnListBoard{
       created_at: Date.utc_today(),
       items: [
-        BurnListItem.make_item("Item 1", category),
       ],
-      categories: [category],
+      categories: [BurnListCategory.new_category("Future"), BurnListCategory.new_category("Present")]
     }
 
     %BurnListHistory{
@@ -22,8 +20,8 @@ defmodule Backcaster.Todos do
     board = %BurnListBoard{
       created_at: Date.utc_today(),
       items: [
-        BurnListItem.make_item("Item 3", category),
-        BurnListItem.make_item("Item 2", category),
+#        BurnListItem.make_item("Item 3", category),
+#        BurnListItem.make_item("Item 2", category),
         BurnListItem.make_item("Item 1", category),
         BurnListItem.make_item("AAAA", category_2),
         BurnListItem.make_item("BBBB", category_2),
@@ -61,6 +59,7 @@ defmodule Backcaster.Todos do
   def hydrate_item(item) do
     %BurnListItem{
       created_at: Date.from_iso8601!(item["created_at"]),
+      updated_at: Date.from_iso8601!(item["updated_at"]),
       text: item["text"],
       uuid: item["uuid"],
       state: String.to_atom(item["state"]),

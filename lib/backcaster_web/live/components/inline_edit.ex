@@ -23,7 +23,7 @@ defmodule InlineEdit do
         <Form for={:vals} submit="submit">
           <Field class="field" name="content">
             <TextInput
-              class="input btn-block text-neutral-content bg-neutral"
+              class="input btn-block text-neutral-content bg-neutral border-secondary"
               value={get_content(@backcast, @category)}
               id={@category}
             />

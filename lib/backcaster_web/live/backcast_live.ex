@@ -14,7 +14,7 @@ defmodule BackcasterWeb.BackcastLive do
       Date.utc_today()
       |> Date.add(44)
 
-    board = Backcast.get_or_create_board!(id, goal_date, SampleData.sample())
+    {_created, board} = Backcast.get_or_create_board!(id, goal_date, SampleData.simple())
 
     socket =
       socket

@@ -3,12 +3,12 @@ defmodule Backcaster.SampleData do
 
   alias Backcaster.Images
 
-  def sample do
+  def simple do
     %{
       "template" => List.first(templates()),
       "cards" => %{},
       "milestones" => %{
-        "1" => %{"date" => Date.add(Date.utc_today(), 4), "title" => "A milestone", "active" => true, "completed" => Date.utc_today()}
+        "1" => %{"date" => Date.add(Date.utc_today(), 4), "title" => "A milestone", "active" => true, "completed" => Date.utc_today(), "uuid" => UUID.uuid4()}
       },
       "images" => %{}
     }
@@ -37,7 +37,7 @@ defmodule Backcaster.SampleData do
   end
 
   def add_milestone(backcast, id, title, date) do
-    put_in(backcast["milestones"][id], %{"date" => date, "title" => title, "active" => true, "completed" => completed_at() })
+    put_in(backcast["milestones"][id], %{"date" => date, "title" => title, "active" => true, "completed" => completed_at(), "uuid" => UUID.uuid4() })
   end
 
   def toggle_milestone(backcast, id) do
