@@ -36,6 +36,8 @@ defmodule Summary do
           <FiveW board={@board} backcast={@backcast} parent_pid={self()} id="fivew" />
         {#match "swot"}
           <Swot board={@board} backcast={@backcast} parent_pid={self()} id="swot" />
+        {#match "freeform"}
+          <Freeform board={@board} backcast={@backcast} parent_pid={self()} id="freeform" />
         {#match _}
           <Startup board={@board} backcast={@backcast} parent_pid={self()} id="startup" />
       {/case}
