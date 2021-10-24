@@ -24,7 +24,13 @@ defmodule InlineEdit do
         <Form for={:vals} submit="submit">
           <Field class="field" name="content">
             {#if @use_text_area}
-              <TextArea class="textarea textarea-primary h-16 w-full my-2" id={@id} rows="4" value={get_content(@backcast, @category)} opts={placeholder: "(Add summary)"} />
+              <TextArea
+                class="textarea textarea-primary h-16 w-full my-2"
+                id={@id}
+                rows="4"
+                value={get_content(@backcast, @category)}
+                opts={placeholder: "(Add summary)"}
+              />
               <input class="btn milestone-submit" type="submit" value="Update">
             {#else}
               <TextInput
