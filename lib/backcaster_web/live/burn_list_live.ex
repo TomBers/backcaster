@@ -15,7 +15,7 @@ defmodule BackcasterWeb.BurnListLive do
 
     theme = Map.get(params, "theme", "synthwave")
     title = Map.get(params, "title", "")
-    parent_board = Map.get(params, "board", "")
+    parent_board = Map.get(params, "board", nil)
 
     {is_new?, board} =
       Backcast.get_or_create_board!(id, Date.utc_today(), Backcaster.Todos.simple())

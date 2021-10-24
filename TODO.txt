@@ -1,3 +1,2 @@
-Write Home page copy
-Do a board for backcaster - add as an example
-Meta-tags?
+Deploy command
+fly deploy --remote-only

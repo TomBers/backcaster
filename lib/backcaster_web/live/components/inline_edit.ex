@@ -2,11 +2,12 @@ defmodule InlineEdit do
   use Surface.LiveComponent
 
   alias Surface.Components.Form
-  alias Surface.Components.Form.{TextInput, HiddenInput, Label, Field}
+  alias Surface.Components.Form.{TextArea, TextInput, HiddenInput, Label, Field}
 
   prop backcast, :map
   prop category, :string
   prop parent_pid, :string
+  prop use_text_area, :boolean, default: false
 
   data edit, :boolean, default: false
   data vals,
@@ -22,11 +23,22 @@ defmodule InlineEdit do
       {#if @edit}
         <Form for={:vals} submit="submit">
           <Field class="field" name="content">
-            <TextInput
-              class="input btn-block text-neutral-content bg-neutral border-secondary"
-              value={get_content(@backcast, @category)}
-              id={@category}
-            />
+            {#if @use_text_area}
+              <TextArea
+                class="textarea textarea-primary h-16 w-full my-2"
+                id={@id}
+                rows="4"
+                value={get_content(@backcast, @category)}
+                opts={placeholder: "(Add summary)"}
+              />
+              <input class="btn milestone-submit" type="submit" value="Update">
+            {#else}
+              <TextInput
+                class="input btn-block text-neutral-content bg-neutral border-secondary"
+                value={get_content(@backcast, @category)}
+                id={@category}
+              />
+            {/if}
           </Field>
           <Field class="field" name="category">
             <HiddenInput value={@category} />
