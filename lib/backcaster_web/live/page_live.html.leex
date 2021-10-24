@@ -20,11 +20,21 @@
             <p class="mb-5">
                 Solves the problem of losing sight of what matters, allowing you to track progress in one place.
             </p>
+            <ol class="list-decimal text-left">
+                <li>Define your goal (with templates to structure your ideas)</li>
+                <li>Add images to visualise and motivate</li>
+                <li>Create milestones that lead to the goal</li>
+                <li>Burnlist* for each milestone</li>
+            </ol>
+            <br>
             <p><a href="/backcast/2f5304da-da7e-4afa-9a7b-fe59a1fa628f?theme=cyberpunk" target="_blank" class="link">See example</a></p>
             <br>
             <%= form_tag("/create-board", method: :post) %>
             <input class="btn btn-primary milestone-submit" type="submit" value="Get started" />
             </form>
+            <br>
+            <br>
+            <sub>* A TODO list showing the health of each item and a visual history of each change; showing the momentum of each milestone.</sub>
         </div>
     </div>
 </div>
