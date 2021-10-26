@@ -23,6 +23,7 @@ defmodule BackcasterWeb.BackcastLive do
       |> assign(:should_save, false)
       |> assign(:theme, theme)
       |> assign(:show_image_processing, false)
+      |> assign(:active_tab, "description")
 
     {:ok, socket}
   end
@@ -93,6 +94,10 @@ defmodule BackcasterWeb.BackcastLive do
     {:noreply, socket}
   end
 
+  def handle_event("set_tab", %{"tab" => tab}, socket) do
+    {:noreply, socket |> assign(:active_tab, tab)}
+  end
+
   @impl true
   def handle_info(%{"web_path" => web_path, "file_path" => file_path, name: "store_image"}, socket) do
     socket =
@@ -114,5 +119,12 @@ defmodule BackcasterWeb.BackcastLive do
     |> length()
   end
 
+  def get_tab_class(a, b) when a == b do
+    "tab tab-bordered tab-active"
+  end
+
+  def get_tab_class(a, b) do
+    "tab tab-bordered"
+  end
 
 end

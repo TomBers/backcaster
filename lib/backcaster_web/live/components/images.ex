@@ -8,7 +8,7 @@ defmodule Images do
 
   def render(assigns) do
     ~F"""
-    <div class="card bg-secondary">
+    <div class="card">
       <div class="card-body">
         {#if @image_processing}
           <h1>Uploaded images processing, hit refresh to continue</h1>
