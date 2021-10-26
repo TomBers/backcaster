@@ -45,7 +45,7 @@
   <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
     <div>
       <div class="tabs">
-        <a class={get_tab_class(@active_tab, "description")} :on-click="set_tab" phx-value-tab="description">Description</a>
+        <a class={get_tab_class(@active_tab, "description")} :on-click="set_tab" phx-value-tab="description">Goal</a>
         <a class={get_tab_class(@active_tab, "images")} :on-click="set_tab" phx-value-tab="images">Images</a>
       </div>
       {#if @active_tab == "description"}
