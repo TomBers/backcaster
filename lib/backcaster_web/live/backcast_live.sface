@@ -44,16 +44,22 @@
 <div class="container mx-auto">
   <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
     <div>
-      <Summary backcast={@backcast} parent_pid={self()} change_template="change_template" id="summary" />
-      <br>
-      <Images
-        images={@backcast["images"]}
-        store_image="store_image"
-        delete_image="delete_image"
-        parent_pid={self()}
-        image_processing={@show_image_processing}
-        id="imageUploads"
-      />
+      <div class="tabs">
+        <a class={get_tab_class(@active_tab, "description")} :on-click="set_tab" phx-value-tab="description">Description</a>
+        <a class={get_tab_class(@active_tab, "images")} :on-click="set_tab" phx-value-tab="images">Images</a>
+      </div>
+      {#if @active_tab == "description"}
+        <Summary backcast={@backcast} parent_pid={self()} change_template="change_template" id="summary" />
+      {#else}
+        <Images
+          images={@backcast["images"]}
+          store_image="store_image"
+          delete_image="delete_image"
+          parent_pid={self()}
+          image_processing={@show_image_processing}
+          id="imageUploads"
+        />
+      {/if}
     </div>
     <div>
       <div class="w-full shadow stats">
