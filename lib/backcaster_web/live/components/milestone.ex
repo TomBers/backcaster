@@ -1,5 +1,6 @@
 defmodule Milestone do
   use Surface.LiveComponent
+  alias Surface.Components.LivePatch
 
   prop title, :string
   prop date, :date
@@ -32,8 +33,7 @@ defmodule Milestone do
                 />
               </svg>
             </button>
-
-            <a href={"/burnlist/#{@uuid}?theme=#{@theme}&title=#{@title}&board=#{@board_name}"}>
+            <LivePatch to={"/burnlist/#{@uuid}?theme=#{@theme}&title=#{@title}&board=#{@board_name}"}>
               <button class="btn-sm btn-secondary edit-milestone">
                 <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path
@@ -44,7 +44,7 @@ defmodule Milestone do
                   />
                 </svg>
               </button>
-            </a>
+            </LivePatch>
             <input
               type="checkbox"
               checked="checked"

@@ -4,6 +4,7 @@ defmodule BackcasterWeb.BurnListLive do
   alias Backcaster.SampleData
   alias Backcaster.Backcast
 
+  alias Surface.Components.LivePatch
   alias Surface.Components.Form
   alias Surface.Components.Form.{RangeInput}
 
