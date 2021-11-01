@@ -9,10 +9,11 @@ defmodule BackcasterWeb.BurnListController do
     history = board.content |> Backcaster.Todos.hydrate(false)
     category = Enum.find(history.current.categories, fn x -> x.uuid == list_id end)
 
-    new_dat = BurnListHistory.add_items(history, [BurnListItem.make_item("example", category)])
+    new_dat = BurnListHistory.add_items(history, [BurnListItem.make_item("#{DateTime.utc_now()}", category)])
 
     SampleData.persist_board(new_dat, board)
 
+    Backcaster.Backcast.broadcast_new_todo(board_id)
 
     json(conn, params)
   end

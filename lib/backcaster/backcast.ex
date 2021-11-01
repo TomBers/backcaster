@@ -116,4 +116,19 @@ defmodule Backcaster.Backcast do
   def change_board(%Board{} = board, attrs \\ %{}) do
     Board.changeset(board, attrs)
   end
+
+  def subscribe do
+    Phoenix.PubSub.subscribe(Backcaster.PubSub, "posts")
+  end
+
+  def broadcast_new_todo(board_id) do
+    IO.inspect("Broadcasting!!")
+    Phoenix.PubSub.broadcast(Backcaster.PubSub, "posts", {:new_burnlist_item, board_id}) |> IO.inspect
+  end
+
+#  defp broadcast({:ok, post}, event) do
+#    Phoenix.PubSub.broadcast(Backcaster.PubSub, "posts", {event, post})
+#    {:ok, post}
+#  end
+
 end

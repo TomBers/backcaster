@@ -12,7 +12,10 @@ defmodule BackcasterWeb.BurnListLive do
 
   def mount(%{"id" => id} = params, _session, socket) do
 
-    if connected?(socket), do: Process.send_after(self(), :persist, @save_time)
+    if connected?(socket) do
+      Process.send_after(self(), :persist, @save_time)
+      Backcast.subscribe()
+    end
 
     theme = Map.get(params, "theme", "synthwave")
     title = Map.get(params, "title", "")
@@ -112,6 +115,22 @@ defmodule BackcasterWeb.BurnListLive do
       |> assign(:history, BurnListHistory.edit_category(socket.assigns.history, content, uuid))
       |> assign(:should_save, true)
     {:noreply, socket}
+  end
+
+  @impl true
+  def handle_info({:new_burnlist_item, board_id}, socket) do
+    if board_id == socket.assigns.board.name do
+      {is_new?, board} =
+        Backcast.get_or_create_board!(board_id, Date.utc_today(), Backcaster.Todos.simple())
+      history = board.content |> Backcaster.Todos.hydrate(is_new?)
+      socket =
+        socket
+        |> assign(:history, history)
+        |> assign(:board, board)
+      {:noreply, socket}
+      else
+      {:noreply, socket}
+    end
   end
 
   def handle_event("reorder", %{"to_category_id" => to_category_id, "old_index" => old_index, "new_index" => new_index, "item_uid" => item_uid} = params, socket) do
