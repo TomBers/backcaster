@@ -1,27 +1,25 @@
 <div class="container mx-auto">
   <div class="h-auto">
     {#if !is_nil(@parent_board)}
-
-    <LivePatch to={"/backcast/#{@parent_board}?theme=#{@theme}"}>
+      <LivePatch to={"/backcast/#{@parent_board}?theme=#{@theme}"}>
         <div tabindex="0" class="btn-ghost btn compact">
           <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
           </svg>
           <p>{@title}</p>
         </div>
-    </LivePatch>
+      </LivePatch>
     {/if}
 
     <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4">
       {#for category <- @history.current.categories}
         <div class="card lg:card-side bordered compact">
           <div class="card-body">
-            <h1 class="card-title"><BurnListCategoryEdit category={category} parent_pid={self()} delete_item="remove_category" id={category.uuid} /></h1>
+            <h1 class="card-title"><BurnListCategoryEdit category={category} parent_pid={self()} delete_item="remove_category" id={category.uuid} board_id={@board.name} /></h1>
             <div class="w-full shadow stats">
               <div class="stat">
                 <div class="stat-value">{length(filter_items(@history.current.items, category))}</div>
                 <div class="stat-desc">({calc_closed(@history.current.items, category)} closed)</div>
-                <p>{ "#{BackcasterWeb.Endpoint.url}#{BackcasterWeb.Router.Helpers.burn_list_path(BackcasterWeb.Endpoint, :create_item, @board.name, category.uuid)}" }</p>
               </div>
             </div>
 
