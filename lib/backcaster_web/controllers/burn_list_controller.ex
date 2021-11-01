@@ -19,28 +19,29 @@ defmodule BackcasterWeb.BurnListController do
   end
 
   defp persist_items(board, params, history, category) do
-    new_items = make_req_items(params, category)
+    new_items = make_req_items(Map.drop(params, ["board_id", "list_id"]), category)
     save_and_notify(board, history, new_items)
   end
 
-  def save_and_notify(board, history, new_items) when length(new_items) > 0 do
-    BurnListHistory.add_items(history, new_items)
+  def save_and_notify(board, history, new_item) when is_nil(new_item) do
+    nil
+  end
+
+  def save_and_notify(board, history, new_item) do
+    BurnListHistory.add_items(history, [new_item])
     |> SampleData.persist_board(board)
 
     Backcaster.Backcast.broadcast_new_todo(board.name)
   end
 
-  def save_and_notify(board, history, new_items) do
+  def make_req_items(params, category) when map_size(params) == 0 do
     nil
   end
 
-
-  defp make_req_items(params, category) do
-#    Currently takes all params and turns them into items
-#    This if this works well for common Webhooks
+  def make_req_items(params, category) do
     params
-    |> Enum.filter(fn {k, _v} -> k != "board_id" and k != "list_id" end)
-    |> Enum.map(fn {k, v} -> BurnListItem.make_item(v, category) end)
+    |> Jason.encode!()
+    |> BurnListItem.make_item(category)
   end
 
 
