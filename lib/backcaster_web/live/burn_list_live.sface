@@ -21,6 +21,7 @@
               <div class="stat">
                 <div class="stat-value">{length(filter_items(@history.current.items, category))}</div>
                 <div class="stat-desc">({calc_closed(@history.current.items, category)} closed)</div>
+                <p>{ "#{BackcasterWeb.Endpoint.url}#{BackcasterWeb.Router.Helpers.burn_list_path(BackcasterWeb.Endpoint, :create_item, @board.name, category.uuid)}" }</p>
               </div>
             </div>
 

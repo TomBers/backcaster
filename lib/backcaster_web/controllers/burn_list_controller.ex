@@ -36,6 +36,8 @@ defmodule BackcasterWeb.BurnListController do
 
 
   defp make_req_items(params, category) do
+#    Currently takes all params and turns them into items
+#    This if this works well for common Webhooks
     params
     |> Enum.filter(fn {k, _v} -> k != "board_id" and k != "list_id" end)
     |> Enum.map(fn {k, v} -> BurnListItem.make_item(v, category) end)
