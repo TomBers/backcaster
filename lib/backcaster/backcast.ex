@@ -37,6 +37,9 @@ defmodule Backcaster.Backcast do
   """
   def get_board!(id), do: Repo.get!(Board, id)
 
+  def get_board_by_name!(id), do: Repo.get_by!(Board, name: id)
+
+
   def get_or_create_board!(name, goal_date, content \\ %{}) do
     case Repo.get_by(Board, name: name) do
       nil -> {true, create_board_quietly(%{name: name, content: content, goal_date: goal_date})}
