@@ -52,7 +52,6 @@ defmodule BackcasterWeb.BurnListLive do
     socket =
       socket
       |> assign(:history, BurnListHistory.set_current(socket.assigns.history, index))
-      |> assign(:should_save, true)
     {:noreply, socket}
   end
 
