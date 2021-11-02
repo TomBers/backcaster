@@ -2,7 +2,7 @@ defmodule BurnListCategoryEdit do
   use Surface.LiveComponent
 
   alias Surface.Components.Form
-  alias Surface.Components.Form.{TextInput, HiddenInput, Label, Field}
+  alias Surface.Components.Form.{TextInput, HiddenInput, Field}
 
   prop category, :map
   prop parent_pid, :string
@@ -46,7 +46,7 @@ defmodule BurnListCategoryEdit do
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z" />
             </svg>
           </button>
-          <button :on-click="show_address">
+          <button class="btn btn-ghost btn-xs" :on-click="show_address">
             <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path
                 stroke-linecap="round"
@@ -57,7 +57,9 @@ defmodule BurnListCategoryEdit do
             </svg>
           </button>
           {#if @show_address}
-            <p>{"#{BackcasterWeb.Endpoint.url()}#{BackcasterWeb.Router.Helpers.burn_list_path(BackcasterWeb.Endpoint, :create_item, @board_id, @id)}"}</p>
+            <p class="small-instructions word-break">This list can be populared by making a POST request to this url:
+            <code class="small-instructions-code">{"#{BackcasterWeb.Endpoint.url()}#{BackcasterWeb.Router.Helpers.burn_list_path(BackcasterWeb.Endpoint, :create_item, @board_id, @id)}"}</code>
+            <br>(e.g a webhook endpoint for populating Github issues)</p>
           {/if}
         </div>
       {/if}
