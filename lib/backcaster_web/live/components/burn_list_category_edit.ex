@@ -2,13 +2,15 @@ defmodule BurnListCategoryEdit do
   use Surface.LiveComponent
 
   alias Surface.Components.Form
-  alias Surface.Components.Form.{TextInput, HiddenInput, Label, Field}
+  alias Surface.Components.Form.{TextInput, HiddenInput, Field}
 
   prop category, :map
   prop parent_pid, :string
+  prop board_id, :string
   prop delete_item, :event
 
   data edit, :boolean, default: false
+  data show_address, :boolean, default: false
   data edit_category,
        :map,
        default: %{
@@ -44,6 +46,21 @@ defmodule BurnListCategoryEdit do
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z" />
             </svg>
           </button>
+          <button class="btn btn-ghost btn-xs" :on-click="show_address">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M16 12a4 4 0 10-8 0 4 4 0 008 0zm0 0v1.5a2.5 2.5 0 005 0V12a9 9 0 10-9 9m4.5-1.206a8.959 8.959 0 01-4.5 1.207"
+              />
+            </svg>
+          </button>
+          {#if @show_address}
+            <p class="small-instructions word-break">This list can be populared by making a POST request to this url:
+            <code class="small-instructions-code">{"#{BackcasterWeb.Endpoint.url()}#{BackcasterWeb.Router.Helpers.burn_list_path(BackcasterWeb.Endpoint, :create_item, @board_id, @id)}"}</code>
+            <br>(e.g a webhook endpoint for populating Github issues)</p>
+          {/if}
         </div>
       {/if}
     </span>
@@ -52,6 +69,10 @@ defmodule BurnListCategoryEdit do
 
   def handle_event("edit", _, socket) do
     {:noreply, update(socket, :edit, fn _ -> !socket.assigns.edit end)}
+  end
+
+  def handle_event("show_address", _, socket) do
+    {:noreply, update(socket, :show_address, fn _ -> !socket.assigns.show_address end)}
   end
 
   def handle_event("submit", params, socket) do

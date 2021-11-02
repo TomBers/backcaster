@@ -31,9 +31,11 @@ defmodule BackcasterWeb.Router do
   end
 
   # Other scopes may use custom stacks.
-  # scope "/api", BackcasterWeb do
-  #   pipe_through :api
-  # end
+   scope "/api", BackcasterWeb do
+     pipe_through :api
+
+     post "/create/todo/:board_id/:list_id", BurnListController, :create_item
+   end
 
   # Enables LiveDashboard only for development
   #

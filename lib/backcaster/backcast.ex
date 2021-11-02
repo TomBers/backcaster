@@ -37,6 +37,9 @@ defmodule Backcaster.Backcast do
   """
   def get_board!(id), do: Repo.get!(Board, id)
 
+  def get_board_by_name!(id), do: Repo.get_by!(Board, name: id)
+
+
   def get_or_create_board!(name, goal_date, content \\ %{}) do
     case Repo.get_by(Board, name: name) do
       nil -> {true, create_board_quietly(%{name: name, content: content, goal_date: goal_date})}
@@ -113,4 +116,18 @@ defmodule Backcaster.Backcast do
   def change_board(%Board{} = board, attrs \\ %{}) do
     Board.changeset(board, attrs)
   end
+
+  def subscribe do
+    Phoenix.PubSub.subscribe(Backcaster.PubSub, "posts")
+  end
+
+  def broadcast_new_todo(board_id) do
+    Phoenix.PubSub.broadcast(Backcaster.PubSub, "posts", {:new_burnlist_item, board_id})
+  end
+
+#  defp broadcast({:ok, post}, event) do
+#    Phoenix.PubSub.broadcast(Backcaster.PubSub, "posts", {event, post})
+#    {:ok, post}
+#  end
+
 end
