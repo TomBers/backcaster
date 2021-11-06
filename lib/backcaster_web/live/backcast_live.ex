@@ -4,7 +4,7 @@ defmodule BackcasterWeb.BackcastLive do
   alias Backcaster.SampleData
   alias Backcaster.Backcast
 
-  @save_time 5000 # check to see if we should save to DB every 5 seconds
+  @save_time 1000 # check to see if we should save to DB every 5 seconds
 
   def mount(%{"id" => id} = params, _session, socket) do
 

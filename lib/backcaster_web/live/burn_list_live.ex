@@ -8,7 +8,7 @@ defmodule BackcasterWeb.BurnListLive do
   alias Surface.Components.Form
   alias Surface.Components.Form.{RangeInput}
 
-  @save_time 2_000
+  @save_time 1_000
 
   def mount(%{"id" => id} = params, _session, socket) do
 
