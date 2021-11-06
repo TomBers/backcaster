@@ -8,7 +8,7 @@ defmodule BackcasterWeb.BurnListLive do
   alias Surface.Components.Form
   alias Surface.Components.Form.{RangeInput}
 
-  @save_time 2_000
+  @save_time 1_000
 
   def mount(%{"id" => id} = params, _session, socket) do
 
@@ -17,7 +17,7 @@ defmodule BackcasterWeb.BurnListLive do
       Backcast.subscribe()
     end
 
-    theme = Map.get(params, "theme", "synthwave")
+    theme = Map.get(params, "theme", "lofi")
     title = Map.get(params, "title", "")
     parent_board = Map.get(params, "board", nil)
 

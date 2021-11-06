@@ -4,11 +4,11 @@ defmodule BackcasterWeb.BackcastLive do
   alias Backcaster.SampleData
   alias Backcaster.Backcast
 
-  @save_time 5000 # check to see if we should save to DB every 5 seconds
+  @save_time 1000 # check to see if we should save to DB every second
 
   def mount(%{"id" => id} = params, _session, socket) do
 
-    theme = Map.get(params, "theme", "synthwave")
+    theme = Map.get(params, "theme", "lofi")
     if connected?(socket), do: Process.send_after(self(), :update, @save_time)
     goal_date =
       Date.utc_today()

@@ -2,11 +2,19 @@ defmodule BackcasterWeb.InfoLive do
   use Surface.LiveView
 
   def mount(%{"board" => board}, _session, socket) do
-    {:ok, assign(socket, :board_id, board)}
+    socket =
+      socket
+      |> assign(:theme, "lofi")
+      |> assign(:board_id, board)
+    {:ok, socket}
   end
 
   def mount(params, _session, socket) do
-    {:ok, assign(socket, :board_id, nil)}
+    socket =
+      socket
+      |> assign(:theme, "lofi")
+      |> assign(:board_id, nil)
+    {:ok, socket}
   end
 
 end

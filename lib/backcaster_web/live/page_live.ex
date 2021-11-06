@@ -3,7 +3,7 @@ defmodule BackcasterWeb.PageLive do
 
   @impl true
   def mount(_params, _session, socket) do
-    {:ok, socket}
+    {:ok, socket |> assign(:theme, "lofi")}
   end
 
 end

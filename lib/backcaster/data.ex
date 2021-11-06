@@ -33,7 +33,7 @@ defmodule Backcaster.SampleData do
   end
 
   def update_milestone(backcast, id, title, date) do
-    update_in(backcast["milestones"][id], fn old -> %{"date" => date, "title" => title, "active" => old["active"], "completed" => completed_at() } end)
+    update_in(backcast["milestones"][id], fn old -> %{"date" => date, "title" => title, "active" => old["active"], "completed" => completed_at(), "uuid" => old["uuid"] } end)
   end
 
   def add_milestone(backcast, id, title, date) do
@@ -41,7 +41,7 @@ defmodule Backcaster.SampleData do
   end
 
   def toggle_milestone(backcast, id) do
-    update_in(backcast["milestones"][id], fn old -> %{"date" => old["date"], "title" => old["title"], "active" => !old["active"], "completed" => completed_at() } end)
+    update_in(backcast["milestones"][id], fn old -> %{"date" => old["date"], "title" => old["title"], "active" => !old["active"], "completed" => completed_at(), "uuid" => old["uuid"] } end)
   end
 
   def set_theme(backcast, template) do
