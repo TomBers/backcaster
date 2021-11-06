@@ -8,7 +8,7 @@ defmodule BackcasterWeb.BackcastLive do
 
   def mount(%{"id" => id} = params, _session, socket) do
 
-    theme = Map.get(params, "theme", "synthwave")
+    theme = Map.get(params, "theme", "lofi")
     if connected?(socket), do: Process.send_after(self(), :update, @save_time)
     goal_date =
       Date.utc_today()

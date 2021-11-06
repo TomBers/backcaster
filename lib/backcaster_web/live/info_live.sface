@@ -22,52 +22,51 @@
 </a>
 
 <div class="container mx-auto">
-  <div class="card bg-primary m-12">
+  <div class="card bg-primary mb-6">
     <div class="card-body">
-      <h1 class="card-title">What?</h1>
-      <p>A dashboard that tracks your project, helps write a problem statement and set milestones along the way.</p>
-      <br>
+      <h1 class="card-title text-primary-content">What?</h1>
+      <p class="text-primary-content">A dashboard that tracks your project, helps write a problem statement and set milestones along the way.</p>
       <h1 class="card-title">Why?</h1>
-      <p>It is easy to get lost in the details.  Keep your focus by having one place to write down your goal, who it is for and the problem it solves.</p>
-      <p>Write your 'elevator pitch' and keep track of the milestones you will need to achieve it.</p>
+      <p class="text-primary-content">It is easy to get lost in the details.  Keep your focus by having one place to write down your goal, who it is for and the problem it solves.</p>
+      <p class="text-primary-content">Write your 'elevator pitch' and keep track of the milestones you will need to achieve it.</p>
     </div>
   </div>
 
-  <div class="grid grid-cols-1 md:grid-cols-2 m-12">
-    <div class="card bg-primary m-6">
+  <div class="grid grid-cols-1 md:grid-cols-2">
+    <div class="card bg-primary mb-6">
       <figure>
         <img src="/images/goals.png">
       </figure>
       <div class="justify-end card-body">
-        <h2 class="card-title">1. Set Goals</h2>
-        <p>Describe your goal (who it is for, the problem it solves)</p>
+        <h2 class="card-title text-primary-content">1. Set Goals</h2>
+        <p class="text-primary-content">Describe your goal (who it is for, the problem it solves)</p>
       </div>
     </div>
-    <div class="card bg-primary m-6">
+    <div class="card bg-primary mb-6">
       <figure>
         <img src="/images/milestones.png">
       </figure>
       <div class="justify-end card-body">
-        <h2 class="card-title">2. Add milestones</h2>
-        <p>Set markers along the way</p>
+        <h2 class="card-title text-primary-content">2. Add milestones</h2>
+        <p class="text-primary-content">Set markers along the way</p>
       </div>
     </div>
-    <div class="card bg-primary m-6">
+    <div class="card bg-primary">
       <figure>
         <img src="/images/image_upload.png">
       </figure>
       <div class="justify-end card-body">
-        <h2 class="card-title">3. Add images</h2>
-        <p>Show your designs / mockups</p>
+        <h2 class="card-title text-primary-content">3. Add images</h2>
+        <p class="text-primary-content">Show your designs / mockups</p>
       </div>
     </div>
-    <div class="card bg-primary m-6">
+    <div class="card bg-primary">
       <figure>
         <img src="/images/result.png">
       </figure>
       <div class="justify-end card-body">
-        <h2 class="card-title">4. Keep track</h2>
-        <p>Set your goal and see your progress</p>
+        <h2 class="card-title text-primary-content">4. Keep track</h2>
+        <p class="text-primary-content">Set your goal and see your progress</p>
       </div>
     </div>
   </div>

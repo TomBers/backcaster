@@ -53,8 +53,8 @@ defmodule Milestone do
               class="toggle toggle-secondary"
             />
           </div>
-          <h2 class="card-title word-break">{@title}</h2>
-          <p>({calc_date_diff(@date)} days to go)</p>
+          <h2 class="card-title word-break text-primary-content">{@title}</h2>
+          <p class="text-primary-content">({calc_date_diff(@date)} days to go)</p>
           <div :if={@edit}>
             <MilestoneForm title={@title} date={@date} submit={@submit} id={@id} button_text="Update" edit="edit" />
           </div>

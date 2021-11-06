@@ -17,7 +17,7 @@ defmodule BackcasterWeb.BurnListLive do
       Backcast.subscribe()
     end
 
-    theme = Map.get(params, "theme", "synthwave")
+    theme = Map.get(params, "theme", "lofi")
     title = Map.get(params, "title", "")
     parent_board = Map.get(params, "board", nil)
 
