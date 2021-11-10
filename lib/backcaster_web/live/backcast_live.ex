@@ -4,12 +4,9 @@ defmodule BackcasterWeb.BackcastLive do
   alias Backcaster.SampleData
   alias Backcaster.Backcast
 
-  @save_time 1000 # check to see if we should save to DB every second
-
   def mount(%{"id" => id} = params, _session, socket) do
-
     theme = Map.get(params, "theme", "lofi")
-    if connected?(socket), do: Process.send_after(self(), :update, @save_time)
+
     goal_date =
       Date.utc_today()
       |> Date.add(44)
@@ -20,28 +17,20 @@ defmodule BackcasterWeb.BackcastLive do
       socket
       |> assign(:backcast, board.content)
       |> assign(:board, board)
-      |> assign(:should_save, false)
       |> assign(:theme, theme)
       |> assign(:show_image_processing, false)
       |> assign(:active_tab, "description")
 
     {:ok, socket}
   end
-
-  def handle_info(:update, socket) do
-    Process.send_after(self(), :update, @save_time)
-    if socket.assigns.should_save do
-      Task.start(fn -> SampleData.persist_board(socket.assigns.backcast, socket.assigns.board) end)
-    end
-    {:noreply, assign(socket, :should_save, false)}
-  end
-
+  
 #  Handles updating problem statement, the handle_info is because we want to close the field after editing, so a message is sent
   def handle_info(%{"vals" => fields}, socket) do
     socket =
       socket
       |> assign(:backcast, SampleData.update_fields(socket.assigns.backcast, fields))
-      |> assign(:should_save, true)
+      Task.start(fn -> SampleData.persist_board(socket.assigns.backcast, socket.assigns.board) end)
+      
     {:noreply, socket}
   end
 
@@ -55,7 +44,8 @@ defmodule BackcasterWeb.BackcastLive do
     socket =
       socket
       |> assign(:backcast, SampleData.update_milestone(socket.assigns.backcast, id, title, date))
-      |> assign(:should_save, true)
+
+      Task.start(fn -> SampleData.persist_board(socket.assigns.backcast, socket.assigns.board) end)
     {:noreply, socket}
   end
 
@@ -63,7 +53,8 @@ defmodule BackcasterWeb.BackcastLive do
     socket =
       socket
       |> assign(:backcast, SampleData.add_milestone(socket.assigns.backcast, id, title, date))
-      |> assign(:should_save, true)
+
+      Task.start(fn -> SampleData.persist_board(socket.assigns.backcast, socket.assigns.board) end)
     {:noreply, socket}
   end
 
@@ -73,6 +64,7 @@ defmodule BackcasterWeb.BackcastLive do
       |> assign(:backcast, SampleData.delete_image(socket.assigns.backcast, img_id))
 
     Task.start(fn -> SampleData.persist_board(socket.assigns.backcast, socket.assigns.board) end)
+
     {:noreply, socket}
   end
 
@@ -80,7 +72,9 @@ defmodule BackcasterWeb.BackcastLive do
     socket =
       socket
       |> assign(:backcast, SampleData.set_theme(socket.assigns.backcast, template))
-      |> assign(:should_save, true)
+
+      Task.start(fn -> SampleData.persist_board(socket.assigns.backcast, socket.assigns.board) end)
+
     {:noreply, socket}
   end
 
@@ -90,7 +84,9 @@ defmodule BackcasterWeb.BackcastLive do
     socket =
       socket
     |> assign(:backcast, SampleData.toggle_milestone(socket.assigns.backcast, id))
-    |> assign(:should_save, true)
+
+    Task.start(fn -> SampleData.persist_board(socket.assigns.backcast, socket.assigns.board) end)
+
     {:noreply, socket}
   end
 
