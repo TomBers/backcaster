@@ -6,13 +6,12 @@ defmodule Swot do
 
   def render(assigns) do
     ~F"""
-    <p>Strengths: <InlineEdit backcast={@backcast} category="Strengths" parent_pid={@parent_pid} id="strengths" /></p>
-    <br>
-    <p>Weaknesses: <InlineEdit backcast={@backcast} category="Weaknesses" parent_pid={@parent_pid} id="weaknesses" /></p>
-    <br>
-    <p>Opportunities: <InlineEdit backcast={@backcast} category="Opportunities" parent_pid={@parent_pid} id="opportunities" /></p>
-    <br>
-    <p>Threats: <InlineEdit backcast={@backcast} category="Threats" parent_pid={@parent_pid} id="threats" /></p>
+    <div class="box-container">
+      <div class="box">Strengths: <InlineEdit backcast={@backcast} category="Strengths" parent_pid={@parent_pid} use_text_area={true} id="strengths" /></div>
+      <div class="box">Weaknesses: <InlineEdit backcast={@backcast} category="Weaknesses" parent_pid={@parent_pid} use_text_area={true} id="weaknesses" /></div>
+      <div class="box">Opportunities: <InlineEdit backcast={@backcast} category="Opportunities" parent_pid={@parent_pid} use_text_area={true} id="opportunities" /></div>
+      <div class="box">Threats: <InlineEdit backcast={@backcast} category="Threats" parent_pid={@parent_pid} use_text_area={true} id="threats" /></div>
+    </div>
     """
     end
 
