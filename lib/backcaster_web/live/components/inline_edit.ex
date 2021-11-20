@@ -45,7 +45,7 @@ defmodule InlineEdit do
           </Field>
         </Form>
       {#else}
-        {get_content_or_placeholder(@backcast, @category)} <button class="btn btn-ghost btn-xs" :on-click="edit">
+        { raw(get_content_or_placeholder(@backcast, @category))} <button class="btn btn-ghost btn-xs" :on-click="edit">
           <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path
               stroke-linecap="round"
@@ -74,12 +74,14 @@ defmodule InlineEdit do
     card["content"]
   end
 
+#  TODO - replace newlines with breaks (make the text html)
   def get_content_or_placeholder(backcast, category) do
     content = get_content(backcast, category)
     if is_nil(content) or content == "" do
       "_______"
     else
-      content
+#    TODO - this is a bit of a hack see if there is a better way
+      String.replace(content, "\r\n", "<br>", global: true)
     end
   end
 
