@@ -45,7 +45,7 @@ defmodule InlineEdit do
           </Field>
         </Form>
       {#else}
-        <div class="inline-edit-content word-break">
+        <span class="inline-edit-content word-break">
           {raw(get_content_or_placeholder(@backcast, @category))} <button class="btn btn-ghost btn-xs" :on-click="edit">
             <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path
@@ -56,7 +56,7 @@ defmodule InlineEdit do
               />
             </svg>
           </button>
-        </div>
+        </span>
       {/if}
     </span>
     """

@@ -128,24 +128,28 @@ defmodule Startup do
 
   def render(assigns) do
     ~F"""
-    <p><InlineEdit backcast={@backcast} category="Project Name" parent_pid={@parent_pid} id="project_name" /> is {a_or_an(get_card_or_tbc(@backcast["cards"], "Project Type"))} <InlineEdit backcast={@backcast} category="Project Type" parent_pid={@parent_pid} id="type" /> for <InlineEdit backcast={@backcast} category="Intended Audience" parent_pid={@parent_pid} id="audience" />.</p>
-    <br>
-
-    <p class="">Solving the problem of <InlineEdit backcast={@backcast} category="The Problem it solves" parent_pid={@parent_pid} id="problem_solves" />, leading to <InlineEdit backcast={@backcast} category="Benefits" parent_pid={@parent_pid} id="benefits" />.</p>
-
-    <div class="card shadow-xl lg:card-side my-6 bg-secondary text-secondary-content">
+    <div class="card compact shadow mt-2">
       <div class="card-body">
-        <h1 class="card-title">What people are saying</h1>
-        <q><InlineEdit backcast={@backcast} category="Inspirational Quote" parent_pid={@parent_pid} id="quote" /></q>
-        - {quote_author()}
-      </div>
-    </div>
+        <p><InlineEdit backcast={@backcast} category="Project Name" parent_pid={@parent_pid} id="project_name" /> is {a_or_an(get_card_or_tbc(@backcast["cards"], "Project Type"))} <InlineEdit backcast={@backcast} category="Project Type" parent_pid={@parent_pid} id="type" /> for <InlineEdit backcast={@backcast} category="Intended Audience" parent_pid={@parent_pid} id="audience" />.</p>
+        <br>
 
-    <div>Example Advert</div>
-    <div class="example-ad">
-      Ad <span style="padding:0 5px">·</span> <a href="#">https://{get_card_or_tbc(@backcast["cards"], "Project Name")}.com</a><br>
-      <a href="#" class="example-link">{get_card_or_tbc(@backcast["cards"], "Project Name")} | {get_card_or_tbc(@backcast["cards"], "The Problem it solves")} for {get_card_or_tbc(@backcast["cards"], "Intended Audience")} solved!</a><br>
-      {get_card_or_tbc(@backcast["cards"], "Call to Action")}
+        <p class="">Solving the problem of <InlineEdit backcast={@backcast} category="The Problem it solves" parent_pid={@parent_pid} id="problem_solves" />, leading to <InlineEdit backcast={@backcast} category="Benefits" parent_pid={@parent_pid} id="benefits" />.</p>
+
+        <div class="card shadow-xl lg:card-side my-6 bg-secondary text-secondary-content">
+          <div class="card-body">
+            <h1 class="card-title">What people are saying</h1>
+            <q><InlineEdit backcast={@backcast} category="Inspirational Quote" parent_pid={@parent_pid} id="quote" /></q>
+            - {quote_author()}
+          </div>
+        </div>
+
+        <div>Example Advert</div>
+        <div class="example-ad">
+          Ad <span style="padding:0 5px">·</span> <a href="#">https://{get_card_or_tbc(@backcast["cards"], "Project Name")}.com</a><br>
+          <a href="#" class="example-link">{get_card_or_tbc(@backcast["cards"], "Project Name")} | {get_card_or_tbc(@backcast["cards"], "The Problem it solves")} for {get_card_or_tbc(@backcast["cards"], "Intended Audience")} solved!</a><br>
+          {get_card_or_tbc(@backcast["cards"], "Call to Action")}
+        </div>
+      </div>
     </div>
     """
     end
