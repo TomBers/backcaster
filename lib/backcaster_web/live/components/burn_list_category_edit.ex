@@ -58,8 +58,8 @@ defmodule BurnListCategoryEdit do
           </button>
           {#if @show_address}
             <p class="small-instructions word-break">This list can be populared by making a POST request to this url:
-            <code class="small-instructions-code">{"#{BackcasterWeb.Endpoint.url()}#{BackcasterWeb.Router.Helpers.burn_list_path(BackcasterWeb.Endpoint, :create_item, @board_id, @id)}"}</code>
-            <br>(e.g a webhook endpoint for populating Github issues)</p>
+              <code class="small-instructions-code">{"#{BackcasterWeb.Endpoint.url()}#{BackcasterWeb.Router.Helpers.burn_list_path(BackcasterWeb.Endpoint, :create_item, @board_id, @id)}"}</code>
+              <br>(e.g a webhook endpoint for populating Github issues)</p>
           {/if}
         </div>
       {/if}

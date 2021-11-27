@@ -70,6 +70,9 @@
 	        animation: jello-horizontal 1.2s both;
 }
 
+.inline-edit-content {
+
+}
 
 .break {
   flex-basis: 100%;

@@ -15,7 +15,13 @@
       {#for category <- @history.current.categories}
         <div class="card lg:card-side bordered compact">
           <div class="card-body">
-            <h1 class="card-title"><BurnListCategoryEdit category={category} parent_pid={self()} delete_item="remove_category" id={category.uuid} board_id={@board.name} /></h1>
+            <h1 class="card-title"><BurnListCategoryEdit
+                category={category}
+                parent_pid={self()}
+                delete_item="remove_category"
+                id={category.uuid}
+                board_id={@board.name}
+              /></h1>
             <div class="w-full shadow stats">
               <div class="stat">
                 <div class="stat-value">{length(filter_items(@history.current.items, category))}</div>
