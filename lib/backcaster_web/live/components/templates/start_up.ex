@@ -128,7 +128,7 @@ defmodule Startup do
 
   def render(assigns) do
     ~F"""
-    <div class="card compact shadow">
+    <div class="card compact shadow mt-2">
       <div class="card-body">
         <p><InlineEdit backcast={@backcast} category="Project Name" parent_pid={@parent_pid} id="project_name" /> is {a_or_an(get_card_or_tbc(@backcast["cards"], "Project Type"))} <InlineEdit backcast={@backcast} category="Project Type" parent_pid={@parent_pid} id="type" /> for <InlineEdit backcast={@backcast} category="Intended Audience" parent_pid={@parent_pid} id="audience" />.</p>
         <br>
