@@ -118,12 +118,12 @@ defmodule Backcaster.Backcast do
   end
 
   def subscribe do
-    Phoenix.PubSub.subscribe(Backcaster.PubSub, "posts")
+    Phoenix.PubSub.subscribe(Backcaster.PubSub, "new_edit")
   end
-
-  def broadcast_new_todo(board_id) do
-    Phoenix.PubSub.broadcast(Backcaster.PubSub, "posts", {:new_burnlist_item, board_id})
-  end
+#
+#  def broadcast_new_todo(board_id) do
+#    Phoenix.PubSub.broadcast(Backcaster.PubSub, "new_edit", {:new_edit, board_id})
+#  end
 
 #  defp broadcast({:ok, post}, event) do
 #    Phoenix.PubSub.broadcast(Backcaster.PubSub, "posts", {event, post})

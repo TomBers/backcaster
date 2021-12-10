@@ -127,7 +127,7 @@ defmodule BackcasterWeb.BurnListLive do
   end
 
   @impl true
-  def handle_info({:new_burnlist_item, board_id}, socket) do
+  def handle_info({:new_edit, board_id}, socket) do
     if board_id == socket.assigns.board.name do
       {is_new?, board} =
         Backcast.get_or_create_board!(board_id, Date.utc_today(), Backcaster.Todos.simple())

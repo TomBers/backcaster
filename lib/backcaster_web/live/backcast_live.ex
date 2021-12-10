@@ -5,6 +5,10 @@ defmodule BackcasterWeb.BackcastLive do
   alias Backcaster.Backcast
 
   def mount(%{"id" => id} = params, _session, socket) do
+    if connected?(socket) do
+      Backcast.subscribe()
+    end
+
     theme = Map.get(params, "theme", "lofi")
 
     goal_date =
@@ -37,6 +41,20 @@ defmodule BackcasterWeb.BackcastLive do
   def handle_info(%{"due_date" => %{"new_date" => new_date}}, socket) do
     {:ok, board} = Backcast.update_board(socket.assigns.board, %{goal_date: new_date})
     {:noreply, assign(socket, :board, board)}
+  end
+
+  @impl true
+  def handle_info({:new_edit, board_id}, socket) do
+    if board_id == socket.assigns.board.name do
+      board = Backcast.get_board_by_name!(socket.assigns.board.name)
+      socket =
+        socket
+        |> assign(:backcast, board.content)
+        |> assign(:board, board)
+      {:noreply, socket}
+    else
+      {:noreply, socket}
+    end
   end
 
 
