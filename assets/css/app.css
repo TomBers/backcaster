@@ -74,6 +74,10 @@
 
 }
 
+.info-img {
+    max-width: 450px;
+}
+
 .break {
   flex-basis: 100%;
   height: 0;

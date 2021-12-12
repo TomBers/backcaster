@@ -34,7 +34,7 @@
 
   <div class="grid grid-cols-1 md:grid-cols-2">
     <div class="card bg-primary mb-6">
-      <figure>
+      <figure class="info-img mx-auto pt-4">
         <img src="/images/goals.png">
       </figure>
       <div class="justify-end card-body">
@@ -43,7 +43,7 @@
       </div>
     </div>
     <div class="card bg-primary mb-6">
-      <figure>
+      <figure class="info-img mx-auto pt-4">
         <img src="/images/milestones.png">
       </figure>
       <div class="justify-end card-body">
@@ -52,7 +52,7 @@
       </div>
     </div>
     <div class="card bg-primary">
-      <figure>
+      <figure class="info-img mx-auto pt-4">
         <img src="/images/image_upload.png">
       </figure>
       <div class="justify-end card-body">
@@ -61,7 +61,7 @@
       </div>
     </div>
     <div class="card bg-primary">
-      <figure>
+      <figure class="info-img mx-auto pt-4">
         <img src="/images/result.png">
       </figure>
       <div class="justify-end card-body">
