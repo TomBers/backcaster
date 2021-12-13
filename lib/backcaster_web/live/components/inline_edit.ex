@@ -26,7 +26,7 @@ defmodule InlineEdit do
             {#if @use_text_area}
               <TextArea
                 class="textarea textarea-primary h-16 w-full my-2"
-                id={@id}
+                id={@category}
                 rows="4"
                 value={get_content(@backcast, @category)}
                 opts={placeholder: "(Add summary)"}

@@ -29,7 +29,7 @@ defmodule Summary do
 
       {#case @backcast["template"]}
         {#match "startup"}
-          <Startup board={@board} backcast={@backcast} parent_pid={self()} id="startup" />
+          <Startup board={@board} backcast={@backcast} parent_pid={self()} seed={Enum.random(1..4000)} id="startup" />
         {#match "simple"}
           <Simple board={@board} backcast={@backcast} parent_pid={self()} id="art" />
         {#match "fivew"}
@@ -39,7 +39,7 @@ defmodule Summary do
         {#match "freeform"}
           <Freeform board={@board} backcast={@backcast} parent_pid={self()} id="freeform" />
         {#match _}
-          <Startup board={@board} backcast={@backcast} parent_pid={self()} id="startup" />
+          <Startup board={@board} backcast={@backcast} parent_pid={self()} seed={Enum.random(1..4000)} id="startup" />
       {/case}
     </div>
     """

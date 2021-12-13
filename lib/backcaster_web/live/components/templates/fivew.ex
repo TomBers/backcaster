@@ -10,37 +10,37 @@ defmodule FiveW do
       <div class="card shadow compact">
         <div class="card-title m-2">Why? :</div>
         <div class="card-body">
-          <InlineEdit backcast={@backcast} category="Why" parent_pid={@parent_pid} id="why" />
+          <InlineEdit backcast={@backcast} category="Why" parent_pid={@parent_pid} id={Enum.random(1..4000)} />
         </div>
       </div>
       <div class="card shadow compact">
         <div class="card-title m-2">What? :</div>
         <div class="card-body">
-          <InlineEdit backcast={@backcast} category="What" parent_pid={@parent_pid} id="what" />
+          <InlineEdit backcast={@backcast} category="What" parent_pid={@parent_pid} id={Enum.random(1..4000)} />
         </div>
       </div>
       <div class="card shadow compact">
         <div class="card-title m-2">Who? :</div>
         <div class="card-body">
-          <InlineEdit backcast={@backcast} category="Who" parent_pid={@parent_pid} id="who" />
+          <InlineEdit backcast={@backcast} category="Who" parent_pid={@parent_pid} id={Enum.random(1..4000)} />
         </div>
       </div>
       <div class="card shadow compact">
         <div class="card-title m-2">When? :</div>
         <div class="card-body">
-          <InlineEdit backcast={@backcast} category="When" parent_pid={@parent_pid} id="when" />
+          <InlineEdit backcast={@backcast} category="When" parent_pid={@parent_pid} id={Enum.random(1..4000)} />
         </div>
       </div>
       <div class="card shadow compact">
         <div class="card-title m-2">Where? :</div>
         <div class="card-body">
-          <InlineEdit backcast={@backcast} category="Where" parent_pid={@parent_pid} id="where" />
+          <InlineEdit backcast={@backcast} category="Where" parent_pid={@parent_pid} id={Enum.random(1..4000)} />
         </div>
       </div>
       <div class="card shadow compact">
         <div class="card-title m-2">(How? :)</div>
         <div class="card-body">
-          <InlineEdit backcast={@backcast} category="How" parent_pid={@parent_pid} id="how" />
+          <InlineEdit backcast={@backcast} category="How" parent_pid={@parent_pid} id={Enum.random(1..4000)} />
         </div>
       </div>
     </div>
