@@ -26,7 +26,7 @@ defmodule InlineEdit do
             {#if @use_text_area}
               <TextArea
                 class="textarea textarea-primary h-16 w-full my-2"
-                id={@id}
+                id={@category}
                 rows="4"
                 value={get_content(@backcast, @category)}
                 opts={placeholder: "(Add summary)"}
@@ -44,6 +44,7 @@ defmodule InlineEdit do
             <HiddenInput value={@category} />
           </Field>
         </Form>
+        <button class="btn btn-ghost btn-xs" :on-click="cancel">Cancel</button>
       {#else}
         <span class="inline-edit-content word-break">
           {raw(get_content_or_placeholder(@backcast, @category))} <button class="btn btn-ghost btn-xs" :on-click="edit">
@@ -64,6 +65,10 @@ defmodule InlineEdit do
 
   def handle_event("edit", _, socket) do
     {:noreply, update(socket, :edit, fn _ -> !socket.assigns.edit end)}
+  end
+
+  def handle_event("cancel", _, socket) do
+    {:noreply, update(socket, :edit, fn _ -> false end)}
   end
 
   def handle_event("submit", params, socket) do

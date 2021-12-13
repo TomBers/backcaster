@@ -50,8 +50,8 @@ defmodule Backcaster.MixProject do
       {:gettext, "~> 0.11"},
       {:jason, "~> 1.0"},
       {:plug_cowboy, "~> 2.0"},
-      {:surface, "~> 0.5.2"},
-      {:surface_formatter, "~> 0.5.1"},
+      {:surface, "~> 0.6.1"},
+      {:surface_formatter, "~> 0.7.2"},
 #    Saving images to S3
       {:waffle, "~> 1.1"},
       {:ex_aws, "~> 2.1.2"},

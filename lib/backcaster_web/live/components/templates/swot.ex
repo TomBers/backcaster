@@ -11,25 +11,25 @@ defmodule Swot do
       <div class="card compact shadow">
         <div class="card-title m-2">Strengths:</div>
         <div class="card-body">
-          <InlineEdit backcast={@backcast} category="Strengths" parent_pid={@parent_pid} use_text_area id="strengths" />
+          <InlineEdit backcast={@backcast} category="Strengths" parent_pid={@parent_pid} use_text_area id={Enum.random(1..4000)} />
         </div>
       </div>
       <div class="card compact shadow">
         <div class="card-title m-2">Weaknesses:</div>
         <div class="card-body">
-          <InlineEdit backcast={@backcast} category="Weaknesses" parent_pid={@parent_pid} use_text_area id="weaknesses" />
+          <InlineEdit backcast={@backcast} category="Weaknesses" parent_pid={@parent_pid} use_text_area id={Enum.random(1..4000)}/>
         </div>
       </div>
       <div class="card compact shadow">
         <div class="card-title m-2">Opportunities:</div>
         <div class="card-body">
-          <InlineEdit backcast={@backcast} category="Opportunities" parent_pid={@parent_pid} use_text_area id="opportunities" />
+          <InlineEdit backcast={@backcast} category="Opportunities" parent_pid={@parent_pid} use_text_area id={Enum.random(1..4000)} />
         </div>
       </div>
       <div class="card compact shadow">
         <div class="card-title m-2">Threats:</div>
         <div class="card-body">
-          <InlineEdit backcast={@backcast} category="Threats" parent_pid={@parent_pid} use_text_area id="threats" />
+          <InlineEdit backcast={@backcast} category="Threats" parent_pid={@parent_pid} use_text_area id={Enum.random(1..4000)} />
         </div>
       </div>
     </div>

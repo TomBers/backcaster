@@ -32,6 +32,7 @@ defmodule BackcasterWeb.BurnListLive do
       |> assign(:theme, theme)
       |> assign(:title, title)
       |> assign(:parent_board, parent_board)
+      |> assign(:add_count, 0)
 
     {:ok, socket}
   end
@@ -75,6 +76,7 @@ defmodule BackcasterWeb.BurnListLive do
     socket =
       socket
       |> assign(:history, BurnListHistory.add_items(socket.assigns.history, items))
+      |> assign(:add_count, socket.assigns.add_count + 1)
 
       Task.start(fn -> SampleData.persist_board(socket.assigns.history, socket.assigns.board) end)
 

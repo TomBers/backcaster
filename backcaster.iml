@@ -111,6 +111,7 @@
       <excludeFolder url="file://$MODULE_DIR$/_build/test/lib/surface_formatter" />
       <excludeFolder url="file://$MODULE_DIR$/_build/test/lib/uuid" />
       <excludeFolder url="file://$MODULE_DIR$/_build/dev/lib/uuid" />
+      <excludeFolder url="file://$MODULE_DIR$/_build/dev/lib/sourceror" />
     </content>
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" name="phoenix" level="project" />
@@ -181,5 +182,8 @@
     <orderEntry type="library" name="uuid" level="project" />
     <orderEntry type="library" name="earmark" level="project" />
     <orderEntry type="library" name="benchfella" level="project" />
+    <orderEntry type="library" name="sourceror" level="project" />
+    <orderEntry type="library" name="ex_check" level="project" />
+    <orderEntry type="library" name="sobelow" level="project" />
   </component>
 </module>

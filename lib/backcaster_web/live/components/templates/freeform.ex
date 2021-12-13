@@ -6,7 +6,11 @@ defmodule Freeform do
 
   def render(assigns) do
     ~F"""
-    <p><InlineEdit backcast={@backcast} category="Freeform" parent_pid={@parent_pid} use_text_area id="freeform" /></p>
+    <div class="card compact shadow mt-2">
+      <div class="card-body">
+    <p><InlineEdit backcast={@backcast} category="Freeform" parent_pid={@parent_pid} use_text_area id={Enum.random(1..4000)} /></p>
+    </div>
+    </div>
     """
     end
 
