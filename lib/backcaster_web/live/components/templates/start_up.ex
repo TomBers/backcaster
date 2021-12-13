@@ -2,7 +2,6 @@ defmodule Startup do
   use Surface.LiveComponent
 
   prop backcast, :map
-  prop seed, :string
   prop parent_pid, :string
 
 
