@@ -1,0 +1,16 @@
+<h1>index.html</h1>
+Tags : <%= for tag <- Blog.tags() do %>
+<span><a href="/blog/?tag=<%= tag %>" class="tag <%= if tag == @tag do 'bigTag' end %>"><%= tag %></a></span>
+<% end %>
+<span><a href="/blog/" class="tag">clear</a></span>
+<ul>
+    <%= for article <- get_articles(@tag) do %>
+        <li><a href="/blog/<%= article.href %>"><%= article.label %></a></li>
+    <% end %>
+</ul>
+
+<style>
+.bigTag {
+   font-size: larger;
+}
+</style>

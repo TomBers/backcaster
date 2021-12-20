@@ -13,6 +13,14 @@ defmodule BackcasterWeb.Router do
     plug :fetch_current_user
   end
 
+  pipeline :blog do
+    plug :accepts, ["html"]
+    plug :fetch_session
+    plug :put_root_layout, {BackcasterWeb.LayoutView, :blog}
+    plug :protect_from_forgery
+    plug :put_secure_browser_headers
+  end
+
   pipeline :api do
     plug :accepts, ["json"]
   end
@@ -29,6 +37,15 @@ defmodule BackcasterWeb.Router do
 
     post "/create-board", BoardController, :create_new
   end
+
+  scope "/blog", BackcasterWeb do
+    pipe_through :blog
+
+    get "/", BlogController, :index
+    get "/:id", BlogController, :article
+
+    end
+
 
   # Other scopes may use custom stacks.
    scope "/api", BackcasterWeb do
