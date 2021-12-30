@@ -5,12 +5,12 @@
 <h3>tldr;</h3>
 <p>This is an outline of the tools that I have picked up in the last couple of years that have finally made sophisticated web development <i>feel right</i>; they allow a single person / small team to make quick progress in an increasing complex domain.</p>
 <code>
-    Programming language -> Elixir <br>
-    Web framework -> Phoenix (w/ LiveView) <br>
-    Database -> Postgres <br>
-    Web components -> Surface UI <br>
-    CSS -> Daisy UI (Tailwind) <br>
-    Deployment -> Fly.io
+    Programming language &#8594; Elixir <br>
+    Web framework &#8594; Phoenix (w/ LiveView) <br>
+    Database &#8594; Postgres <br>
+    Web components &#8594; Surface UI <br>
+    CSS &#8594; Daisy UI (Tailwind) <br>
+    Deployment &#8594; Fly.io
 </code>
 
 <h3>Why develop web apps?</h3>
@@ -49,7 +49,7 @@
 <li>Sensible defaults / less decisions to make (about unimportant details)</li>
 </ul>
 
-<h4>Programming language -> Elixir</h4>
+<h4>Programming language &#8594; Elixir</h4>
 
 <ul>
     <li>Functional programming</li>
@@ -61,7 +61,7 @@
     <li>Incredible docs</li>
 </ul>
 
-<h4>Web framework -> Phoenix (w/ LiveView) </h4>
+<h4>Web framework &#8594; Phoenix (w/ LiveView) </h4>
 <ul>
     <li>Phoenix - more limited set of libraries, but of higher quality</li>
     <li>One framework to rule them all (by far the goto framework for working with Elixir on the web) - easier to get help when things go wrong, better docs</li>
@@ -71,9 +71,9 @@
     <li>Liveview - not having to write a lot of REST interfaces. Page auto updates when data changes. (Game changer)</li>
 </ul>
 
-<h4>Web components -> Surface UI [TODO]</h4>
-<h4>CSS -> Daisy UI (Tailwind) [TODO]</h4>
-<h4>Deployment -> Fly.io [TODO]</h4>
+<h4>Web components &#8594; Surface UI [TODO]</h4>
+<h4>CSS &#8594; Daisy UI (Tailwind) [TODO]</h4>
+<h4>Deployment &#8594; Fly.io [TODO]</h4>
 
 <br>
 <br>
