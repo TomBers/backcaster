@@ -10,7 +10,7 @@ defmodule BackcasterWeb.BlogController do
 
   def article(conn, %{"id" => id}) do
     article = BackcasterWeb.BlogView.find_article_by_id(id)
-    render(conn, "#{article.href}.html")
+    render(conn, article.href)
   end
 
 end
