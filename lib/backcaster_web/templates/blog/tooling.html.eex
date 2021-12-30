@@ -64,8 +64,8 @@
 <h4>Web framework -> Phoenix (w/ LiveView) </h4>
 <ul>
     <li>Phoenix - more limited set of libraries, but of higher quality</li>
-    <li>Important - easier to get help when things go wrong, better docs</li>
-    <li>Powerful generators for CRUD applications</li>
+    <li>One framework to rule them all (by far the goto framework for working with Elixir on the web) - easier to get help when things go wrong, better docs</li>
+    <li>Powerful generators for CRUD applications - have a working CRUD app up and running within a couple of lines of code.</li>
     <li>Sensible decisions (e.g having a dev, test and prod config file)</li>
     <li>Recognisable MVC structure</li>
     <li>Liveview - not having to write a lot of REST interfaces. Page auto updates when data changes. (Game changer)</li>

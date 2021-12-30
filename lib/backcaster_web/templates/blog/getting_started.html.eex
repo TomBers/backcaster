@@ -3,9 +3,11 @@
 <br>
 
 <h3>tldr;</h3>
-<p>This blog is going to chart the progress of me learning to promote <a href="backcaster.app">backcaster.app</a> a tool to help you focus on your goals.
+<p>
+    This blog is going to chart the progress of me learning to promote <a href="https://backcaster.app" target="_blank">backcaster.app</a> a tool to help you focus on your goals.
     I have never been good at promoting projects or businesses and I want to approach this as an experiment and document the results #BuildInPublic?.
-    It will also being offering some very opinionated views on modern web development (see <a href="/blog/?tag=Coding">coding</a> tag)</p>
+    It will also be offering some very opinionated views on modern web development (see <a href="/blog/?tag=Coding">coding</a> tag)
+</p>
 
 <h3>Problem statement</h3>
 <p>I have encountered this cycle many times. </p>
@@ -25,15 +27,15 @@
     The developer in me is quite happy with most of this. The enjoyment of new ideas and exploring. Unnecessary
     optimisations for the imagined scale; agonising over database schema. A lot of polish for no audience.
     The goal of this blog, is to hopefully break this cycle. To experiment and document the process.
-    </p>
-<p>
-    Both this writing and the tool have the same goal, to help people keep focus and make progress towards their goals (even when the path is uncharted territory).
 </p>
 <p>
-    I want to write about 2 main areas, one is the journey to build an audience and better use social media which has
-    been something I have failed to do in the past, the second is an opinionated approach to modern web development
-    outlining tools I think can help make web development a more pleasant experience.
-    There might be a 3rd misc category.
+    I want to write about 2 main areas:
+    <br>1) the journey to learn a completely new skill, i.e better use social media and connecting to people with similar interests;  which has been something I have failed to do in the past.
+    <br>2) an opinionated approach to modern web development outlining tools I think can help make web development a more pleasant experience.
+    (There might be a 3rd misc category.)
+</p>
+<p>
+    Both this writing and the tool have the same goal, to help people keep focus and make progress towards their goals (even when the path is uncharted territory).
 </p>
 
 

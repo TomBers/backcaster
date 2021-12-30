@@ -8,12 +8,14 @@
     <%= csrf_meta_tag() %>
     <%= live_title_tag assigns[:page_title] || "Backcaster", suffix: " · Better projects" %>
     <script defer data-domain="backcaster.app" src="https://plausible.io/js/plausible.js"></script>
+    <link rel="stylesheet" href="https://unpkg.com/purecss@1.0.1/build/base-min.css">
   </head>
   <body>
     <header>
     </header>
     <style>
-     .tag {}
+     body { margin: 2%;}
+     .fill-current { fill: #1DA1F2;}
     </style>
     <%= @inner_content %>
   </body>
