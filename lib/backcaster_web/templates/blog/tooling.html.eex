@@ -1,7 +1,80 @@
 <h1>tooling.html</h1>
 
-What tools?
+<a href="/blog/?tag=Coding">#Coding</a>
+
+<h3>tldr;</h3>
+<p>This is an outline of the tools that I have picked up in the last couple of years that have finally made sophisticated web development <i>feel right</i>; they allow a single person / small team to make quick progress in an increasing complex domain.</p>
+<code>
+    Programming language -> Elixir <br>
+    Web framework -> Phoenix (w/ LiveView) <br>
+    Database -> Postgres <br>
+    Web components -> Surface UI <br>
+    CSS -> Daisy UI (Tailwind) <br>
+    Deployment -> Fly.io
+</code>
+
+<h3>Why develop web apps?</h3>
+<p>
+    Why even write web-apps?  In many ways web apps are the platform with the least sophistication in developing UI’s, have to worry about all sorts of browser weirdness, a plethora of display formats, from massive wide screens to mobile phones, and a fragmented programming model.
+    If you look at native app development, you can throw out some of these worries and most common problems are handled in a prescribed manner (I am being glib, but there is a recognised way of dealing with things in Android / iOS world).
+    In the world of embedded engineering, often things like user interface never come up, and you have very detailed knowledge of the hardware you are using, giving a sense of control and enjoyment to mastering a particular technology.
+    The simple reason to write for the web is one of open-ness and audience.  The promise that I can send a string to anyone in the world and they can load it instantly with no gate keepers in the way.  (A few asterisks apply) as long as that site returns some valid response you have made some magic happen.
+    That there are infinite ways to return that string is the joy and pain of working on the web.
+</p>
+
+<h3>Drawbacks</h3>
+
+<p>
+    When the web was young, you could create a single html file served by some free space provided by your internet supplier.  The basics of text, images and simple styling could all be edited in a text editor (or image editor) and copied to the internet.  You could manually create links to your pages and very quickly update and change.
+    From a fringe hobby that was open to beginners, the web has come to impact almost every aspect of our lives, and with it the complexity has mushroomed.  The plethora of tools, for deployment, bundling, testing, front-end back-end etc and an unclear consensus on the right approach, has made making even simple site a challenge that has painfully slow iteration time and tools crammed together that were never designed as a whole.
+    The goal of this post is to highlight the tools that I have found after much experimentation that I feel can offer a somewhat complete toolbox that can make web programming fun again.
+</p>
+
+<h3>Audience</h3>
+<p>
+    A solo developer or small team who has the opportunity to choose their tooling and wants a productive future proof set of choices to get going quickly and easily.
+    It is very opinionated, but as I go through I will attempt to justify these decisions.
+    I also think it has something to offer for existing devs who are either side of the front/back end divide.
+    <br>For FE devs, the backend can look like a very foreign world and very different skill set.  This is not helped by what can often be slower feedback cycles and less visual results.  Having to think about persistance, project structure and perhaps more object orientated approach can be a steep hill to climb.
+    <br>For BE devs, who look at the FE world with its myriad of libraries and approaches that seem to change every few days.  Not wanting to deal with a FE build pipeline and having to attack Javascript for the first time.  Getting to HelloWorld can be a challenge, getting to something that looks reasonable even harder.
+</p>
+
+<h3>What I look for in tooling?</h3>
+
+<ul>
+<li>Simplicity</li>
+<li>A pleasure to use</li>
+<li>Does it stick in my head?</li>
+<li>Few foot guns</li>
+<li>Sensible defaults / less decisions to make (about unimportant details)</li>
+</ul>
+
+<h4>Programming language -> Elixir</h4>
+
+<ul>
+    <li>Functional programming</li>
+    <li>Think of code as a set of transformations</li>
+    <li>Object orientation is over elaborate and confusing</li>
+    <li>Immutability, always know what is going on</li>
+    <li>Out of the box co-currency (task etc)</li>
+    <li>The error pattern and supervision</li>
+    <li>Incredible docs</li>
+</ul>
+
+<h4>Web framework -> Phoenix (w/ LiveView) </h4>
+<ul>
+    <li>Phoenix - more limited set of libraries, but of higher quality</li>
+    <li>Important - easier to get help when things go wrong, better docs</li>
+    <li>Powerful generators for CRUD applications</li>
+    <li>Sensible decisions (e.g having a dev, test and prod config file)</li>
+    <li>Recognisable MVC structure</li>
+    <li>Liveview - not having to write a lot of REST interfaces. Page auto updates when data changes. (Game changer)</li>
+</ul>
+
+<h4>Web components -> Surface UI [TODO]</h4>
+<h4>CSS -> Daisy UI (Tailwind) [TODO]</h4>
+<h4>Deployment -> Fly.io [TODO]</h4>
 
 <br>
 <br>
-<a href="/blog">Index.html</a>
+<a href="/blog">index.html</a>
