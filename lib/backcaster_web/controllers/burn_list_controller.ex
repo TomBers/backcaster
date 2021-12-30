@@ -31,7 +31,7 @@ defmodule BackcasterWeb.BurnListController do
     BurnListHistory.add_items(history, [new_item])
     |> SampleData.persist_board(board)
 
-    Backcaster.Backcast.broadcast_new_todo(board.name)
+    Phoenix.PubSub.broadcast(Backcaster.PubSub, "new_edit", {:new_edit, board.name})
   end
 
   def make_req_items(params, category) when map_size(params) == 0 do
