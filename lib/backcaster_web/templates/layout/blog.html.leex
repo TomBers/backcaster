@@ -11,11 +11,15 @@
     <link rel="stylesheet" href="https://unpkg.com/purecss@1.0.1/build/base-min.css">
   </head>
   <body>
+    <%= if @load_graph do %>
+      <%= render("load_graph_js.html") %>
+    <% end %>
     <header>
     </header>
     <style>
-     body { margin: 2%;}
-     .fill-current { fill: #1DA1F2;}
+     body { margin: 2%; }
+     .fill-current { fill: #1DA1F2; }
+     .bigTag { font-size: x-large; }
     </style>
     <%= @inner_content %>
   </body>
