@@ -89,7 +89,7 @@
             / {Map.keys(@backcast["milestones"]) |> length()}</div>
         </div>
         <div class="stat place-items-center place-content-center">
-          <GanttChart goal_date={@board.goal_date} milestones={@backcast["milestones"]} id="ganttchart" />
+          <GanttChart board={@board} id="ganttchart" />
         </div>
       </div>
       <br>
