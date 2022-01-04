@@ -8,7 +8,7 @@ defmodule GanttChart do
     <label for="my-modal-2" class="btn btn-primary modal-button">open timeline</label>
     <input type="checkbox" id="my-modal-2" class="modal-toggle">
     <div class="modal">
-      <div class="modal-box bg-neutral-content" style="min-width: 90%">
+      <div class="modal-box" style="min-width: 90%; background-color: lightgrey">
         <div class="mermaid">
           gantt
             title Timeline
