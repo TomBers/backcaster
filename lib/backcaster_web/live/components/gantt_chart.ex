@@ -5,14 +5,15 @@ defmodule GanttChart do
 
   def render(assigns) do
     ~F"""
-    <label for="my-modal-2" class="btn btn-primary modal-button">open timeline</label>
+    <label for="my-modal-2" class="btn btn-primary modal-button">timeline</label>
     <input type="checkbox" id="my-modal-2" class="modal-toggle">
     <div class="modal">
-      <div class="modal-box" style="min-width: 90%; background-color: lightgrey">
+      <div class="modal-box" style="min-width: 100%; background-color: lightgrey">
         <div class="mermaid">
           gantt
             title Timeline
             dateFormat  YYYY-MM-DD
+            axisFormat  %d-%b
             section Overall
             GOAL :a, {Date.utc_today()}, {Date.diff(@board.goal_date, Date.utc_today())}d
             section Milestones
