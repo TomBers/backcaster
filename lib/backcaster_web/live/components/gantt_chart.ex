@@ -5,30 +5,13 @@ defmodule GanttChart do
 
   def render(assigns) do
     ~F"""
-    <label for="my-modal-2" class="btn btn-primary modal-button">timeline</label>
+    <label for="my-modal-2" class="btn btn-primary modal-button" >timeline</label>
     <input type="checkbox" id="my-modal-2" class="modal-toggle">
     <div class="modal">
-      <div class="modal-box" style="min-width: 100%; background-color: lightgrey">
-        <div class="mermaid">
-          gantt
-            title Timeline
-            dateFormat  YYYY-MM-DD
-            axisFormat  %d-%b
-            section Overall
-            GOAL :a, {Date.utc_today()}, {Date.diff(@board.goal_date, Date.utc_today())}d
-            section Milestones
-            . :a1, {Date.utc_today()}, 0d
-            {#for {_id, milestone} <- @board.content["milestones"]}
-              {#if milestone["active"]}
-                {milestone["title"]} :milestone, {milestone["date"]}, 0d
-              {#else}
-                {milestone["title"]} :done, {Date.utc_today()}, {find_milestone_diff(milestone["date"])}d
-              {/if}
-
-            {/for}
-        </div>
+      <div class="modal-box" style="min-width: 100%; background-color: lightgrey" phx-hook="renderTimeLine" id="timeLineModal">
+        <div class="mermaid" id="timeline" data-board={timeline_str(@board)}></div>
         <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js" />
-        <script>mermaid.initialize({ startOnLoad: true });</script>
+        <script>mermaid.initialize({ startOnLoad: false });</script>
         <div class="modal-action">
           <label for="my-modal-2" class="btn">Close</label>
         </div>
@@ -41,6 +24,32 @@ defmodule GanttChart do
     date_str
     |> Date.from_iso8601!()
     |> Date.diff(Date.utc_today())
+  end
+
+  def timeline_str(board) do
+    opening = 'gantt
+            title Timeline
+            dateFormat  YYYY-MM-DD
+            axisFormat  %e-%b
+            excludes weekends
+            section Overall
+            GOAL :a, #{Date.utc_today()}, #{Date.diff(board.goal_date, Date.utc_today())}d
+            section Milestones
+            . :a1, #{Date.utc_today()}, 0d\n'
+
+    milestones =
+      board.content["milestones"]
+      |> Enum.reduce('', fn {_id, milestone}, acc -> acc ++ get_milestone_type(milestone)  end)
+
+    opening ++ milestones
+  end
+
+  def get_milestone_type(milestone) do
+    if milestone["active"] do
+      '#{milestone["title"]} :milestone, #{milestone["date"]}, 0d\n'
+    else
+      '#{milestone["title"]} :done, #{Date.utc_today()}, #{find_milestone_diff(milestone["date"])}d\n'
+    end
   end
 
 end
