@@ -5,7 +5,7 @@ defmodule GanttChart do
 
   def render(assigns) do
     ~F"""
-    <label for="my-modal-2" class="btn btn-primary modal-button" >timeline</label>
+    <label for="my-modal-2" class="btn btn-primary modal-button" id="timelineBtn">timeline</label>
     <input type="checkbox" id="my-modal-2" class="modal-toggle">
     <div class="modal">
       <div class="modal-box" style="min-width: 100%; background-color: lightgrey" phx-hook="renderTimeLine" id="timeLineModal">

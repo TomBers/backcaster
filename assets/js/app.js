@@ -64,11 +64,17 @@ Hooks.renderTimeLine = {
             var graph = mermaid.render('graphDiv', graphDefinition, insertSvg);
         }
 
+//      Draw the timeline on mount
         drawTimeLine();
 
         window.addEventListener('resize', () => {
-             drawTimeLine()
+             drawTimeLine();
         });
+
+        document.querySelector("#timelineBtn").addEventListener('click', () => {
+            drawTimeLine();
+        });
+
     }
 }
 
