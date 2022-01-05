@@ -8,8 +8,13 @@ defmodule GanttChart do
     <label for="my-modal-2" class="btn btn-primary modal-button" id="timelineBtn">timeline</label>
     <input type="checkbox" id="my-modal-2" class="modal-toggle">
     <div class="modal">
-      <div class="modal-box" style="min-width: 100%; background-color: lightgrey" phx-hook="renderTimeLine" id="timeLineModal">
-        <div class="mermaid" id="timeline" data-board={timeline_str(@board)}></div>
+      <div
+        class="modal-box"
+        style="min-width: 100%; background-color: lightgrey"
+        phx-hook="renderTimeLine"
+        id="timeLineModal"
+      >
+        <div class="mermaid" id="timeline" data-board={timeline_str(@board)} />
         <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js" />
         <script>mermaid.initialize({ startOnLoad: false });</script>
         <div class="modal-action">
@@ -45,7 +50,7 @@ defmodule GanttChart do
   end
 
   def get_milestone_type(milestone, is_active) when is_active do
-      '#{milestone["title"]} :milestone, #{milestone["date"]}, 0d\n'
+    '#{milestone["title"]} :milestone, #{milestone["date"]}, 0d\n'
   end
 
   def get_milestone_type(milestone, _is_active) do
