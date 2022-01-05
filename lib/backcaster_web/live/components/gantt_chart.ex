@@ -39,17 +39,17 @@ defmodule GanttChart do
 
     milestones =
       board.content["milestones"]
-      |> Enum.reduce('', fn {_id, milestone}, acc -> acc ++ get_milestone_type(milestone)  end)
+      |> Enum.reduce('', fn {_id, milestone}, acc -> acc ++ get_milestone_type(milestone, milestone["active"])  end)
 
     opening ++ milestones
   end
 
-  def get_milestone_type(milestone) do
-    if milestone["active"] do
+  def get_milestone_type(milestone, is_active) when is_active do
       '#{milestone["title"]} :milestone, #{milestone["date"]}, 0d\n'
-    else
-      '#{milestone["title"]} :done, #{Date.utc_today()}, #{find_milestone_diff(milestone["date"])}d\n'
-    end
+  end
+
+  def get_milestone_type(milestone, _is_active) do
+    '#{milestone["title"]} :done, #{Date.utc_today()}, #{find_milestone_diff(milestone["date"])}d\n'
   end
 
 end
