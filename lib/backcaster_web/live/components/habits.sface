@@ -1,19 +1,78 @@
-<div class="artboard artboard-demo bg-base-200">
+{#if @is_open}
+  <div class="artboard artboard-demo bg-base-200">
     <ul class="menu py-4 shadow-lg bg-base-100 rounded-box self-end">
-        <li class="menu-title">
-    <span>
-          Habits
+      <div class="menu-title">
+        <span>Todays Habits
+          <button class="btn btn-outline btn-square btn-xs float-right" :on-click="open_habits">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" class="inline-block w-4 h-4 stroke-current">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+            </svg>
+          </button>
         </span>
-        </li>
-        {#for habit <- @habits}
+      </div>
+      {#for {id, habit} <- @habits}
         <li class="hover-bordered">
-            <a>
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" class="inline-block w-5 h-5 mr-2 stroke-current">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 7v10a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-6l-2-2H5a2 2 0 00-2 2z"></path>
-                </svg>
-                {habit.name}
-            </a>
+          <a :on-click="complete_habit" phx-value-habbit-id={id}>
+            {habit.name}
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="inline-block w-5 h-5 ml-2 stroke-current"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
+              />
+            </svg>
+          </a>
         </li>
-        {/for}
+      {/for}
+      {#if @show_form}
+        <div class="form-control justify-left">
+        <Form for={:vals} submit="submit_new_habit" opts={autocomplete: "off"}>
+        <Field class="field" name="title">
+            <div class="control">
+                <TextInput class="input" value="" placeholder="Name" />
+            </div>
+        </Field>
+        <br>
+        <Field class="field" name="freq">
+            <div class="control">
+                <Select form={:vals} field="freq" options={"Daily": :daily, "Weekly": :weekly, "Monthly": :monthly}/>
+                <input class="btn btn-secondary btn-block milestone-submit" type="submit" value="Submit">
+            </div>
+        </Field>
+        </Form>
+        </div>
+      {#else}
+        <li class="hover-bordered">
+          <a :on-click="add_new_habit">
+            Add
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="inline-block w-5 h-5 ml-2 stroke-current"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M12 9v3m0 0v3m0-3h3m-3 0H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z"
+              />
+            </svg>
+          </a>
+        </li>
+      {/if}
     </ul>
-</div>
+  </div>
+{#else}
+  <div class="">
+    <button class="btn btn-primary float-right" :on-click="open_habits">Todays Habits ({length(Map.keys(@habits))})</button>
+  </div>
+{/if}
