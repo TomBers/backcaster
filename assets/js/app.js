@@ -51,6 +51,33 @@ Hooks.reorder = {
     }
 }
 
+Hooks.renderTimeLine = {
+    mounted(){
+
+        function drawTimeLine() {
+           var element = document.querySelector("#timeline");
+           var insertSvg = function(svgCode, bindFunctions){
+                element.innerHTML = svgCode;
+            };
+
+            var graphDefinition = element.dataset.board;
+            var graph = mermaid.render('graphDiv', graphDefinition, insertSvg);
+        }
+
+//      Draw the timeline on mount
+        drawTimeLine();
+
+        window.addEventListener('resize', () => {
+             drawTimeLine();
+        });
+
+        document.querySelector("#timelineBtn").addEventListener('click', () => {
+            drawTimeLine();
+        });
+
+    }
+}
+
 
 let csrfToken = document.querySelector("meta[name='csrf-token']").getAttribute("content")
 let liveSocket = new LiveSocket("/live", Socket, {hooks: Hooks, params: {_csrf_token: csrfToken}})

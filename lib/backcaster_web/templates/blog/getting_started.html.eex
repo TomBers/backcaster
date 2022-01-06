@@ -12,10 +12,15 @@
 <h3>Problem statement</h3>
 <p>I have encountered this cycle many times. </p>
 
-<code>
-    Initial idea &#8594; blissful hacking &#8594; mild indifference from friends (with a few helpful comments) &#8594; a bit of spit
-    and polish &#8594; post on Twitter &#8594; silence &#8594; new idea
-</code>
+<div class="mermaid">
+    flowchart LR
+    id1(New idea) --> id2(blissful hacking)
+    id2 --> id3(mild indifference from friends)
+    id3 --> id4(a bit of spit and polish)
+    id4 --> id5(post on Twitter)
+    id5 --> id6(silence)
+    id6 --> id1
+</div>
 
 <p>
     I have now had several years writing software, both as a hobby and as a profession. In many ways I am as good as I

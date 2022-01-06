@@ -10,7 +10,5 @@ Tags : <%= for tag <- Blog.tags() do %>
 </ol>
 
 <style>
-.bigTag {
-   font-size: larger;
-}
+
 </style>
