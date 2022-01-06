@@ -1,6 +1,6 @@
 defmodule Habit do
   @enforce_keys [:name, :updated_at]
-  defstruct [:name, :updated_at, :uuid, update_freq: :daily]
+  defstruct [:name, :updated_at, :uuid, is_deleted: false, update_freq: :daily]
 
   def gen_habits do
     %{
@@ -11,7 +11,7 @@ defmodule Habit do
   end
 
   def get_visible_habits(habits) do
-    habits |> Enum.filter(fn {_id, habit} -> Habit.is_due(habit) end) |> Map.new()
+    habits |> Enum.filter(fn {_id, habit} -> Habit.is_due(habit) and !habit.is_deleted end) |> Map.new()
   end
 
   def gen_rand(name) do

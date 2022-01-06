@@ -36,10 +36,15 @@ defmodule Habits do
   end
 
   def handle_event("submit_new_habit", %{"vals" => %{"freq" => freq, "title" => title}}, socket) do
+
+    new_habits = Habit.add_new_habit(socket.assigns.habits, title, freq)
+
     socket =
       socket
       |> update(:show_form, fn _ -> false end)
-      |> update(:habits, fn old_habits -> Habit.add_new_habit(old_habits, title, freq) end)
+      |> update(:habits, fn _ -> new_habits end)
+
+      IO.inspect(new_habits)
     {:noreply, socket}
   end
 
