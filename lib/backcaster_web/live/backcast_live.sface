@@ -116,4 +116,6 @@
     <div>
     </div>
   </div>
+  <Habits id="habits" />
 </div>
+
