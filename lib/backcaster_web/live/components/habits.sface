@@ -3,16 +3,27 @@
     <ul class="menu py-4 shadow-lg bg-base-100 rounded-box self-end">
       <div class="menu-title">
         <span>Todays Habits
-          <button class="btn btn-outline btn-square btn-xs float-right" :on-click="open_habits">
+          <button class="btn btn-ghost btn-square btn-xs float-right" :on-click="open_habits">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" class="inline-block w-4 h-4 stroke-current">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+            </svg>
+          </button>
+          <button class="btn btn-ghost btn-square btn-xs float-right" :on-click="open_habits">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"
+              />
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
             </svg>
           </button>
         </span>
       </div>
       {#for {id, habit} <- @habits}
         <li class="hover-bordered">
-          <a :on-click="complete_habit" phx-value-habbit-id={id}>
+          <a :on-click="complete_habit" phx-value-habbit-id={id} class="habbit-item">
             {habit.name}
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -32,21 +43,24 @@
         </li>
       {/for}
       {#if @show_form}
-        <div class="form-control justify-left">
-        <Form for={:vals} submit="submit_new_habit" opts={autocomplete: "off"}>
-        <Field class="field" name="title">
-            <div class="control">
-                <TextInput class="input" value="" placeholder="Name" />
+        <div class="justify-center bg-secondary">
+          <Form for={:vals} submit="submit_new_habit" opts={autocomplete: "off"}>
+            <div class="form-control">
+              <Field class="field" name="title">
+                <label class="label">
+                  <span class="label-text">Add Habit</span>
+                </label>
+                <TextInput class="input input-bordered" value="" opts={placeholder: "Name"} />
+              </Field>
             </div>
-        </Field>
-        <br>
-        <Field class="field" name="freq">
-            <div class="control">
-                <Select form={:vals} field="freq" options={"Daily": :daily, "Weekly": :weekly, "Monthly": :monthly}/>
-                <input class="btn btn-secondary btn-block milestone-submit" type="submit" value="Submit">
-            </div>
-        </Field>
-        </Form>
+            <br>
+            <Field class="field" name="freq">
+              <div class="form-control">
+                <Select form={:vals} class="input" field="freq" options={Daily: :daily, Weekly: :weekly, Monthly: :monthly} />
+              </div>
+            </Field>
+            <input class="btn btn-secondary btn-block" type="submit" value="Submit">
+          </Form>
         </div>
       {#else}
         <li class="hover-bordered">

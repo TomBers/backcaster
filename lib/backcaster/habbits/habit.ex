@@ -1,21 +1,17 @@
 defmodule Habit do
   @enforce_keys [:name, :updated_at]
-  defstruct [:name, :updated_at, :uuid, is_deleted: false, update_freq: :daily]
+  defstruct [:name, :created_at, :updated_at, :uuid, is_deleted: false, update_freq: :daily, history: []]
 
   def gen_habits do
     %{
-      "1" => gen_rand("one"),
-      "2" => gen_rand("two"),
-      "3" => gen_rand("three")
+      "1" => new_habit("1. Daily", "daily"),
+      "2" => new_habit("2. Weekly", "weekly"),
+      "3" => new_habit("3. Monthly", "monthly")
     }
   end
 
   def get_visible_habits(habits) do
     habits |> Enum.filter(fn {_id, habit} -> Habit.is_due(habit) and !habit.is_deleted end) |> Map.new()
-  end
-
-  def gen_rand(name) do
-    %Habit{name: name, updated_at: Date.add(Date.utc_today(), Enum.random([-3,-7,-400])), update_freq: Enum.random([:daily, :weekly ,:monthly]), uuid: UUID.uuid4() }
   end
 
   def is_due(%Habit{update_freq: :daily, updated_at: updated_at}) do
@@ -31,7 +27,7 @@ defmodule Habit do
   end
 
   def complete_habit(habits, id) do
-    update_in(habits[id], fn old -> %Habit{name: "complete", update_freq: old.update_freq, uuid: old.uuid, updated_at: Date.utc_today() } end)
+    update_in(habits[id], fn old -> %Habit{ name: old.name, update_freq: old.update_freq, updated_at: Date.utc_today(), created_at: old.created_at, uuid: old.uuid, is_deleted: old.is_deleted, history: old.history ++ [Date.utc_today()] } end)
   end
 
   def add_new_habit(habits, title, freq) do
@@ -40,15 +36,20 @@ defmodule Habit do
   end
 
   def new_habit(name, "daily") do
-    %Habit{name: name, updated_at: Date.add(Date.utc_today(), -1), update_freq: :daily, uuid: UUID.uuid4() }
+    habit(name, :daily, Date.add(Date.utc_today(), -1))
   end
 
   def new_habit(name, "weekly") do
-    %Habit{name: name, updated_at: Date.add(Date.utc_today(), -7), update_freq: :weekly, uuid: UUID.uuid4() }
+    habit(name, :weekly, Date.add(Date.utc_today(), -7))
   end
 
   def new_habit(name, "monthly") do
-    %Habit{name: name, updated_at: Date.add(Date.utc_today(), -31), update_freq: :monthly, uuid: UUID.uuid4() }
+    habit(name, :monthly, Date.add(Date.utc_today(), -31))
   end
+
+  def habit(name, update_freq, updated_at) do
+    %Habit{name: name, created_at: Date.utc_today(), updated_at: updated_at, update_freq: update_freq, uuid: UUID.uuid4() }
+  end
+
 
 end

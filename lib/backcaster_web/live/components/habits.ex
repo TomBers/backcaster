@@ -4,7 +4,7 @@ defmodule Habits do
   alias Surface.Components.Form.{TextInput, Select, Label, Field}
 
   data is_open, :boolean, default: true
-  data show_form, :boolean, default: true
+  data show_form, :boolean, default: false
   data vals, :map, default: %{"name" => "", "freq" => ""}
 
   def mount(socket) do
@@ -44,7 +44,6 @@ defmodule Habits do
       |> update(:show_form, fn _ -> false end)
       |> update(:habits, fn _ -> new_habits end)
 
-      IO.inspect(new_habits)
     {:noreply, socket}
   end
 
