@@ -64,6 +64,11 @@ defmodule Backcaster.SampleData do
     new_backcast
   end
 
+  def update_habits(backcast, new_habits) do
+    Map.put(backcast, "habits", new_habits)
+  end
+
+
   def persist_board(dat, board) do
     Backcast.update_board(board, %{content: dat})
     Phoenix.PubSub.broadcast(Backcaster.PubSub, "new_edit", {:new_edit, board.name})

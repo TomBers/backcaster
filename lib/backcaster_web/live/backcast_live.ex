@@ -17,8 +17,6 @@ defmodule BackcasterWeb.BackcastLive do
 
     {_created, board} = Backcast.get_or_create_board!(id, goal_date, SampleData.simple())
 
-    IO.inspect(board)
-
     socket =
       socket
       |> assign(:backcast, board.content)
@@ -43,6 +41,15 @@ defmodule BackcasterWeb.BackcastLive do
   def handle_info(%{"due_date" => %{"new_date" => new_date}}, socket) do
     {:ok, board} = Backcast.update_board(socket.assigns.board, %{goal_date: new_date})
     {:noreply, assign(socket, :board, board)}
+  end
+
+  def handle_info(%{"updated_habits" => new_habits}, socket) do
+    socket =
+      socket
+      |> assign(:backcast, SampleData.update_habits(socket.assigns.backcast, new_habits))
+
+    Task.start(fn -> SampleData.persist_board(socket.assigns.backcast, socket.assigns.board) end)
+    {:noreply, socket}
   end
 
   @impl true

@@ -32,7 +32,9 @@ defmodule Habits do
     new_habits =
       socket.assigns.habits
       |> Habit.complete_habit(id, set_delete)
-    {:noreply, update(socket, :habits, fn _ -> new_habits end)}
+
+    send(socket.assigns.parent_pid, %{"updated_habits" => new_habits})
+    {:noreply, socket}
   end
 
   def handle_event("add_new_habit", _, socket) do
@@ -42,12 +44,13 @@ defmodule Habits do
   def handle_event("submit_new_habit", %{"vals" => %{"freq" => freq, "title" => title}}, socket) do
 
     new_habits = Habit.add_new_habit(socket.assigns.habits, title, freq)
-    #send(socket.assigns.parent_pid, new_habits)
+
+    send(socket.assigns.parent_pid, %{"updated_habits" => new_habits})
 
     socket =
       socket
       |> update(:show_form, fn _ -> false end)
-      |> update(:habits, fn _ -> new_habits end)
+#      |> update(:habits, fn _ -> new_habits end)
 
     {:noreply, socket}
   end
