@@ -116,5 +116,5 @@
     <div>
     </div>
   </div>
-  <Habits id="habits" />
+  <Habits habits={@backcast["habits"]} parent_pid={self()} id="habits" />
 </div>

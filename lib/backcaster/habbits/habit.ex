@@ -1,4 +1,5 @@
 defmodule Habit do
+  @derive {Jason.Encoder, except: []}
   @enforce_keys [:name, :updated_at]
   defstruct [:name, :created_at, :updated_at, :uuid, is_deleted: false, update_freq: :daily, history: []]
 
@@ -11,7 +12,6 @@ defmodule Habit do
   end
 
   def get_visible_habits(habits) do
-    IO.inspect(habits)
     habits |> Enum.filter(fn {_id, habit} -> Habit.is_due(habit) and !habit.is_deleted end) |> Map.new()
   end
 

@@ -3,20 +3,15 @@ defmodule Habits do
   alias Surface.Components.Form
   alias Surface.Components.Form.{TextInput, Select, Label, Field}
 
+  prop habits, :map
+  prop parent_pid, :string
+
   data is_open, :boolean, default: true
   data show_form, :boolean, default: false
   data show_delete, :boolean, default: true
   data vals, :map, default: %{"name" => "", "freq" => ""}
 
   def mount(socket) do
-
-    visible_habits =
-      Habit.gen_habits()
-      |> Habit.get_visible_habits()
-
-    socket =
-      socket
-      |> assign(:habits, visible_habits)
     {:ok, socket}
   end
 
@@ -47,6 +42,7 @@ defmodule Habits do
   def handle_event("submit_new_habit", %{"vals" => %{"freq" => freq, "title" => title}}, socket) do
 
     new_habits = Habit.add_new_habit(socket.assigns.habits, title, freq)
+    #send(socket.assigns.parent_pid, new_habits)
 
     socket =
       socket

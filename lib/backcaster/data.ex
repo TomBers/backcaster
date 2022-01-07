@@ -10,6 +10,7 @@ defmodule Backcaster.SampleData do
       "milestones" => %{
         "1" => %{"date" => Date.add(Date.utc_today(), 4), "title" => "A milestone", "active" => true, "completed" => Date.utc_today(), "uuid" => UUID.uuid4()}
       },
+      "habits" => Habit.gen_habits(),
       "images" => %{}
     }
   end
