@@ -11,6 +11,7 @@ defmodule Habit do
   end
 
   def get_visible_habits(habits) do
+    IO.inspect(habits)
     habits |> Enum.filter(fn {_id, habit} -> Habit.is_due(habit) and !habit.is_deleted end) |> Map.new()
   end
 
@@ -26,8 +27,8 @@ defmodule Habit do
     Date.diff(Date.utc_today(), updated_at) >= 31
   end
 
-  def complete_habit(habits, id) do
-    update_in(habits[id], fn old -> %Habit{ name: old.name, update_freq: old.update_freq, updated_at: Date.utc_today(), created_at: old.created_at, uuid: old.uuid, is_deleted: old.is_deleted, history: old.history ++ [Date.utc_today()] } end)
+  def complete_habit(habits, id, set_delete) do
+    update_in(habits[id], fn old -> %Habit{ name: old.name, update_freq: old.update_freq, updated_at: Date.utc_today(), created_at: old.created_at, uuid: old.uuid, is_deleted: set_delete, history: old.history ++ [Date.utc_today()] } end)
   end
 
   def add_new_habit(habits, title, freq) do

@@ -8,7 +8,7 @@
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
             </svg>
           </button>
-          <button class="btn btn-ghost btn-square btn-xs float-right" :on-click="open_habits">
+          <button class="btn btn-ghost btn-square btn-xs float-right" :on-click="delete_habits">
             <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path
                 stroke-linecap="round"
@@ -21,10 +21,15 @@
           </button>
         </span>
       </div>
-      {#for {id, habit} <- @habits}
+      {#for {id, habit} <- visible(@habits)}
         <li class="hover-bordered">
-          <a :on-click="complete_habit" phx-value-habbit-id={id} class="habbit-item">
+          <a :on-click="complete_habit" phx-value-habit-id={id} phx-value-set-delete={"#{@show_delete}"} class="habit-item">
             {habit.name}
+            {#if @show_delete}
+            <svg xmlns="http://www.w3.org/2000/svg" class="inline-block w-5 h-5 ml-2 stroke-current" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z" />
+            </svg>
+            {#else}
             <svg
               xmlns="http://www.w3.org/2000/svg"
               class="inline-block w-5 h-5 ml-2 stroke-current"
@@ -39,6 +44,7 @@
                 d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
               />
             </svg>
+            {/if}
           </a>
         </li>
       {/for}
