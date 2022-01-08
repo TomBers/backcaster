@@ -21,7 +21,7 @@ defmodule BackcasterWeb.BurnListLive do
     parent_board = Map.get(params, "board", nil)
 
     {is_new?, board} =
-      Backcast.get_or_create_board!(id, Date.utc_today(), Backcaster.Todos.simple())
+      Backcast.get_or_create_board!(id, Backcaster.Todos.simple())
 
     history = board.content |> Backcaster.Todos.hydrate(is_new?)
 
@@ -132,7 +132,7 @@ defmodule BackcasterWeb.BurnListLive do
   def handle_info({:new_edit, board_id}, socket) do
     if board_id == socket.assigns.board.name do
       {is_new?, board} =
-        Backcast.get_or_create_board!(board_id, Date.utc_today(), Backcaster.Todos.simple())
+        Backcast.get_or_create_board!(board_id, Backcaster.Todos.simple())
       history = board.content |> Backcaster.Todos.hydrate(is_new?)
       socket =
         socket

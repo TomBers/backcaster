@@ -11,11 +11,7 @@ defmodule BackcasterWeb.BackcastLive do
 
     theme = Map.get(params, "theme", "lofi")
 
-    goal_date =
-      Date.utc_today()
-      |> Date.add(44)
-
-    {_created, board} = Backcast.get_or_create_board!(id, goal_date, SampleData.simple())
+    {_created, board} = Backcast.get_or_create_board!(id, SampleData.simple())
 
 #    IO.inspect(board)
 
