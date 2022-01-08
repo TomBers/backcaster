@@ -10,9 +10,6 @@ defmodule BackcasterWeb.BoardController do
 
   def create_new(conn, _params) do
     id = Ecto.UUID.generate()
-    goal_date =
-      Date.utc_today()
-      |> Date.add(31)
 
     Backcast.get_or_create_board!(id, SampleData.simple())
 
