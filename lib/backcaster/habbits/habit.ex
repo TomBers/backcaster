@@ -2,9 +2,7 @@ defmodule Habit do
 
   def gen_habits do
     %{
-      "1" => new_habit("1. Daily", "daily"),
-      "2" => new_habit("2. Weekly", "weekly"),
-      "3" => new_habit("3. Monthly", "monthly")
+      "1" => new_habit("Review [Daily | Weekly | Monthly] tasks", "monthly"),
     }
   end
 
