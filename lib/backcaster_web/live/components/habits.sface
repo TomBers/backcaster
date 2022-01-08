@@ -2,7 +2,7 @@
   <div class="artboard artboard-demo bg-base-200">
     <ul class="menu py-4 shadow-lg bg-base-100 rounded-box self-end">
       <div class="menu-title">
-        <span>Todays Habits
+        <span>Todo
           <button class="btn btn-ghost btn-square btn-xs float-right" :on-click="open_habits">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" class="inline-block w-4 h-4 stroke-current">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
@@ -115,6 +115,6 @@
   </div>
 {#else}
   <div class="">
-    <button class="btn btn-primary float-right" :on-click="open_habits">Todays Habits ({length(Map.keys(visible(@habits)))})</button>
+    <button class="btn btn-primary float-right make-square" :on-click="open_habits">Today's Habits ({length(Map.keys(visible(@habits)))})</button>
   </div>
 {/if}

@@ -116,5 +116,5 @@
     <div>
     </div>
   </div>
-  <Habits habits={@backcast["habits"]} parent_pid={self()} id="habits" />
+  <Habits habits={Map.get(@backcast, "habits", %{})} parent_pid={self()} id="habits" />
 </div>

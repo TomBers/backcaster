@@ -6,9 +6,9 @@ defmodule Habits do
   prop habits, :map
   prop parent_pid, :string
 
-  data is_open, :boolean, default: true
+  data is_open, :boolean, default: false
   data show_form, :boolean, default: false
-  data show_delete, :boolean, default: true
+  data show_delete, :boolean, default: false
   data vals, :map, default: %{"name" => "", "freq" => ""}
 
   def mount(socket) do
