@@ -33,7 +33,8 @@ defmodule Habits do
       socket.assigns.habits
       |> Habit.complete_habit(id, set_delete)
 
-    send(socket.assigns.parent_pid, %{"updated_habits" => new_habits})
+    save_habits(socket.assigns.parent_pid, new_habits)
+
     {:noreply, socket}
   end
 
@@ -45,14 +46,14 @@ defmodule Habits do
 
     new_habits = Habit.add_new_habit(socket.assigns.habits, title, freq)
 
-    send(socket.assigns.parent_pid, %{"updated_habits" => new_habits})
+#   Save new habits to the board
+    save_habits(socket.assigns.parent_pid, new_habits)
 
-    socket =
-      socket
-      |> update(:show_form, fn _ -> false end)
-#      |> update(:habits, fn _ -> new_habits end)
+    {:noreply, update(socket, :show_form, fn _ -> false end)}
+  end
 
-    {:noreply, socket}
+  def save_habits(parent_pid, new_habits) do
+    send(parent_pid, %{"updated_habits" => new_habits})
   end
 
 
