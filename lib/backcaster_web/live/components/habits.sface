@@ -23,29 +23,29 @@
       </div>
       {#for {id, habit} <- visible(@habits)}
         <li class="hover-bordered">
-          <a :on-click="complete_habit" phx-value-habit-id={id} phx-value-set-delete={"#{@show_delete}"} class="habit-item">
-            {habit["name"]}
-            {#if @show_delete}
-            <svg xmlns="http://www.w3.org/2000/svg" class="inline-block w-5 h-5 ml-2 stroke-current" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z" />
-            </svg>
-            {#else}
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              class="inline-block w-5 h-5 ml-2 stroke-current"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-            >
-              <path
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="2"
-                d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
-              />
-            </svg>
-            {/if}
-          </a>
+          {#if @show_delete}
+            <a :on-click="complete_habit" phx-value-habit-id={id} phx-value-set-delete="true" class="habit-item-delete">
+              {habit["name"]}
+            </a>
+          {#else}
+            <a :on-click="complete_habit" phx-value-habit-id={id} phx-value-set-delete="false" class="habit-item">
+              {habit["name"]}
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                class="inline-block w-5 h-5 ml-2 stroke-current"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
+                />
+              </svg>
+            </a>
+          {/if}
         </li>
       {/for}
       {#if @show_form}

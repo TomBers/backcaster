@@ -16,12 +16,25 @@
     font-size: 0.6em;
 }
 
-.habit-item {
-    opacity: 0.7;
+.habit-item, .habit-item-delete {
+    opacity: 0.6;
 }
 
 .habit-item:hover {
     opacity: 1;
+}
+
+.menu li.hover-bordered a.habit-item-delete:hover {
+    opacity: 1;
+}
+
+.menu li.hover-bordered a.habit-item-delete:hover:after {
+    content: 'Delete';
+    background-color: red;
+    color: white;
+    margin: 4px;
+    padding: 4px;
+
 }
 
 .small-instructions-code {
