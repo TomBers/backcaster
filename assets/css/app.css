@@ -16,6 +16,35 @@
     font-size: 0.6em;
 }
 
+.habit-item, .habit-item-delete {
+    opacity: 0.6;
+}
+
+.habit-item:hover {
+    opacity: 1;
+}
+
+.menu li.hover-bordered a.habit-item-delete:hover {
+    opacity: 1;
+}
+
+.menu li.hover-bordered a.habit-item-delete:hover:after {
+    content: 'Delete';
+    background-color: red;
+    color: white;
+    margin: 4px;
+    padding: 4px;
+}
+
+.menu .menu-title>a, .menu .menu-title>span {
+    padding-left: 0.25rem;
+    padding-right: 0.25rem;
+}
+
+.btn-primary.make-square {
+    border-radius: 0px;
+}
+
 .small-instructions-code {
     font-size: 1.4em;
 }

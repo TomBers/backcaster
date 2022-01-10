@@ -10,6 +10,7 @@ defmodule Backcaster.SampleData do
       "milestones" => %{
         "1" => %{"date" => Date.add(Date.utc_today(), 4), "title" => "A milestone", "active" => true, "completed" => Date.utc_today(), "uuid" => UUID.uuid4()}
       },
+      "habits" => Habit.gen_habits(),
       "images" => %{}
     }
   end
@@ -62,6 +63,11 @@ defmodule Backcaster.SampleData do
     Images.delete(Images.url(del_image["web_path"]))
     new_backcast
   end
+
+  def update_habits(backcast, new_habits) do
+    Map.put(backcast, "habits", new_habits)
+  end
+
 
   def persist_board(dat, board) do
     Backcast.update_board(board, %{content: dat})
