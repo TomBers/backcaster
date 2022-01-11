@@ -15,4 +15,8 @@ defmodule BurnListItem do
     %BurnListItem{text: text, uuid: UUID.uuid4(), category: category, created_at: created_at, updated_at: Date.utc_today() }
   end
 
+  def make_old_item(text, category, updated_at) do
+    %BurnListItem{text: text, uuid: UUID.uuid4(), category: category, created_at: Date.utc_today(), updated_at: updated_at }
+  end
+
 end

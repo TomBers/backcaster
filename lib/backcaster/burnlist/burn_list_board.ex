@@ -26,7 +26,8 @@ defmodule BurnListBoard do
   end
 
   def edit_item(board, old_item, new_item) do
-    index = Enum.find_index(board.items, fn x -> x == old_item end)
+    index = Enum.find_index(board.items, fn x -> x.uuid == old_item.uuid end)
+
     %BurnListBoard{
       created_at: Date.utc_today(),
       items: List.replace_at(board.items, index, new_item),

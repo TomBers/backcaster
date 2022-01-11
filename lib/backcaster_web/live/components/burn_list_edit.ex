@@ -65,20 +65,4 @@ defmodule BurnListEdit do
     {:noreply, update(socket, :edit, fn _ -> !socket.assigns.edit end)}
   end
 
-  def calc_age(created_at) do
-    Date.diff(Date.utc_today(), created_at)
-  end
-
-  def get_handle_colour(age) when age > 7 do
-    "red"
-  end
-
-  def get_handle_colour(age) when age > 3 do
-    "yellow"
-  end
-
-  def get_handle_colour(age) do
-    "blue"
-  end
-
 end

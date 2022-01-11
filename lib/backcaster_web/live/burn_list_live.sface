@@ -32,7 +32,7 @@
             <ol id={category.uuid} class="list-group" phx-hook="reorder" data-category_uuid={category.uuid}>
               {#for item <- filter_items(@history.current.items, category)}
               <li class="list-group-item" data-item_uuid={item.uuid}>
-                <div class="blue mt-2">&nbsp;</div>
+                <div class={get_handle_colour(calc_age(item.updated_at))}>&nbsp;</div>
               </li>
                 <BurnListEdit item={item} parent_pid={self()} delete_item="delete_item" id={item.uuid} />
               {/for}
@@ -61,9 +61,9 @@
     </div>
   </div>
   <div>Key</div>
-  <div class="badge badge-lg blue">Active</div>
-  <div class="badge badge-lg yellow">Stale</div>
-  <div class="badge badge-lg red">Old</div>
+  <div class="badge badge-lg burnlist-key blue">Active</div>
+  <div class="badge badge-lg burnlist-key yellow">Stale</div>
+  <div class="badge badge-lg burnlist-key red">Old</div>
 
   <div class="my-4">History slider</div>
 

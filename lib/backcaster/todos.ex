@@ -1,11 +1,18 @@
 defmodule Backcaster.Todos do
 
   def simple do
+
+    future_cat = BurnListCategory.new_category("Future")
+    present_cat = BurnListCategory.new_category("Present")
+
     board = %BurnListBoard{
       created_at: Date.utc_today(),
       items: [
+        BurnListItem.make_old_item("Active", present_cat, Date.add(Date.utc_today(), -1)),
+        BurnListItem.make_old_item("Stale", present_cat, Date.add(Date.utc_today(), -4)),
+        BurnListItem.make_old_item("Old", present_cat, Date.add(Date.utc_today(), -30)),
       ],
-      categories: [BurnListCategory.new_category("Future"), BurnListCategory.new_category("Present")]
+      categories: [future_cat, present_cat]
     }
 
     %BurnListHistory{
