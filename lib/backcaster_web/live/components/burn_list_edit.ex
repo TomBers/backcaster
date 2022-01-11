@@ -30,9 +30,9 @@ defmodule BurnListEdit do
         </Form>
       {#else}
         <div class="card lg:card-side bordered compact my-2">
-          <div class="grid grid-cols-6 xl:grid-cols-12">
+          <div class="grid grid-cols-12">
             <div class={get_handle_colour(calc_age(@item.updated_at))} />
-            <div class="col-span-3 md:col-span-4 xl:col-span-10 p-2 word-break">{@item.text}</div>
+            <div class="col-span-10 p-2 word-break">{@item.text}</div>
             <div class="py-2">
               <button class="btn btn-ghost btn-xs" :on-click="edit">
                 <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -71,15 +71,15 @@ defmodule BurnListEdit do
   end
 
   def get_handle_colour(age) when age > 7 do
-    "red"
+    "burnlist-handle red"
   end
 
   def get_handle_colour(age) when age > 3 do
-    "yellow"
+    "burnlist-handle yellow"
   end
 
   def get_handle_colour(age) do
-    "blue"
+    "burnlist-handle blue"
   end
 
 end

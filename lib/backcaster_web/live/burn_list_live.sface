@@ -57,8 +57,11 @@
       </div>
     </div>
   </div>
-  <br>
-  <div class="my-2">History slider</div>
+  <div>Key</div>
+  <div class="badge badge-lg burnlist-key blue">Active</div>
+  <div class="badge badge-lg burnlist-key yellow">Stale</div>
+  <div class="badge badge-lg burnlist-key red">Old</div>
+  <div class="my-4">History slider</div>
 
   <Form for={:current} change="set_current">
     <RangeInput
