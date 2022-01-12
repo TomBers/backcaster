@@ -35,6 +35,8 @@ Hooks.reorder = {
 
     Sortable.create(document.getElementById(id), {
      group: 'shared',
+     handle: '.burnlist-handle', // handle's class
+     animation: 150,
      onEnd: (evt) => {
         window.dispatchEvent(new CustomEvent(id, {detail : evt}), false)
     }
