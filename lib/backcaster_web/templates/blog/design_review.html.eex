@@ -1,4 +1,5 @@
-<h1>How I learned to stop worrying and love design (and designers)</h1>
+<h1>design_review.html</h1>
+<h2>(or how I learned to stop worrying and love design (and designers)</h2>
 
 <a href="/blog/?tag=Coding">#Coding</a>
 
@@ -19,19 +20,22 @@
 <h3>The starting point</h3>
 <table>
     <tr>
-        <th>Feature</th>
         <th>Screenshot</th>
         <th>Feedback</th>
     </tr>
     <tr>
-        <td>Alfreds Futterkiste</td>
-        <td>Maria Anders</td>
-        <td>Germany</td>
+        <td><img src="<%= Routes.static_path(@conn, "/images/backcast_board_design_review.png") %>" class="design-img"></td>
+        <td>
+            <ol>
+                <li>Each box needs a title explaining what it does</li>
+                <li>The milestones box should be aligned with the 'goals' box on the left of it</li>
+                <li>It is unclear what you have to do and which is the most important actions.  Start designing from mobile view offering a <b>linear step by step process.</b></li>
+            </ol>
+        </td>
     </tr>
     <tr>
-        <td>Centro comercial Moctezuma</td>
-        <td>Francisco Chang</td>
-        <td>Mexico</td>
+        <td><img src="<%= Routes.static_path(@conn, "/images/burnlist_design_review.png") %>" class="design-img"></td>
+        <td><ol><li>Change the default lists to [Todo | Doing | Done] Present and future is unclear / not in the convention of other TODO tools</li></ol></td>
     </tr>
 
 </table>
@@ -40,6 +44,9 @@
 <p>Having worked as a professional software developer.  I have been often asked to implement designs.  They usually come as a full screenshot or even interactive design tools like Figma.  Often discussion comes about spacing, colors and copy around buttons.  But if I am honest I was never really present at the solving the problem stage.  More a sanding of rough edges or pushing back on parts that were difficult to implement.
 <br>
     Until you have felt the problem yourself, it is hard to appreciate a solution that just 'appears' before you.  I have a feeling, (although not yet implemented) that Sarah's approach will be much better than the ideas I came up with.
+    <br>
+    <br>
+    I want to talk about one point further: Start designing from mobile view / Step by step approach!! [TODO]
 </p>
 
 <h3>A developers idea of design</h3>
@@ -57,7 +64,6 @@
 <p>This article was purposely written before I started to actually work on any changes.  This is to document the actual process and thinking as I go, (hopefully) offer assistance to others going through this process and also to write from a place of hope.  Often when you hit a wall, and not sure where to go next, now that there is a potential solution I have at least something to aim at.  I am capturing that hope on paper</p>
 <p>As a last comment, if you have any design (or other) feedback, or simply disagree with the advice, please let me know.</p>
 <style>
-    <style>
 table {
   font-family: arial, sans-serif;
   border-collapse: collapse;
@@ -70,8 +76,9 @@ td, th {
   padding: 8px;
 }
 
-tr:nth-child(even) {
-  background-color: #dddddd;
+
+.design-img {
+    width: 100%;
+  height: auto;
 }
-</style>
 </style>
