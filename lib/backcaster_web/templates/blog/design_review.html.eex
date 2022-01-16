@@ -6,10 +6,72 @@
 <p>I got feedback from a professional UX designer (and friend) Sarah Howard. The post has screenshots of the current [14/01/22] design, and her feedback.  You can see if you agree with what she highlighted and potential solutions.  I talk about why I found it useful and why I wrote this article.</p>
 
 <h3>What is your problem?</h3>
-<p></p>
+<p>
+    I have got backcaster to a place where I think it has enough features to be a useful tool, and I use it to track my goals of writing more and pushing the project forward (instead of writing features.)
+    So the sensible step is to get feedback from friends.  The phrase that stuck in my head from the initial 3 people I showed it to was "What am I looking at?".
+    <br>
+    This feedback (and the bounce rate from visitors from the internet <a href="https://plausible.io/backcaster.app" target="_blank">https://plausible.io/backcaster.app</a>) paints a clear picture.  <b>It does not make sense what you are supposed to do when you arrive.</b>
+    If users cannot get past this point, any feature or further idea becomes moot.
+
+    This article shows how the app operates during the process of writing, and outlines the points made by UX designer Sarah Howard.  For me it was a bit of an "aha!" moment and hopefully I will explain why that is.
+</p>
 
 <h3>The starting point</h3>
-<p></p>
+<table>
+    <tr>
+        <th>Feature</th>
+        <th>Screenshot</th>
+        <th>Feedback</th>
+    </tr>
+    <tr>
+        <td>Alfreds Futterkiste</td>
+        <td>Maria Anders</td>
+        <td>Germany</td>
+    </tr>
+    <tr>
+        <td>Centro comercial Moctezuma</td>
+        <td>Francisco Chang</td>
+        <td>Mexico</td>
+    </tr>
 
-<h3>The feedback</h3>
-<p></p>
+</table>
+
+<h3>aha!</h3>
+<p>Having worked as a professional software developer.  I have been often asked to implement designs.  They usually come as a full screenshot or even interactive design tools like Figma.  Often discussion comes about spacing, colors and copy around buttons.  But if I am honest I was never really present at the solving the problem stage.  More a sanding of rough edges or pushing back on parts that were difficult to implement.
+<br>
+    Until you have felt the problem yourself, it is hard to appreciate a solution that just 'appears' before you.  I have a feeling, (although not yet implemented) that Sarah's approach will be much better than the ideas I came up with.
+</p>
+
+<h3>A developers idea of design</h3>
+<p>
+    Given I wanted to make people aware of the features the app had, and convey my understanding of what the tool is hoping to achieve I had these ideas:
+</p>
+<ol>
+    <li>Add more copy</li>
+    <li>Post about the features on Twitter</li>
+    <li>Add another page before landing on the board, walking though features</li>
+    <li>Add a video walk through</li>
+    <li>On first load, add a layer over all components apart from the one you were supposed to start with, then go step by step. (ugly / hard to implement?)</li>
+</ol>
+<p>I was not confident is any of those approaches, and had difficultly motivating myself to start on them.  In my mind "I knew how it worked" and putting it into words was tedious.</p>
+<p>This article was purposely written before I started to actually work on any changes.  This is to document the actual process and thinking as I go, (hopefully) offer assistance to others going through this process and also to write from a place of hope.  Often when you hit a wall, and not sure where to go next, now that there is a potential solution I have at least something to aim at.  I am capturing that hope on paper</p>
+<p>As a last comment, if you have any design (or other) feedback, or simply disagree with the advice, please let me know.</p>
+<style>
+    <style>
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+td, th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+
+tr:nth-child(even) {
+  background-color: #dddddd;
+}
+</style>
+</style>
