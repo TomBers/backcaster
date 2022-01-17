@@ -4,17 +4,24 @@
 <a href="/blog/?tag=Coding">#Coding</a>
 
 <h3>tldr;</h3>
-<p>I got feedback from a professional UX designer (and friend) Sarah Howard. The post has screenshots of the current [14/01/22] design, and her feedback.  You can see if you agree with what she highlighted and potential solutions.  I talk about why I found it useful and why I wrote this article.</p>
+<p>I got feedback from a professional UX designer (and friend) Sarah Howard. The post has screenshots of the current
+    [14/01/22] design, and her feedback. You can see if you agree with what she highlighted and potential solutions.
+    I talk about why I found it useful and why I wrote this article.</p>
 
 <h3>What is your problem?</h3>
 <p>
-    I have got backcaster to a place where I think it has enough features to be a useful tool, and I use it to track my goals of writing more and pushing the project forward (instead of writing features.)
-    So the sensible step is to get feedback from friends.  The phrase that stuck in my head from the initial 3 people I showed it to was <b>"What am I looking at?"</b>.<br>
+    I have got backcaster to a place where I think it has enough features to be a useful tool, and I use it to track
+    my goals of writing more and pushing the project forward (instead of writing features.)
+    So the sensible step is to get feedback from friends. The phrase that stuck in my head from the initial 3 people
+    I showed it to was <b>"What am I looking at?"</b>.<br>
     <br>
-    This feedback (and the bounce rate from visitors from the internet <a href="https://plausible.io/backcaster.app" target="_blank">https://plausible.io/backcaster.app</a>) paints a clear picture.  <b>It does not make sense what you are supposed to do when you arrive.</b>
+    This feedback (and the bounce rate from visitors from the internet <a href="https://plausible.io/backcaster.app"
+                                                                          target="_blank">https://plausible.io/backcaster.app</a>)
+    paints a clear picture. <b>It does not make sense what you are supposed to do when you arrive.</b>
     If users cannot get past this point, any feature or further idea becomes moot.
 
-    This article shows how the app operates during the process of writing, and outlines the points made by UX designer Sarah Howard.  For me it was a bit of an "aha!" moment and hopefully I will explain why that is.
+    This article shows how the app operates during the process of writing, and outlines the points made by UX
+    designer Sarah Howard. For me it was a bit of an "aha!" moment and hopefully I will explain why that is.
 </p>
 
 <h3>The starting point</h3>
@@ -24,33 +31,46 @@
         <th>Feedback</th>
     </tr>
     <tr>
-        <td><img src="<%= Routes.static_path(@conn, "/images/backcast_board_design_review.png") %>" class="design-img"></td>
+        <td><a href="<%= Routes.static_path(@conn, "/images/backcast_board_design_review.png") %>" target="_blank"><img
+                src="<%= Routes.static_path(@conn, "/images/backcast_board_design_review.png") %>"
+                class="design-img"></td>
+        </a>
         <td>
             <ol>
                 <li>Each box needs a title explaining what it does</li>
                 <li>The milestones box should be aligned with the 'goals' box on the left of it</li>
-                <li>It is unclear what you have to do and which is the most important actions.  Start designing from mobile view offering a <b>linear step by step process.</b></li>
+                <li>It is unclear what you have to do and which is the most important actions. Start designing from
+                    mobile view offering a <b>linear step by step process.</b></li>
             </ol>
         </td>
     </tr>
     <tr>
-        <td><img src="<%= Routes.static_path(@conn, "/images/burnlist_design_review.png") %>" class="design-img"></td>
+        <td><a href="<%= Routes.static_path(@conn, "/images/burnlist_design_review.png") %>" target="_blank"><img
+                src="<%= Routes.static_path(@conn, "/images/burnlist_design_review.png") %>" class="design-img"></a>
+        </td>
         <td>
             <ol>
-                <li>Change the default lists to [Todo | Doing | Done] current default (Present and Future) unclear / not in the convention of other TODO tools</li>
+                <li>Change the default lists to [Todo | Doing | Done] current default (Present and Future) unclear /
+                    not in the convention of other TODO tools
+                </li>
                 <li>Allow user to define their own categories instead of hard coding [ Active | Stale | Old ]</li>
-                <li>We didn't tough on the the history slider, it was that hidden it didn't raise a comment.</li>
+                <li>(note to self) - We didn't touch on the the history slider, worth revisiting?.</li>
             </ol>
-            <p>* the idea that the items 'degrade' over time had to be explained.  It is far from obvious.</p>
+            <p>* the idea that the items 'degrade' over time had to be explained. It is far from obvious.</p>
         </td>
     </tr>
 
 </table>
 
 <h3>aha!</h3>
-<p>Having worked as a professional software developer.  I have been often asked to implement designs.  They usually come as a full screenshot or even interactive design tools like Figma.  Often discussion comes about spacing, colors and copy around buttons.  But if I am honest I was never really present at the problem solving stage. <br><br> More a sanding of rough edges or pushing back on parts that were difficult to implement.<br>
-<br>
-    Until you have felt the problem yourself, it is hard to appreciate a solution that just 'appears' before you.  I have a feeling, (although not yet implemented) that Sarah's approach will be much better than the ideas I came up with.
+<p>Having worked as a professional software developer. I have been often asked to implement designs. They usually
+    come as a full screenshot or even interactive design tools like Figma. Often discussion comes about spacing,
+    colors and copy around buttons. But if I am honest I was never really present at the problem solving stage. <br><br>
+    More a sanding of rough edges or pushing back on parts that were difficult to implement.<br>
+    <br>
+    Until you have felt the problem yourself, it is hard to appreciate a solution that just 'appears' before you. I
+    have a feeling, (although not yet implemented) that Sarah's approach will be much better than the ideas I came
+    up with.
     <br>
     <br>
     I want to talk about one point further: Start designing from mobile view / Step by step approach!!
@@ -58,28 +78,56 @@
 
 <h3>A developers idea of design</h3>
 <p>
-    Given I wanted to make people aware of the features the app had, and convey my understanding of what the tool is hoping to achieve I had these ideas:
+    Given I wanted to make people aware of the features the app had, and convey my understanding of what the tool is
+    hoping to achieve I had these ideas:
 </p>
 <ol>
     <li>Add more copy</li>
     <li>Post about the features on Twitter</li>
     <li>Add another page before landing on the board, walking though features</li>
     <li>Add a video walk through</li>
-    <li>On first load, add a layer over all components apart from the one you were supposed to start with, then go step by step. (ugly / hard to implement?)</li>
+    <li>On first load, add a layer over all components apart from the one you were supposed to start with, then go
+        step by step. (ugly / hard to implement?)
+    </li>
 </ol>
-<p>I was not confident is any of those approaches, and had difficultly motivating myself to start on them.  In my mind "I knew how it worked" and putting it into words was tedious.</p>
+<p>I was not confident in any of those approaches, and had difficultly motivating myself to start on them. In my
+    mind "I knew how it worked" and putting it into words was tedious.</p>
 
 <h3>The solution - Start designing from mobile view</h3>
-<p>When I have heard this advice before, it mostly passed me by.  In my mind it was mostly just checking if I had added the right classed to the components so that it rendered without any obvious errors on mobile.  It was basically a last step just to eye ball before I deployed a new version.  I assumed that the user already knew what to do and the goal was merely to allow them to do it on a mobile device.  But when Sarah explained it, I had the 'aha' moment, it meant move a confusing layout into something simpler, more linear that started with the first action and ended with the last.  The actual device had very little to do with it, more that the flow of actions happened in an easily comprehensible manner.</p>
-<p>I did have some objections, in that the view presented shows all the information in one screen, giving you an overview of everything.  So my plan is to make 2 views, on an 'Actions view` where each section is presented in order and a 'Dashboard view', where the whole board is visible.</p>
+<p>When I have heard this advice before, it mostly passed me by. In my mind it was mostly just checking if I had
+    added the right classed to the components so that it rendered without any obvious errors on mobile. It was
+    basically a last step just to eye ball before I deployed a new version. I assumed that the user already knew
+    what to do and the goal was merely to allow them to do it on a mobile device. But when Sarah explained it, I had
+    the 'aha' moment, it meant move a confusing layout into something simpler, more linear that started with the
+    first action and ended with the last. The actual device had very little to do with it, more that the flow of
+    actions happened in an easily comprehensible manner.</p>
+<p>I did have some objections, in that the view presented shows all the information in one screen, giving you an
+    overview of everything. So my plan is to make 2 views, on an 'Actions view`, where each section is presented in
+    order and a 'Dashboard view', where the whole board is visible.</p>
 <h3>Sign off</h3>
-<p>This article was purposely written before I started to actually work on any changes.  This is to document the actual process and thinking as I go, (hopefully) offer insight to others going through this process and also to write from a place of hope.  Often when you hit a wall, and not sure where to go next, now that there is a potential solution I have at least something to aim at.  I am capturing that hope on paper.</p>
-<p>As a last comment, if you have any design (or other) feedback, or simply disagree with the advice, please let me know.</p>
+<p>This article was purposely written before I started to actually work on any changes. This is to document the
+    actual process and thinking as I go, (hopefully) offer insight to others going through this process and also to
+    write from a place of hope. Often when you hit a wall, and not sure where to go next, now that there is a
+    potential solution I have at least something to aim at. I am capturing that hope on paper.</p>
+<p>As a last comment, if you have any design (or other) feedback, or simply disagree with the advice, please let me
+    know.</p>
+
+<h3>Feedback from Sarah</h3>
+<blockquote>There are loads of resources on mobile first and why that is usually the best approach. It's nicely
+    understood as "progressive advancement": for mobile, you have no choice but to only include what's crucial -
+    there is literally no space to add fluff. So the idea is you progress as you increase device size. And since you
+    only have the crucial bit, displayed as top to bottom order, the overall experience becomes clearer.
+</blockquote>
 <style>
 table {
   font-family: arial, sans-serif;
   border-collapse: collapse;
   width: 100%;
+}
+
+blockquote {
+    background-color: #dddddd;
+    padding: 10px;
 }
 
 td, th {
@@ -97,4 +145,7 @@ tr:nth-child(even) {
     width: 100%;
   height: auto;
 }
+
+
+
 </style>
