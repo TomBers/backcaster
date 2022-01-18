@@ -20,10 +20,14 @@
      body { margin: 2%; }
      .fill-current { fill: #1DA1F2; }
      .bigTag { font-size: x-large; }
+     .container { max-width: 960px; margin: auto }
     </style>
-    <%= @inner_content %>
+    <div class="container">
+      <%= @inner_content %>
+      <a href="/blog">index.html</a>
+    </div>
   </body>
-  <footer class="items-center p-2 footer bg-neutral text-neutral-content">
+  <footer class="items-center p-2 footer bg-neutral text-neutral-content container">
     <div class="flex items-center">
       <a href="https://twitter.com/TJCBerman" target="_blank">
         <p>Comments: @TomBers
