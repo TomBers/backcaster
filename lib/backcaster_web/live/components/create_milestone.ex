@@ -11,7 +11,7 @@ defmodule CreateMilestone do
 
   def render(assigns) do
     ~F"""
-    <div class="card shadow-lg card-side compact text-center">
+    <div class="card card-side compact text-center">
       <div class="card-body">
         <div class="card-title">Add Milestone</div>
         <button class="btn btn-outline" id="add-milestone" :on-click="edit">
