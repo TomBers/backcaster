@@ -5,7 +5,7 @@ defmodule Backcaster.Todos do
       created_at: Date.utc_today(),
       items: [
       ],
-      categories: [BurnListCategory.new_category("Future"), BurnListCategory.new_category("Present")]
+      categories: [BurnListCategory.new_category("TODO"), BurnListCategory.new_category("Doing"), BurnListCategory.new_category("Done")]
     }
 
     %BurnListHistory{
