@@ -24,6 +24,10 @@
     opacity: 1;
 }
 
+.tooltip {
+    z-index: 1 !important;
+}
+
 .menu li.hover-bordered a.habit-item-delete:hover {
     opacity: 1;
 }
