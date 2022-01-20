@@ -43,7 +43,8 @@
 
 <div class="container mx-auto">
   <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-    <div>
+    <div class="Objectives border-solid">
+      <h2 class="text-2xl font-bold text-center">Goal</h2>
       <div class="tabs">
         <a class={get_tab_class(@active_tab, "description")} :on-click="set_tab" phx-value-tab="description"><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path
@@ -75,7 +76,9 @@
         />
       {/if}
     </div>
-    <div>
+    <div class="Milestones border-solid">
+      <h2 class="text-2xl font-bold text-center">Milestones</h2>
+      <div class="h-9"></div>
       <div class="w-full shadow stats">
         <div class="stat place-items-center place-content-center">
           <div class="stat-title">Time remaining</div>
