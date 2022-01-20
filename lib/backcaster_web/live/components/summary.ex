@@ -18,6 +18,7 @@ defmodule Summary do
     ~F"""
     <div class="card shadow-lglg:p-10 xl:grid-cols-2 lg:bg-base-200 rounded-box p-8 text-xl">
       <Form for={:template} change={@change_template}>
+      <div data-tip="How to describe your goal" class="tooltip tooltip-bottom lg:float-right">
         <Select
           form="theme"
           field="template"
@@ -25,6 +26,7 @@ defmodule Summary do
           options={make_options()}
           class="select select-lg lg:float-right"
         />
+      </div>
       </Form>
 
       {#case @backcast["template"]}
