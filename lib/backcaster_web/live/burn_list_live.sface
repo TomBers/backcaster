@@ -33,6 +33,9 @@
               {#for item <- filter_items(@history.current.items, category)}
                 <li class="list-group-item" data-item_uuid={item.uuid}><BurnListEdit item={item} parent_pid={self()} delete_item="delete_item" id={item.uuid} /></li>
               {/for}
+              {#if length(filter_items(@history.current.items, category)) == 0 }
+                <li class="dropzone-target">Drag here</li>
+              {/if}
             </ol>
             <BurnListAdd add_item_event="add_item" category={category} id={"#{category.text}_#{@add_count}"} />
           </div>

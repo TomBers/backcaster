@@ -57,6 +57,13 @@
     cursor: move;
 }
 
+.dropzone-target {
+    border: 2px dashed black;
+    padding: 2px;
+    margin-top: 8px;
+    text-align: center;
+}
+
 .red {
     background: #C6FFDD;  /* fallback for old browsers */
        background: -webkit-linear-gradient(to right, #f7797d, #FBD786);  /* Chrome 10-25, Safari 5.1-6 */
