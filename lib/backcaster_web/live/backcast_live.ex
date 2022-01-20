@@ -11,6 +11,8 @@ defmodule BackcasterWeb.BackcastLive do
 
     theme = Map.get(params, "theme", "lofi")
 
+    mode = Map.get(params, "mode", "narrow")
+
     {_created, board} = Backcast.get_or_create_board!(id, SampleData.simple())
 
 #    IO.inspect(board)
@@ -22,7 +24,7 @@ defmodule BackcasterWeb.BackcastLive do
       |> assign(:theme, theme)
       |> assign(:show_image_processing, false)
       |> assign(:active_tab, "description")
-      |> assign(:work_mode, "todo")
+      |> assign(:work_mode, mode)
 
     {:ok, socket}
   end
@@ -120,6 +122,16 @@ defmodule BackcasterWeb.BackcastLive do
     {:noreply, socket |> assign(:active_tab, tab)}
   end
 
+  def handle_event("change_mode", _params, socket) do
+    new_mode =
+      case socket.assigns.work_mode do
+        "dashboard" -> "narrow"
+        "narrow" -> "dashboard"
+        _ -> "narrow"
+        end
+    {:noreply, socket |> assign(:work_mode, new_mode)}
+  end
+
   @impl true
   def handle_info(%{"web_path" => web_path, "file_path" => file_path, name: "store_image"}, socket) do
     socket =
@@ -158,7 +170,7 @@ defmodule BackcasterWeb.BackcastLive do
 
   def get_container_class(work_mode) do
     case work_mode do
-      "dashboard" -> "container mx-auto lg:px-40 xl:px-64"
+      "dashboard" -> "container mx-auto"
       _ -> "container mx-auto lg:px-40 xl:px-64"
     end
   end
