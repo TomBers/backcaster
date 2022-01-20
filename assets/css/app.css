@@ -24,6 +24,10 @@
     opacity: 1;
 }
 
+.tooltip {
+    z-index: 1 !important;
+}
+
 .menu li.hover-bordered a.habit-item-delete:hover {
     opacity: 1;
 }
@@ -51,10 +55,18 @@
 
 .burnlist-key {
     min-width: 100px;
+    color: black !important;
 }
 
 .burnlist-handle {
     cursor: move;
+}
+
+.dropzone-target {
+    border: 2px dashed black;
+    padding: 2px;
+    margin-top: 8px;
+    text-align: center;
 }
 
 .red {
