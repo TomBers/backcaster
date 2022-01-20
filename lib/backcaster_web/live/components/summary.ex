@@ -23,7 +23,7 @@ defmodule Summary do
           field="template"
           selected={@backcast["template"]}
           options={make_options()}
-          class="select float-right"
+          class="select select-lg lg:float-right"
         />
       </Form>
 
