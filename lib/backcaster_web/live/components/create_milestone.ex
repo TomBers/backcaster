@@ -11,8 +11,9 @@ defmodule CreateMilestone do
 
   def render(assigns) do
     ~F"""
-    <div class="card shadow-lg md:card-side m-2">
+    <div class="card shadow-lg card-side compact text-center">
       <div class="card-body">
+        <div class="card-title">Add Milestone</div>
         <button class="btn btn-outline" id="add-milestone" :on-click="edit">
           <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path
