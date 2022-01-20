@@ -51,6 +51,7 @@
 
 .burnlist-key {
     min-width: 100px;
+    color: black !important;
 }
 
 .burnlist-handle {

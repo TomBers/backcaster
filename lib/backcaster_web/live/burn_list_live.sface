@@ -61,9 +61,9 @@
     </div>
   </div>
   <div>Key</div>
-  <div class="badge badge-lg burnlist-key blue">Active</div>
-  <div class="badge badge-lg burnlist-key yellow">Stale</div>
-  <div class="badge badge-lg burnlist-key red">Old</div>
+  <div class="badge badge-lg burnlist-key blue">Actively working on</div>
+  <div class="badge badge-lg burnlist-key yellow">Not been worked on in a while</div>
+  <div class="badge badge-lg burnlist-key red">Is this really going to be done?</div>
   <div class="my-4">History slider</div>
 
   <Form for={:current} change="set_current">
