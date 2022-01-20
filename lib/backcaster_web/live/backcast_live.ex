@@ -175,4 +175,8 @@ defmodule BackcasterWeb.BackcastLive do
     end
   end
 
+  def get_theme_url(theme, work_mode) do
+    "?theme=#{theme}&mode=#{work_mode}"
+  end
+
 end
