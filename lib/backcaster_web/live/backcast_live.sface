@@ -56,8 +56,8 @@
 
 <div class={get_container_class(@work_mode)}>
   <div class={get_col_class(@work_mode)}>
-    <div class="Objectives border-solid">
-      <h2 class="text-2xl font-bold text-center">Goal</h2>
+    <div class="Objectives border border-accent">
+      <h2 class="text-2xl font-bold text-center p-2 bg-accent text-accent-content">End goal</h2>
       <div class="tabs">
         <div data-tip="Description" class="tooltip">
         <a class={get_tab_class(@active_tab, "description")} :on-click="set_tab" phx-value-tab="description"><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -93,9 +93,9 @@
         />
       {/if}
     </div>
-    <div class="Milestones border-solid">
-      <h2 class="text-2xl font-bold text-center">Milestones</h2>
-      <div class="h-9" />
+    <div class="Milestones border border-accent">
+      <h2 class="text-2xl font-bold text-center p-2 bg-accent text-accent-content">Key milestones</h2>
+      <div class="h-8" />
       <div class="w-full shadow stats">
         <div class="stat place-items-center place-content-center">
           <div class="stat-title">Time remaining</div>
