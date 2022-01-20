@@ -71,14 +71,20 @@
         </li>
       {/for}
       {#if @show_form}
-      <div class="divider">Add Habit</div>
-      <div class="form-control justify-center pl-2 pr-2">
+        <div class="divider">Add Habit</div>
+        <div class="form-control justify-center pl-2 pr-2">
           <Form for={:vals} submit="submit_new_habit" opts={autocomplete: "off"}>
-              <Field class="field" name="title">
-                <TextInput class="input input-bordered" value="" opts={placeholder: "Name"} />
-              </Field>
+            <Field class="field" name="title">
+              <TextInput class="input input-bordered" value="" opts={placeholder: "Name"} />
+            </Field>
             <Field class="field" name="freq">
-                <Select form={:vals} class="input" field="freq" options={Daily: :daily, Weekly: :weekly, Monthly: :monthly} class="select select-bordered select-primary w-full max-w-xs mt-2 mb-2" />
+              <Select
+                form={:vals}
+                class="input"
+                field="freq"
+                options={Daily: :daily, Weekly: :weekly, Monthly: :monthly}
+                class="select select-bordered select-primary w-full max-w-xs mt-2 mb-2"
+              />
             </Field>
             <input class="btn btn-secondary btn-block" type="submit" value="Submit">
           </Form>
