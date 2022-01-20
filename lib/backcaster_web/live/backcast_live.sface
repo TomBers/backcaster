@@ -1,30 +1,30 @@
 <a href="/">
   <div data-tip="Go Home" class="tooltip tooltip-bottom">
-  <div tabindex="0" class="m-1 normal-case btn-ghost btn">
-    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-      <path
-        stroke-linecap="round"
-        stroke-linejoin="round"
-        stroke-width="2"
-        d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"
-      />
-    </svg>
-  </div>
+    <div tabindex="0" class="m-1 normal-case btn-ghost btn">
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+          d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"
+        />
+      </svg>
+    </div>
   </div>
 </a>
 
 <a href={"/info?board=#{@board.name}"}>
   <div data-tip="What the hell am I looking at?" class="tooltip tooltip-bottom">
-  <div tabindex="0" class="m-1 normal-case btn-ghost btn">
-    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-      <path
-        stroke-linecap="round"
-        stroke-linejoin="round"
-        stroke-width="2"
-        d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
-      />
-    </svg>
-  </div>
+    <div tabindex="0" class="m-1 normal-case btn-ghost btn">
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+          d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+        />
+      </svg>
+    </div>
   </div>
 </a>
 
@@ -45,18 +45,20 @@
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1792 1792" class="inline-block w-4 h-4 ml-1 fill-current"><path d="M1395 736q0 13-10 23l-466 466q-10 10-23 10t-23-10l-466-466q-10-10-10-23t10-23l50-50q10-10 23-10t23 10l393 393 393-393q10-10 23-10t23 10l50 50q10 10 10 23z" /></svg></div>
   <div class="mt-16 overflow-y-auto shadow-2xl top-px dropdown-content h-96 w-52 rounded-b-box bg-base-200 text-base-content"><ul class="p-4 menu compact"><li><a href={get_theme_url("light", @work_mode)} tabindex="0" data-set-theme="light" data-act-class="active">🌝  light</a></li><li><a href={get_theme_url("dark", @work_mode)} tabindex="0" data-set-theme="dark" data-act-class="active">🌚  dark</a></li><li><a href={get_theme_url("cupcake", @work_mode)} tabindex="0" data-set-theme="cupcake" data-act-class="active">🧁  cupcake</a></li><li><a href={get_theme_url("bumblebee", @work_mode)} tabindex="0" data-set-theme="bumblebee" data-act-class="active">🐝  bumblebee</a></li><li><a href={get_theme_url("emerald", @work_mode)} tabindex="0" data-set-theme="emerald" data-act-class="active">✳️  Emerald</a></li><li><a href={get_theme_url("corporate", @work_mode)} tabindex="0" data-set-theme="corporate" data-act-class="active">🏢  Corporate</a></li><li><a href={get_theme_url("synthwave", @work_mode)} tabindex="0" data-set-theme="synthwave" data-act-class="active">🌃  synthwave</a></li><li><a href={get_theme_url("retro", @work_mode)} tabindex="0" data-set-theme="retro" data-act-class="active">👴  retro</a></li><li><a href={get_theme_url("cyberpunk", @work_mode)} tabindex="0" data-set-theme="cyberpunk" data-act-class="active">🤖  cyberpunk</a></li><li><a href={get_theme_url("valentine", @work_mode)} tabindex="0" data-set-theme="valentine" data-act-class="active">🌸  valentine</a></li><li><a href={get_theme_url("halloween", @work_mode)} tabindex="0" data-set-theme="halloween" data-act-class="active">🎃  halloween</a></li><li><a href={get_theme_url("garden", @work_mode)} tabindex="0" data-set-theme="garden" data-act-class="active">🌷  garden</a></li><li><a href={get_theme_url("forest", @work_mode)} tabindex="0" data-set-theme="forest" data-act-class="active">🌲  forest</a></li><li><a href={get_theme_url("aqua", @work_mode)} tabindex="0" data-set-theme="aqua" data-act-class="active">🐟  aqua</a></li><li><a href={get_theme_url("lofi", @work_mode)} tabindex="0" data-set-theme="lofi" data-act-class="active">👓  lofi</a></li><li><a href={get_theme_url("pastel", @work_mode)} tabindex="0" data-set-theme="pastel" data-act-class="active">🖍  pastel</a></li><li><a href={get_theme_url("fantasy", @work_mode)} tabindex="0" data-set-theme="fantasy" data-act-class="active">🧚‍♀️  fantasy</a></li><li><a href={get_theme_url("wireframe", @work_mode)} tabindex="0" data-set-theme="wireframe" data-act-class="active">📝  Wireframe</a></li><li><a href={get_theme_url("black", @work_mode)} tabindex="0" data-set-theme="black" data-act-class="active">🏴  black</a></li><li><a href={get_theme_url("luxury", @work_mode)} tabindex="0" data-set-theme="luxury" data-act-class="active">💎  luxury</a></li><li><a href={get_theme_url("dracula", @work_mode)} tabindex="0" data-set-theme="dracula" data-act-class="active">🧛‍♂️  dracula</a></li></ul></div></div>
 
-
 <a :on-click="change_mode">
   <div data-tip="Change layout" class="tooltip tooltip-bottom">
-  <div tabindex="0" class="m-1 normal-case btn-ghost btn">
-    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 5a1 1 0 011-1h14a1 1 0 011 1v2a1 1 0 01-1 1H5a1 1 0 01-1-1V5zM4 13a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H5a1 1 0 01-1-1v-6zM16 13a1 1 0 011-1h2a1 1 0 011 1v6a1 1 0 01-1 1h-2a1 1 0 01-1-1v-6z" />
-    </svg>
-  </div>
+    <div tabindex="0" class="m-1 normal-case btn-ghost btn">
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+          d="M4 5a1 1 0 011-1h14a1 1 0 011 1v2a1 1 0 01-1 1H5a1 1 0 01-1-1V5zM4 13a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H5a1 1 0 01-1-1v-6zM16 13a1 1 0 011-1h2a1 1 0 011 1v6a1 1 0 01-1 1h-2a1 1 0 01-1-1v-6z"
+        />
+      </svg>
+    </div>
   </div>
 </a>
-
-
 
 <div class={get_container_class(@work_mode)}>
   <div class={get_col_class(@work_mode)}>
@@ -64,24 +66,24 @@
       <h2 class="text-2xl font-bold text-center p-2 bg-accent text-accent-content">End goal</h2>
       <div class="tabs">
         <div data-tip="Description" class="tooltip">
-        <a class={get_tab_class(@active_tab, "description")} :on-click="set_tab" phx-value-tab="description"><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              stroke-width="2"
-              d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"
-            />
-          </svg></a>
+          <a class={get_tab_class(@active_tab, "description")} :on-click="set_tab" phx-value-tab="description"><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"
+              />
+            </svg></a>
         </div>
         <div data-tip="Mockup images" class="tooltip">
-        <a class={get_tab_class(@active_tab, "images")} :on-click="set_tab" phx-value-tab="images"><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              stroke-width="2"
-              d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"
-            />
-          </svg></a>
+          <a class={get_tab_class(@active_tab, "images")} :on-click="set_tab" phx-value-tab="images"><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"
+              />
+            </svg></a>
         </div>
       </div>
       {#if @active_tab == "description"}

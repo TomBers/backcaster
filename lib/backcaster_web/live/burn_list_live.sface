@@ -43,7 +43,7 @@
       {/for}
       <div class="card lg:card-side bordered">
         <div class="card-body">
-          <h1 class="card-title">Add</h1>
+          <h1 class="card-title">Add new list</h1>
           <br>
           <br>
           <div class="justify-center card-actions">
