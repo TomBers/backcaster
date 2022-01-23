@@ -39,11 +39,11 @@ defmodule GanttChart do
             excludes weekends
             section Overall
             GOAL :a, #{Date.utc_today()}, #{Date.diff(board.goal_date, Date.utc_today())}d
-            section Milestones
-            . :a1, #{Date.utc_today()}, 0d\n'
+            section Milestones\n'
 
     milestones =
       board.content["milestones"]
+      |> Enum.filter(fn {_id, milestone} -> milestone["title"] != "" end)
       |> Enum.reduce('', fn {_id, milestone}, acc -> acc ++ get_milestone_type(milestone, milestone["active"])  end)
 
     opening ++ milestones
