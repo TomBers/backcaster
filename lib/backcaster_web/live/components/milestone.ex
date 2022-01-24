@@ -21,32 +21,18 @@ defmodule Milestone do
     ~F"""
     {#if @checked}
       <div class="card shadow-lg compact side bg-base-100">
-        <div class="flex-row items-left space-x-4 card-body">
-          <label class="flex-0">
-            <LivePatch to={"/burnlist/#{@uuid}?theme=#{@theme}&title=#{@title}&board=#{@board_name}"}>
-              <div data-tip="Todo list" class="tooltip tooltip-bottom">
-                <button class="btn-sm edit-milestone">
-                  <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      stroke-width="2"
-                      d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01"
-                    />
-                  </svg>
-                </button>
-              </div>
-            </LivePatch>
+        <div class="card-body">
+          <div class="justify-end card-actions tight-bottom">
             <div data-tip="Complete" class="tooltip tooltip-bottom">
               <input
                 type="checkbox"
                 checked="checked"
                 :on-click={@change_active}
                 phx-value-id={@milestone_id}
-                class="toggle toggle-primary pull-right"
+                class="toggle toggle-primary"
               />
             </div>
-          </label>
+          </div>
           <div class="flex-1">
             <h2 class="card-title word-break">{@title} <div data-tip="Edit milestone" class="tooltip tooltip-bottom">
                 <button class="btn-sm edit-milestone" :on-click="edit">
@@ -67,6 +53,19 @@ defmodule Milestone do
             </div>
           </div>
         </div>
+        <LivePatch to={"/burnlist/#{@uuid}?theme=#{@theme}&title=#{@title}&board=#{@board_name}"}>
+          <button class="btn btn-block btn-secondary btn-sm make-square">
+            Todo
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              class="inline-block w-4 h-4 ml-2 stroke-current"
+            >
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+            </svg>
+          </button>
+        </LivePatch>
       </div>
     {#else}
       <div class="card card-side compact">

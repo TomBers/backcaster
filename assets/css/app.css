@@ -13,6 +13,14 @@
    word-break: break-all;
 }
 
+.tight-bottom {
+    margin-bottom: 0px !important;
+}
+
+.make-square {
+    border-radius: 0px !important;
+}
+
 .small-instructions {
     font-size: 0.6em;
 }
