@@ -8,6 +8,7 @@ defmodule Milestone do
   prop milestone_id, :string
   prop uuid, :string
   prop theme, :string
+  prop mode, :string
   prop board_name, :string
   prop checked, :boolean
 
@@ -53,7 +54,7 @@ defmodule Milestone do
             </div>
           </div>
         </div>
-        <LivePatch to={"/burnlist/#{@uuid}?theme=#{@theme}&title=#{@title}&board=#{@board_name}"}>
+        <LivePatch to={"/burnlist/#{@uuid}?theme=#{@theme}&title=#{@title}&board=#{@board_name}&mode=#{@mode}"}>
           <button class="btn btn-block btn-secondary btn-sm make-square">
             Todo
             <svg

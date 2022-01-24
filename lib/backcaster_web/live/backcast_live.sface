@@ -125,6 +125,7 @@
           <Milestone
             milestone_id={id}
             theme={@theme}
+            mode={@work_mode}
             board_name={@board.name}
             uuid={milestone["uuid"]}
             title={milestone["title"]}
