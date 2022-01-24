@@ -1,3 +1,35 @@
 <h1>problem_statement.html</h1>
 <a href="/blog/?tag=Unstuck">#Writing</a>
 <br>
+<h3>tldr;</h3>
+<p>
+    You will save alot of time if you are clear on the problem you are solving, and who has this problem.  If you stumble on a real, solvable, problem the rest will fall into place.  If you are struggling to explain what the problem is, everything else is an up hill battle.
+</p>
+
+<h3>Problem statement</h3>
+<p>I have encountered this cycle many times.</p>
+<div class="mermaid">
+    flowchart LR
+    id1(Would it not be cool if?) --> id2(blissful hacking)
+    id2 --> id3(I have a thing)
+    id3 --> id4(do you have this problem?)
+    id4 --> id5(silence)
+    id5 --> id6(how about some money?)
+    id5 --> id7(feedback?)
+    id7 --> id5
+    id6 --> id5
+    id5 --> id1
+</div>
+
+<p>Less frequently I have encounted this</p>
+<div class="mermaid">
+    flowchart LR
+    id1(Help, this is on fire) --> id2(ok, tell me more)
+    id2 --> id3(I think I can help)
+    id3 --> id4(lets talk cash money)
+    id4 --> id5(blissful hacking)
+    id5 --> id6(plenty of problems)
+    id6 --> id5
+    id5 --> id7(plenty of feedback)
+    id7 --> id5
+</div>
