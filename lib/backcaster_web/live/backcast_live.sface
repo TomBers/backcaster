@@ -120,7 +120,7 @@
       </div>
       <br>
       <br>
-      <div class="grid grid-cols-1 xl:grid-cols-3 bg-base-200 rounded-box">
+      <div class="grid grid-cols-1 gap-4 lg:p-6 xl:grid-cols-3 lg:bg-base-200 rounded-box">
         {#for {id, milestone} <- sort_milestones(@backcast["milestones"])}
           <Milestone
             milestone_id={id}
