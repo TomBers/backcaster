@@ -52,7 +52,6 @@ defmodule Summary do
   def make_options do
     Backcaster.SampleData.templates
     |> Enum.flat_map(fn cat -> %{"#{String.capitalize(cat)} template" => cat} end)
-    |> Map.new()
   end
 
 end
