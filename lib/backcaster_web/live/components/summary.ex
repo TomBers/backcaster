@@ -40,6 +40,8 @@ defmodule Summary do
           <Swot board={@board} backcast={@backcast} parent_pid={self()} id="swot" />
         {#match "freeform"}
           <Freeform board={@board} backcast={@backcast} parent_pid={self()} id="freeform" />
+      {#match "personal"}
+          <Personal board={@board} backcast={@backcast} parent_pid={self()} id="personal" />
         {#match _}
           <Startup board={@board} backcast={@backcast} parent_pid={self()} id="startup" />
       {/case}
@@ -50,7 +52,6 @@ defmodule Summary do
   def make_options do
     Backcaster.SampleData.templates
     |> Enum.flat_map(fn cat -> %{"#{String.capitalize(cat)} template" => cat} end)
-    |> Map.new()
   end
 
 end

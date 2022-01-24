@@ -12,6 +12,23 @@
    word-wrap: break-word;
 }
 
+.break-all {
+   word-break: break-all;
+}
+
+.tight-bottom {
+    margin-bottom: 0px !important;
+}
+
+.make-square {
+    border-radius: 0px !important;
+}
+
+.big-template-text {
+    font-size: x-large;
+    line-height: 1.7em;
+}
+
 .small-instructions {
     font-size: 0.6em;
 }

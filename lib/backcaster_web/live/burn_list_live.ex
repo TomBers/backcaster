@@ -17,6 +17,7 @@ defmodule BackcasterWeb.BurnListLive do
     end
 
     theme = Map.get(params, "theme", "lofi")
+    mode = Map.get(params, "mode", "narrow")
     title = Map.get(params, "title", "")
     parent_board = Map.get(params, "board", nil)
 
@@ -30,6 +31,7 @@ defmodule BackcasterWeb.BurnListLive do
       |> assign(:history, history)
       |> assign(:board, board)
       |> assign(:theme, theme)
+      |> assign(:mode, mode)
       |> assign(:title, title)
       |> assign(:parent_board, parent_board)
       |> assign(:add_count, 0)

@@ -8,6 +8,7 @@ defmodule Milestone do
   prop milestone_id, :string
   prop uuid, :string
   prop theme, :string
+  prop mode, :string
   prop board_name, :string
   prop checked, :boolean
 
@@ -20,50 +21,52 @@ defmodule Milestone do
   def render(assigns) do
     ~F"""
     {#if @checked}
-      <div class="card text-center bg-secondary shadow-2xl compact m-2">
+      <div class="card shadow-lg compact side bg-base-100">
         <div class="card-body">
-          <div class="justify-center card-actions">
-            <div data-tip="Edit milestone" class="tooltip tooltip-bottom">
-              <button class="btn-sm btn-secondary edit-milestone" :on-click="edit">
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z"
-                  />
-                </svg>
-              </button></div>
-            <LivePatch to={"/burnlist/#{@uuid}?theme=#{@theme}&title=#{@title}&board=#{@board_name}"}>
-              <div data-tip="Todo list" class="tooltip tooltip-bottom">
-                <button class="btn-sm btn-secondary edit-milestone">
-                  <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      stroke-width="2"
-                      d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01"
-                    />
-                  </svg>
-                </button>
-              </div>
-            </LivePatch>
+          <div class="justify-end card-actions tight-bottom">
             <div data-tip="Complete" class="tooltip tooltip-bottom">
               <input
                 type="checkbox"
                 checked="checked"
                 :on-click={@change_active}
                 phx-value-id={@milestone_id}
-                class="toggle toggle-secondary"
+                class="toggle toggle-primary"
               />
             </div>
           </div>
-          <h2 class="card-title word-break text-primary-content">{@title}</h2>
-          <p class="text-primary-content">({calc_date_diff(@date)} days to go)</p>
-          <div :if={@edit}>
-            <MilestoneForm title={@title} date={@date} submit={@submit} id={@id} button_text="Update" edit="edit" />
+          <div class="flex-1">
+            <h2 class="card-title word-break">{@title} <div data-tip="Edit milestone" class="tooltip tooltip-bottom">
+                <button class="btn-sm edit-milestone" :on-click="edit">
+                  <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z"
+                    />
+                  </svg>
+                </button>
+              </div>
+            </h2>
+            <p class="text-base-content text-opacity-40">({calc_date_diff(@date)} days to go)</p>
+            <div :if={@edit}>
+              <MilestoneForm title={@title} date={@date} submit={@submit} id={@id} button_text="Update" edit="edit" />
+            </div>
           </div>
         </div>
+        <LivePatch to={"/burnlist/#{@uuid}?theme=#{@theme}&title=#{@title}&board=#{@board_name}&mode=#{@mode}"}>
+          <button class="btn btn-block btn-secondary btn-sm make-square">
+            Todo
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              class="inline-block w-4 h-4 ml-2 stroke-current"
+            >
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+            </svg>
+          </button>
+        </LivePatch>
       </div>
     {#else}
       <div class="card card-side compact">
@@ -72,7 +75,7 @@ defmodule Milestone do
             <div class="justify-end card-actions">
               <input type="checkbox" :on-click={@change_active} phx-value-id={@milestone_id} class="toggle toggle-secondary">
             </div>
-            <h2 class="card-title faded">{@title}</h2>
+            <h2 class="card-title faded break-all">{@title}</h2>
             <p class="faded">Done: {date_completed(@completed)}</p>
           </div>
         {#else}
@@ -82,7 +85,7 @@ defmodule Milestone do
                 <input type="checkbox" :on-click={@change_active} phx-value-id={@milestone_id} class="toggle toggle-secondary">
               </div>
             </div>
-            <h2 class="card-title faded">{@title}</h2>
+            <h2 class="card-title faded break-all">{@title}</h2>
             <p class="faded">Done: {date_completed(@completed)}</p>
           </div>
         {/if}

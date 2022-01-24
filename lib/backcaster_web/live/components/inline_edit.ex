@@ -33,11 +33,14 @@ defmodule InlineEdit do
               />
               <input class="btn milestone-submit" type="submit" value="Update">
             {#else}
-              <TextInput
-                class="input btn-block text-neutral-content bg-neutral border-secondary"
-                value={get_content(@backcast, @category)}
-                id={@category}
-              />
+              <div class="relative">
+                <TextInput
+                  class="input btn-block text-neutral-content bg-neutral border-primary"
+                  value={get_content(@backcast, @category)}
+                  id={@category}
+                />
+                <button class="absolute top-0 right-0 rounded-l-none btn btn-primary" type="submit">Save</button>
+              </div>
             {/if}
           </Field>
           <Field class="field" name="category">
@@ -85,7 +88,7 @@ defmodule InlineEdit do
   def get_content_or_placeholder(backcast, category) do
     content = get_content(backcast, category)
     if is_nil(content) or content == "" do
-      "_______"
+      "_____"
     else
 #    TODO - this is a bit of a hack see if there is a better way
       String.replace(content, "\r\n", "<br>", global: true)
