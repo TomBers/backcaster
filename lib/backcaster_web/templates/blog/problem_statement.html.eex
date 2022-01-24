@@ -3,7 +3,10 @@
 <br>
 <h3>tldr;</h3>
 <p>
-    You will save alot of time if you are clear on the problem you are solving, and who has this problem.  If you stumble on a real, solvable, problem the rest will fall into place.  If you are struggling to explain what the problem is, everything else is an up hill battle.
+    You will save a lot of time if you are clear on the problem you are solving, and who has this problem. I propose you can think of 2 types of problems and the qualities your solution should try and provide to make them attractive.
+    <br><br>
+    If you stumble on a real, solvable, problem the rest will fall into place. If you are struggling to explain what the problem is,
+    everything else is an up hill battle.
 </p>
 
 <h3>Problem statement</h3>
@@ -21,7 +24,7 @@
     id5 --> id1
 </div>
 
-<p>Less frequently I have encounted this</p>
+<p>Less frequently I have encountered this</p>
 <div class="mermaid">
     flowchart LR
     id1(Help, this is on fire) --> id2(ok, tell me more)
@@ -33,3 +36,73 @@
     id5 --> id7(plenty of feedback)
     id7 --> id5
 </div>
+
+<p>When you have hit on a real pain point, the feedback and context will grow and grow.  Extensions and elaborations will be suggested by others.  You will be asked for estimated delivery times and roadmaps.  Hopefully the problems will converge and you can start offering the solution to others.  At first it is best to approach this as a bespoke solution for a single client, then see how well the solution carries over to others.</p>
+
+<h2>2 types of problem people have</h2>
+<ol>
+    <li>Relief from pain.</li>
+    <li>Self-image accessories.</li>
+</ol>
+
+<h3>Relief from pain</h3>
+<p>For what ever reason, something has to be done. The current way is hard / boring / unreliable. You need to make it
+    either: easier, more interesting or more reliable. </p>
+
+<h3>Self-image accessories</h3>
+<p>These are tools / ideas / things that are primarily used to communicate some status signal to others. They are the
+    symbols of success, good taste or virtue.</p>
+
+<h4>Qualities of good solutions</h4>
+<table>
+    <tr>
+        <th></th>
+        <th>Relief from pain</th>
+        <th>Self-image accessories</th>
+    </tr>
+    <tr>
+        <td>Interface</td>
+        <td>Familiar</td>
+        <td>Novel</td>
+    </tr>
+    <tr>
+        <td>Pricing</td>
+        <td>The cheaper the better</td>
+        <td>The more expensive the better</td>
+    </tr>
+    <tr>
+        <td>Most important quality</td>
+        <td>Reliability / track record</td>
+        <td>Exclusivity</td>
+    </tr>
+    <tr>
+        <td>Domain specific knowledge</td>
+        <td>High</td>
+        <td>Low</td>
+    </tr>
+    <tr>
+        <td>Customisation</td>
+        <td>Not important</td>
+        <td>As close to bespoke as possible</td>
+    </tr>
+</table>
+
+<br>
+
+<style>
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+td, th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+
+tr:nth-child(even) {
+  background-color: #dddddd;
+}
+</style>
