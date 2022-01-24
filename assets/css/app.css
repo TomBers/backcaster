@@ -21,6 +21,10 @@
     border-radius: 0px !important;
 }
 
+.big-template-text {
+    font-size: x-large;
+}
+
 .small-instructions {
     font-size: 0.6em;
 }
