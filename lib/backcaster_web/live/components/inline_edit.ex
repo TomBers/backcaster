@@ -33,11 +33,14 @@ defmodule InlineEdit do
               />
               <input class="btn milestone-submit" type="submit" value="Update">
             {#else}
+              <div class="relative">
               <TextInput
                 class="input btn-block text-neutral-content bg-neutral border-secondary"
                 value={get_content(@backcast, @category)}
                 id={@category}
               />
+              <button class="absolute top-0 right-0 rounded-l-none btn btn-primary" type="submit">Save</button>
+            </div>
             {/if}
           </Field>
           <Field class="field" name="category">
