@@ -35,7 +35,7 @@ defmodule InlineEdit do
             {#else}
               <div class="relative">
                 <TextInput
-                  class="input btn-block text-neutral-content bg-neutral border-secondary"
+                  class="input btn-block text-neutral-content bg-neutral border-primary"
                   value={get_content(@backcast, @category)}
                   id={@category}
                 />
