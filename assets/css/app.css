@@ -10,6 +10,9 @@
 
 .word-break {
    word-wrap: break-word;
+}
+
+.break-all {
    word-break: break-all;
 }
 
@@ -23,6 +26,7 @@
 
 .big-template-text {
     font-size: x-large;
+    line-height: 1.7em;
 }
 
 .small-instructions {

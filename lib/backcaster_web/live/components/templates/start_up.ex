@@ -22,7 +22,7 @@ defmodule Startup do
 
   def render(assigns) do
     ~F"""
-    <div class="card compact shadow mt-2">
+    <div class="card compact">
       <div class="card-body">
         <p class="big-template-text"><InlineEdit backcast={@backcast} category="Project Name" parent_pid={@parent_pid} id={Enum.random(1..4000)} /> is {a_or_an(get_card_or_tbc(@backcast["cards"], "Project Type"))} <InlineEdit backcast={@backcast} category="Project Type" parent_pid={@parent_pid} id={Enum.random(1..4000)} /> for <InlineEdit backcast={@backcast} category="Intended Audience" parent_pid={@parent_pid} id={Enum.random(1..4000)} />.</p>
         <br>

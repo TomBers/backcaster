@@ -88,7 +88,7 @@ defmodule InlineEdit do
   def get_content_or_placeholder(backcast, category) do
     content = get_content(backcast, category)
     if is_nil(content) or content == "" do
-      "_______"
+      "_____"
     else
 #    TODO - this is a bit of a hack see if there is a better way
       String.replace(content, "\r\n", "<br>", global: true)

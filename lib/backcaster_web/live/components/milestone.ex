@@ -75,7 +75,7 @@ defmodule Milestone do
             <div class="justify-end card-actions">
               <input type="checkbox" :on-click={@change_active} phx-value-id={@milestone_id} class="toggle toggle-secondary">
             </div>
-            <h2 class="card-title faded word-break">{@title}</h2>
+            <h2 class="card-title faded break-all">{@title}</h2>
             <p class="faded">Done: {date_completed(@completed)}</p>
           </div>
         {#else}
@@ -85,7 +85,7 @@ defmodule Milestone do
                 <input type="checkbox" :on-click={@change_active} phx-value-id={@milestone_id} class="toggle toggle-secondary">
               </div>
             </div>
-            <h2 class="card-title faded word-break">{@title}</h2>
+            <h2 class="card-title faded break-all">{@title}</h2>
             <p class="faded">Done: {date_completed(@completed)}</p>
           </div>
         {/if}
