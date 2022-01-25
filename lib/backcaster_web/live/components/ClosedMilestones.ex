@@ -3,7 +3,6 @@ defmodule ClosedMilestones do
 
   prop milestones, :any
   prop change_active, :event, required: true
-  data is_open, :boolean, default: true
 
   def render(assigns) do
     ~F"""
@@ -27,10 +26,6 @@ defmodule ClosedMilestones do
       </div>
     </div>
     """
-  end
-
-  def handle_event("is_open", _, socket) do
-    {:noreply, update(socket, :is_open, fn _ -> !socket.assigns.is_open end)}
   end
 
   def date_completed(complete) when is_bitstring(complete) do
