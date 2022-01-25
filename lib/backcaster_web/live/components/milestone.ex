@@ -20,7 +20,6 @@ defmodule Milestone do
 
   def render(assigns) do
     ~F"""
-    {#if @checked}
       <div class="card shadow-lg compact side bg-base-100">
         <div class="card-body">
           <div class="justify-end card-actions tight-bottom">
@@ -68,29 +67,6 @@ defmodule Milestone do
           </button>
         </LivePatch>
       </div>
-    {#else}
-      <div class="card card-side compact">
-        {#if is_just_completed(@completed)}
-          <div class="card-body jello-horizontal">
-            <div class="justify-end card-actions">
-              <input type="checkbox" :on-click={@change_active} phx-value-id={@milestone_id} class="toggle toggle-secondary">
-            </div>
-            <h2 class="card-title faded break-all">{@title}</h2>
-            <p class="faded">Done: {date_completed(@completed)}</p>
-          </div>
-        {#else}
-          <div class="card-body">
-            <div class="justify-end card-actions">
-              <div data-tip="Reopen" class="tooltip tooltip-bottom">
-                <input type="checkbox" :on-click={@change_active} phx-value-id={@milestone_id} class="toggle toggle-secondary">
-              </div>
-            </div>
-            <h2 class="card-title faded break-all">{@title}</h2>
-            <p class="faded">Done: {date_completed(@completed)}</p>
-          </div>
-        {/if}
-      </div>
-    {/if}
     """
   end
 

@@ -147,11 +147,12 @@ defmodule BackcasterWeb.BackcastLive do
     Enum.sort(milestones, fn {_k1, v1}, {_k2, v2} -> v1["date"] <= v2["date"] end)
   end
 
-  def count_milestones(milestones, cond) do
+  def filter_milestones(milestones, is_active) do
     milestones
-    |> Enum.filter(fn {k, m} -> m["active"] == cond end)
-    |> length()
+    |> Enum.filter(fn {k, m} -> m["active"] == is_active end)
   end
+
+
 
   def get_tab_class(a, b) when a == b do
     "tab tab-bordered tab-active"
