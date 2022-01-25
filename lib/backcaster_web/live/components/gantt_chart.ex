@@ -42,7 +42,7 @@ defmodule GanttChart do
             section Milestones\n'
 
     milestones =
-      board.content["milestones"]
+      Map.get(board.content, "milestones", %{})
       |> Enum.filter(fn {_id, milestone} -> milestone["title"] != "" end)
       |> Enum.reduce('', fn {_id, milestone}, acc -> acc ++ get_milestone_type(milestone, milestone["active"])  end)
 

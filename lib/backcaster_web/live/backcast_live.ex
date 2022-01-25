@@ -147,12 +147,18 @@ defmodule BackcasterWeb.BackcastLive do
     Enum.sort(milestones, fn {_k1, v1}, {_k2, v2} -> v1["date"] <= v2["date"] end)
   end
 
+  def active_milestones(backcast) do
+    Map.get(backcast, "milestones", []) |> filter_milestones(true)
+  end
+
+  def closed_milestones(backcast) do
+    Map.get(backcast, "milestones", []) |> filter_milestones(false)
+  end
+
   def filter_milestones(milestones, is_active) do
     milestones
     |> Enum.filter(fn {k, m} -> m["active"] == is_active end)
   end
-
-
 
   def get_tab_class(a, b) when a == b do
     "tab tab-bordered tab-active"
