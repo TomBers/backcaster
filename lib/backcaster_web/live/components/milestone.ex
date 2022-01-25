@@ -20,53 +20,53 @@ defmodule Milestone do
 
   def render(assigns) do
     ~F"""
-      <div class="card shadow-lg compact side bg-base-100">
-        <div class="card-body">
-          <div class="justify-end card-actions tight-bottom">
-            <div data-tip="Complete" class="tooltip tooltip-bottom">
-              <input
-                type="checkbox"
-                checked="checked"
-                :on-click={@change_active}
-                phx-value-id={@milestone_id}
-                class="toggle toggle-primary"
-              />
-            </div>
-          </div>
-          <div class="flex-1">
-            <h2 class="card-title word-break">{@title} <div data-tip="Edit milestone" class="tooltip tooltip-bottom">
-                <button class="btn-sm edit-milestone" :on-click="edit">
-                  <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      stroke-width="2"
-                      d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z"
-                    />
-                  </svg>
-                </button>
-              </div>
-            </h2>
-            <p class="text-base-content text-opacity-40">({calc_date_diff(@date)} days to go)</p>
-            <div :if={@edit}>
-              <MilestoneForm title={@title} date={@date} submit={@submit} id={@id} button_text="Update" edit="edit" />
-            </div>
+    <div class="card shadow-lg compact side bg-base-100">
+      <div class="card-body">
+        <div class="justify-end card-actions tight-bottom">
+          <div data-tip="Complete" class="tooltip tooltip-bottom">
+            <input
+              type="checkbox"
+              checked="checked"
+              :on-click={@change_active}
+              phx-value-id={@milestone_id}
+              class="toggle toggle-primary"
+            />
           </div>
         </div>
-        <LivePatch to={"/burnlist/#{@uuid}?theme=#{@theme}&title=#{@title}&board=#{@board_name}&mode=#{@mode}"}>
-          <button class="btn btn-block btn-secondary btn-sm make-square">
-            Todo
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 24 24"
-              class="inline-block w-4 h-4 ml-2 stroke-current"
-            >
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
-            </svg>
-          </button>
-        </LivePatch>
+        <div class="flex-1">
+          <h2 class="card-title word-break">{@title} <div data-tip="Edit milestone" class="tooltip tooltip-bottom">
+              <button class="btn-sm edit-milestone" :on-click="edit">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z"
+                  />
+                </svg>
+              </button>
+            </div>
+          </h2>
+          <p class="text-base-content text-opacity-40">({calc_date_diff(@date)} days to go)</p>
+          <div :if={@edit}>
+            <MilestoneForm title={@title} date={@date} submit={@submit} id={@id} button_text="Update" edit="edit" />
+          </div>
+        </div>
       </div>
+      <LivePatch to={"/burnlist/#{@uuid}?theme=#{@theme}&title=#{@title}&board=#{@board_name}&mode=#{@mode}"}>
+        <button class="btn btn-block btn-secondary btn-sm make-square">
+          Todo
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            class="inline-block w-4 h-4 ml-2 stroke-current"
+          >
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+          </svg>
+        </button>
+      </LivePatch>
+    </div>
     """
   end
 

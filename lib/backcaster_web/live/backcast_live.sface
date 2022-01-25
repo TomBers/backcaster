@@ -110,7 +110,7 @@
         </div>
         <div class="stat place-items-center place-content-center">
           <div class="stat-title">Active milestones</div>
-          <div class="stat-value">{filter_milestones(@backcast["milestones"], true) |> length() }</div>
+          <div class="stat-value">{filter_milestones(@backcast["milestones"], true) |> length()}</div>
           <div class="stat-desc">
             / {Map.keys(@backcast["milestones"]) |> length()}</div>
         </div>
@@ -139,6 +139,11 @@
         {/for}
         <CreateMilestone submit="create_milestone" id={length(Map.keys(@backcast["milestones"])) + 1} />
       </div>
+      <ClosedMilestones
+        milestones={filter_milestones(@backcast["milestones"], false) |> sort_milestones()}
+        change_active="change_active"
+        id="closed_milestones"
+      />
     </div>
     <div>
     </div>
