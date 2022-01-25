@@ -7,20 +7,25 @@ defmodule ClosedMilestones do
 
   def render(assigns) do
     ~F"""
-    <h1 class="card-title ml-8 mt-4" :on-click="is_open">Closed ({length(@milestones)})</h1>
-    {#if @is_open}
-      <div class="grid grid-cols-1 lg:p-4 lg:grid-cols-1  rounded-box">
-        {#for {id, milestone} <- @milestones}
-          <div class="grid justify-items-stretch grid-cols-3">
-            <h2 class="card-title faded break-all">{milestone["title"]}</h2>
-            <p class="faded">Done: {date_completed(milestone["completed"])}</p>
-            <div data-tip="Reopen" class="tooltip tooltip-left justify-self-end">
+    <div class="collapse collapse-arrow mt-6">
+      <input type="checkbox">
+      <div class="collapse-title text-xl font-medium">
+        Closed milestones ({length(@milestones)})
+      </div>
+      <div class="collapse-content">
+        <div class="grid grid-cols-1">
+          {#for {id, milestone} <- @milestones}
+            <div class="grid justify-items-stretch grid-cols-3">
+              <h2 class="break-all">{milestone["title"]}</h2>
+              <p class="">Closed: {date_completed(milestone["completed"])}</p>
+              <div data-tip="Reopen" class="tooltip tooltip-left justify-self-end">
                 <input type="checkbox" :on-click={@change_active} phx-value-id={id} class="toggle toggle-secondary justify-self-end">
               </div>
-          </div>
-        {/for}
+            </div>
+          {/for}
+        </div>
       </div>
-    {/if}
+    </div>
     """
   end
 
