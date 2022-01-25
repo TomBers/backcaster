@@ -14,9 +14,10 @@ defmodule ClosedMilestones do
       <div class="collapse-content">
         <div class="grid grid-cols-1">
           {#for {id, milestone} <- @milestones}
-            <div class="grid justify-items-stretch grid-cols-3">
-              <h2 class="break-all">{milestone["title"]}</h2>
-              <p class="">Closed: {date_completed(milestone["completed"])}</p>
+            <div class="grid justify-items-start grid-cols-2">
+              <div data-tip={date_completed(milestone["completed"]) |> complete_string()} class="tooltip tooltip-right">
+                <h2 class="break-word text-left">{milestone["title"]}</h2>
+              </div>
               <div data-tip="Reopen" class="tooltip tooltip-left justify-self-end">
                 <input type="checkbox" :on-click={@change_active} phx-value-id={id} class="toggle toggle-secondary justify-self-end">
               </div>
@@ -26,6 +27,10 @@ defmodule ClosedMilestones do
       </div>
     </div>
     """
+  end
+
+  def complete_string(date) do
+    "Completed at: #{date}"
   end
 
   def date_completed(complete) when is_bitstring(complete) do
