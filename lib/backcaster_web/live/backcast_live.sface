@@ -110,9 +110,9 @@
         </div>
         <div class="stat place-items-center place-content-center">
           <div class="stat-title">Active milestones</div>
-          <div class="stat-value">{count_milestones(@backcast["milestones"], true)}</div>
+          <div class="stat-value">{ active_milestones(@backcast) |> length() }</div>
           <div class="stat-desc">
-            / {Map.keys(@backcast["milestones"]) |> length()}</div>
+            / {Map.get(@backcast, "milestones", %{}) |> Map.keys() |> length()}</div>
         </div>
         <div class="stat place-items-center place-content-center">
           <GanttChart board={@board} id="ganttchart" />
@@ -121,7 +121,7 @@
       <br>
       <br>
       <div class="grid grid-cols-1 gap-4 lg:p-4 xl:grid-cols-3 lg:bg-base-200 rounded-box">
-        {#for {id, milestone} <- sort_milestones(@backcast["milestones"])}
+        {#for {id, milestone} <- active_milestones(@backcast) |> sort_milestones()}
           <Milestone
             milestone_id={id}
             theme={@theme}
@@ -137,8 +137,13 @@
             id={id}
           />
         {/for}
-        <CreateMilestone submit="create_milestone" id={length(Map.keys(@backcast["milestones"])) + 1} />
+        <CreateMilestone submit="create_milestone" id={(Map.get(@backcast, "milestones", %{}) |> Map.keys() |> length()) + 1} />
       </div>
+      <ClosedMilestones
+        milestones={closed_milestones(@backcast) |> sort_milestones()}
+        change_active="change_active"
+        id="closed_milestones"
+      />
     </div>
     <div>
     </div>
