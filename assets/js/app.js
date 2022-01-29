@@ -92,12 +92,13 @@ Hooks.storeBoard = {
 Hooks.loadBoards = {
 
     mounted(){
-        const res = Object.keys(Cookies.get()).filter( entry => entry.startsWith(COOKIE_PREFIX)).map(board => buildHtmlComponent(board) );
+    const theme = this.el.dataset.theme;
+        const res = Object.keys(Cookies.get()).filter( entry => entry.startsWith(COOKIE_PREFIX)).map(board => buildHtmlComponent(board, theme) );
         this.el.innerHTML=res.join('');
 
-        function buildHtmlComponent(name) {
+        function buildHtmlComponent(name, theme) {
             const board = name.slice(COOKIE_PREFIX.length)
-            return `<li class="step step-primary"><a href='/backcast/${board}' class="link">${board}</a></li>`
+            return `<li class="step step-primary"><a href='/backcast/${board}?theme=${theme}' class="link">${board}</a></li>`
             }
     }
 
