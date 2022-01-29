@@ -3,6 +3,10 @@
     <div class="card-body">
       <h1 class="card-title">My boards</h1>
       <ul class="steps steps-vertical" phx-hook="loadBoards" data-theme={@theme} id="myBoardsList" />
+
     </div>
+    <Form for={:user} action="/create-board" method="post" opts={autocomplete: "off"}>
+      <input class="btn btn-primary milestone-submit" type="submit" value="Create new board" />
+    </Form>
   </div>
 </div>
