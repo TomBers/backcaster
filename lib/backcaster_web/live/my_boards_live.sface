@@ -1,7 +1,7 @@
 <div class="container mx-auto">
   <div class="card mb-6">
     <div class="card-body">
-      <h1 class="card-title">My boards</h1>
+      <h1 class="card-title">My boards:</h1>
       <ul class="steps steps-vertical" phx-hook="loadBoards" data-theme={@theme} id="myBoardsList" />
 
     </div>

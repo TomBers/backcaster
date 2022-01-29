@@ -84,24 +84,30 @@ Hooks.renderTimeLine = {
 
 Hooks.storeBoard = {
     mounted(){
-        const name = this.el.dataset.boardName;
-        Cookies.set(COOKIE_PREFIX + name, name);
+        try {
+            const name = this.el.dataset.boardName;
+            Cookies.set(COOKIE_PREFIX + name, name);
+        } catch (error) {
+            console.log("Couldn't save cookie")
+        }
     }
 }
 
 Hooks.loadBoards = {
-
     mounted(){
-    const theme = this.el.dataset.theme;
-        const res = Object.keys(Cookies.get()).filter( entry => entry.startsWith(COOKIE_PREFIX)).map(board => buildHtmlComponent(board, theme) );
-        this.el.innerHTML=res.join('');
+        const theme = this.el.dataset.theme;
+        try {
+            const res = Object.keys(Cookies.get()).filter( entry => entry.startsWith(COOKIE_PREFIX)).map(board => buildHtmlComponent(board, theme) );
+            this.el.innerHTML=res.join('');
+        } catch(error) {
+            console.log("Couldn't read cookies");
+        }
 
         function buildHtmlComponent(name, theme) {
             const board = name.slice(COOKIE_PREFIX.length)
             return `<li class="step step-primary"><a href='/backcast/${board}?theme=${theme}' class="link">${board}</a></li>`
-            }
+        }
     }
-
 }
 
 
