@@ -27,6 +27,8 @@ import {Socket} from "phoenix"
 import {LiveSocket} from "phoenix_live_view"
 import topbar from "../vendor/topbar"
 
+const COOKIE_PREFIX = 'b_'
+
 let Hooks = {}
 Hooks.reorder = {
     mounted(){
@@ -82,19 +84,23 @@ Hooks.renderTimeLine = {
 
 Hooks.storeBoard = {
     mounted(){
-    const name = this.el.dataset.boardName;
-    Cookies.set('b_' + name, name)
+        const name = this.el.dataset.boardName;
+        Cookies.set(COOKIE_PREFIX + name, name);
     }
 }
 
 Hooks.loadBoards = {
+
     mounted(){
-    const cookies = Cookies.get();
-    const boards = Object.keys(cookies).filter( entry => entry.startsWith('b_'))
-    const res = boards.map(board => `<li><a href='/backcast/${board.slice(2)}' class="link">${board.slice(2)}</a></li>`)
-    console.log(res.join(''))
-    this.el.innerHTML=res.join('');
+        const res = Object.keys(Cookies.get()).filter( entry => entry.startsWith(COOKIE_PREFIX)).map(board => buildHtmlComponent(board) );
+        this.el.innerHTML=res.join('');
+
+        function buildHtmlComponent(name) {
+            const board = name.slice(COOKIE_PREFIX.length)
+            return `<li class="step step-primary"><a href='/backcast/${board}' class="link">${board}</a></li>`
+            }
     }
+
 }
 
 
