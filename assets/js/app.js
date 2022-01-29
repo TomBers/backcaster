@@ -80,6 +80,23 @@ Hooks.renderTimeLine = {
     }
 }
 
+Hooks.storeBoard = {
+    mounted(){
+    const name = this.el.dataset.boardName;
+    Cookies.set('b_' + name, name)
+    }
+}
+
+Hooks.loadBoards = {
+    mounted(){
+    const cookies = Cookies.get();
+    const boards = Object.keys(cookies).filter( entry => entry.startsWith('b_'))
+    const res = boards.map(board => `<li><a href='/backcast/${board.slice(2)}' class="link">${board.slice(2)}</a></li>`)
+    console.log(res.join(''))
+    this.el.innerHTML=res.join('');
+    }
+}
+
 
 let csrfToken = document.querySelector("meta[name='csrf-token']").getAttribute("content")
 let liveSocket = new LiveSocket("/live", Socket, {hooks: Hooks, params: {_csrf_token: csrfToken}})

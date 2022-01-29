@@ -1,0 +1,2 @@
+<h1>My boards</h1>
+<ol phx-hook="loadBoards" id="myBoardsList"></ol>
