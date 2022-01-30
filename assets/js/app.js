@@ -27,6 +27,8 @@ import {Socket} from "phoenix"
 import {LiveSocket} from "phoenix_live_view"
 import topbar from "../vendor/topbar"
 
+const COOKIE_PREFIX = 'b_'
+
 let Hooks = {}
 Hooks.reorder = {
     mounted(){
@@ -77,6 +79,35 @@ Hooks.renderTimeLine = {
             drawTimeLine();
         });
 
+    }
+}
+
+Hooks.storeBoard = {
+    mounted(){
+        try {
+            const name = this.el.dataset.boardName;
+//            Cookie expires a year from when set
+            Cookies.set(COOKIE_PREFIX + name, name, { expires: 365 });
+        } catch (error) {
+            console.log("Couldn't save cookie");
+        }
+    }
+}
+
+Hooks.loadBoards = {
+    mounted(){
+        try {
+            const theme = this.el.dataset.theme;
+            const res = Object.keys(Cookies.get()).filter( entry => entry.startsWith(COOKIE_PREFIX)).map(board => buildHtmlComponent(board, theme) );
+            this.el.innerHTML = res.join('');
+        } catch(error) {
+            console.log("Couldn't read cookies");
+        }
+
+        function buildHtmlComponent(name, theme) {
+            const board = name.slice(COOKIE_PREFIX.length);
+            return `<li class="step step-primary"><a href='/backcast/${board}?theme=${theme}' class="link">${board}</a></li>`;
+        }
     }
 }
 

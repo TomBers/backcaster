@@ -31,6 +31,7 @@ defmodule BackcasterWeb.Router do
 #    resources "/boards", BoardController, except: [:new, :edit]
 
     live "/", PageLive, :index
+    live "/myboards", MyBoardsLive, :index
     live "/backcast/:id", BackcastLive, :index
     live "/burnlist/:id", BurnListLive, :index
     live "/info", InfoLive, :index
