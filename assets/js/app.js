@@ -86,7 +86,8 @@ Hooks.storeBoard = {
     mounted(){
         try {
             const name = this.el.dataset.boardName;
-            Cookies.set(COOKIE_PREFIX + name, name);
+//            Cookie expires a year from when set
+            Cookies.set(COOKIE_PREFIX + name, name, { expires: 365 });
         } catch (error) {
             console.log("Couldn't save cookie");
         }
