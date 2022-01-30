@@ -98,7 +98,7 @@ Hooks.loadBoards = {
         try {
             const theme = this.el.dataset.theme;
             const res = Object.keys(Cookies.get()).filter( entry => entry.startsWith(COOKIE_PREFIX)).map(board => buildHtmlComponent(board, theme) );
-            this.el.innerHTML=res.join('');
+            this.el.innerHTML = res.join('');
         } catch(error) {
             console.log("Couldn't read cookies");
         }
