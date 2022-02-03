@@ -1,6 +1,8 @@
 defmodule BackcasterWeb.BackcastLive do
   use Surface.LiveView
 
+  alias BackcasterWeb.Router.Helpers, as: Routes
+
   alias Backcaster.SampleData
   alias Backcaster.Backcast
 
@@ -69,7 +71,7 @@ defmodule BackcasterWeb.BackcastLive do
 
   def handle_info(%{"name_change" => %{"new_board_name" => new_name}}, socket) do
     case SampleData.update_board_name(socket.assigns.board, new_name) do
-      {:ok, _updated} -> {:noreply, socket}
+      {:ok, _updated} -> {:noreply, push_redirect(socket, to: Routes.backcast_path(socket, :index, new_name), replace: true)}
                          {:error, error} -> {:noreply, socket}
     end
 
