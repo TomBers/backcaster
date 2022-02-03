@@ -102,7 +102,6 @@
               />
             </svg></a>
         </div>
-
       </div>
       {#if @active_tab == "description"}
         <Summary backcast={@backcast} parent_pid={self()} change_template="change_template" id="summary" />

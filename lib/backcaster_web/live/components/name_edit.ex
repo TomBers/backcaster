@@ -21,14 +21,14 @@ defmodule NameEdit do
       {#if @edit}
         <Form for={:name_change} submit="submit">
           <Field class="field" name="new_board_name">
-              <div class="relative">
-                <TextInput
-                  class="input btn-block text-neutral-content bg-neutral border-primary"
-                  value={@board_name}
-                  id={@board_name}
-                />
-                <button class="absolute top-0 right-0 rounded-l-none btn btn-primary" type="submit">Save</button>
-      </div>
+            <div class="relative">
+              <TextInput
+                class="input btn-block text-neutral-content bg-neutral border-primary"
+                value={@board_name}
+                id={@board_name}
+              />
+              <button class="absolute top-0 right-0 rounded-l-none btn btn-primary" type="submit">Save</button>
+            </div>
           </Field>
         </Form>
         <button class="btn btn-xs" :on-click="cancel">Cancel</button>

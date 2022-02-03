@@ -16,7 +16,7 @@ defmodule Backcaster.SampleData do
   end
 
   def templates() do
-    ["personal", "startup", "simple", "freeform", "fivew", "swot",]
+    ["personal", "startup", "simple", "freeform", "user-story", "fivew", "swot",]
   end
 
   def make_cards do
