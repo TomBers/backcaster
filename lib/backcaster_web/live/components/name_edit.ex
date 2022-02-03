@@ -6,6 +6,7 @@ defmodule NameEdit do
 
   prop board_name, :string
   prop parent_pid, :string
+  prop rename_error, :string
 
   data edit, :boolean, default: false
   data name_change,
@@ -43,6 +44,7 @@ defmodule NameEdit do
               />
             </svg>
           </button>
+          <p>{@rename_error}</p>
         </span>
       {/if}
     </span>

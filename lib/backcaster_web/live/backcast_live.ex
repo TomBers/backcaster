@@ -27,6 +27,7 @@ defmodule BackcasterWeb.BackcastLive do
       |> assign(:show_image_processing, false)
       |> assign(:active_tab, "description")
       |> assign(:work_mode, mode)
+      |> assign(:rename_error, nil)
 
     {:ok, socket}
   end
@@ -72,7 +73,7 @@ defmodule BackcasterWeb.BackcastLive do
   def handle_info(%{"name_change" => %{"new_board_name" => new_name}}, socket) do
     case SampleData.update_board_name(socket.assigns.board, new_name) do
       {:ok, _updated} -> {:noreply, push_redirect(socket, to: Routes.backcast_path(socket, :index, new_name), replace: true)}
-                         {:error, error} -> {:noreply, socket}
+      {:error, error} -> {:noreply, socket |> assign(:rename_error, "Couldn't rename board - name already taken")}
     end
 
   end
