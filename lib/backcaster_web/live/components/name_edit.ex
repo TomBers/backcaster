@@ -17,7 +17,7 @@ defmodule NameEdit do
 
   def render(assigns) do
     ~F"""
-    <span class="emphasis">
+    <div class="emphasis m-6">
       {#if @edit}
         <Form for={:name_change} submit="submit">
           <Field class="field" name="new_board_name">
@@ -34,7 +34,7 @@ defmodule NameEdit do
         <button class="btn btn-xs" :on-click="cancel">Cancel</button>
       {#else}
         <span class="inline-edit-content word-break tooltip tooltip-right" data-tip="Edit">
-          Name: {@board_name} <button class="btn btn-ghost btn-xs" :on-click="edit">
+          {@board_name} <button class="btn btn-ghost btn-xs" :on-click="edit">
             <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path
                 stroke-linecap="round"
@@ -47,7 +47,7 @@ defmodule NameEdit do
           <p>{@rename_error}</p>
         </span>
       {/if}
-    </span>
+    </div>
     """
   end
 
