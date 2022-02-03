@@ -67,6 +67,14 @@ defmodule BackcasterWeb.BackcastLive do
     end
   end
 
+  def handle_info(%{"name_change" => %{"new_board_name" => new_name}}, socket) do
+    case SampleData.update_board_name(socket.assigns.board, new_name) do
+      {:ok, _updated} -> {:noreply, socket}
+                         {:error, error} -> {:noreply, socket}
+    end
+
+  end
+
 
   def handle_event("update_milestone", %{"vals" => %{"date" => date, "title" => title, "id" => id}}, socket) do
     socket =

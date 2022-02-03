@@ -14,5 +14,6 @@ defmodule Backcaster.Backcast.Board do
     board
     |> cast(attrs, [:name, :content, :goal_date])
     |> validate_required([:name, :content])
+    |> unique_constraint(:name)
   end
 end
