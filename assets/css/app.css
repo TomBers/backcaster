@@ -25,8 +25,8 @@
 }
 
 .big-template-text {
-    font-size: x-large;
-    line-height: 1.7em;
+    font-size: x-large !important;
+    line-height: 1.7em !important;
 }
 
 .small-instructions {

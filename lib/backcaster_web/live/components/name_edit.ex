@@ -17,7 +17,7 @@ defmodule NameEdit do
 
   def render(assigns) do
     ~F"""
-    <div class="emphasis m-6">
+    <div class="emphasis mt-6 mb-6 ml-2">
       {#if @edit}
         <Form for={:name_change} submit="submit">
           <Field class="field" name="new_board_name">
@@ -27,13 +27,13 @@ defmodule NameEdit do
                 value={@board_name}
                 id={@board_name}
               />
-              <button class="absolute top-0 right-0 rounded-l-none btn btn-primary" type="submit">Save</button>
+              <button class="absolute top-0 right-0 rounded-l-none btn btn-primary" type="submit" phx-hook="removeOldCookie" data-board-name={@board_name} id="renameBoard">Save</button>
             </div>
           </Field>
         </Form>
         <button class="btn btn-xs" :on-click="cancel">Cancel</button>
       {#else}
-        <span class="inline-edit-content word-break tooltip tooltip-right" data-tip="Edit">
+        <span class="inline-edit-content word-break tooltip tooltip-right big-template-text" data-tip="Edit">
           {@board_name} <button class="btn btn-ghost btn-xs" :on-click="edit">
             <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path
