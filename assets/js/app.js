@@ -115,7 +115,7 @@ Hooks.removeOldCookie = {
     mounted() {
         const name = this.el.dataset.boardName;
         this.el.addEventListener('click', () => {
-             Cookies.remove(COOKIE_PREFIX + name)
+             Cookies.remove(COOKIE_PREFIX + name);
         });
     }
 }
