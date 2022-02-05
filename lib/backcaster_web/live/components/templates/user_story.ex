@@ -10,7 +10,7 @@ defmodule UserStory do
       <div class="card-body big-template-text">
         <p>As a ..</p>
             <InlineEdit backcast={@backcast} category="user_story_who" parent_pid={@parent_pid} id={Enum.random(1..4000)} />
-        <p>I want</p>
+        <p>I want ..</p>
            <p> <InlineEdit
             backcast={@backcast}
             category="user_story_want"
@@ -18,7 +18,7 @@ defmodule UserStory do
             use_text_area
             id={Enum.random(1..4000)}
           /></p>
-    <p>So that</p>
+    <p>So that ..</p>
     <InlineEdit
             backcast={@backcast}
             category="user_story_that"
