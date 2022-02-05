@@ -8,6 +8,7 @@ defmodule InlineEdit do
   prop category, :string
   prop parent_pid, :string
   prop use_text_area, :boolean, default: false
+  prop show_edit, :boolean, default: true
 
   data edit, :boolean, default: false
   data vals,
@@ -50,7 +51,9 @@ defmodule InlineEdit do
         <button class="btn btn-xs" :on-click="cancel">Cancel</button>
       {#else}
         <span class="inline-edit-content word-break tooltip tooltip-right" data-tip="Edit">
-          {raw(get_content_or_placeholder(@backcast, @category))} <button class="btn btn-ghost btn-xs" :on-click="edit">
+          {raw(get_content_or_placeholder(@backcast, @category))}
+            {#if @show_edit}
+            <button class="btn btn-ghost btn-xs" :on-click="edit">
             <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path
                 stroke-linecap="round"
@@ -60,6 +63,7 @@ defmodule InlineEdit do
               />
             </svg>
           </button>
+          {/if}
         </span>
       {/if}
     </span>

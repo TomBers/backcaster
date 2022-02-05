@@ -1,0 +1,25 @@
+<label for="summaryModal" class="btn btn-primary modal-button" id="modal_summaryModalBtn">Goal</label>
+<input type="checkbox" id="summaryModal" class="modal-toggle">
+<div class="modal">
+  {#case @backcast["template"]}
+    {#match "startup"}
+      <Startup backcast={@backcast} parent_pid={self()} show_edit={false} id="modal_startup" />
+    {#match "simple"}
+      <Simple backcast={@backcast} parent_pid={self()} show_edit={false} id="modal_art" />
+    {#match "fivew"}
+      <FiveW backcast={@backcast} parent_pid={self()} show_edit={false} id="modal_fivew" />
+    {#match "swot"}
+      <Swot backcast={@backcast} parent_pid={self()} show_edit={false} id="modal_swot" />
+    {#match "freeform"}
+      <Freeform backcast={@backcast} parent_pid={self()} show_edit={false} id="modal_freeform" />
+    {#match "personal"}
+      <Personal backcast={@backcast} parent_pid={self()} show_edit={false} id="modal_personal" />
+    {#match "user-story"}
+      <UserStory backcast={@backcast} parent_pid={self()} show_edit={false} id="modal_user-story" />
+    {#match _}
+      <Startup backcast={@backcast} parent_pid={self()} show_edit={false} id="modal_startup" />
+  {/case}
+  <div class="modal-action">
+    <label for="summaryModal" class="btn">Close</label>
+  </div>
+</div>
