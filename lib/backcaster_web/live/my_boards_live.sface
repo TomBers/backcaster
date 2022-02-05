@@ -7,7 +7,7 @@
       * The boards you have created are a stored in a cookie.  If you clear cookies / use a different device they will not be shown here.  Bookmark your boards for safe keeping!
     </div>
     <Form for={:user} action="/create-board" method="post" opts={autocomplete: "off"}>
-      <input class="btn btn-primary milestone-submit" type="submit" value="Create new board" />
+      <input class="btn btn-primary milestone-submit" type="submit" value="Create new board">
     </Form>
   </div>
 </div>

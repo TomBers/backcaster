@@ -111,6 +111,15 @@ Hooks.loadBoards = {
     }
 }
 
+Hooks.removeOldCookie = {
+    mounted() {
+        const name = this.el.dataset.boardName;
+        this.el.addEventListener('click', () => {
+             Cookies.remove(COOKIE_PREFIX + name);
+        });
+    }
+}
+
 
 let csrfToken = document.querySelector("meta[name='csrf-token']").getAttribute("content")
 let liveSocket = new LiveSocket("/live", Socket, {hooks: Hooks, params: {_csrf_token: csrfToken}})

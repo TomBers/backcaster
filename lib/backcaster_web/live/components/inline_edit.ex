@@ -92,6 +92,7 @@ defmodule InlineEdit do
     else
 #    TODO - this is a bit of a hack see if there is a better way
       String.replace(content, "\r\n", "<br>", global: true)
+      |> String.replace("\n", "<br>", global: true)
     end
   end
 

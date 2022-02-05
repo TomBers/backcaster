@@ -42,6 +42,8 @@ defmodule Summary do
           <Freeform board={@board} backcast={@backcast} parent_pid={self()} id="freeform" />
         {#match "personal"}
           <Personal board={@board} backcast={@backcast} parent_pid={self()} id="personal" />
+        {#match "user-story"}
+          <UserStory board={@board} backcast={@backcast} parent_pid={self()} id="user-story" />
         {#match _}
           <Startup board={@board} backcast={@backcast} parent_pid={self()} id="startup" />
       {/case}

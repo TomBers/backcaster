@@ -115,6 +115,6 @@
   </div>
 {#else}
   <div class="">
-    <button class="btn btn-primary float-right make-square" :on-click="open_habits">3. Today's Habits ({length(Map.keys(visible(@habits)))})</button>
+    <button class="btn btn-primary float-right make-square" :on-click="open_habits">4. Today's Habits ({length(Map.keys(visible(@habits)))})</button>
   </div>
 {/if}

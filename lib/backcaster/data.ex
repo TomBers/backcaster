@@ -16,7 +16,7 @@ defmodule Backcaster.SampleData do
   end
 
   def templates() do
-    ["personal", "startup", "simple", "freeform", "fivew", "swot",]
+    ["personal", "startup", "simple", "freeform", "user-story", "fivew", "swot",]
   end
 
   def make_cards do
@@ -68,6 +68,10 @@ defmodule Backcaster.SampleData do
     Map.put(backcast, "habits", new_habits)
   end
 
+
+  def update_board_name(board, new_name) do
+    Backcast.update_board(board, %{name: new_name})
+  end
 
   def persist_board(dat, board) do
     Backcast.update_board(board, %{content: dat})
