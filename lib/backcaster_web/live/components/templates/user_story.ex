@@ -7,7 +7,7 @@ defmodule UserStory do
 
   def render(assigns) do
     ~F"""
-    <div class="card compact shadow mt-2">
+    <div class="card compact shadow mt-2 summary-content">
       <div class="card-body big-template-text">
         <p>As a ..</p>
         <InlineEdit
