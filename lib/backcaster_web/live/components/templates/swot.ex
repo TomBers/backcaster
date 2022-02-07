@@ -3,6 +3,7 @@ defmodule Swot do
 
   prop backcast, :map
   prop parent_pid, :string
+  prop show_edit, :boolean, default: true
 
 #  TODO - make the boxes have a title (use the card comp??)
   def render(assigns) do
@@ -16,6 +17,7 @@ defmodule Swot do
             category="Strengths"
             parent_pid={@parent_pid}
             use_text_area
+            show_edit={@show_edit}
             id={Enum.random(1..4000)}
           />
         </div>
@@ -28,6 +30,7 @@ defmodule Swot do
             category="Weaknesses"
             parent_pid={@parent_pid}
             use_text_area
+            show_edit={@show_edit}
             id={Enum.random(1..4000)}
           />
         </div>
@@ -40,6 +43,7 @@ defmodule Swot do
             category="Opportunities"
             parent_pid={@parent_pid}
             use_text_area
+            show_edit={@show_edit}
             id={Enum.random(1..4000)}
           />
         </div>
@@ -47,7 +51,14 @@ defmodule Swot do
       <div class="card compact shadow">
         <div class="card-title m-2">Threats:</div>
         <div class="card-body">
-          <InlineEdit backcast={@backcast} category="Threats" parent_pid={@parent_pid} use_text_area id={Enum.random(1..4000)} />
+          <InlineEdit
+            backcast={@backcast}
+            category="Threats"
+            parent_pid={@parent_pid}
+            use_text_area
+            show_edit={@show_edit}
+            id={Enum.random(1..4000)}
+          />
         </div>
       </div>
     </div>

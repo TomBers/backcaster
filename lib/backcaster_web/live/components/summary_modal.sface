@@ -1,6 +1,6 @@
 <label for="summaryModal" class="btn btn-primary modal-button" id="modal_summaryModalBtn">Goal</label>
 <input type="checkbox" id="summaryModal" class="modal-toggle">
-<div class="modal">
+<div class="modal bg-neutral">
   {#case @backcast["template"]}
     {#match "startup"}
       <Startup backcast={@backcast} parent_pid={self()} show_edit={false} id="modal_startup" />
@@ -20,6 +20,6 @@
       <Startup backcast={@backcast} parent_pid={self()} show_edit={false} id="modal_startup" />
   {/case}
   <div class="modal-action">
-    <label for="summaryModal" class="btn">Close</label>
+    <label for="summaryModal" class="btn">Done</label>
   </div>
 </div>
