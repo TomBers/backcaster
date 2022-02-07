@@ -15,7 +15,7 @@ defmodule UserStory do
           category="user_story_who"
           parent_pid={@parent_pid}
           show_edit={@show_edit}
-          id={Enum.random(1..4000)}
+          id={"#{@id}_1"}
         />
         <p>I want ..</p>
         <p>
@@ -25,7 +25,7 @@ defmodule UserStory do
             parent_pid={@parent_pid}
             use_text_area
             show_edit={@show_edit}
-            id={Enum.random(1..4000)}
+            id={"#{@id}_2"}
           /></p>
         <p>So that ..</p>
         <InlineEdit
@@ -34,7 +34,7 @@ defmodule UserStory do
           parent_pid={@parent_pid}
           use_text_area
           show_edit={@show_edit}
-          id={Enum.random(1..4000)}
+          id={"#{@id}_3"}
         />
       </div>
     </div>

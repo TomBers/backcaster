@@ -1,4 +1,4 @@
-<label for="summaryModal" class="btn btn-primary modal-button" id="modal_summaryModalBtn">Goal</label>
+<label for="summaryModal" class="btn btn-primary modal-button mt-6" id="modal_summaryModalBtn">Goal</label>
 <input type="checkbox" id="summaryModal" class="modal-toggle">
 <div class="modal bg-accent" id="summary-modal-box">
   {#case @backcast["template"]}

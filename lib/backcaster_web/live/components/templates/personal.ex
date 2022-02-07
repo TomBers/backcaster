@@ -14,20 +14,20 @@ defmodule Personal do
             category="Personal Goal"
             parent_pid={@parent_pid}
             show_edit={@show_edit}
-            id={Enum.random(1..4000)}
+            id={"#{@id}_1"}
           /> so that I can <InlineEdit
             backcast={@backcast}
             category="Personal Why"
             parent_pid={@parent_pid}
             show_edit={@show_edit}
-            id={Enum.random(1..4000)}
+            id={"#{@id}_2"}
           /> with <InlineEdit
             backcast={@backcast}
             category="Personal Community"
             parent_pid={@parent_pid}
             show_edit={@show_edit}
-            id={Enum.random(1..4000)}
-          />.</p>
+            id={"#{@id}_3"}
+          /></p>
       </div>
     </div>
     """

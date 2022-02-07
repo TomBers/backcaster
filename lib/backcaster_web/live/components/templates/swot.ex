@@ -18,7 +18,7 @@ defmodule Swot do
             parent_pid={@parent_pid}
             use_text_area
             show_edit={@show_edit}
-            id={Enum.random(1..4000)}
+            id={"#{@id}_1"}
           />
         </div>
       </div>
@@ -31,7 +31,7 @@ defmodule Swot do
             parent_pid={@parent_pid}
             use_text_area
             show_edit={@show_edit}
-            id={Enum.random(1..4000)}
+            id={"#{@id}_2"}
           />
         </div>
       </div>
@@ -44,7 +44,7 @@ defmodule Swot do
             parent_pid={@parent_pid}
             use_text_area
             show_edit={@show_edit}
-            id={Enum.random(1..4000)}
+            id={"#{@id}_3"}
           />
         </div>
       </div>
@@ -57,7 +57,7 @@ defmodule Swot do
             parent_pid={@parent_pid}
             use_text_area
             show_edit={@show_edit}
-            id={Enum.random(1..4000)}
+            id={"#{@id}_4"}
           />
         </div>
       </div>

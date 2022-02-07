@@ -15,7 +15,7 @@ defmodule Freeform do
             parent_pid={@parent_pid}
             use_text_area
             show_edit={@show_edit}
-            id={Enum.random(1..4000)}
+            id={"#{@id}_1"}
           /></p>
       </div>
     </div>
