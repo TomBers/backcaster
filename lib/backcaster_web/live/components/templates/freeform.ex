@@ -8,7 +8,7 @@ defmodule Freeform do
   def render(assigns) do
     ~F"""
     <div class="card compact shadow mt-2">
-      <div class="card-body">
+      <div class="card-body big-template-text">
         <p><InlineEdit
             backcast={@backcast}
             category="Freeform"
