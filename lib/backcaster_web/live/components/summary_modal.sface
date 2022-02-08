@@ -7,7 +7,7 @@
     />
   </svg></label>
 <input type="checkbox" id="summaryModal" class="modal-toggle">
-<div class="modal bg-accent" id="summary-modal-box">
+<div class="modal bg-accent text-accent-content" id="summary-modal-box">
   {#case @backcast["template"]}
     {#match "startup"}
       <Startup backcast={@backcast} parent_pid={self()} show_edit={false} id="modal_startup" />

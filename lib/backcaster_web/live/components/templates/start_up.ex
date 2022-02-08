@@ -52,7 +52,7 @@ defmodule Startup do
             parent_pid={@parent_pid}
             show_edit={@show_edit}
             id={"#{@id}_4"}
-          />, leading to <InlineEdit backcast={@backcast} category="Benefits" parent_pid={@parent_pid} show_edit={@show_edit} id={"#{@id}_5"} /></p>
+          /> leading to <InlineEdit backcast={@backcast} category="Benefits" parent_pid={@parent_pid} show_edit={@show_edit} id={"#{@id}_5"} /></p>
         <br>
         {#if @show_edit}
           <a class="link" href="/blog/problem_statement.html" target="blank">What is a problem statement?</a>
