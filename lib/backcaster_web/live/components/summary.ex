@@ -31,22 +31,28 @@ defmodule Summary do
 
       {#case @backcast["template"]}
         {#match "startup"}
-          <Startup board={@board} backcast={@backcast} parent_pid={self()} id="startup" />
+          <Startup backcast={@backcast} parent_pid={self()} id="startup" />
         {#match "simple"}
-          <Simple board={@board} backcast={@backcast} parent_pid={self()} id="art" />
+          <Simple backcast={@backcast} parent_pid={self()} id="art" />
         {#match "fivew"}
-          <FiveW board={@board} backcast={@backcast} parent_pid={self()} id="fivew" />
+          <FiveW backcast={@backcast} parent_pid={self()} id="fivew" />
         {#match "swot"}
-          <Swot board={@board} backcast={@backcast} parent_pid={self()} id="swot" />
+          <Swot backcast={@backcast} parent_pid={self()} id="swot" />
         {#match "freeform"}
-          <Freeform board={@board} backcast={@backcast} parent_pid={self()} id="freeform" />
+          <Freeform backcast={@backcast} parent_pid={self()} id="freeform" />
         {#match "personal"}
-          <Personal board={@board} backcast={@backcast} parent_pid={self()} id="personal" />
+          <Personal backcast={@backcast} parent_pid={self()} id="personal" />
         {#match "user-story"}
-          <UserStory board={@board} backcast={@backcast} parent_pid={self()} id="user-story" />
+          <UserStory backcast={@backcast} parent_pid={self()} id="user-story" />
         {#match _}
-          <Startup board={@board} backcast={@backcast} parent_pid={self()} id="startup" />
+          <Startup backcast={@backcast} parent_pid={self()} id="startup" />
       {/case}
+
+      <br>
+      <br>
+      <div class="justify-end card-actions card-actions">
+        <SummaryModal template={@backcast["template"]} backcast={@backcast} id="summaryModal" />
+      </div>
     </div>
     """
     end

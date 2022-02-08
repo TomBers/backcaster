@@ -137,7 +137,7 @@
 }
 
 .inline-edit-content {
-    text-align: left;
+    text-align: left !important;
 }
 
 .info-img {

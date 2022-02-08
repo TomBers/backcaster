@@ -27,7 +27,13 @@ defmodule NameEdit do
                 value={@board_name}
                 id={@board_name}
               />
-              <button class="absolute top-0 right-0 rounded-l-none btn btn-primary" type="submit" phx-hook="removeOldCookie" data-board-name={@board_name} id="renameBoard">Save</button>
+              <button
+                class="absolute top-0 right-0 rounded-l-none btn btn-primary"
+                type="submit"
+                phx-hook="removeOldCookie"
+                data-board-name={@board_name}
+                id="renameBoard"
+              >Save</button>
             </div>
           </Field>
         </Form>

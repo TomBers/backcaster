@@ -1,0 +1,64 @@
+<label for="summaryModal" class="btn btn-primary modal-button" id="modal_summaryModalBtn"><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+    <path
+      stroke-linecap="round"
+      stroke-linejoin="round"
+      stroke-width="2"
+      d="M4 8V4m0 0h4M4 4l5 5m11-1V4m0 0h-4m4 0l-5 5M4 16v4m0 0h4m-4 0l5-5m11 5l-5-5m5 5v-4m0 4h-4"
+    />
+  </svg></label>
+<input type="checkbox" id="summaryModal" class="modal-toggle">
+<div class="modal bg-accent" id="summary-modal-box">
+  {#case @backcast["template"]}
+    {#match "startup"}
+      <Startup backcast={@backcast} parent_pid={self()} show_edit={false} id="modal_startup" />
+    {#match "simple"}
+      <Simple backcast={@backcast} parent_pid={self()} show_edit={false} id="modal_art" />
+    {#match "fivew"}
+      <FiveW backcast={@backcast} parent_pid={self()} show_edit={false} id="modal_fivew" />
+    {#match "swot"}
+      <Swot backcast={@backcast} parent_pid={self()} show_edit={false} id="modal_swot" />
+    {#match "freeform"}
+      <Freeform backcast={@backcast} parent_pid={self()} show_edit={false} id="modal_freeform" />
+    {#match "personal"}
+      <Personal backcast={@backcast} parent_pid={self()} show_edit={false} id="modal_personal" />
+    {#match "user-story"}
+      <UserStory backcast={@backcast} parent_pid={self()} show_edit={false} id="modal_user-story" />
+    {#match _}
+      <Startup backcast={@backcast} parent_pid={self()} show_edit={false} id="modal_startup" />
+  {/case}
+  <div class="modal-action" id="downloadActions">
+    <label for="summaryModal" class="btn"><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+      </svg></label>
+    <div class="btn" onclick="downloadImg()">
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+          d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
+        />
+      </svg>
+    </div>
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/dom-to-image@2.6.0/src/dom-to-image.min.js" />
+<script>
+  function downloadImg() {
+    const downloadActionsDiv = document.getElementById('downloadActions');
+
+    downloadActionsDiv.style.display = "none"
+
+    domtoimage.toJpeg(document.getElementById('summary-modal-box'), { quality: 0.95 })
+      .then(function (dataUrl) {
+          var link = document.createElement('a');
+          link.download = 'goal.jpeg';
+          link.href = dataUrl;
+          link.click();
+      })
+      .then((res) => downloadActionsDiv.style.display = "flex");
+
+
+  }
+</script>
