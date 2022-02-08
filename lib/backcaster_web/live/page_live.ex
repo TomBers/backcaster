@@ -3,7 +3,7 @@ defmodule BackcasterWeb.PageLive do
 
   @impl true
   def mount(params, _session, socket) do
-    theme = Map.get(params, "theme", "lofi")
+    theme = Map.get(params, "theme", "cupcake")
     {:ok, socket |> assign(:theme, theme)}
   end
 
