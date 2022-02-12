@@ -22,7 +22,7 @@ defmodule Swot do
           />
         </div>
       </div>
-      <div class="card compact ">
+      <div class="card compact">
         <div class="card-title m-2">Weaknesses:</div>
         <div class="card-body">
           <InlineEdit
@@ -35,7 +35,7 @@ defmodule Swot do
           />
         </div>
       </div>
-      <div class="card compact ">
+      <div class="card compact">
         <div class="card-title m-2">Opportunities:</div>
         <div class="card-body">
           <InlineEdit
@@ -48,7 +48,7 @@ defmodule Swot do
           />
         </div>
       </div>
-      <div class="card compact ">
+      <div class="card compact">
         <div class="card-title m-2">Threats:</div>
         <div class="card-body">
           <InlineEdit
