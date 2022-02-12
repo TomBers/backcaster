@@ -9,7 +9,7 @@ defmodule Swot do
   def render(assigns) do
     ~F"""
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-4 mt-2">
-      <div class="card compact shadow summary-content">
+      <div class="card compact summary-content">
         <div class="card-title m-2">Strengths:</div>
         <div class="card-body">
           <InlineEdit
@@ -22,7 +22,7 @@ defmodule Swot do
           />
         </div>
       </div>
-      <div class="card compact shadow">
+      <div class="card compact">
         <div class="card-title m-2">Weaknesses:</div>
         <div class="card-body">
           <InlineEdit
@@ -35,7 +35,7 @@ defmodule Swot do
           />
         </div>
       </div>
-      <div class="card compact shadow">
+      <div class="card compact">
         <div class="card-title m-2">Opportunities:</div>
         <div class="card-body">
           <InlineEdit
@@ -48,7 +48,7 @@ defmodule Swot do
           />
         </div>
       </div>
-      <div class="card compact shadow">
+      <div class="card compact">
         <div class="card-title m-2">Threats:</div>
         <div class="card-body">
           <InlineEdit

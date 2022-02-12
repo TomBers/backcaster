@@ -140,6 +140,10 @@
     text-align: left !important;
 }
 
+.center-buttons {
+    justify-content: space-around !important;
+}
+
 .info-img {
     max-width: 450px;
 }

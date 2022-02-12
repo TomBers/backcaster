@@ -23,7 +23,7 @@ defmodule Startup do
 
   def render(assigns) do
     ~F"""
-    <div class="card compact shadow mt-2">
+    <div class="card compact">
       <div class="card-body">
         <p class="big-template-text"><InlineEdit
             backcast={@backcast}

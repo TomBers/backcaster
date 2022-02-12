@@ -75,17 +75,17 @@
     <div class="hero min-h-screen bg-base-200 mx-auto">
         <div class="text-center hero-content">
             <div class="max-w-xl">
-                <h1 class="mb-5 text-5xl font-bold">
+                <h1 class="mb-12 text-5xl font-bold mt-14">
                     Backcaster.app
                 </h1>
-                <p class="text-xl mb-5">
-                    Are your projects making the progress you want? Do you dread looking at your Jira / Trello board?<br><br> Try backcasting, start from your goal and work backwards; track
+                <p class="text-xl mb-12">
+                    Are your projects making the progress you want? Do you dread looking at your Jira / Trello board?<br><br> Try backcasting; start from your goal and work backwards. <br>Track
                     progress in one place. <br><br>(No signups, no payment, get started with 1-click)
                 </p>
                 <%= form_tag("/create-board", method: :post) %>
-                    <input class="btn btn-primary btn-block milestone-submit mt-6 mb-6" type="submit" value="Get started"/>
+                    <input class="btn btn-primary btn-block milestone-submit mb-6" type="submit" value="Get started"/>
                 </form>
-                <h1 class="text-2xl font-bold mt-6">4 steps to achieving your goal</h1>
+                <h1 class="text-2xl font-bold mt-12 mb-6">4 steps to achieving your goal</h1>
                 <ul class="steps steps-vertical">
                     <li class="step step-primary">Define your goal (with templates help get you started)</li>
                     <li class="step step-primary">Break down into milestones</li>
@@ -93,15 +93,17 @@
                     <li class="step step-primary">Set habits for repetitive tasks</li>
                 </ul>
                 <br>
-                <p><a href="/backcast/2f5304da-da7e-4afa-9a7b-fe59a1fa628f?theme=lofi" target="_blank" class="link">See
-                    example</a></p>
-                <br>
                 <sub>* A TODO list with a visual history of each change; highlights when tasks are at risk of not being
                     done.</sub>
-
-                <h1 class="text-2xl font-bold mt-6">What users are saying</h1>
                 <br>
-                <div class="card text-center shadow-2xl">
+                <br>
+                <br>
+                <p><a href="/backcast/2f5304da-da7e-4afa-9a7b-fe59a1fa628f?theme=lofi" target="_blank" class="btn btn-primary">example 🔎  </a></p>
+
+
+                <h1 class="text-2xl font-bold mt-12">What users are saying</h1>
+                <br>
+                <div class="card text-center shadow-xl">
                     <div class="card-body">
                         <h2 class="card-title"><q>It is very hard to define my startup in just a sentence. This forced
                             me to really articulate what we are doing.</q></h2>
@@ -109,7 +111,7 @@
                     </div>
                 </div>
 
-                <h1 class="text-2xl font-bold mt-6 mb-6">Benefits</h1>
+                <h1 class="text-2xl font-bold mt-24 mb-12">Benefits</h1>
                 <ul class="w-full steps steps-vertical">
                     <li class="step step-primary">Eliminate noise, a simple interface surfacing only what is important.
                     </li>
@@ -124,10 +126,13 @@
                 </ul>
                 <br>
                 <br>
+                <br>
                 <%= form_tag("/create-board", method: :post) %>
                     <input class="btn btn-primary btn-block milestone-submit mt-4" type="submit" value="Get started"/>
                 </form>
             </div>
         </div>
+        <br>
+        <br>
     </div>
 </div>
