@@ -4,7 +4,7 @@ defmodule BackcasterWeb.InfoLive do
   def mount(%{"board" => board}, _session, socket) do
     socket =
       socket
-      |> assign(:theme, "lofi")
+      |> assign(:theme, "dark")
       |> assign(:board_id, board)
     {:ok, socket}
   end
@@ -12,7 +12,7 @@ defmodule BackcasterWeb.InfoLive do
   def mount(params, _session, socket) do
     socket =
       socket
-      |> assign(:theme, "lofi")
+      |> assign(:theme, "dark")
       |> assign(:board_id, nil)
     {:ok, socket}
   end

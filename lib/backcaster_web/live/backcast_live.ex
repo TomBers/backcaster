@@ -11,7 +11,7 @@ defmodule BackcasterWeb.BackcastLive do
       Backcast.subscribe()
     end
 
-    theme = Map.get(params, "theme", "cupcake")
+    theme = Map.get(params, "theme", "dark")
 
     mode = Map.get(params, "mode", "narrow")
 
