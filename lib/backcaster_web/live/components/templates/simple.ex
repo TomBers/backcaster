@@ -7,7 +7,7 @@ defmodule Simple do
 
   def render(assigns) do
     ~F"""
-    <div class="card compact shadow mt-2 summary-content">
+    <div class="card compact mt-2 summary-content">
       <div class="card-body">
         <p class="big-template-text">What? : <InlineEdit backcast={@backcast} category="What" parent_pid={@parent_pid} show_edit={@show_edit} id={"#{@id}_1"} /></p>
         <br>

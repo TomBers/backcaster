@@ -50,9 +50,7 @@ defmodule Summary do
 
       <br>
       <br>
-      <div class="justify-end card-actions card-actions">
-        <SummaryModal template={@backcast["template"]} backcast={@backcast} id="summaryModal" />
-      </div>
+      <SummaryModal template={@backcast["template"]} backcast={@backcast} id="summaryModal" />
     </div>
     """
     end
