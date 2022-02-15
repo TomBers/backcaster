@@ -26,7 +26,7 @@ if (watch) {
   opts = {
     ...opts,
     watch,
-    sourcemap: 'inline'
+    minify: true
   }
 }
 
