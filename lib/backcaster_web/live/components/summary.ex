@@ -48,8 +48,6 @@ defmodule Summary do
           <Startup backcast={@backcast} parent_pid={self()} id="startup" />
       {/case}
 
-      <br>
-      <br>
       <SummaryModal template={@backcast["template"]} backcast={@backcast} id="summaryModal" />
     </div>
     """

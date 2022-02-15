@@ -14,7 +14,7 @@ if config_env() == :prod do
 
   config :backcaster, BackcasterWeb.Endpoint,
          server: true,
-         url: [host: "backcaster.app", port: 80],
+         url: [host: "backcaster.app", port: 80, compress: true],
          http: [port: String.to_integer(System.get_env("PORT") || "8080"), transport_options: [socket_opts: [:inet6]]],
          secret_key_base: secret_key_base
 

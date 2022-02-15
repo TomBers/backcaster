@@ -15,8 +15,6 @@ defmodule GanttChart do
         id="timeLineModal"
       >
         <div class="mermaid" id="timeline" data-board={timeline_str(@board)} />
-        <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js" />
-        <script>mermaid.initialize({ startOnLoad: false });</script>
         <div class="modal-action">
           <label for="my-modal-2" class="btn">Close</label>
         </div>

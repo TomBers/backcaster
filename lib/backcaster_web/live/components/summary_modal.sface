@@ -31,7 +31,7 @@
       <label for="summaryModal" class="btn"><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
         </svg></label>
-      <div class="btn" onclick="downloadImg()">
+      <div class="btn" phx-hook="downloadSummary" id="downloadSummaryBtn">
         <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
           <path
             stroke-linecap="round"
@@ -44,23 +44,3 @@
     </div>
   </div>
 </div>
-
-<script src="https://cdn.jsdelivr.net/npm/dom-to-image@2.6.0/src/dom-to-image.min.js" />
-<script>
-  function downloadImg() {
-    const downloadActionsDiv = document.getElementById('downloadActions');
-
-    downloadActionsDiv.style.display = "none"
-
-    domtoimage.toJpeg(document.getElementById('summary-modal-box'), { quality: 0.95 })
-      .then(function (dataUrl) {
-          var link = document.createElement('a');
-          link.download = 'goal.jpeg';
-          link.href = dataUrl;
-          link.click();
-      })
-      .then((res) => downloadActionsDiv.style.display = "flex");
-
-
-  }
-</script>
