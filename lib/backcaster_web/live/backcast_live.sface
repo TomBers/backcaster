@@ -43,7 +43,7 @@
       Theme
     </span>
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1792 1792" class="inline-block w-4 h-4 ml-1 fill-current"><path d="M1395 736q0 13-10 23l-466 466q-10 10-23 10t-23-10l-466-466q-10-10-10-23t10-23l50-50q10-10 23-10t23 10l393 393 393-393q10-10 23-10t23 10l50 50q10 10 10 23z" /></svg></div>
-  <div class="mt-16 overflow-y-auto shadow-2xl top-px dropdown-content h-96 w-52 rounded-b-box bg-base-200 text-base-content"><ul class="p-4 menu compact"><li><a href={get_theme_url("light", @work_mode)} tabindex="0" data-set-theme="light" data-act-class="active">🌝  light</a></li><li><a href={get_theme_url("dark", @work_mode)} tabindex="0" data-set-theme="dark" data-act-class="active">🌚  dark</a></li><li><a href={get_theme_url("cupcake", @work_mode)} tabindex="0" data-set-theme="cupcake" data-act-class="active">🧁  cupcake</a></li><li><a href={get_theme_url("bumblebee", @work_mode)} tabindex="0" data-set-theme="bumblebee" data-act-class="active">🐝  bumblebee</a></li><li><a href={get_theme_url("emerald", @work_mode)} tabindex="0" data-set-theme="emerald" data-act-class="active">✳️  Emerald</a></li><li><a href={get_theme_url("corporate", @work_mode)} tabindex="0" data-set-theme="corporate" data-act-class="active">🏢  Corporate</a></li><li><a href={get_theme_url("synthwave", @work_mode)} tabindex="0" data-set-theme="synthwave" data-act-class="active">🌃  synthwave</a></li><li><a href={get_theme_url("retro", @work_mode)} tabindex="0" data-set-theme="retro" data-act-class="active">👴  retro</a></li><li><a href={get_theme_url("cyberpunk", @work_mode)} tabindex="0" data-set-theme="cyberpunk" data-act-class="active">🤖  cyberpunk</a></li><li><a href={get_theme_url("valentine", @work_mode)} tabindex="0" data-set-theme="valentine" data-act-class="active">🌸  valentine</a></li><li><a href={get_theme_url("halloween", @work_mode)} tabindex="0" data-set-theme="halloween" data-act-class="active">🎃  halloween</a></li><li><a href={get_theme_url("garden", @work_mode)} tabindex="0" data-set-theme="garden" data-act-class="active">🌷  garden</a></li><li><a href={get_theme_url("forest", @work_mode)} tabindex="0" data-set-theme="forest" data-act-class="active">🌲  forest</a></li><li><a href={get_theme_url("aqua", @work_mode)} tabindex="0" data-set-theme="aqua" data-act-class="active">🐟  aqua</a></li><li><a href={get_theme_url("lofi", @work_mode)} tabindex="0" data-set-theme="lofi" data-act-class="active">👓  lofi</a></li><li><a href={get_theme_url("pastel", @work_mode)} tabindex="0" data-set-theme="pastel" data-act-class="active">🖍  pastel</a></li><li><a href={get_theme_url("fantasy", @work_mode)} tabindex="0" data-set-theme="fantasy" data-act-class="active">🧚‍♀️  fantasy</a></li><li><a href={get_theme_url("wireframe", @work_mode)} tabindex="0" data-set-theme="wireframe" data-act-class="active">📝  Wireframe</a></li><li><a href={get_theme_url("black", @work_mode)} tabindex="0" data-set-theme="black" data-act-class="active">🏴  black</a></li><li><a href={get_theme_url("luxury", @work_mode)} tabindex="0" data-set-theme="luxury" data-act-class="active">💎  luxury</a></li><li><a href={get_theme_url("dracula", @work_mode)} tabindex="0" data-set-theme="dracula" data-act-class="active">🧛‍♂️  dracula</a></li></ul></div></div>
+  <div class="mt-16 overflow-y-auto shadow-2xl top-px dropdown-content h-96 w-52 rounded-b-box bg-base-200 text-base-content"><ul class="p-4 menu compact"><li><a href={get_theme_url("light", @work_mode)} tabindex="0" data-set-theme="light" data-act-class="active">🌝  light</a></li><li><a href={get_theme_url("dark", @work_mode)} tabindex="0" data-set-theme="dark" data-act-class="active">🌚  dark</a></li><li><a href={get_theme_url("cupcake", @work_mode)} tabindex="0" data-set-theme="cupcake" data-act-class="active">🧁  cupcake</a></li><li><a href={get_theme_url("bumblebee", @work_mode)} tabindex="0" data-set-theme="bumblebee" data-act-class="active">🐝  bumblebee</a></li><li><a href={get_theme_url("emerald", @work_mode)} tabindex="0" data-set-theme="emerald" data-act-class="active">✳️  Emerald</a></li><li><a href={get_theme_url("corporate", @work_mode)} tabindex="0" data-set-theme="corporate" data-act-class="active">🏢  Corporate</a></li><li><a href={get_theme_url("synthwave", @work_mode)} tabindex="0" data-set-theme="synthwave" data-act-class="active">🌃  synthwave</a></li><li><a href={get_theme_url("retro", @work_mode)} tabindex="0" data-set-theme="retro" data-act-class="active">👴  retro</a></li><li><a href={get_theme_url("cyberpunk", @work_mode)} tabindex="0" data-set-theme="cyberpunk" data-act-class="active">🤖  cyberpunk</a></li><li><a href={get_theme_url("valentine", @work_mode)} tabindex="0" data-set-theme="valentine" data-act-class="active">🌸  valentine</a></li><li><a href={get_theme_url("halloween", @work_mode)} tabindex="0" data-set-theme="halloween" data-act-class="active">🎃  halloween</a></li><li><a href={get_theme_url("garden", @work_mode)} tabindex="0" data-set-theme="garden" data-act-class="active">🌷  garden</a></li><li><a href={get_theme_url("forest", @work_mode)} tabindex="0" data-set-theme="forest" data-act-class="active">🌲  forest</a></li><li><a href={get_theme_url("aqua", @work_mode)} tabindex="0" data-set-theme="aqua" data-act-class="active">🐟  aqua</a></li><li><a href={get_theme_url("lofi", @work_mode)} tabindex="0" data-set-theme="lofi" data-act-class="active">👓  lofi</a></li><li><a href={get_theme_url("pastel", @work_mode)} tabindex="0" data-set-theme="pastel" data-act-class="active">🖍  pastel</a></li><li><a href={get_theme_url("fantasy", @work_mode)} tabindex="0" data-set-theme="fantasy" data-act-class="active">🧚‍♀️  fantasy</a></li><li><a href={get_theme_url("wireframe", @work_mode)} tabindex="0" data-set-theme="wireframe" data-act-class="active">📝  Wireframe</a></li><li><a href={get_theme_url("black", @work_mode)} tabindex="0" data-set-theme="black" data-act-class="active">🏴  black</a></li><li><a href={get_theme_url("luxury", @work_mode)} tabindex="0" data-set-theme="luxury" data-act-class="active">💎  luxury</a></li><li><a href={get_theme_url("dracula", @work_mode)} tabindex="0" data-set-theme="dracula" data-act-class="active">🧛‍♂️  dracula</a></li><li><a href={get_theme_url("cmyk", @work_mode)} data-set-theme="cmyk" data-act-class="active">🖨  CMYK</a></li></ul></div></div>
 
 <a :on-click="change_mode">
   <div data-tip="Change layout" class="tooltip tooltip-bottom">
@@ -119,20 +119,38 @@
     <div class="Milestones border border-accent">
       <h2 class="text-2xl font-bold text-center p-2 bg-accent text-accent-content">3. Key milestones</h2>
       <div class="shadow stats">
-        <div class="stat place-items-center place-content-center">
-          <div class="stat-title">Time remaining</div>
-          <div class="stat-value">{Date.diff(@board.goal_date, Date.utc_today())} days</div>
-          <div class="stat-desc">Due date : <DateEdit date={@board.goal_date} parent_pid={self()} id="date_edit_id" /></div>
+
+        <div class="stat">
+          <div class="stat-figure text-primary">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" class="inline-block w-8 h-8 stroke-current"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path></svg>
+          </div>
+          <div class="stat-title">Total Likes</div>
+          <div class="stat-value text-primary">25.6K</div>
+          <div class="stat-desc">21% more than last month</div>
         </div>
-        <div class="stat place-items-center place-content-center">
-          <div class="stat-title">Active milestones</div>
-          <div class="stat-value">{active_milestones(@backcast) |> length()}</div>
-          <div class="stat-desc">
-            / {Map.get(@backcast, "milestones", %{}) |> Map.keys() |> length()}</div>
+
+        <div class="stat">
+          <div class="stat-figure text-secondary">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" class="inline-block w-8 h-8 stroke-current"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
+          </div>
+          <div class="stat-title">Page Views</div>
+          <div class="stat-value text-secondary">2.6M</div>
+          <div class="stat-desc">21% more than last month</div>
         </div>
-        <div class="stat place-items-center place-content-center">
-          <GanttChart board={@board} id="ganttchart" />
+
+        <div class="stat">
+          <div class="stat-figure text-secondary">
+            <div class="avatar online">
+              <div class="w-16 rounded-full">
+                <img src="https://api.lorem.space/image/face?w=128&h=128">
+              </div>
+            </div>
+          </div>
+          <div class="stat-value">86%</div>
+          <div class="stat-title">Tasks done</div>
+          <div class="stat-desc text-secondary">31 tasks remaining</div>
         </div>
+
       </div>
       <br>
       <br>
