@@ -25,7 +25,11 @@ import "phoenix_html"
 // Establish Phoenix Socket and LiveView configuration.
 import {Socket} from "phoenix"
 import {LiveSocket} from "phoenix_live_view"
-import topbar from "../vendor/topbar"
+import topbar from "topbar"
+import mermaid from "mermaid"
+import Cookies from "js-cookie"
+import Sortable from "sortablejs"
+import domtoimage from "dom-to-image"
 
 const COOKIE_PREFIX = 'b_'
 
@@ -55,8 +59,28 @@ Hooks.reorder = {
     }
 }
 
+Hooks.downloadSummary = {
+    mounted() {
+        this.el.addEventListener('click', () => {
+            const downloadActionsDiv = document.getElementById('downloadActions');
+
+                downloadActionsDiv.style.display = "none"
+
+                domtoimage.toJpeg(document.getElementById('summary-modal-box'), { quality: 0.95 })
+                  .then(function (dataUrl) {
+                      var link = document.createElement('a');
+                      link.download = 'goal.jpeg';
+                      link.href = dataUrl;
+                      link.click();
+                  })
+                  .then((res) => downloadActionsDiv.style.display = "flex");
+        });
+    }
+}
+
 Hooks.renderTimeLine = {
     mounted(){
+        mermaid.initialize({ startOnLoad: false });
 
         function drawTimeLine() {
            var element = document.querySelector("#timeline");

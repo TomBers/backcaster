@@ -118,8 +118,7 @@
     </div>
     <div class="Milestones border border-accent">
       <h2 class="text-2xl font-bold text-center p-2 bg-accent text-accent-content">3. Key milestones</h2>
-      <div class="h-8" />
-      <div class="w-full shadow stats">
+      <div class="shadow stats">
         <div class="stat place-items-center place-content-center">
           <div class="stat-title">Time remaining</div>
           <div class="stat-value">{Date.diff(@board.goal_date, Date.utc_today())} days</div>

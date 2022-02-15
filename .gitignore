@@ -8,6 +8,9 @@
 run.sh
 /run.sh
 
+deploy.sh
+/deploy.sh
+
 wireguard.conf
 # The directory Mix downloads your dependencies sources to.
 /deps/
