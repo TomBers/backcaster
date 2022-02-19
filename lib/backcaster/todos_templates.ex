@@ -4,6 +4,8 @@ defmodule Backcaster.TodosTemplates do
     ["Pick a template", "Validation", "Marketing"]
   end
 
+#  Ideas: Customer feedback, product validation, website checklist, product launch, setup analytics, security checklist
+# Marketing checklist, Twitter engagement, background reading, blogging, marketing
   def gen_template(opt) do
     case opt do
       "Validation" -> gen_items(["Validate", "Ask 1 person", "Ask bob"])
