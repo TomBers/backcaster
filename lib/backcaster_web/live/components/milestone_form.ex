@@ -11,6 +11,7 @@ defmodule MilestoneForm do
 
   prop submit, :event, required: true
   prop edit, :event, required: true
+  prop show_template, :boolean, default: false
 
   def render(assigns) do
     ~F"""
@@ -22,13 +23,17 @@ defmodule MilestoneForm do
             <TextInput class="input input-bordered" value={@title} opts={placeholder: "Title"} />
           </div>
         </Field>
+      {#if @show_template}
+        <div class="divider">OR</div>
         <Field class="field" name="template">
           <Select
+            selected="Pick a template"
             field="template"
             options={make_options()}
             class="select select-lg"
           />
         </Field>
+      {/if}
 
         <Field name="id">
           <TextInput class="hidden" value={@id} />
