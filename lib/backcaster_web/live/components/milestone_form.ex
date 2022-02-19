@@ -47,7 +47,7 @@ defmodule MilestoneForm do
   end
 
   def make_options do
-    Backcaster.SampleData.milestone_templates
+    Backcaster.TodosTemplates.milestone_templates
     |> Enum.flat_map(fn cat -> %{"#{String.capitalize(cat)}" => cat} end)
   end
 

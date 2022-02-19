@@ -1,5 +1,9 @@
 defmodule Backcaster.TodosTemplates do
 
+  def milestone_templates() do
+    ["Validation", "Marketing"]
+  end
+
   def gen_template(opt) do
     case opt do
       "Validation" -> val_template()

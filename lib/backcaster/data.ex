@@ -19,10 +19,6 @@ defmodule Backcaster.SampleData do
     ["personal", "startup", "simple", "freeform", "user-story", "fivew", "swot",]
   end
 
-  def milestone_templates() do
-    ["Validation", "Marketing"]
-  end
-
   def make_cards do
     possible_sections()
     |> Enum.flat_map(fn section -> %{section => %{"title" => section, "content" => ""}} end)
