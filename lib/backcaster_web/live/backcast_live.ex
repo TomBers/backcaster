@@ -88,10 +88,24 @@ defmodule BackcasterWeb.BackcastLive do
     {:noreply, socket}
   end
 
-  def handle_event("create_milestone", %{"vals" => %{"date" => date, "title" => title, "id" => id}}, socket) do
+  #  Use milestone template
+  def handle_event("create_milestone", %{"vals" => %{"date" => date, "title" => "", "id" => id, "template" => template} = params}, socket) do
+
+    {backcast, milestone_id} = SampleData.add_milestone(socket.assigns.backcast, id, template, date)
     socket =
       socket
-      |> assign(:backcast, SampleData.add_milestone(socket.assigns.backcast, id, title, date))
+      |> assign(:backcast, backcast)
+
+    Task.start(fn -> SampleData.persist_board(socket.assigns.backcast, socket.assigns.board); Backcast.get_or_create_board!(milestone_id, Backcaster.TodosTemplates.gen_template(template)) end)
+    {:noreply, socket}
+  end
+
+#  Use milestone title
+  def handle_event("create_milestone", %{"vals" => %{"date" => date, "title" => title, "id" => id, "template" => template} = params}, socket) do
+    {backcast, _mid} = SampleData.add_milestone(socket.assigns.backcast, id, title, date)
+    socket =
+      socket
+      |> assign(:backcast, backcast)
 
       Task.start(fn -> SampleData.persist_board(socket.assigns.backcast, socket.assigns.board) end)
     {:noreply, socket}

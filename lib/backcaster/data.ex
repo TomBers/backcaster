@@ -19,6 +19,10 @@ defmodule Backcaster.SampleData do
     ["personal", "startup", "simple", "freeform", "user-story", "fivew", "swot",]
   end
 
+  def milestone_templates() do
+    ["Validation", "Marketing"]
+  end
+
   def make_cards do
     possible_sections()
     |> Enum.flat_map(fn section -> %{section => %{"title" => section, "content" => ""}} end)
@@ -38,7 +42,8 @@ defmodule Backcaster.SampleData do
   end
 
   def add_milestone(backcast, id, title, date) do
-    put_in(backcast["milestones"][id], %{"date" => date, "title" => title, "active" => true, "completed" => completed_at(), "uuid" => UUID.uuid4() })
+    milestone_id = UUID.uuid4()
+    {put_in(backcast["milestones"][id], %{"date" => date, "title" => title, "active" => true, "completed" => completed_at(), "uuid" => milestone_id }), milestone_id}
   end
 
   def toggle_milestone(backcast, id) do

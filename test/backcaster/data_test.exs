@@ -23,7 +23,7 @@ defmodule Backcaster.DataTest do
       id = "2"
       title = "New Milestone"
       date = Date.utc_today()
-      new_data = SampleData.add_milestone(data, id, title, date)
+      {new_data, milestone_id} = SampleData.add_milestone(data, id, title, date)
 
       assert length(Map.keys(new_data["milestones"])) == 2
       assert new_data["milestones"] == %{"1" => %{"date" => Date.add(Date.utc_today(), 4), "title" => "A milestone"}, "2" => %{"date" => date, "title" => "New Milestone"}}
