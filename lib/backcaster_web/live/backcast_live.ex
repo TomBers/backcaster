@@ -59,7 +59,6 @@ defmodule BackcasterWeb.BackcastLive do
   @impl true
   def handle_info({:new_edit, {board_id, sending_pid}}, socket) do
     if board_id == socket.assigns.board.name and sending_pid != self() do
-      IO.inspect("Update from elsewhere")
       board = Backcast.get_board_by_name!(socket.assigns.board.name)
       socket =
         socket
@@ -67,7 +66,6 @@ defmodule BackcasterWeb.BackcastLive do
         |> assign(:board, board)
       {:noreply, socket}
     else
-      IO.inspect("Update my self")
       {:noreply, socket}
     end
   end
