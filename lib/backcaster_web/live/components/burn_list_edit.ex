@@ -35,9 +35,9 @@ defmodule BurnListEdit do
 
               <div class="col-span-10 flex flex-col justify-center">
                   <div class="pl-2 break-all">{@item.text}</div>
-                  {#if length(@item.labels) > 0}
+                  {#if length(Map.get(@item, :labels, [])) > 0}
                   <div class="m-2">
-                   {#for label <- @item.labels }
+                   {#for label <- Map.get(@item, :labels, []) }
                     <span class="badge text-xs">{label}</span>
                   {/for}
                   </div>
