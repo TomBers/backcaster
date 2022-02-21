@@ -57,6 +57,7 @@ defmodule Backcaster.Todos do
   end
 
   def hydrate_item(item) do
+#    TODO = this seems to be being called every update item - it should not be
     %BurnListItem{
       created_at: Date.from_iso8601!(item["created_at"]),
       updated_at: Date.from_iso8601!(item["updated_at"]),

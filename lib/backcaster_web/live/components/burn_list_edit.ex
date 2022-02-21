@@ -32,12 +32,13 @@ defmodule BurnListEdit do
         <div class="card lg:card-side bordered compact my-2">
           <div class="grid grid-cols-12">
             <div class={get_handle_colour(calc_age(@item.updated_at))} />
-            <div class="col-span-10 p-2 break-all border flex items-center">
-              {@item.text}
+              <div class="col-span-10 pl-2 break-all flex items-center">
+                {@item.text}
                 {#for label <- @item.labels }
-                  <span>{label}</span>
+                  <span class="badge">{label}</span>
                 {/for}
-            </div>
+              </div>
+
             <div class="py-2">
               <button class="btn btn-ghost btn-xs" :on-click="edit">
                 <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">

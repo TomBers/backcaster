@@ -132,9 +132,11 @@ defmodule BackcasterWeb.BurnListLive do
 
   @impl true
   def handle_info({:new_edit, board_id}, socket) do
+#    TODO - when this is called we are talking to the Db to get updates, is there a better way?
     if board_id == socket.assigns.board.name do
       {is_new?, board} =
         Backcast.get_or_create_board!(board_id, Backcaster.Todos.simple())
+
       history = board.content |> Backcaster.Todos.hydrate(is_new?)
       socket =
         socket
