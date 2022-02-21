@@ -74,8 +74,10 @@ defmodule Backcaster.SampleData do
     Backcast.update_board(board, %{name: new_name})
   end
 
-  def persist_board(dat, board) do
+
+  def persist_board(dat, board, pid) do
     Backcast.update_board(board, %{content: dat})
-    Phoenix.PubSub.broadcast(Backcaster.PubSub, "new_edit", {:new_edit, board.name})
+    Phoenix.PubSub.broadcast(Backcaster.PubSub, "new_edit", {:new_edit, {board.name, pid}})
   end
+
 end

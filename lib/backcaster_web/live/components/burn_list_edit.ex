@@ -32,11 +32,16 @@ defmodule BurnListEdit do
         <div class="card lg:card-side bordered compact my-2">
           <div class="grid grid-cols-12">
             <div class={get_handle_colour(calc_age(@item.updated_at))} />
-              <div class="col-span-10 pl-2 break-all flex items-center">
-                {@item.text}
-                {#for label <- @item.labels }
-                  <span class="badge">{label}</span>
-                {/for}
+
+              <div class="col-span-10 flex flex-col justify-center">
+                  <div class="pl-2 break-all">{@item.text}</div>
+                  {#if length(@item.labels) > 0}
+                  <div class="m-2">
+                   {#for label <- @item.labels }
+                    <span class="badge text-xs">{label}</span>
+                  {/for}
+                  </div>
+                {/if}
               </div>
 
             <div class="py-2">
