@@ -29,7 +29,7 @@ defmodule BackcasterWeb.BurnListController do
 
   def save_and_notify(board, history, new_item) do
     BurnListHistory.add_items(history, [new_item])
-    |> SampleData.persist_board(board)
+    |> SampleData.persist_board(board, self())
 
     Phoenix.PubSub.broadcast(Backcaster.PubSub, "new_edit", {:new_edit, board.name})
   end
