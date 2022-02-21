@@ -23,17 +23,12 @@ defmodule MilestoneForm do
             <TextInput class="input input-bordered" value={@title} opts={placeholder: "Title"} />
           </div>
         </Field>
-      {#if @show_template}
-        <div class="divider">OR</div>
-        <Field class="field" name="template">
-          <Select
-            selected="Pick a template"
-            field="template"
-            options={make_options()}
-            class="select select-lg"
-          />
-        </Field>
-      {/if}
+        {#if @show_template}
+          <div class="divider">OR</div>
+          <Field class="field" name="template">
+            <Select selected="Pick a template" field="template" options={make_options()} class="select select-lg" />
+          </Field>
+        {/if}
 
         <Field name="id">
           <TextInput class="hidden" value={@id} />
