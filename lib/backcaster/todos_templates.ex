@@ -8,8 +8,8 @@ defmodule Backcaster.TodosTemplates do
 # Marketing checklist, Twitter engagement, background reading, blogging, marketing
   def gen_template(opt) do
     case opt do
-      "Validation" -> gen_items(["Validate", "Ask 1 person", "Ask bob"])
-      "Marketing" -> gen_items(["Marketing", "Twitter"])
+      "Validation" -> gen_items([{"Validate", ["important"]}, {"Ask 1 person", ["BOB"]}, {"Ask bob", ["A test"]}])
+      "Marketing" -> gen_items([{"Marketing", []}, {"Twitter", []}])
       _ -> gen_items([])
     end
   end
@@ -17,7 +17,7 @@ defmodule Backcaster.TodosTemplates do
   defp gen_items(items) do
     todo = BurnListCategory.new_category("TODO")
     items
-    |> Enum.map(fn item -> BurnListItem.make_item(item, todo) end)
+    |> Enum.map(fn {item, labels} -> BurnListItem.make_item(item, todo, labels) end)
     |> base_template(todo)
   end
 
@@ -32,7 +32,7 @@ defmodule Backcaster.TodosTemplates do
 
     %BurnListHistory{
       current: board,
-      past: []
+      past: [board]
     }
   end
 

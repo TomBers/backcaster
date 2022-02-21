@@ -114,7 +114,7 @@ defmodule BackcasterWeb.BurnListLive do
       Enum.find(history.current.items, fn x -> x.uuid == uuid end)
     socket =
       socket
-      |> assign(:history, BurnListHistory.edit_item(history, old_item, BurnListItem.make_item(text, old_item)))
+      |> assign(:history, BurnListHistory.edit_item(history, old_item, BurnListItem.update_item(text, old_item)))
 
       Task.start(fn -> SampleData.persist_board(socket.assigns.history, socket.assigns.board) end)
 

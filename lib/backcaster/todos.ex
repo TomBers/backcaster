@@ -10,7 +10,7 @@ defmodule Backcaster.Todos do
 
     %BurnListHistory{
       current: board,
-      past: []
+      past: [board]
     }
   end
 
