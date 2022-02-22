@@ -98,7 +98,7 @@ defmodule BackcasterWeb.BurnListLive do
     {:noreply, socket}
   end
 
-  def handle_event("reorder", %{"to_category_id" => to_category_id, "old_index" => old_index, "new_index" => new_index, "item_uid" => item_uid}, socket) do
+  def handle_event("reorder", %{"to_category_id" => to_category_id, "old_index" => old_index, "new_index" => new_index, "item_uid" => item_uid} = params, socket) do
     socket =
       socket
       |> assign(:history, BurnListHistory.reorder_item(socket.assigns.history, to_category_id, old_index, new_index, item_uid))
@@ -114,7 +114,7 @@ defmodule BackcasterWeb.BurnListLive do
       Enum.find(history.current.items, fn x -> x.uuid == uuid end)
     socket =
       socket
-      |> assign(:history, BurnListHistory.edit_item(history, old_item, BurnListItem.update_item(text, old_item)))
+      |> assign(:history, BurnListHistory.edit_item(history, old_item, BurnListItem.update_text(text, old_item)))
 
       Task.start(fn -> SampleData.persist_board(socket.assigns.history, socket.assigns.board, socket.root_pid) end)
 
