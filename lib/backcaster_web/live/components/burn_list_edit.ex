@@ -34,11 +34,11 @@ defmodule BurnListEdit do
             <div class={get_handle_colour(calc_age(@item.updated_at))} />
 
             <div class="col-span-10 flex flex-col justify-center">
-              <div class="pl-2 break-all">{@item.text}</div>
+              <div class="pl-2 break-word">{@item.text}</div>
               {#if length(Map.get(@item, :labels, [])) > 0}
                 <div class="m-2">
                   {#for label <- Map.get(@item, :labels, [])}
-                    <span class="badge text-xs">{label}</span>
+                    <span class={get_badge_class(label)}>{label}</span>
                   {/for}
                 </div>
               {/if}
@@ -79,6 +79,15 @@ defmodule BurnListEdit do
 
   def calc_age(created_at) do
     Date.diff(Date.utc_today(), created_at)
+  end
+
+  def get_badge_class(label) do
+    case label do
+      "Possible delay" -> "badge badge-sm badge-error"
+      "Simple Task" -> "badge badge-sm badge-info"
+      "Needs thought" -> "badge badge-sm badge-primary"
+      _ -> "badge badge-sm"
+    end
   end
 
   def get_handle_colour(age) when age > 7 do
