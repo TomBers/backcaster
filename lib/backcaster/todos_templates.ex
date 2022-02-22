@@ -12,9 +12,9 @@ defmodule Backcaster.TodosTemplates do
     ]
   end
 
-  def labels do
-    ["Immediate", "Long term", "Requires human response"]
-  end
+#  def labels do
+#    ["Immediate", "Long term", "Requires human response"]
+#  end
 
   def requires_response do
     ["Requires response"]
@@ -106,10 +106,10 @@ defmodule Backcaster.TodosTemplates do
 
   def product_launch do
     [
-      {"Your product has been tested, run through QA, and proven capable of holding up", []},
+      {"Check the product has been tested, run through QA, and proven capable of holding up", []},
       {"You are comfortable conducting demos, answering common questions and objections, and articulating its key value propositions", needs_thought()},
       {"You are ready to assist new users through common questions, issues, and problems", needs_thought()},
-      {"Your support documentation has been developed, reviewed, and made easily accessible", needs_thought()},
+      {"Support documentation has been developed, reviewed, and made easily accessible", needs_thought() ++ needs_feedback()},
       {"Developed your plan for tracking user behavior and key metrics", needs_thought()},
       {"You have stress-tested every customer touch-point", []},
       {"Developed and rehearsed your (5 second) elevator pitch for the product", needs_thought() ++ needs_feedback()},
