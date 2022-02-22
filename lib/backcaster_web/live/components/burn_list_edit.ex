@@ -83,9 +83,10 @@ defmodule BurnListEdit do
 
   def get_badge_class(label) do
     case label do
-      "Possible delay" -> "badge badge-sm badge-error"
+      "Requires response" -> "badge badge-sm badge-error"
       "Simple Task" -> "badge badge-sm badge-info"
       "Needs thought" -> "badge badge-sm badge-primary"
+      "Needs feedback" -> "badge badge-sm badge-secondary"
       _ -> "badge badge-sm"
     end
   end

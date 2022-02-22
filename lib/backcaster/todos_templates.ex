@@ -17,7 +17,7 @@ defmodule Backcaster.TodosTemplates do
   end
 
   def requires_response do
-    ["Possible delay"]
+    ["Requires response"]
   end
 
   def needs_thought do
@@ -26,6 +26,10 @@ defmodule Backcaster.TodosTemplates do
 
   def simple_task do
     ["Simple Task"]
+  end
+
+  def needs_feedback do
+    ["Needs feedback"]
   end
 
   def product_validation do
@@ -55,7 +59,7 @@ defmodule Backcaster.TodosTemplates do
     [
       {"Identify 4 keywords related to your product", needs_thought()},
       {"Identify keywords with the biggest search volumes to learn about audience interest and trends", []},
-      {"Find the phrases and words the target audience uses when researching", []},
+      {"Find the phrases and words the target audience uses when researching", needs_thought()},
       {"Check SimilarWeb / Google for competitors", simple_task()},
       {"Collate findings about 3-6 competitors and identify strengths and weaknesses", needs_thought()},
       {"From research identify 3 key unique points about your product", needs_thought()}
@@ -68,7 +72,7 @@ defmodule Backcaster.TodosTemplates do
       {"Make sure all pages you need are in place", simple_task()},
       {"Prepare for 404s", simple_task()},
       {"Test your site’s navigation and internal links", simple_task()},
-      {"Proofread your content and copy", needs_thought()},
+      {"Proof read your content and copy", needs_thought()},
       {"Ensure your website is accessible", []},
       {"Check your website on mobile devices", simple_task()},
       {"Test for problems with different browsers", simple_task()},
@@ -103,20 +107,20 @@ defmodule Backcaster.TodosTemplates do
   def product_launch do
     [
       {"Your product has been tested, run through QA, and proven capable of holding up", []},
-      {"You are comfortable conducting demos, answering common questions and objections, and articulating its key value propositions", []},
-      {"You are ready to assist new users through common questions, issues, and problems", []},
-      {"Your support documentation has been developed, reviewed, and made easily accessible", []},
-      {"Developed your plan for tracking user behavior and are able to track the key metrics that are most important", []},
-      {"You have stress-tested every prospect and customer touch-point with your new product", []},
-      {"Developed and rehearsed your 5 second elevator pitch for the product", []},
+      {"You are comfortable conducting demos, answering common questions and objections, and articulating its key value propositions", needs_thought()},
+      {"You are ready to assist new users through common questions, issues, and problems", needs_thought()},
+      {"Your support documentation has been developed, reviewed, and made easily accessible", needs_thought()},
+      {"Developed your plan for tracking user behavior and key metrics", needs_thought()},
+      {"You have stress-tested every customer touch-point", []},
+      {"Developed and rehearsed your (5 second) elevator pitch for the product", needs_thought() ++ needs_feedback()},
       {"Have several methods for users to offer direct feedback on the product (that you read)", []},
-      {"Set a goal for the launch - how will you know what success looks like?", []},
-      {"Post about it on Forum(s)", []},
-      {"Post about it on Twitter", []},
-      {"Post about it on LinkedIn", []},
-      {"Post about it on Facebook", []},
-      {"Post about it on Instagram", []},
-      {"Launch on ProductHunt ", []},
+      {"Set a goal for the launch - how will you know what success looks like?", needs_thought()},
+      {"Post about it on Forum(s)", simple_task()},
+      {"Post about it on Twitter", simple_task()},
+      {"Post about it on LinkedIn", simple_task()},
+      {"Post about it on Facebook", simple_task()},
+      {"Post about it on Instagram", simple_task()},
+      {"Launch on ProductHunt ", needs_thought() ++ needs_feedback()},
     ]
 
   end
@@ -124,15 +128,15 @@ defmodule Backcaster.TodosTemplates do
 
   def twitter_checklist do
     [
-      {"Set up a profile - [A unique @handle, profile photo, short bio to show what you’re interested in]", []},
-      {"Add your website to your bio", []},
-      {"Follow at least 10 people in your niche", []},
+      {"Set up a profile - [A unique @handle, profile photo, short bio to show what you’re interested in]", needs_feedback()},
+      {"Add your website to your bio", simple_task()},
+      {"Follow at least 10 people in your niche", needs_thought()},
       {"Follow at least 3 Topics in your niche", []},
-      {"Check out the Explore tab and find what’s trending in your area and around the world", []},
-      {"Like 10 Tweets", []},
+      {"Check out the Explore tab and find what’s trending in your area and around the world", needs_thought()},
+      {"Like 10 Tweets", simple_task()},
       {"Engage More Than You Broadcast - for every 1 promotional tweet, have 5 engaging in conversation, asking / answering questions", []},
       {"Retweet With Comment - always add something to the conversation ", []},
-      {"Use Twitter search to find 10 target customers.  Look for issues and pain points", []},
+      {"Use Twitter search to find 10 target customers.  Look for issues and pain points", needs_thought()},
       {"Find a hashtag that works", []}
     ]
 
