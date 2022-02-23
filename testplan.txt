@@ -1,0 +1,34 @@
+Test plan
+
+Backcast board
+
+Create board
+Rename board
+Can change template vals
+Can move to other templates
+Can change date of milestone completion
+Can see timeline
+Can add a milestone with a title and date
+Can add a milestone from a template and date
+Can add a habit
+Can delete a habit
+Can complete a habit
+
+Burnlist
+It is created with milestone from title
+It is created with TODO's from template
+I can Add a TODO
+I can rename a TODO
+I can delete a TODO
+I can reorder items in same list
+I can move item to other category
+I can Add a column
+I can rename a column
+I can delete a colum
+
+API -
+I can post a TODO to a list
+
+Timeline
+
+I can go through the timeline
