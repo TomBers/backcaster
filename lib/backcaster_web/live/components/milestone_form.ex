@@ -1,7 +1,7 @@
 defmodule MilestoneForm do
   use Surface.LiveComponent
   alias Surface.Components.Form
-  alias Surface.Components.Form.{TextInput, DateInput, Label, Field}
+  alias Surface.Components.Form.{Select, TextInput, DateInput, Label, Field}
 
   prop title, :string
   prop date, :string
@@ -11,6 +11,7 @@ defmodule MilestoneForm do
 
   prop submit, :event, required: true
   prop edit, :event, required: true
+  prop show_template, :boolean, default: false
 
   def render(assigns) do
     ~F"""
@@ -22,6 +23,13 @@ defmodule MilestoneForm do
             <TextInput class="input input-bordered" value={@title} opts={placeholder: "Title"} />
           </div>
         </Field>
+        {#if @show_template}
+          <div class="divider">OR</div>
+          <Field class="field" name="template">
+            <Select selected="Pick a template" field="template" options={make_options()} class="select select-lg" />
+          </Field>
+        {/if}
+
         <Field name="id">
           <TextInput class="hidden" value={@id} />
         </Field>
@@ -36,6 +44,11 @@ defmodule MilestoneForm do
       </Form>
     </div>
     """
+  end
+
+  def make_options do
+    Backcaster.TodosTemplates.milestone_templates
+    |> Enum.flat_map(fn cat -> %{"#{String.capitalize(cat)}" => cat} end)
   end
 
 end

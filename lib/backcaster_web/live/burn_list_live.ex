@@ -16,7 +16,7 @@ defmodule BackcasterWeb.BurnListLive do
       Backcast.subscribe()
     end
 
-    theme = Map.get(params, "theme", "lofi")
+    theme = Map.get(params, "theme", "dark")
     mode = Map.get(params, "mode", "narrow")
     title = Map.get(params, "title", "")
     parent_board = Map.get(params, "board", nil)
@@ -53,7 +53,7 @@ defmodule BackcasterWeb.BurnListLive do
       socket
       |> assign(:history, BurnListHistory.add_category(socket.assigns.history))
 
-      Task.start(fn -> SampleData.persist_board(socket.assigns.history, socket.assigns.board) end)
+      Task.start(fn -> SampleData.persist_board(socket.assigns.history, socket.assigns.board, socket.root_pid) end)
 
     {:noreply, socket}
   end
@@ -63,7 +63,7 @@ defmodule BackcasterWeb.BurnListLive do
       socket
       |> assign(:history, BurnListHistory.remove_category(socket.assigns.history, uuid))
 
-      Task.start(fn -> SampleData.persist_board(socket.assigns.history, socket.assigns.board) end)
+      Task.start(fn -> SampleData.persist_board(socket.assigns.history, socket.assigns.board, socket.root_pid) end)
 
     {:noreply, socket}
   end
@@ -80,7 +80,7 @@ defmodule BackcasterWeb.BurnListLive do
       |> assign(:history, BurnListHistory.add_items(socket.assigns.history, items))
       |> assign(:add_count, socket.assigns.add_count + 1)
 
-      Task.start(fn -> SampleData.persist_board(socket.assigns.history, socket.assigns.board) end)
+      Task.start(fn -> SampleData.persist_board(socket.assigns.history, socket.assigns.board, socket.root_pid) end)
 
     {:noreply, socket}
   end
@@ -93,17 +93,17 @@ defmodule BackcasterWeb.BurnListLive do
       socket
       |> assign(:history, BurnListHistory.delete_item(history, old_item))
 
-      Task.start(fn -> SampleData.persist_board(socket.assigns.history, socket.assigns.board) end)
+      Task.start(fn -> SampleData.persist_board(socket.assigns.history, socket.assigns.board, socket.root_pid) end)
 
     {:noreply, socket}
   end
 
-  def handle_event("reorder", %{"to_category_id" => to_category_id, "old_index" => old_index, "new_index" => new_index, "item_uid" => item_uid}, socket) do
+  def handle_event("reorder", %{"to_category_id" => to_category_id, "old_index" => old_index, "new_index" => new_index, "item_uid" => item_uid} = params, socket) do
     socket =
       socket
       |> assign(:history, BurnListHistory.reorder_item(socket.assigns.history, to_category_id, old_index, new_index, item_uid))
 
-      Task.start(fn -> SampleData.persist_board(socket.assigns.history, socket.assigns.board) end)
+      Task.start(fn -> SampleData.persist_board(socket.assigns.history, socket.assigns.board, socket.root_pid) end)
 
     {:noreply, socket}
   end
@@ -114,9 +114,9 @@ defmodule BackcasterWeb.BurnListLive do
       Enum.find(history.current.items, fn x -> x.uuid == uuid end)
     socket =
       socket
-      |> assign(:history, BurnListHistory.edit_item(history, old_item, BurnListItem.make_item(text, old_item)))
+      |> assign(:history, BurnListHistory.edit_item(history, old_item, BurnListItem.update_text(text, old_item)))
 
-      Task.start(fn -> SampleData.persist_board(socket.assigns.history, socket.assigns.board) end)
+      Task.start(fn -> SampleData.persist_board(socket.assigns.history, socket.assigns.board, socket.root_pid) end)
 
     {:noreply, socket}
   end
@@ -126,15 +126,16 @@ defmodule BackcasterWeb.BurnListLive do
       socket
       |> assign(:history, BurnListHistory.edit_category(socket.assigns.history, content, uuid))
 
-      Task.start(fn -> SampleData.persist_board(socket.assigns.history, socket.assigns.board) end)
+      Task.start(fn -> SampleData.persist_board(socket.assigns.history, socket.assigns.board, socket.root_pid) end)
     {:noreply, socket}
   end
 
   @impl true
-  def handle_info({:new_edit, board_id}, socket) do
-    if board_id == socket.assigns.board.name do
+  def handle_info({:new_edit, {board_id, sending_pid}}, socket) do
+    if board_id == socket.assigns.board.name and sending_pid != self() do
       {is_new?, board} =
         Backcast.get_or_create_board!(board_id, Backcaster.Todos.simple())
+
       history = board.content |> Backcaster.Todos.hydrate(is_new?)
       socket =
         socket

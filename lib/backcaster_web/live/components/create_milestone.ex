@@ -25,7 +25,7 @@ defmodule CreateMilestone do
           </svg>
         </button>
         <div :if={@edit}>
-          <MilestoneForm title="" date={Date.utc_today()} submit={@submit} id={@id} edit="edit" button_text="Add" />
+          <MilestoneForm title="" date={Date.utc_today()} submit={@submit} id={@id} edit="edit" button_text="Add" show_template />
         </div>
       </div>
     </div>

@@ -37,7 +37,7 @@ defmodule BackcasterWeb.BackcastLive do
     socket =
       socket
       |> assign(:backcast, SampleData.update_fields(socket.assigns.backcast, fields))
-      Task.start(fn -> SampleData.persist_board(socket.assigns.backcast, socket.assigns.board) end)
+      Task.start(fn -> SampleData.persist_board(socket.assigns.backcast, socket.assigns.board, socket.root_pid) end)
       
     {:noreply, socket}
   end
@@ -52,13 +52,13 @@ defmodule BackcasterWeb.BackcastLive do
       socket
       |> assign(:backcast, SampleData.update_habits(socket.assigns.backcast, new_habits))
 
-    Task.start(fn -> SampleData.persist_board(socket.assigns.backcast, socket.assigns.board) end)
+    Task.start(fn -> SampleData.persist_board(socket.assigns.backcast, socket.assigns.board, socket.root_pid) end)
     {:noreply, socket}
   end
 
   @impl true
-  def handle_info({:new_edit, board_id}, socket) do
-    if board_id == socket.assigns.board.name do
+  def handle_info({:new_edit, {board_id, sending_pid}}, socket) do
+    if board_id == socket.assigns.board.name and sending_pid != self() do
       board = Backcast.get_board_by_name!(socket.assigns.board.name)
       socket =
         socket
@@ -84,16 +84,30 @@ defmodule BackcasterWeb.BackcastLive do
       socket
       |> assign(:backcast, SampleData.update_milestone(socket.assigns.backcast, id, title, date))
 
-      Task.start(fn -> SampleData.persist_board(socket.assigns.backcast, socket.assigns.board) end)
+      Task.start(fn -> SampleData.persist_board(socket.assigns.backcast, socket.assigns.board, socket.root_pid) end)
     {:noreply, socket}
   end
 
-  def handle_event("create_milestone", %{"vals" => %{"date" => date, "title" => title, "id" => id}}, socket) do
+  #  Use milestone template
+  def handle_event("create_milestone", %{"vals" => %{"date" => date, "title" => "", "id" => id, "template" => template} = params}, socket) do
+
+    {backcast, milestone_id} = SampleData.add_milestone(socket.assigns.backcast, id, template, date)
     socket =
       socket
-      |> assign(:backcast, SampleData.add_milestone(socket.assigns.backcast, id, title, date))
+      |> assign(:backcast, backcast)
 
-      Task.start(fn -> SampleData.persist_board(socket.assigns.backcast, socket.assigns.board) end)
+    Task.start(fn -> SampleData.persist_board(socket.assigns.backcast, socket.assigns.board, socket.root_pid); Backcast.get_or_create_board!(milestone_id, Backcaster.TodosTemplates.gen_template(template)) end)
+    {:noreply, socket}
+  end
+
+#  Use milestone title
+  def handle_event("create_milestone", %{"vals" => %{"date" => date, "title" => title, "id" => id, "template" => template} = params}, socket) do
+    {backcast, _mid} = SampleData.add_milestone(socket.assigns.backcast, id, title, date)
+    socket =
+      socket
+      |> assign(:backcast, backcast)
+
+      Task.start(fn -> SampleData.persist_board(socket.assigns.backcast, socket.assigns.board, socket.root_pid) end)
     {:noreply, socket}
   end
 
@@ -102,7 +116,7 @@ defmodule BackcasterWeb.BackcastLive do
       socket
       |> assign(:backcast, SampleData.delete_image(socket.assigns.backcast, img_id))
 
-    Task.start(fn -> SampleData.persist_board(socket.assigns.backcast, socket.assigns.board) end)
+    Task.start(fn -> SampleData.persist_board(socket.assigns.backcast, socket.assigns.board, socket.root_pid) end)
 
     {:noreply, socket}
   end
@@ -112,7 +126,7 @@ defmodule BackcasterWeb.BackcastLive do
       socket
       |> assign(:backcast, SampleData.set_theme(socket.assigns.backcast, template))
 
-      Task.start(fn -> SampleData.persist_board(socket.assigns.backcast, socket.assigns.board) end)
+      Task.start(fn -> SampleData.persist_board(socket.assigns.backcast, socket.assigns.board, socket.root_pid) end)
 
     {:noreply, socket}
   end
@@ -124,7 +138,7 @@ defmodule BackcasterWeb.BackcastLive do
       socket
     |> assign(:backcast, SampleData.toggle_milestone(socket.assigns.backcast, id))
 
-    Task.start(fn -> SampleData.persist_board(socket.assigns.backcast, socket.assigns.board) end)
+    Task.start(fn -> SampleData.persist_board(socket.assigns.backcast, socket.assigns.board, socket.root_pid) end)
 
     {:noreply, socket}
   end
@@ -149,7 +163,7 @@ defmodule BackcasterWeb.BackcastLive do
       socket
       |> assign(:backcast, SampleData.add_image(socket.assigns.backcast, web_path, file_path))
 
-    SampleData.persist_board(socket.assigns.backcast, socket.assigns.board)
+    SampleData.persist_board(socket.assigns.backcast, socket.assigns.board, socket.root_pid)
 
     {:noreply, assign(socket, :show_image_processing, true)}
   end

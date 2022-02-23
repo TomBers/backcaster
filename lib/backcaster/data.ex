@@ -38,7 +38,8 @@ defmodule Backcaster.SampleData do
   end
 
   def add_milestone(backcast, id, title, date) do
-    put_in(backcast["milestones"][id], %{"date" => date, "title" => title, "active" => true, "completed" => completed_at(), "uuid" => UUID.uuid4() })
+    milestone_id = UUID.uuid4()
+    {put_in(backcast["milestones"][id], %{"date" => date, "title" => title, "active" => true, "completed" => completed_at(), "uuid" => milestone_id }), milestone_id}
   end
 
   def toggle_milestone(backcast, id) do
@@ -73,8 +74,10 @@ defmodule Backcaster.SampleData do
     Backcast.update_board(board, %{name: new_name})
   end
 
-  def persist_board(dat, board) do
+
+  def persist_board(dat, board, pid) do
     Backcast.update_board(board, %{content: dat})
-    Phoenix.PubSub.broadcast(Backcaster.PubSub, "new_edit", {:new_edit, board.name})
+    Phoenix.PubSub.broadcast(Backcaster.PubSub, "new_edit", {:new_edit, {board.name, pid}})
   end
+
 end
