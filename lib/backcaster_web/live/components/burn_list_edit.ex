@@ -35,9 +35,9 @@ defmodule BurnListEdit do
 
             <div class="col-span-10 flex flex-col justify-center">
               <div class="pl-2 break-word">{@item.text}</div>
-              {#if length(Map.get(@item, :labels, [])) > 0}
+              {#if length(get_labels(@item)) > 0}
                 <div class="m-2">
-                  {#for label <- Map.get(@item, :labels, [])}
+                  {#for label <- get_labels(@item)}
                     <span class={get_badge_class(label)}>{label}</span>
                   {/for}
                 </div>
@@ -79,6 +79,10 @@ defmodule BurnListEdit do
 
   def calc_age(created_at) do
     Date.diff(Date.utc_today(), created_at)
+  end
+
+  def get_labels(item) do
+    Map.get(item, :labels, [])
   end
 
   def get_badge_class(label) do
