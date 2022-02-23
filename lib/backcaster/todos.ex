@@ -63,7 +63,7 @@ defmodule Backcaster.Todos do
       text: item["text"],
       uuid: item["uuid"],
       state: String.to_atom(item["state"]),
-      labels: item["labels"],
+      labels: item["labels"] || [],
       category: %BurnListCategory{ text: item["category"]["text"], uuid: item["category"]["uuid"], created_at: Date.from_iso8601!(item["category"]["created_at"])}
     }
   end
