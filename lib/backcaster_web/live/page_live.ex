@@ -7,4 +7,8 @@ defmodule BackcasterWeb.PageLive do
     {:ok, socket |> assign(:theme, theme)}
   end
 
+  def get_theme_class(label, theme) when label == theme, do: "active"
+
+  def get_theme_class(label, theme), do: ""
+
 end
