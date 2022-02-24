@@ -46,7 +46,7 @@
   <div class="mt-16 overflow-y-auto shadow-2xl top-px dropdown-content h-96 w-52 rounded-b-box bg-base-200 text-base-content">
     <ul class="p-4 menu compact">
       {#for {name, label} <- Themes.all()}
-        <li><a href={get_theme_url(name, @work_mode)} tabindex="0" data-set-theme={name} data-act-class="active">{label}</a></li>
+        <li><a href={get_theme_url(name, @work_mode)} tabindex="0" data-set-theme={name} data-act-class="active" class={get_theme_class(name, @theme)}>{label}</a></li>
       {/for}
     </ul>
   </div>
