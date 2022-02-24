@@ -786,10 +786,10 @@ dagre@^0.8.5:
     graphlib "^2.1.8"
     lodash "^4.17.15"
 
-daisyui@^2.0.2:
-  version "2.0.2"
-  resolved "https://registry.yarnpkg.com/daisyui/-/daisyui-2.0.2.tgz#669b1b35d87d8a90b37669d9cf76c860c64a7140"
-  integrity sha512-RGpgotS1VTKsp/3apsAc08EcvZzaMo43yItZ4gO/NtH0fFhkW/aXwfzKvx1Mqu6Zm1EA8eF8EGv/3a0Olio9sw==
+daisyui@^2.2.0:
+  version "2.2.0"
+  resolved "https://registry.yarnpkg.com/daisyui/-/daisyui-2.2.0.tgz#5dc9cd7216dcd2047b9beec24aa08ba9bb380a01"
+  integrity sha512-Af9u7AcQnusbkFa37Asg1NCxLJzYilnZ1LeFSGulRBQkGyBUeum/KkuiwGws6XQ/ZtjZNCr30p7h0iGQ266TQg==
   dependencies:
     color "^4.2"
     tailwindcss "^3.0"

@@ -5,7 +5,7 @@
   "devDependencies": {
     "@tailwindcss/typography": "^0.5.0",
     "autoprefixer": "^10.4.0",
-    "daisyui": "^2.0.2",
+    "daisyui": "^2.2.0",
     "esbuild": "^0.14.21",
     "postcss": "^8.4.5",
     "postcss-cli": "^9.1.0",
