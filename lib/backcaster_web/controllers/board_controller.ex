@@ -8,12 +8,12 @@ defmodule BackcasterWeb.BoardController do
 
   action_fallback BackcasterWeb.FallbackController
 
-  def create_new(conn, _params) do
+  def create_new(conn, %{"theme" => theme}) do
     id = Ecto.UUID.generate()
 
     Backcast.get_or_create_board!(id, SampleData.simple())
 
-    redirect(conn, to: "/backcast/#{id}")
+    redirect(conn, to: "/backcast/#{id}?theme=#{theme}")
   end
 
   def create_new(conn, _params) do

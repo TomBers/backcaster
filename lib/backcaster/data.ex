@@ -7,9 +7,7 @@ defmodule Backcaster.SampleData do
     %{
       "template" => List.first(templates()),
       "cards" => %{},
-      "milestones" => %{
-        "1" => %{"date" => Date.add(Date.utc_today(), 4), "title" => "A milestone", "active" => true, "completed" => Date.utc_today(), "uuid" => UUID.uuid4()}
-      },
+      "milestones" => %{},
       "habits" => Habit.gen_habits(),
       "images" => %{}
     }
