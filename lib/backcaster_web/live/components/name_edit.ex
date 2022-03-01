@@ -17,7 +17,7 @@ defmodule NameEdit do
 
   def render(assigns) do
     ~F"""
-    <div class="emphasis mt-6 mb-6 ml-2">
+    <div class="emphasis mt-6 mb-6 ml-2 pl-10">
       {#if @edit}
         <Form for={:name_change} submit="submit">
           <Field class="field" name="new_board_name">
