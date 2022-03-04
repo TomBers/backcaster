@@ -14,7 +14,7 @@ defmodule CreateMilestone do
     <div class="card card-side compact text-center">
       <div class="card-body">
         <button class="btn btn-outline" id="add-milestone" :on-click="edit">
-      Add Milestone
+          Add Milestone
           <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path
               stroke-linecap="round"

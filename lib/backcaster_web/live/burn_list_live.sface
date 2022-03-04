@@ -15,19 +15,15 @@
       {#for category <- @history.current.categories}
         <div class="card lg:card-side bordered compact">
           <div class="card-body">
-            <h1 class="card-title"><BurnListCategoryEdit
-                category={category}
-                parent_pid={self()}
-                delete_item="remove_category"
-                id={category.uuid}
-                board_id={@board.name}
-              /></h1>
-            <div class="w-full shadow stats">
-              <div class="stat">
-                <div class="stat-value">{length(filter_items(@history.current.items, category))}</div>
-                <div class="stat-desc">({calc_closed(@history.current.items, category)} closed)</div>
-              </div>
-            </div>
+            <BurnListCategoryEdit
+              category={category}
+              parent_pid={self()}
+              delete_item="remove_category"
+              id={category.uuid}
+              board_id={@board.name}
+              num_open={length(filter_items(@history.current.items, category))}
+              num_closed={calc_closed(@history.current.items, category)}
+            />
 
             <ol id={category.uuid} class="list-group" phx-hook="reorder" data-category_uuid={category.uuid}>
               {#for item <- filter_items(@history.current.items, category)}
@@ -43,11 +39,10 @@
       {/for}
       <div class="card card-side">
         <div class="card-body">
-          <h1 class="card-title">Add new list</h1>
           <br>
           <br>
           <div class="justify-center card-actions">
-            <button :on-click="add_category" class="btn"><svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <button :on-click="add_category" class="btn">Add new list<svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path
                   stroke-linecap="round"
                   stroke-linejoin="round"
