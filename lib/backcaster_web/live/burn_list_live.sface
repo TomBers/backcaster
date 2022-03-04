@@ -39,11 +39,10 @@
       {/for}
       <div class="card card-side">
         <div class="card-body">
-          <h1 class="card-title">Add new list</h1>
           <br>
           <br>
           <div class="justify-center card-actions">
-            <button :on-click="add_category" class="btn"><svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <button :on-click="add_category" class="btn">Add new list<svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path
                   stroke-linecap="round"
                   stroke-linejoin="round"

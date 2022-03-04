@@ -27,7 +27,7 @@ defmodule BurnListAdd do
         <Field class="field" name="category">
           <HiddenInput value={@category.uuid} id={@id} />
         </Field>
-        <input class="btn milestone-submit" type="submit" value="Add items">
+        <input class="btn milestone-submit float-right" type="submit" value="Add items">
       </Form>
     </span>
     """

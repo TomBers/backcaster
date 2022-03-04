@@ -29,12 +29,12 @@ defmodule BurnListEdit do
           </Field>
         </Form>
       {#else}
-        <div class="card lg:card-side bordered compact my-2">
+        <div class="card lg:card-side bordered compact mb-2">
           <div class="grid grid-cols-12">
             <div class={get_handle_colour(calc_age(@item.updated_at))} />
 
             <div class="col-span-10 flex flex-col justify-center">
-              <div class="pl-2 break-word">{@item.text}</div>
+              <div class="pl-2 pt-2 pb-2 break-word text-lg">{@item.text}</div>
               {#if length(get_labels(@item)) > 0}
                 <div class="m-2">
                   {#for label <- get_labels(@item)}

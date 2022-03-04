@@ -33,8 +33,8 @@ defmodule BurnListCategoryEdit do
           </Field>
         </Form>
       {#else}
-        <div class="text-lg mb-4 break-all">
-          {@category.text} <sub class="ml-2">{@num_open} open | {@num_closed} closed</sub>
+        <div class="text-3xl break-all">
+          {@category.text}
           <span class="float-right">
             <div data-tip="Edit list name" class="tooltip tooltip-left"><button class="btn btn-ghost btn-xs" :on-click="edit">
                 <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -65,6 +65,7 @@ defmodule BurnListCategoryEdit do
               </button>
             </div>
           </span>
+
           {#if @show_address}
             <p class="small-instructions word-break">This list can be populared by making a POST request to this url:
               <code class="small-instructions-code">{"#{BackcasterWeb.Endpoint.url()}#{BackcasterWeb.Router.Helpers.burn_list_path(BackcasterWeb.Endpoint, :create_item, @board_id, @id)}"}</code>
@@ -72,6 +73,7 @@ defmodule BurnListCategoryEdit do
           {/if}
         </div>
       {/if}
+      <div class="text-sm mb-2">{@num_open} open | {@num_closed} closed</div>
     </span>
     """
   end
