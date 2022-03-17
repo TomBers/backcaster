@@ -21,15 +21,15 @@ defmodule BurnListEdit do
     <span class="emphasis">
       {#if @edit}
         <Form for={:edit_item} submit="submit">
-      <div class="input-group input-group-lg justify-center">
-          <Field class="field" name="content">
-            <TextArea class="input input-lg input-bordered" value={@item.text} id={@id} />
-          </Field>
-          <Field class="field" name="uuid">
-            <HiddenInput value={@id} />
-          </Field>
-          <button class="btn btn-lg" type="submit">Save</button>
-      </div>
+          <div class="input-group input-group-lg justify-center">
+            <Field class="field" name="content">
+              <TextArea class="input input-lg input-bordered" value={@item.text} id={@id} />
+            </Field>
+            <Field class="field" name="uuid">
+              <HiddenInput value={@id} />
+            </Field>
+            <button class="btn btn-lg" type="submit">Save</button>
+          </div>
         </Form>
       {#else}
         <div class="card lg:card-side bordered compact mb-2 burnlist-handle">
