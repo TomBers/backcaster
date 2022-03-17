@@ -36,7 +36,7 @@ defmodule GanttChart do
             axisFormat  %e-%b
             excludes weekends
             section Overall
-            Start :a, #{board.goal_start_date}, 0d
+            Start :a, #{get_start_date(board.goal_start_date)}, 0d
             section Milestones\n'
 
     milestones =
@@ -53,6 +53,14 @@ defmodule GanttChart do
 
   def get_milestone_type(milestone, _is_active) do
     '#{milestone["title"]} :done, #{Date.utc_today()}, #{find_milestone_diff(milestone["date"])}d\n'
+  end
+
+  def get_start_date(nil) do
+    Date.utc_today()
+  end
+
+  def get_start_date(sd) do
+    sd
   end
 
 end
