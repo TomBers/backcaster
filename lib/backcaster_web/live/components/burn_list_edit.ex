@@ -2,7 +2,7 @@ defmodule BurnListEdit do
   use Surface.LiveComponent
 
   alias Surface.Components.Form
-  alias Surface.Components.Form.{TextInput, HiddenInput, Label, Field}
+  alias Surface.Components.Form.{TextArea, HiddenInput, Label, Field}
 
   prop item, :map
   prop parent_pid, :string
@@ -21,15 +21,18 @@ defmodule BurnListEdit do
     <span class="emphasis">
       {#if @edit}
         <Form for={:edit_item} submit="submit">
-          <Field class="field" name="content">
-            <TextInput class="input btn-block text-neutral-content bg-neutral" value={@item.text} id={@id} />
-          </Field>
-          <Field class="field" name="uuid">
-            <HiddenInput value={@id} />
-          </Field>
+          <div class="input-group input-group-lg">
+            <Field class="field" name="content">
+              <TextArea class="textarea input-bordered text-sm" value={@item.text} rows="3" cols="34" id={@id} />
+            </Field>
+            <Field class="field" name="uuid">
+              <HiddenInput value={@id} />
+            </Field>
+            <button class="btn btn-lg" type="submit">Save</button>
+          </div>
         </Form>
       {#else}
-        <div class="card lg:card-side bordered compact mb-2">
+        <div class="card lg:card-side bordered compact mb-2 burnlist-handle">
           <div class="grid grid-cols-12">
             <div class={get_handle_colour(calc_age(@item.updated_at))} />
 
@@ -96,15 +99,15 @@ defmodule BurnListEdit do
   end
 
   def get_handle_colour(age) when age > 7 do
-    "burnlist-handle red"
+    "red"
   end
 
   def get_handle_colour(age) when age > 3 do
-    "burnlist-handle yellow"
+    "yellow"
   end
 
   def get_handle_colour(age) do
-    "burnlist-handle blue"
+    "blue"
   end
 
 end

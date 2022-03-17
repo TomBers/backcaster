@@ -45,27 +45,31 @@
 <div class="container mx-auto">
     <div class="hero min-h-screen bg-base-200 mx-auto">
         <div class="text-center hero-content">
-            <div class="max-w-xl">
+            <div class="">
                 <h1 class="mb-12 text-5xl font-bold mt-14">
                     Backcaster.app
                 </h1>
 
 
-                <p class="text-xl mb-12">
-                    Are your projects making the progress you want? Do you dread looking at your Jira / Trello board?<br><br> Try backcasting; start from your goal and work backwards. <br>Track
-                    progress in one place. <br><br>(No signups, no payment, get started with 1-click)
-                </p>
+                <p class="text-xl">As a maker do you lose enthusiasm for your projects? Dread looking at your Jira / Trello board? Hit a wall not knowing what to do next?</p>
+                <br>
+                <p class="text-xl">Your tools should help you not get in the way.</p>
+                <br>
+                <p class="text-lg mb-6">Backcaster does things a little differently. Start from your goal and work backwards. Providing tools for keeping projects on track, keep your goal at the front of your mind and nudges for when you get stuck! <br><br>(No signups, no payment, get started with 1-click)</p>
+
+
                 <%= form_tag("/create-board", method: :post) %>
                     <input type="hidden" name="theme" value="<%= @theme %>">
-                    <input class="btn btn-primary btn-block milestone-submit mb-6" type="submit" value="Get started"/>
+                    <input class="btn btn-primary btn-lg milestone-submit" type="submit" value="Get started ➡"/>
                 </form>
-                <h1 class="text-2xl font-bold mt-12 mb-6">4 steps to achieving your goal</h1>
-                <ul class="steps steps-vertical">
-                    <li class="step step-primary">Define your goal (with templates help get you started)</li>
-                    <li class="step step-primary">Break down into milestones</li>
-                    <li class="step step-primary">Todos* for each milestone</li>
-                    <li class="step step-primary">Set habits for repetitive tasks</li>
-                </ul>
+
+                <h1 class="text-2xl font-bold mt-12 mb-6">4 steps to your goal</h1>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-center align-center">
+                    <div><p class="text-xl mb-2">1) Define your goal (with templates help get you started)</p><img class="item-center" src="/images/goals.png"></div>
+                    <div><p class="text-xl mb-2">2) Break down into milestones (with guides for common tasks & auto Gantt chart generation)</p><img class="item-center" src="/images/milestones.png"></div>
+                    <div><p class="text-xl mb-2">3) Todos* for each milestone</p><img class="" src="/images/todos.png"></div>
+                    <div><p class="text-xl mb-2">4) Set habits for repetitive tasks</p><img class="" src="/images/habits.png"></div>
+                </div>
                 <br>
                 <sub>* A TODO list with a visual history of each change; highlights when tasks are at risk of not being
                     done.</sub>
@@ -103,7 +107,7 @@
                 <br>
                 <%= form_tag("/create-board", method: :post) %>
                     <input type="hidden" name="theme" value="<%= @theme %>">
-                    <input class="btn btn-primary btn-block milestone-submit mt-4" type="submit" value="Get started"/>
+                    <input class="btn btn-primary btn-lg milestone-submit mt-4" type="submit" value="Get started ➡"/>
                 </form>
             </div>
         </div>

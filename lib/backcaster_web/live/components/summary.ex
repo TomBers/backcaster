@@ -36,8 +36,6 @@ defmodule Summary do
           <Simple backcast={@backcast} parent_pid={self()} id="art" />
         {#match "fivew"}
           <FiveW backcast={@backcast} parent_pid={self()} id="fivew" />
-        {#match "swot"}
-          <Swot backcast={@backcast} parent_pid={self()} id="swot" />
         {#match "freeform"}
           <Freeform backcast={@backcast} parent_pid={self()} id="freeform" />
         {#match "personal"}

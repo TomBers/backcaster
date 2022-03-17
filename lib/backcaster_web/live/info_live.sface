@@ -32,7 +32,7 @@
     </div>
   </div>
 
-  <div class="grid grid-cols-1 md:grid-cols-2">
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
     <div class="card bg-primary mb-6">
       <figure class="info-img mx-auto pt-4">
         <img src="/images/goals.png">
@@ -53,20 +53,20 @@
     </div>
     <div class="card bg-primary">
       <figure class="info-img mx-auto pt-4">
-        <img src="/images/image_upload.png">
+        <img src="/images/todos.png">
       </figure>
       <div class="justify-end card-body">
-        <h2 class="card-title text-primary-content">3. Add images</h2>
-        <p class="text-primary-content">Show your designs / mockups</p>
+        <h2 class="card-title text-primary-content">3. Keep track</h2>
+        <p class="text-primary-content">Set your goal and see your progress</p>
       </div>
     </div>
     <div class="card bg-primary">
       <figure class="info-img mx-auto pt-4">
-        <img src="/images/result.png">
+        <img src="/images/habits.png">
       </figure>
       <div class="justify-end card-body">
-        <h2 class="card-title text-primary-content">4. Keep track</h2>
-        <p class="text-primary-content">Set your goal and see your progress</p>
+        <h2 class="card-title text-primary-content">4. Set habits for repetitive tasks</h2>
+        <p class="text-primary-content">Periodic reminders for tasks with no set end period</p>
       </div>
     </div>
   </div>
