@@ -130,7 +130,9 @@ Hooks.loadBoards = {
 
         function buildHtmlComponent(name, theme) {
             const board = name.slice(COOKIE_PREFIX.length);
-            return `<li class="step step-primary"><a href='/backcast/${encodeURI(board)}?theme=${theme}' class="link">${board}</a></li>`;
+            const encodedBoardName = encodeURIComponent(board.trim());
+            const url = `/backcast/${encodedBoardName}?theme=${theme}`;
+            return `<li class="step step-primary"><a href=${url} class="link">${board}</a></li>`;
         }
     }
 }
