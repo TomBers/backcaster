@@ -2,7 +2,7 @@ defmodule BurnListEdit do
   use Surface.LiveComponent
 
   alias Surface.Components.Form
-  alias Surface.Components.Form.{TextInput, HiddenInput, Label, Field}
+  alias Surface.Components.Form.{TextArea, HiddenInput, Label, Field}
 
   prop item, :map
   prop parent_pid, :string
@@ -21,12 +21,15 @@ defmodule BurnListEdit do
     <span class="emphasis">
       {#if @edit}
         <Form for={:edit_item} submit="submit">
+      <div class="input-group input-group-lg justify-center">
           <Field class="field" name="content">
-            <TextInput class="input btn-block text-neutral-content bg-neutral" value={@item.text} id={@id} />
+            <TextArea class="input input-lg input-bordered" value={@item.text} id={@id} />
           </Field>
           <Field class="field" name="uuid">
             <HiddenInput value={@id} />
           </Field>
+          <button class="btn btn-lg" type="submit">Save</button>
+      </div>
         </Form>
       {#else}
         <div class="card lg:card-side bordered compact mb-2">
