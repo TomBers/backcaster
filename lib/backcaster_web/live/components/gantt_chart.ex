@@ -9,8 +9,8 @@ defmodule GanttChart do
     <input type="checkbox" id="my-modal-2" class="modal-toggle">
     <div class="modal">
       <div
-        class="modal-box"
-        style="min-width: 100%; background-color: lightgrey"
+        class="modal-box bg-neutral-content"
+        style="min-width: 100%"
         phx-hook="renderTimeLine"
         id="timeLineModal"
       >
