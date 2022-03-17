@@ -32,7 +32,7 @@ defmodule BurnListEdit do
       </div>
         </Form>
       {#else}
-        <div class="card lg:card-side bordered compact mb-2">
+        <div class="card lg:card-side bordered compact mb-2 burnlist-handle">
           <div class="grid grid-cols-12">
             <div class={get_handle_colour(calc_age(@item.updated_at))} />
 
@@ -99,15 +99,15 @@ defmodule BurnListEdit do
   end
 
   def get_handle_colour(age) when age > 7 do
-    "burnlist-handle red"
+    "red"
   end
 
   def get_handle_colour(age) when age > 3 do
-    "burnlist-handle yellow"
+    "yellow"
   end
 
   def get_handle_colour(age) do
-    "burnlist-handle blue"
+    "blue"
   end
 
 end
