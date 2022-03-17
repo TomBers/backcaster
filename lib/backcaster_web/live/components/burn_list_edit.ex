@@ -21,9 +21,9 @@ defmodule BurnListEdit do
     <span class="emphasis">
       {#if @edit}
         <Form for={:edit_item} submit="submit">
-          <div class="input-group input-group-lg justify-center">
+          <div class="input-group input-group-lg">
             <Field class="field" name="content">
-              <TextArea class="input input-lg input-bordered" value={@item.text} id={@id} />
+              <TextArea class="textarea input-bordered text-sm" value={@item.text} rows="3" cols="34" id={@id} />
             </Field>
             <Field class="field" name="uuid">
               <HiddenInput value={@id} />
