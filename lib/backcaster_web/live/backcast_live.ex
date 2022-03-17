@@ -262,12 +262,8 @@ defmodule BackcasterWeb.BackcastLive do
 
   def get_theme_class(label, theme), do: ""
 
-  def get_goal_date(goal_date, nil) do
+  def get_goal_date(goal_date) do
     Date.diff(goal_date, Date.utc_today())
-  end
-
-  def get_goal_date(goal_date, goal_start_date) do
-    Date.diff(goal_date, goal_start_date)
   end
 
 end

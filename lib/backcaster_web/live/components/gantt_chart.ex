@@ -36,7 +36,7 @@ defmodule GanttChart do
             axisFormat  %e-%b
             excludes weekends
             section Overall
-            GOAL :a, #{Date.utc_today()}, #{Date.diff(board.goal_date, Date.utc_today())}d
+            Start :a, #{board.goal_start_date}, 0d
             section Milestones\n'
 
     milestones =
