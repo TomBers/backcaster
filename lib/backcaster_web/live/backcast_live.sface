@@ -137,8 +137,8 @@
       <div class="w-full shadow stats">
         <div class="stat place-items-center place-content-center">
           <div class="stat-title">Time remaining</div>
-          <div class="stat-value">{Date.diff(@board.goal_date, Date.utc_today())} days</div>
-          <div class="stat-desc">Due date : <DateEdit date={@board.goal_date} parent_pid={self()} id="date_edit_id" /></div>
+          <div class="stat-value">{get_goal_date(@board.goal_date)} days</div>
+          <div class="stat-desc"><DateEdit date={@board.goal_date} date_start={@board.goal_start_date} parent_pid={self()} id="date_edit_id" /></div>
         </div>
         <div class="stat place-items-center place-content-center">
           <div class="stat-title">Active milestones</div>

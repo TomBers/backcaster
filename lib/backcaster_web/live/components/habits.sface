@@ -1,14 +1,14 @@
 {#if @is_open}
-  <div class="">
-    <ul class="menu py-4 shadow-lg bg-base-100 rounded-box self-end">
+  <div class="artboard artboard-demo">
+    <ul class="menu shadow-lg bg-base-100 rounded-box self-end border">
       <div class="menu-title">
-        <span>Todo
-          <button class="btn btn-ghost btn-square btn-xs float-right" :on-click="open_habits">
+        <span>
+          <button class="btn btn-ghost btn-square btn-xs float-right m-2" :on-click="open_habits">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" class="inline-block w-4 h-4 stroke-current">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
             </svg>
           </button>
-          <button class="btn btn-ghost btn-square btn-xs float-right" :on-click="delete_habits">
+          <button class="btn btn-ghost btn-square btn-xs float-right m-2" :on-click="delete_habits">
             {#if @show_delete}
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -71,19 +71,18 @@
         </li>
       {/for}
       {#if @show_form}
-        <div class="divider">Add Habit</div>
-        <div class="form-control justify-center pl-2 pr-2">
+        <div class="divider">New&nbsp;Habit</div>
+        <div class="form-control justify-center pl-2 pr-2 mt-4">
           <Form for={:vals} submit="submit_new_habit" opts={autocomplete: "off"}>
             <Field class="field" name="title">
-              <TextInput class="input input-bordered" value="" opts={placeholder: "Name"} />
+              <TextInput class="input input-bordered btn-block" value="" opts={placeholder: "Name"} />
             </Field>
             <Field class="field" name="freq">
               <Select
                 form={:vals}
-                class="input"
                 field="freq"
                 options={Daily: :daily, Weekly: :weekly, Monthly: :monthly}
-                class="select select-bordered select-primary w-full max-w-xs mt-2 mb-2"
+                class="select select-bordered select-primary w-full my-4"
               />
             </Field>
             <input class="btn btn-secondary btn-block" type="submit" value="Submit">

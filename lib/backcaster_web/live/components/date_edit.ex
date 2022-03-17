@@ -5,6 +5,7 @@ defmodule DateEdit do
   alias Surface.Components.Form.{DateInput, Label, Field}
 
   prop date, :string
+  prop date_start, :string
   prop parent_pid, :string
 
   data edit, :boolean, default: false
@@ -19,13 +20,19 @@ defmodule DateEdit do
     <span>
       {#if @edit}
         <Form for={:due_date} submit="submit">
-          <Field class="field" name="new_date">
-            <DateInput class="input btn-block" value={@date} id="date_edit" />
+          <Field class="field" name="new_start_date">
+            <Label class="label">Start Date</Label>
+            <DateInput class="input btn-block input-bordered" value={@date_start} id="date_start_edit" />
           </Field>
+          <Field class="field" name="new_date">
+            <Label class="label">End Date</Label>
+            <DateInput class="input btn-block input-bordered" value={@date} id="date_edit" />
+          </Field>
+      <br>
           <input class="btn btn-secondary btn-block milestone-submit" type="submit" value="update">
         </Form>
       {#else}
-        {@date} <button class="btn btn-ghost btn-xs" :on-click="edit">
+        Due date : {@date} <button class="btn btn-ghost btn-xs" :on-click="edit">
           <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path
               stroke-linecap="round"

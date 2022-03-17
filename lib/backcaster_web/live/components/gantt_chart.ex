@@ -9,8 +9,8 @@ defmodule GanttChart do
     <input type="checkbox" id="my-modal-2" class="modal-toggle">
     <div class="modal">
       <div
-        class="modal-box"
-        style="min-width: 100%; background-color: lightgrey"
+        class="modal-box bg-neutral-content"
+        style="min-width: 100%"
         phx-hook="renderTimeLine"
         id="timeLineModal"
       >
@@ -36,7 +36,7 @@ defmodule GanttChart do
             axisFormat  %e-%b
             excludes weekends
             section Overall
-            GOAL :a, #{Date.utc_today()}, #{Date.diff(board.goal_date, Date.utc_today())}d
+            Start :a, #{get_start_date(board.goal_start_date)}, 0d
             section Milestones\n'
 
     milestones =
@@ -53,6 +53,14 @@ defmodule GanttChart do
 
   def get_milestone_type(milestone, _is_active) do
     '#{milestone["title"]} :done, #{Date.utc_today()}, #{find_milestone_diff(milestone["date"])}d\n'
+  end
+
+  def get_start_date(nil) do
+    Date.utc_today()
+  end
+
+  def get_start_date(sd) do
+    sd
   end
 
 end
