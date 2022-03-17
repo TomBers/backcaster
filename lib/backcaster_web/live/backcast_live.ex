@@ -42,12 +42,13 @@ defmodule BackcasterWeb.BackcastLive do
   def handle_info(
         %{
           "due_date" => %{
-            "new_date" => new_date
+            "new_date" => new_date,
+            "new_start_date" => new_start_date
           }
         },
         socket
       ) do
-    {:ok, board} = Backcast.update_board(socket.assigns.board, %{goal_date: new_date})
+    {:ok, board} = Backcast.update_board(socket.assigns.board, %{goal_date: new_date, goal_start_date: new_start_date })
     {:noreply, assign(socket, :board, board)}
   end
 
@@ -260,5 +261,13 @@ defmodule BackcasterWeb.BackcastLive do
   def get_theme_class(label, theme) when label == theme, do: "active"
 
   def get_theme_class(label, theme), do: ""
+
+  def get_goal_date(goal_date, nil) do
+    Date.diff(goal_date, Date.utc_today())
+  end
+
+  def get_goal_date(goal_date, goal_start_date) do
+    Date.diff(goal_date, goal_start_date)
+  end
 
 end
