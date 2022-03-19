@@ -56,25 +56,22 @@
                 <br>
                 <p class="text-xl">Your tools should help you not get in the way.</p>
                 <br>
-                <p class="text-lg mb-6">Backcaster does things a little differently. Start from your goal and work backwards. Providing tools for keeping projects on track, keep your goal at the front of your mind and nudges for when you get stuck! <br><br>(No signups, no payment, get started with 1-click)</p>
+                <p class="text-lg">Backcaster does things a little differently. Start from your goal and work backwards. Providing tools for keeping projects on track, keep your goal at the front of your mind and nudges for when you get stuck! <br><br>(No signups, no payment, get started with 1-click)</p>
 
 
                 <%= form_tag("/create-board", method: :post) %>
                     <input type="hidden" name="theme" value="<%= @theme %>">
-                    <input class="btn btn-primary btn-lg milestone-submit" type="submit" value="Get started ➡"/>
+                    <input class="btn btn-primary btn-lg milestone-submit my-10" type="submit" value="Get started ➡"/>
                 </form>
 
-                <h1 class="text-2xl font-bold mt-12 mb-6">4 steps to your goal</h1>
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-center align-center">
-                    <div><p class="text-xl mb-2">1) Define your goal (with templates help get you started)</p><img class="item-center" src="/images/goals.png"></div>
-                    <div><p class="text-xl mb-2">2) Break down into milestones (with guides for common tasks & auto Gantt chart generation)</p><img class="item-center" src="/images/milestones.png"></div>
-                    <div><p class="text-xl mb-2">3) Todos* for each milestone</p><img class="" src="/images/todos.png"></div>
-                    <div><p class="text-xl mb-2">4) Set habits for repetitive tasks</p><img class="" src="/images/habits.png"></div>
+                <h1 class="text-2xl font-bold mb-10">4 steps to make progress</h1>
+                <div class="grid grid-cols-1 max-w-xl mx-auto">
+                    <div><p class="text-2xl">1) Define your ultimate goal</p><p class="mb-6">(with templates to help get you started)</p><img class="mx-auto" src="/images/goals.png"></div>
+                    <div><p class="text-2xl mt-6">2) Break down into milestones</p><p class="mb-6">(with guides for common tasks & auto Gantt chart generation)</p><img class="mx-auto" src="/images/milestones.png"></div>
+                    <div><p class="text-2xl mt-6">3) Todos for each milestone</p><p class="mb-6">(with visual history of each change; highlights when tasks are at risk of not being
+                        done)</p><img class="mx-auto" src="/images/todos.png"></div>
+                    <div><p class="text-2xl mt-6 mb-6">4) Set habits for repetitive tasks</p><img class="mx-auto" src="/images/habits.png"></div>
                 </div>
-                <br>
-                <sub>* A TODO list with a visual history of each change; highlights when tasks are at risk of not being
-                    done.</sub>
-                <br>
                 <br>
                 <br>
                 <p><a href="/backcast/2f5304da-da7e-4afa-9a7b-fe59a1fa628f?theme=<%= @theme %>" target="_blank" class="btn btn-primary">example 🔎  </a></p>
@@ -90,7 +87,7 @@
                     </div>
                 </div>
 
-                <h1 class="text-2xl font-bold mt-24 mb-12">Benefits</h1>
+                <h1 class="text-2xl font-bold mt-12 mb-12">Benefits</h1>
                 <ul class="w-full steps steps-vertical">
                     <li class="step step-primary">Eliminate noise, a simple interface surfacing only what is important.
                     </li>

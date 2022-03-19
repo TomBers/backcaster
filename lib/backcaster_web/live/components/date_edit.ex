@@ -28,7 +28,7 @@ defmodule DateEdit do
             <Label class="label">End Date</Label>
             <DateInput class="input btn-block input-bordered" value={@date} id="date_edit" />
           </Field>
-      <br>
+          <br>
           <input class="btn btn-secondary btn-block milestone-submit" type="submit" value="update">
         </Form>
       {#else}
