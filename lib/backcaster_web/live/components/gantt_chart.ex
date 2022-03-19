@@ -8,12 +8,7 @@ defmodule GanttChart do
     <label for="my-modal-2" class="btn btn-primary modal-button" id="timelineBtn">timeline</label>
     <input type="checkbox" id="my-modal-2" class="modal-toggle">
     <div class="modal">
-      <div
-        class="modal-box bg-neutral-content"
-        style="min-width: 100%"
-        phx-hook="renderTimeLine"
-        id="timeLineModal"
-      >
+      <div class="modal-box bg-neutral-content" style="min-width: 100%" phx-hook="renderTimeLine" id="timeLineModal">
         <div class="mermaid" id="timeline" data-board={timeline_str(@board)} />
         <div class="modal-action">
           <label for="my-modal-2" class="btn">Close</label>
