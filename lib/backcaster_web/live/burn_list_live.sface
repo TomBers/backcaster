@@ -11,6 +11,19 @@
       </LivePatch>
     {/if}
 
+    <div data-tip="History" class="tooltip tooltip-bottom">
+    <Form for={:current} change="set_current">
+      <RangeInput
+        min="1"
+        max={length(@history.past)}
+        step="1"
+        value={length(@history.past)}
+        id="set_current"
+        class="range range-accent mb-4"
+      />
+    </Form>
+      </div>
+
     <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4">
       {#for category <- @history.current.categories}
         <div class="card lg:card-side bordered compact">
@@ -55,21 +68,13 @@
       </div>
     </div>
   </div>
-  <div>Key</div>
-  <div class="badge badge-lg burnlist-key blue">Actively working on</div>
-  <div class="badge badge-lg burnlist-key yellow">Not been worked on in a while</div>
-  <div class="badge badge-lg burnlist-key red">Is this really going to be done?</div>
-  <div class="my-4">History slider</div>
 
-  <Form for={:current} change="set_current">
-    <RangeInput
-      min="1"
-      max={length(@history.past)}
-      step="1"
-      value={length(@history.past)}
-      id="set_current"
-      class="range range-lg range-primary"
-    />
-  </Form>
-  <br>
+  <div class="grid grid-cols-2 gap-1 max-w-md mb-4">
+    <div class="blue mr-4" />
+    <div>Actively working on</div>
+    <div class="yellow mr-4" />
+    <div>Not been worked on in a while</div>
+    <div class="red mr-4" />
+    <div>Is this really going to be done?</div>
+  </div>
 </div>
