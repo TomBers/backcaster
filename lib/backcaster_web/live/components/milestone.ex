@@ -54,8 +54,8 @@ defmodule Milestone do
         </div>
       </div>
       <LivePatch to={"/burnlist/#{@uuid}?theme=#{@theme}&title=#{@title}&board=#{@board_name}&mode=#{@mode}"}>
-        <button class="btn btn-block btn-secondary btn-sm make-square">
-          Todo
+        <button class="btn btn-secondary btn-sm make-square float-right">
+          BurnList
           <svg
             xmlns="http://www.w3.org/2000/svg"
             fill="none"
