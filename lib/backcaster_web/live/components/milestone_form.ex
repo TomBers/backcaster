@@ -36,7 +36,7 @@ defmodule MilestoneForm do
         <br>
         <Field class="field" name="date">
           <div class="control">
-            <DateInput class="input" value={@date} />
+            <DateInput class="bg-neutral-content text-neutral p-2" value={@date} />
             <br><br>
             <input class="btn btn-secondary btn-block milestone-submit" type="submit" value={@button_text} :on-click={@edit}>
           </div>

@@ -22,11 +22,11 @@ defmodule DateEdit do
         <Form for={:due_date} submit="submit">
           <Field class="field" name="new_start_date">
             <Label class="label">Start Date</Label>
-            <DateInput class="bg-neutral text-neutral-content p-4" value={@date_start} id="date_start_edit" />
+            <DateInput class="bg-neutral-content text-neutral p-2" value={@date_start} id="date_start_edit" />
           </Field>
           <Field class="field" name="new_date">
             <Label class="label">End Date</Label>
-            <DateInput class="bg-neutral text-neutral-content p-4" value={@date} id="date_edit" />
+            <DateInput class="bg-neutral-content text-neutral p-2" value={@date} id="date_edit" />
           </Field>
           <br>
           <input class="btn btn-secondary btn-block milestone-submit" type="submit" value="update">
