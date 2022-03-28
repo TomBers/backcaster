@@ -1,30 +1,35 @@
 defmodule Generate do
 
   def run do
-    mods = [:hello]
+    mods = [%{
+      module_name: :hello,
+      states: ["A", "B", "C"],
+      transitions: %{
+        "A" => ["B", "C"],
+      },
+      state_qns: %{
+        "A" => %{
+          "Yes" => "B",
+          "No" => "C"
+        }
+      }
+    }]
 
     mods
-    |> Enum.map(fn nme -> Module.create(nme, mod_contents(), Macro.Env.location(__ENV__)) end)
+    |> Enum.map(fn params -> Module.create(params.module_name, mod_contents(params), Macro.Env.location(__ENV__)) end)
 
 
     :hello.get_state_options(%{state: "A"})
 
   end
 
-  def mod_contents do
+  def mod_contents(%{states: states, transitions: transitions, state_qns: state_qns}) do
     quote do
       use Machinery,
-          states: ["A", "B", "C"],
-          transitions: %{
-            "A" => ["B", "C"],
-          }
+          states: unquote(states),
+          transitions: %{}
 
-      @state_qns %{
-        "A" => %{
-          "Yes" => "B",
-          "No" => "C"
-        }
-      }
+      @state_qns %{}
 
       def get_state_options(%{state: state}) do
         @state_qns |> Map.get(state) |> Map.keys() |> Enum.reverse
