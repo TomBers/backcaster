@@ -5,7 +5,7 @@
   },
   "state_qns": {
     "A": {
-      "YYes": "B",
+      "Yes": "B",
       "No": "C"
     }
   }

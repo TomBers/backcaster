@@ -1,22 +1,39 @@
 defmodule Generate do
 
-#  iex(1)> so = %{state: "A"}
+  #  iex(1)> so = %{state: "A"}
   #%{state: "A"}
   #iex(2)> Machinery.transition_to(so, SalesFlow, "B")
   #"Log transition"
   #{:ok, %{state: "B"}}
 
-# Machinery.transition_to(so, SalesFlow, SalesFlow.get_next_state("Y"))
+  # Machinery.transition_to(so, SalesFlow, SalesFlow.get_next_state("Y"))
 
 
-  def run(module_name) do
+  def build_all do
+#    :bob
+#    String.to_existing_atom("bob")
+
+    {:ok, files} = File.ls("lib/backcaster/flows/files/")
+    files
+    |> Enum.map(fn file -> String.trim_trailing(file, ".json") |> String.to_atom() |> build_mod() end)
+  end
+
+  def build_mod(module_name) do
     {:ok, json} = get_json("lib/backcaster/flows/files/#{Atom.to_string(module_name)}.json")
     params = gen_params(json)
-
     Module.create(module_name, mod_contents(params), Macro.Env.location(__ENV__))
+  end
 
+  def run_module(module_name_str) do
+    module_name = String.to_existing_atom(module_name_str)
+    initial_state = %{state: "A"}
+    IO.inspect(module_name.get_state_options(initial_state))
+    IO.inspect(module_name.first_state)
+    IO.inspect(module_name.last_state)
 
-    module_name.get_state_options(%{state: "A"})
+    initial_state
+    |> module_name.get_next_state_from_selected_options("No")
+    |> module_name.transition()
 
   end
 
@@ -28,12 +45,37 @@ defmodule Generate do
 
       @state_qns unquote(state_qns)
 
+      @first_state unquote(List.first(states))
+      @last_state unquote(List.last(states))
+
       def get_state_options(%{state: state}) do
         @state_qns
         |> Map.get(state)
         |> Map.keys()
         |> Enum.reverse
       end
+
+      def first_state do
+        @first_state
+      end
+
+      def last_state do
+        @last_state
+      end
+
+      def get_next_state_from_selected_options(%{state: state} = state_struct, selected_option) do
+        next_state =
+          @state_qns
+          |> Map.get(state)
+          |> Map.get(selected_option)
+
+        {state_struct, next_state}
+      end
+
+      def transition({current_state, new_state_label}) do
+        Machinery.transition_to(current_state, __MODULE__, new_state_label)
+      end
+
     end
   end
 
@@ -49,35 +91,5 @@ defmodule Generate do
     with {:ok, body} <- File.read(filename),
          {:ok, json} <- Jason.decode(body), do: {:ok, json}
   end
-
-
-
-  #  def run do
-  #    mods = [:hello, :world]
-  #
-  #    contents =
-  #      quote do
-  #        def world, do: true
-  #      end
-  #
-  #    mods
-  #    |> Enum.map(fn nme -> Module.create(nme, contents, Macro.Env.location(__ENV__)) end)
-  #
-  #
-  #    IO.inspect(:hello.world())
-  #    IO.inspect(:world.world())
-  #  end
-
-
-  #  def run do
-  #    contents =
-  #      quote do
-  #        def world, do: true
-  #      end
-  #
-  #    Module.create(:hello, contents, Macro.Env.location(__ENV__))
-  #
-  #    :hello.world()
-  #  end
 
 end
