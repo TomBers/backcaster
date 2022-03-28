@@ -1,0 +1,12 @@
+{
+  "states": ["A", "B", "C"],
+  "transitions": {
+    "A":  ["B", "C"]
+  },
+  "state_qns": {
+    "A": {
+      "YYes": "B",
+      "No": "C"
+    }
+  }
+}

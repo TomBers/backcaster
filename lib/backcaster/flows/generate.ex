@@ -1,41 +1,22 @@
 defmodule Generate do
 
-  def run do
-    mods = [
-      gen_params(
-        :hello,
-        ["A", "B", "C"],
-        %{
-          "A" => ["B", "C"],
-        },
-        %{
-          "A" => %{
-            "Yes" => "B",
-            "No" => "C"
-          }
-        }
-      ),
-      gen_params(
-        :world,
-        ["A", "B", "C"],
-        %{
-          "A" => ["B", "C"],
-        },
-        %{
-          "A" => %{
-            "Bob" => "B",
-            "No" => "C"
-          }
-        }
-      )
-    ]
+#  iex(1)> so = %{state: "A"}
+  #%{state: "A"}
+  #iex(2)> Machinery.transition_to(so, SalesFlow, "B")
+  #"Log transition"
+  #{:ok, %{state: "B"}}
 
-    mods
-    |> Enum.map(fn params -> Module.create(params.module_name, mod_contents(params), Macro.Env.location(__ENV__)) end)
+# Machinery.transition_to(so, SalesFlow, SalesFlow.get_next_state("Y"))
 
 
-    :hello.get_state_options(%{state: "A"}) |> IO.inspect
-    :world.get_state_options(%{state: "A"}) |> IO.inspect
+  def run(module_name) do
+    {:ok, json} = get_json("lib/backcaster/flows/files/#{Atom.to_string(module_name)}.json")
+    params = gen_params(json)
+
+    Module.create(module_name, mod_contents(params), Macro.Env.location(__ENV__))
+
+
+    module_name.get_state_options(%{state: "A"})
 
   end
 
@@ -56,13 +37,17 @@ defmodule Generate do
     end
   end
 
-  def gen_params(name, states, transitions, state_qns) do
+  def gen_params(%{"states" => states, "transitions" => transitions, "state_qns" => state_qns}) do
     %{
-      module_name: name,
       states: states,
       transitions: Macro.escape(transitions),
       state_qns: Macro.escape(state_qns)
     }
+  end
+
+  def get_json(filename) do
+    with {:ok, body} <- File.read(filename),
+         {:ok, json} <- Jason.decode(body), do: {:ok, json}
   end
 
 
