@@ -47,4 +47,5 @@ defmodule BackcasterWeb.Endpoint do
   plug Plug.Head
   plug Plug.Session, @session_options
   plug BackcasterWeb.Router
+
 end
