@@ -10,12 +10,17 @@ defmodule Generate do
 
 
   def build_all do
-#    :bob
-#    String.to_existing_atom("bob")
+    #    :bob
+    #    String.to_existing_atom("bob")
 
     {:ok, files} = File.ls("lib/backcaster/flows/files/")
     files
-    |> Enum.map(fn file -> String.trim_trailing(file, ".json") |> String.to_atom() |> build_mod() end)
+    |> Enum.map(
+         fn file ->
+           String.trim_trailing(file, ".json")
+           |> String.to_atom()
+           |> build_mod() end
+       )
   end
 
   def build_mod(module_name) do
@@ -27,12 +32,12 @@ defmodule Generate do
   def run_module(module_name_str) do
     module_name = String.to_existing_atom(module_name_str)
     initial_state = %{state: "A"}
-    IO.inspect(module_name.get_state_options(initial_state))
+    IO.inspect(module_name.get_state_option(initial_state))
     IO.inspect(module_name.first_state)
     IO.inspect(module_name.last_state)
 
     initial_state
-    |> module_name.get_next_state_from_selected_options("No")
+    |> module_name.get_next_state_from_selected_option("No")
     |> module_name.transition()
 
   end
@@ -63,7 +68,7 @@ defmodule Generate do
         @last_state
       end
 
-      def get_next_state_from_selected_options(%{state: state} = state_struct, selected_option) do
+      def get_next_state_from_selected_option(%{state: state} = state_struct, selected_option) do
         next_state =
           @state_qns
           |> Map.get(state)
@@ -79,7 +84,12 @@ defmodule Generate do
     end
   end
 
-  def gen_params(%{"states" => states, "transitions" => transitions, "state_qns" => state_qns}) do
+  def gen_params(%{"states" => states, "state_qns" => state_qns}) do
+
+    transitions = state_qns
+                  |> Enum.flat_map(fn {key, ste} -> %{key => Map.values(ste)} end)
+                  |> Map.new()
+
     %{
       states: states,
       transitions: Macro.escape(transitions),

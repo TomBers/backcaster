@@ -1,11 +1,5 @@
 {
   "states": ["A", "B", "C", "D", "E"],
-  "transitions": {
-    "A":  ["B", "C"],
-    "B": ["D"],
-    "D": ["C"],
-    "C": ["E"]
-  },
   "state_qns": {
     "A": {
       "B": "B",
