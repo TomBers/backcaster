@@ -1,14 +1,17 @@
 {
-  "states": ["A", "B", "C", "D"],
-  "transitions": {
-    "A":  ["B"],
-    "B":  ["C"],
-    "C": ["D"]
-  },
+  "states": ["Start", "B", "C", "End"],
   "state_qns": {
-    "A": {
-      "Yes": "B",
-      "No": "B"
+    "Start": {
+      "B": "B",
+      "C": "C"
+    },
+    "B": {
+      "End": "End",
+      "Start": "Start"
+    },
+    "C": {
+      "End": "End",
+      "Start": "Start"
     }
   }
 }

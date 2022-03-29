@@ -7,7 +7,7 @@ defmodule BackcasterWeb.FsmLive do
     Generate.build_all()
 
     fsm = String.to_existing_atom(fsm_name_str)
-    initial_state = %{state: "A"}
+    initial_state = %{state: fsm.first_state()}
 
     socket =
       socket
