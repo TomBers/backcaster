@@ -14,6 +14,7 @@ defmodule BackcasterWeb.FsmLive do
       |> assign(:fsm_state, initial_state)
       |> assign(:state_options, fsm.get_state_options(initial_state))
       |> assign(:fsm, fsm)
+      |> assign(:finished, false)
     {:ok, socket}
   end
 
@@ -30,6 +31,7 @@ defmodule BackcasterWeb.FsmLive do
       socket
       |> assign(:fsm_state, new_state)
       |> assign(:state_options, fsm.get_state_options(new_state))
+      |> assign(:finished, new_state.state == fsm.last_state)
 
     {:noreply, socket}
   end

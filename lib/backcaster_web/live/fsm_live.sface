@@ -1,7 +1,7 @@
 <div class="container mx-auto">
     <h1 class="text-2xl m-4">FSM</h1>
 
-    <p class="text-xl m-4">State : {@fsm_state.state}</p>
+    <p class="text-xl m-4">State : {@fsm_state.state} Finished: {@finished}</p>
     {#for opt <- @state_options}
     <button :on-click="update_state" phx-value-opt={opt} class="btn btn-primary btn-lg ml-4 mb-4">{opt}</button>
     {/for}
