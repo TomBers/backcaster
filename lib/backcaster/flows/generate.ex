@@ -50,7 +50,7 @@ defmodule Generate do
 
       def get_state_options(%{state: state}) do
         @state_qns
-        |> Map.get(state)
+        |> Map.get(state, %{})
         |> Map.keys()
         |> Enum.reverse
       end
