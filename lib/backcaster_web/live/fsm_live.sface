@@ -9,8 +9,9 @@
     {#for opt <- @state_options}
     <button :on-click="update_state" phx-value-opt={opt} class="btn btn-primary btn-lg ml-4 mb-4">{opt}</button>
     {/for}
-</div>
+
 
 <div class="mermaid">
     {@flow_chart}
+</div>
 </div>

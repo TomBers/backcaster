@@ -103,12 +103,12 @@ defmodule Generate do
       |> Enum.with_index()
       |> Enum.map(fn({{key, vals}, indx}) -> {indx, Map.put(vals, :label, key)} end)
       |> Map.new()
-      |> IO.inspect
 
     gen_states =
       state_qns
       |> Enum.flat_map(fn {key, ste} -> Enum.map(ste.values, fn({qn, end_state}) -> end_state end) ++ [ste.label] end)
-      |> Enum.reduce([], fn(ele, acc) -> add_state?(ele, acc) end)
+      |> MapSet.new()
+      |> MapSet.to_list()
 
     transitions =
       state_qns
@@ -132,14 +132,6 @@ defmodule Generate do
 
   defp get_transition_map(vals) do
     Enum.map(vals, fn({qn, end_state}) -> end_state end)
-  end
-
-  defp add_state?(ele, acc) do
-    if Enum.any?(acc, fn x -> x == ele end) do
-      acc
-      else
-      acc ++ [ele]
-    end
   end
 
   def get_json(filename) do
