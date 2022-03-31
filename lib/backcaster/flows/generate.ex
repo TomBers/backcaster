@@ -87,12 +87,13 @@ defmodule Generate do
       end
 
       def flow_chart do
-        "flowchart TD
-    A[Start] --> B{Is it?}
-    B -->|Yes| C[OK]
-    C --> D[Rethink]
-    D --> B
-    B ---->|No| E[End]"
+        @state_qns
+        |> Enum.reduce("flowchart TD\n", fn({key, paths}, acc) -> acc <> gen_paths(key, paths) end)
+      end
+
+      defp gen_paths(key, paths) do
+        paths
+        |> Enum.reduce("", fn({qn, to_state}, acc) -> acc <> "#{key}[#{key}] --> |#{qn}| #{to_state}[#{to_state}]\n" end)
       end
 
     end
