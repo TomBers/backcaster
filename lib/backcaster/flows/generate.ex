@@ -19,7 +19,8 @@ defmodule Generate do
          fn file ->
            String.trim_trailing(file, ".json")
            |> String.to_atom()
-           |> build_mod() end
+           |> build_mod()
+         end
        )
   end
 
@@ -81,17 +82,27 @@ defmodule Generate do
         Machinery.transition_to(current_state, __MODULE__, new_state_label)
       end
 
+      def is_finished?(state) do
+        state.state == last_state()
+      end
+
     end
   end
 
-  def gen_params(%{"states" => states, "state_qns" => state_qns}) do
+  def gen_params(state_qns) do
+    gen_states =
+      state_qns
+      |> Enum.flat_map(fn {key, ste} -> [key] ++ Map.keys(ste) end)
+      |> MapSet.new()
+      |> MapSet.to_list()
 
-    transitions = state_qns
-                  |> Enum.flat_map(fn {key, ste} -> %{key => Map.values(ste)} end)
-                  |> Map.new()
+    transitions =
+      state_qns
+      |> Enum.flat_map(fn {key, ste} -> %{key => Map.values(ste)} end)
+      |> Map.new()
 
     %{
-      states: states,
+      states: gen_states,
       transitions: Macro.escape(transitions),
       state_qns: Macro.escape(state_qns)
     }

@@ -31,7 +31,7 @@ defmodule BackcasterWeb.FsmLive do
       socket
       |> assign(:fsm_state, new_state)
       |> assign(:state_options, fsm.get_state_options(new_state))
-      |> assign(:finished, new_state.state == fsm.last_state)
+      |> assign(:finished, fsm.is_finished?(new_state))
 
     {:noreply, socket}
   end

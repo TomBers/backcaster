@@ -1,6 +1,4 @@
 {
-  "states": ["Start", "B", "C", "End"],
-  "state_qns": {
     "Start": {
       "B": "B",
       "C": "C"
@@ -13,5 +11,4 @@
       "End": "End",
       "Start": "Start"
     }
-  }
 }
