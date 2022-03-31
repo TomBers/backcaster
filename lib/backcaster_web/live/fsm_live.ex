@@ -15,6 +15,7 @@ defmodule BackcasterWeb.FsmLive do
       |> assign(:state_options, fsm.get_state_options(initial_state))
       |> assign(:fsm, fsm)
       |> assign(:finished, false)
+      |> assign(:flow_chart, fsm.flow_chart())
     {:ok, socket}
   end
 

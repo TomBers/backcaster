@@ -86,6 +86,15 @@ defmodule Generate do
         state.state == last_state()
       end
 
+      def flow_chart do
+        "flowchart TD
+    A[Start] --> B{Is it?}
+    B -->|Yes| C[OK]
+    C --> D[Rethink]
+    D --> B
+    B ---->|No| E[End]"
+      end
+
     end
   end
 
