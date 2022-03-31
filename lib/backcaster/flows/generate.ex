@@ -1,19 +1,7 @@
 defmodule Generate do
-
-  #  iex(1)> so = %{state: "A"}
-  #%{state: "A"}
-  #iex(2)> Machinery.transition_to(so, SalesFlow, "B")
-  #"Log transition"
-  #{:ok, %{state: "B"}}
-
-  # Machinery.transition_to(so, SalesFlow, SalesFlow.get_next_state("Y"))
-
-
   def build_all do
-    #    :bob
-    #    String.to_existing_atom("bob")
-
     {:ok, files} = File.ls("lib/backcaster/flows/files/")
+
     files
     |> Enum.map(
          fn file ->
@@ -43,7 +31,7 @@ defmodule Generate do
 
   end
 
-  def mod_contents(%{states: states, transitions: transitions, state_qns: state_qns}) do
+  def mod_contents(%{states: states, transitions: transitions, state_qns: state_qns, start_state: start_state, end_state: end_state}) do
     quote do
       use Machinery,
           states: unquote(states),
@@ -51,8 +39,8 @@ defmodule Generate do
 
       @state_qns unquote(state_qns)
 
-      @first_state unquote(List.first(states))
-      @last_state unquote(List.last(states))
+      @first_state unquote(start_state)
+      @last_state unquote(end_state)
 
       def get_state_options(%{state: state}) do
         @state_qns
@@ -62,7 +50,7 @@ defmodule Generate do
       end
 
       def first_state do
-        @first_state
+        %{state: @first_state}
       end
 
       def last_state do
@@ -102,9 +90,10 @@ defmodule Generate do
   def gen_params(state_qns) do
     gen_states =
       state_qns
-      |> Enum.flat_map(fn {key, ste} -> [key] ++ Map.keys(ste) end)
-      |> MapSet.new()
-      |> MapSet.to_list()
+      |> Enum.flat_map(fn {key, ste} -> Map.keys(ste) ++ [key] end)
+      |> Enum.reverse
+      |> Enum.reduce([], fn(ele, acc) -> add_state?(ele, acc) end)
+      |> IO.inspect
 
     transitions =
       state_qns
@@ -114,8 +103,18 @@ defmodule Generate do
     %{
       states: gen_states,
       transitions: Macro.escape(transitions),
-      state_qns: Macro.escape(state_qns)
+      state_qns: Macro.escape(state_qns),
+      start_state: List.first(gen_states),
+      end_state: List.last(gen_states)
     }
+  end
+
+  defp add_state?(ele, acc) do
+    if Enum.any?(acc, fn x -> x == ele end) do
+      acc
+      else
+      acc ++ [ele]
+    end
   end
 
   def get_json(filename) do
