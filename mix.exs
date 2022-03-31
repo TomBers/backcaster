@@ -48,7 +48,7 @@ defmodule Backcaster.MixProject do
       {:telemetry_metrics, "~> 0.6"},
       {:telemetry_poller, "~> 0.5"},
       {:gettext, "~> 0.11"},
-      {:jason, "~> 1.0"},
+      {:jason, "~> 1.3"},
       {:plug_cowboy, "~> 2.0"},
       {:surface, "~> 0.6.1"},
       {:surface_formatter, "~> 0.7.2"},

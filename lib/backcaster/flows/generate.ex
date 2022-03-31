@@ -43,10 +43,19 @@ defmodule Generate do
       @last_state unquote(end_state)
 
       def get_state_options(%{state: state}) do
-        @state_qns
-        |> Map.get(state, %{})
-        |> Map.keys()
-        |> Enum.reverse
+        state = @state_qns
+        |> Enum.find(%{}, fn {k, val} -> val.label == state end)
+
+        return_state_options(state)
+      end
+
+      defp return_state_options(%{}) do
+        []
+      end
+
+      defp return_state_options({_key, options}) do
+        options.values
+        |> Enum.map(fn {qn, end_state} -> end_state end)
       end
 
       def first_state do
@@ -60,8 +69,9 @@ defmodule Generate do
       def get_next_state_from_selected_option(%{state: state} = state_struct, selected_option) do
         next_state =
           @state_qns
-          |> Map.get(state)
-          |> Map.get(selected_option)
+          |> Enum.find(%{}, fn {k, val} -> val.label == state end)
+          |> Kernel.then(fn {key, vals} -> Enum.find(vals.values, {nil, nil}, fn {key, val} -> key == selected_option end) end)
+          |> Kernel.then(fn {_k, val} -> val end)
 
         {state_struct, next_state}
       end
@@ -76,7 +86,7 @@ defmodule Generate do
 
       def flow_chart do
         @state_qns
-        |> Enum.reduce("flowchart TD\n", fn({key, paths}, acc) -> acc <> gen_paths(key, paths) end)
+        |> Enum.reduce("flowchart TD\n", fn({_key, paths}, acc) -> acc <> gen_paths(paths.label, paths.values) end)
       end
 
       defp gen_paths(key, paths) do
@@ -87,26 +97,41 @@ defmodule Generate do
     end
   end
 
-  def gen_params(state_qns) do
+  def gen_params(json) do
+    state_qns =
+      json
+      |> Enum.with_index()
+      |> Enum.map(fn({{key, vals}, indx}) -> {indx, Map.put(vals, :label, key)} end)
+      |> Map.new()
+      |> IO.inspect
+
     gen_states =
       state_qns
-      |> Enum.flat_map(fn {key, ste} -> Map.keys(ste) ++ [key] end)
-      |> Enum.reverse
+      |> Enum.flat_map(fn {key, ste} -> Enum.map(ste.values, fn({qn, end_state}) -> end_state end) ++ [ste.label] end)
       |> Enum.reduce([], fn(ele, acc) -> add_state?(ele, acc) end)
-      |> IO.inspect
 
     transitions =
       state_qns
-      |> Enum.flat_map(fn {key, ste} -> %{key => Map.values(ste)} end)
+      |> Enum.flat_map(fn {key, ste} -> %{ste.label => get_transition_map(ste.values)} end)
       |> Map.new()
+
+      end_index = length(Map.keys(state_qns)) - 1
+      end_state =
+        Map.get(state_qns, end_index)
+        |> Kernel.then(fn ste -> List.last(ste.values) end)
+        |> Kernel.then(fn {qn, last_state} -> last_state end)
 
     %{
       states: gen_states,
       transitions: Macro.escape(transitions),
       state_qns: Macro.escape(state_qns),
-      start_state: List.first(gen_states),
-      end_state: List.last(gen_states)
+      start_state: Map.get(state_qns, 0).label,
+      end_state: end_state
     }
+  end
+
+  defp get_transition_map(vals) do
+    Enum.map(vals, fn({qn, end_state}) -> end_state end)
   end
 
   defp add_state?(ele, acc) do
@@ -119,7 +144,7 @@ defmodule Generate do
 
   def get_json(filename) do
     with {:ok, body} <- File.read(filename),
-         {:ok, json} <- Jason.decode(body), do: {:ok, json}
+         {:ok, json} <- Jason.decode(body, %{objects: :ordered_objects}), do: {:ok, json}
   end
 
 end
