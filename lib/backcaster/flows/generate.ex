@@ -23,7 +23,7 @@ defmodule Generate do
     initial_state = %{state: "A"}
     IO.inspect(module_name.get_state_option(initial_state))
     IO.inspect(module_name.first_state)
-    IO.inspect(module_name.last_state)
+    IO.inspect(module_name.last_states)
 
     initial_state
     |> module_name.get_next_state_from_selected_option("No")
@@ -31,7 +31,7 @@ defmodule Generate do
 
   end
 
-  def mod_contents(%{states: states, transitions: transitions, state_qns: state_qns, start_state: start_state, end_state: end_state}) do
+  def mod_contents(%{states: states, transitions: transitions, state_qns: state_qns, start_state: start_state, end_states: end_states}) do
     quote do
       use Machinery,
           states: unquote(states),
@@ -40,7 +40,7 @@ defmodule Generate do
       @state_qns unquote(state_qns)
 
       @first_state unquote(start_state)
-      @last_state unquote(end_state)
+      @last_states unquote(end_states)
 
       def get_state_options(%{state: state}) do
         state = @state_qns
@@ -55,15 +55,15 @@ defmodule Generate do
 
       defp return_state_options({_key, options}) do
         options.values
-        |> Enum.map(fn {qn, end_state} -> end_state end)
+        |> Enum.map(fn {qn, end_state} -> qn end)
       end
 
       def first_state do
         %{state: @first_state}
       end
 
-      def last_state do
-        @last_state
+      def last_states do
+        @last_states
       end
 
       def get_next_state_from_selected_option(%{state: state} = state_struct, selected_option) do
@@ -81,7 +81,7 @@ defmodule Generate do
       end
 
       def is_finished?(state) do
-        state.state == last_state()
+        Enum.any?(last_states(), fn st -> st == state.state end)
       end
 
       def flow_chart do
@@ -104,29 +104,31 @@ defmodule Generate do
       |> Enum.map(fn({{key, vals}, indx}) -> {indx, Map.put(vals, :label, key)} end)
       |> Map.new()
 
+
     gen_states =
       state_qns
       |> Enum.flat_map(fn {key, ste} -> Enum.map(ste.values, fn({qn, end_state}) -> end_state end) ++ [ste.label] end)
       |> MapSet.new()
       |> MapSet.to_list()
+      |> IO.inspect
 
     transitions =
       state_qns
       |> Enum.flat_map(fn {key, ste} -> %{ste.label => get_transition_map(ste.values)} end)
       |> Map.new()
+      |> IO.inspect
 
-      end_index = length(Map.keys(state_qns)) - 1
-      end_state =
-        Map.get(state_qns, end_index)
-        |> Kernel.then(fn ste -> List.last(ste.values) end)
-        |> Kernel.then(fn {qn, last_state} -> last_state end)
+    end_states =
+      gen_states
+      |> Enum.filter(fn state -> Enum.count(Map.keys(transitions), fn key -> key == state end) == 0 end)
+      |> IO.inspect
 
     %{
       states: gen_states,
       transitions: Macro.escape(transitions),
       state_qns: Macro.escape(state_qns),
       start_state: Map.get(state_qns, 0).label,
-      end_state: end_state
+      end_states: end_states
     }
   end
 

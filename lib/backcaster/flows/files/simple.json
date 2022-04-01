@@ -1,7 +1,8 @@
 {
     "Start": {
       "B": "B",
-      "C": "C"
+      "C": "C",
+      "Want to go to End2": "End2"
     },
     "B": {
       "End": "End",
