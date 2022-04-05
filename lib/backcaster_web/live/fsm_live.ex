@@ -16,11 +16,14 @@ defmodule BackcasterWeb.FsmLive do
       |> assign(:fsm, fsm)
       |> assign(:finished, false)
       |> assign(:flow_chart, fsm.flow_chart())
+      |> assign(:hist, [])
     {:ok, socket}
   end
 
   def handle_event("update_state", %{"opt" => opt}, socket) do
     fsm = socket.assigns.fsm
+
+    hist = %{opt: opt, state: socket.assigns.fsm_state.state}
 
     #    TODO handle errors in state transition
     {:ok, new_state} =
@@ -33,6 +36,7 @@ defmodule BackcasterWeb.FsmLive do
       |> assign(:fsm_state, new_state)
       |> assign(:state_options, fsm.get_state_options(new_state))
       |> assign(:finished, fsm.is_finished?(new_state))
+      |> assign(:hist, socket.assigns.hist ++ [hist])
 
     {:noreply, socket}
   end

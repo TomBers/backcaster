@@ -57,5 +57,4 @@ defmodule GanttChart do
   def get_start_date(sd) do
     sd
   end
-
 end

@@ -106,6 +106,27 @@ Hooks.renderTimeLine = {
     }
 }
 
+function drawFlowChart() {
+   var element = document.querySelector("#flowchart");
+   var insertSvg = function(svgCode, bindFunctions){
+        element.innerHTML = svgCode;
+    };
+    var graphDefinition = element.dataset.chart;
+    var graph = mermaid.render('graphDiv', graphDefinition, insertSvg);
+}
+
+Hooks.renderFsm = {
+    mounted(){
+        mermaid.initialize({ startOnLoad: false });
+        drawFlowChart();
+        window.addEventListener('resize', () => { drawFlowChart(); });
+    },
+    updated() {
+        drawFlowChart();
+    }
+}
+
+
 Hooks.storeBoard = {
     mounted(){
         try {

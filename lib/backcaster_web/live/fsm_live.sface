@@ -1,9 +1,8 @@
-<script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
-<script>
-   mermaid.initialize({ startOnLoad: true });
-</script>
 <div class="container mx-auto">
     <h1 class="text-2xl m-4">FSM</h1>
+    {#for step <- @hist}
+        State: {step.state}, Selected option: {step.opt}
+    {/for}
 
     <p class="text-xl m-4">State : {@fsm_state.state} Finished: {@finished}</p>
     {#for opt <- @state_options}
@@ -11,7 +10,6 @@
     {/for}
 
 
-<div class="mermaid">
-    {@flow_chart}
-</div>
+    <div class="mermaid" id="flowchart" data-chart={@flow_chart} phx-hook="renderFsm" />
+
 </div>
