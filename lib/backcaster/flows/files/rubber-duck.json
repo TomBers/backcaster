@@ -1,0 +1,9 @@
+{
+    "Are you stuck?": {
+      "Yes": "Can you talk to anyone?",
+      "No": "End"
+    },
+    "Can you talk to anyone?": {
+      "No": "End"
+    }
+}

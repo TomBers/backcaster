@@ -89,9 +89,13 @@ defmodule Generate do
         |> Enum.reduce("flowchart TD\n", fn({_key, paths}, acc) -> acc <> gen_paths(paths.label, paths.values) end)
       end
 
-      defp gen_paths(key, paths) do
+      defp gen_paths(label, paths) do
         paths
-        |> Enum.reduce("", fn({qn, to_state}, acc) -> acc <> "#{key}[#{key}] --> |#{qn}| #{to_state}[#{to_state}]\n" end)
+        |> Enum.reduce("", fn({qn, to_state}, acc) -> acc <> "#{replace_space(label)}[\"#{label}\"] --> |#{qn}| #{replace_space(to_state)}[\"#{to_state}\"]\n" end)
+      end
+
+      defp replace_space(label) do
+        String.replace(label, " ", "_")
       end
 
     end

@@ -1,11 +1,14 @@
-<div class="container mx-auto">
+<div class="container mx-auto text-center">
     {#for step <- @hist}
         <h1 class="text-2xl m-4">{step.state}</h1>
         <button class="btn btn-disabled btn-lg ml-4 mb-4">{step.opt}</button>
     {/for}
 
     {#if @finished}
-        <div class="mermaid" id="flowchart" data-chart={@flow_chart} phx-hook="renderFsm" />
+        <div class="mermaid border max-w-md float-right" id="flowchart" data-chart={@flow_chart} phx-hook="renderFsm" />
+        <br>
+        <br>
+        <a href={"#{@fsm}"} class="btn btn-secondary">Reset</a>
     {#else}
     <p class="text-2xl m-4">{@fsm_state.state}</p>
         {#for opt <- @state_options}

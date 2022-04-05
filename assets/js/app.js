@@ -112,6 +112,7 @@ function drawFlowChart() {
         element.innerHTML = svgCode;
     };
     var graphDefinition = element.dataset.chart;
+    console.log(graphDefinition);
     var graph = mermaid.render('graphDiv', graphDefinition, insertSvg);
 }
 
