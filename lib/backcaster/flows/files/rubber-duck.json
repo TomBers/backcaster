@@ -4,6 +4,19 @@
       "No": "End"
     },
     "Can you talk to anyone?": {
-      "No": "End"
+      "Yes": "Pick up the phone",
+      "No": "Have you tried Googling?"
+    },
+    "Have you tried Googling?": {
+      "Yes": "Are there books you can read?",
+      "No": "Go to Google?"
+    },
+    "Are there books you can read?": {
+      "Yes": "Go Read them",
+      "No": "Have you gone for a short walk?"
+    },
+    "Have you gone for a short walk?": {
+      "Yes": "End",
+      "No": "Go for a short walk!"
     }
 }
