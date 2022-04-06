@@ -13,9 +13,10 @@ defmodule Generate do
   end
 
   def build_mod(module_name) do
-    {:ok, json} = get_json("lib/backcaster/flows/files/#{Atom.to_string(module_name)}.json")
-    params = gen_params(json)
-    Module.create(module_name, mod_contents(params), Macro.Env.location(__ENV__))
+    case get_json("lib/backcaster/flows/files/#{Atom.to_string(module_name)}.json") do
+      {:ok, json} -> Module.create(module_name, mod_contents(gen_params(json)), Macro.Env.location(__ENV__))
+      _ -> nil
+    end
   end
 
   def run_module(module_name_str) do
@@ -139,7 +140,12 @@ defmodule Generate do
 
   def get_json(filename) do
     with {:ok, body} <- File.read(filename),
-         {:ok, json} <- Jason.decode(body, %{objects: :ordered_objects}), do: {:ok, json}
+         {:ok, json} <- Jason.decode(body, %{objects: :ordered_objects})
+      do
+        {:ok, json}
+      else
+        err -> nil
+      end
   end
 
 end

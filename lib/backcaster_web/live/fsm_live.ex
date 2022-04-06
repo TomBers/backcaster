@@ -2,7 +2,8 @@ defmodule BackcasterWeb.FsmLive do
   use Surface.LiveView
 
   @impl true
-  def mount(%{"fsm" => fsm_name_str}, _session, socket) do
+  def mount(%{"fsm" => fsm_name_str} = params, _session, socket) do
+    theme = Map.get(params, "theme", "dark")
 
     fsm = String.to_existing_atom(fsm_name_str)
     initial_state = fsm.first_state()
@@ -15,7 +16,12 @@ defmodule BackcasterWeb.FsmLive do
       |> assign(:finished, false)
       |> assign(:flow_chart, fsm.flow_chart())
       |> assign(:hist, [])
+      |> assign(:theme, theme)
     {:ok, socket}
+  end
+
+  def get_theme_url(theme) do
+    "?theme=#{theme}"
   end
 
   def handle_event("update_state", %{"opt" => opt}, socket) do

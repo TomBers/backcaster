@@ -12,17 +12,17 @@
     {/if}
 
     <div data-tip="History" class="tooltip tooltip-bottom">
-    <Form for={:current} change="set_current">
-      <RangeInput
-        min="1"
-        max={length(@history.past)}
-        step="1"
-        value={length(@history.past)}
-        id="set_current"
-        class="range range-accent mb-4"
-      />
-    </Form>
-      </div>
+      <Form for={:current} change="set_current">
+        <RangeInput
+          min="1"
+          max={length(@history.past)}
+          step="1"
+          value={length(@history.past)}
+          id="set_current"
+          class="range range-accent mb-4"
+        />
+      </Form>
+    </div>
 
     <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4">
       {#for category <- @history.current.categories}

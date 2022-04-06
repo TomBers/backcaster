@@ -1,20 +1,17 @@
 <div class="container mx-auto text-center">
-    {#for step <- @hist}
-        <h1 class="text-2xl m-4">{step.state}</h1>
-        <button class="btn btn-disabled btn-lg ml-4 mb-4">{step.opt}</button>
-    {/for}
+  {#for step <- @hist}
+    <h1 class="text-2xl m-4">{step.state}</h1>
+    <button class="btn btn-disabled btn-lg ml-4 mb-4">{step.opt}</button>
+  {/for}
 
-    {#if @finished}
-        <p class="text-2xl m-4">{@fsm_state.state}</p>
-        <a href={"#{@fsm}"} class="btn btn-secondary">Reset</a>
-        <div class="m-8">
-            <div class="mermaid max-w-lg float-none mx-auto" id="flowchart" data-chart={@flow_chart} phx-hook="renderFsm" />
-        </div>
-
-    {#else}
+  {#if @finished}
     <p class="text-2xl m-4">{@fsm_state.state}</p>
-        {#for opt <- @state_options}
-            <button :on-click="update_state" phx-value-opt={opt} class="btn btn-primary btn-lg ml-4 mb-4">{opt}</button>
-        {/for}
-    {/if}
+    <a href={"#{@fsm}?theme=#{@theme}"} class="btn btn-secondary">Reset</a>
+    <div class="mermaid mt-8 mb-8 mx-auto" id="flowchart" data-chart={@flow_chart} phx-hook="renderFsm" />
+  {#else}
+    <p class="text-2xl m-4">{@fsm_state.state}</p>
+    {#for opt <- @state_options}
+      <button :on-click="update_state" phx-value-opt={opt} class="btn btn-primary btn-lg ml-4 mb-4">{opt}</button>
+    {/for}
+  {/if}
 </div>
