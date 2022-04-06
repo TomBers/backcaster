@@ -6,10 +6,11 @@
 
     {#if @finished}
         <p class="text-2xl m-4">{@fsm_state.state}</p>
-        <div class="mermaid border max-w-lg float-right" id="flowchart" data-chart={@flow_chart} phx-hook="renderFsm" />
-        <br>
-        <br>
         <a href={"#{@fsm}"} class="btn btn-secondary">Reset</a>
+        <div class="m-8">
+            <div class="mermaid max-w-lg float-none mx-auto" id="flowchart" data-chart={@flow_chart} phx-hook="renderFsm" />
+        </div>
+
     {#else}
     <p class="text-2xl m-4">{@fsm_state.state}</p>
         {#for opt <- @state_options}

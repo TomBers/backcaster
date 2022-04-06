@@ -20,6 +20,9 @@ defmodule Backcaster.Application do
       # {Backcaster.Worker, arg}
     ]
 
+#    Build FSM modules
+    Generate.build_all()
+
     # See https://hexdocs.pm/elixir/Supervisor.html
     # for other strategies and supported options
     opts = [strategy: :one_for_one, name: Backcaster.Supervisor]

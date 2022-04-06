@@ -114,18 +114,15 @@ defmodule Generate do
       |> Enum.flat_map(fn {key, ste} -> Enum.map(ste.values, fn({qn, end_state}) -> end_state end) ++ [ste.label] end)
       |> MapSet.new()
       |> MapSet.to_list()
-      |> IO.inspect
 
     transitions =
       state_qns
       |> Enum.flat_map(fn {key, ste} -> %{ste.label => get_transition_map(ste.values)} end)
       |> Map.new()
-      |> IO.inspect
 
     end_states =
       gen_states
       |> Enum.filter(fn state -> Enum.count(Map.keys(transitions), fn key -> key == state end) == 0 end)
-      |> IO.inspect
 
     %{
       states: gen_states,
