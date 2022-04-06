@@ -36,6 +36,8 @@ defmodule BackcasterWeb.Router do
     live "/burnlist/:id", BurnListLive, :index
     live "/info", InfoLive, :index
 
+    live "/fsm/:fsm", FsmLive, :index
+
     post "/create-board", BoardController, :create_new
   end
 

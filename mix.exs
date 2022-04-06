@@ -48,7 +48,7 @@ defmodule Backcaster.MixProject do
       {:telemetry_metrics, "~> 0.6"},
       {:telemetry_poller, "~> 0.5"},
       {:gettext, "~> 0.11"},
-      {:jason, "~> 1.0"},
+      {:jason, "~> 1.3"},
       {:plug_cowboy, "~> 2.0"},
       {:surface, "~> 0.6.1"},
       {:surface_formatter, "~> 0.7.2"},
@@ -58,7 +58,8 @@ defmodule Backcaster.MixProject do
       {:ex_aws_s3, "~> 2.0"},
       {:hackney, "~> 1.9"},
       {:sweet_xml, "~> 0.6"},
-      {:uuid, "~> 1.1"}
+      {:uuid, "~> 1.1"},
+      {:machinery, "~> 1.0.0"}
     ]
   end
 
