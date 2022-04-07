@@ -1,12 +1,6 @@
-defmodule Generate do
+defmodule GenFlows do
   def build_all do
-
-    IO.inspect("CWD:")
-    IO.inspect(File.cwd())
-    {:ok, path} = File.cwd()
-
-    file_path = "#{path}/lib/backcaster/flows/files/"
-
+    file_path = get_file_path()
     {:ok, files} = File.ls(file_path)
 
     files
@@ -24,19 +18,6 @@ defmodule Generate do
       _ -> nil
     end
   end
-
-#  def run_module(module_name_str) do
-#    module_name = String.to_existing_atom(module_name_str)
-#    initial_state = %{state: "A"}
-#    IO.inspect(module_name.get_state_option(initial_state))
-#    IO.inspect(module_name.first_state)
-#    IO.inspect(module_name.last_states)
-#
-#    initial_state
-#    |> module_name.get_next_state_from_selected_option("No")
-#    |> module_name.transition()
-#
-#  end
 
   def mod_contents(%{states: states, transitions: transitions, state_qns: state_qns, start_state: start_state, end_states: end_states}) do
     quote do
@@ -142,6 +123,21 @@ defmodule Generate do
 
   defp get_transition_map(vals) do
     Enum.map(vals, fn({qn, end_state}) -> end_state end)
+  end
+
+  def get_file_path do
+#    Debug info
+    IO.inspect("CWD:")
+    IO.inspect(File.cwd())
+    IO.inspect(Mix.env())
+
+
+    {:ok, path} = File.cwd()
+
+    case Mix.env() do
+      :prod -> "#{path}/_build/prod/rel/backcaster/lib/backcaster-0.1.0/priv/static/flows/"
+      _ -> "#{path}/priv/static/flows/"
+    end
   end
 
   def get_json(filename) do
