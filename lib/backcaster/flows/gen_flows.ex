@@ -1,6 +1,8 @@
 defmodule GenFlows do
   def build_all do
     file_path = get_file_path()
+    IO.inspect(file_path)
+
     {:ok, files} = File.ls(file_path)
 
     files
@@ -129,13 +131,13 @@ defmodule GenFlows do
 #    Debug info
     IO.inspect("CWD:")
     IO.inspect(File.cwd())
-    IO.inspect(Mix.env())
+    IO.inspect(System.get_env("MIX_ENV"))
 
 
     {:ok, path} = File.cwd()
 
-    case Mix.env() do
-      :prod -> "#{path}/_build/prod/rel/backcaster/lib/backcaster-0.1.0/priv/static/flows/"
+    case System.get_env("MIX_ENV") do
+      "prod" -> "#{path}/lib/backcaster-0.1.0/priv/static/flows/"
       _ -> "#{path}/priv/static/flows/"
     end
   end
