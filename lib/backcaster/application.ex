@@ -21,7 +21,7 @@ defmodule Backcaster.Application do
     ]
 
 #    Build FSM modules
-    Generate.build_all()
+    GenFlows.build_all()
 
     # See https://hexdocs.pm/elixir/Supervisor.html
     # for other strategies and supported options

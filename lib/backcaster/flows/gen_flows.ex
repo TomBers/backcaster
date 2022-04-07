@@ -1,35 +1,24 @@
-defmodule Generate do
+defmodule GenFlows do
   def build_all do
-    {:ok, files} = File.ls("lib/backcaster/flows/files/")
+    file_path = get_file_path()
+    IO.inspect(file_path)
+
+    {:ok, files} = File.ls(file_path)
 
     files
     |> Enum.map(
          fn file ->
            String.trim_trailing(file, ".json")
-           |> String.to_atom()
-           |> build_mod()
+           |> build_mod(file_path)
          end
        )
   end
 
-  def build_mod(module_name) do
-    case get_json("lib/backcaster/flows/files/#{Atom.to_string(module_name)}.json") do
-      {:ok, json} -> Module.create(module_name, mod_contents(gen_params(json)), Macro.Env.location(__ENV__))
+  def build_mod(module_name, file_path) do
+    case get_json("#{file_path}#{module_name}.json") do
+      {:ok, json} -> Module.create(String.to_atom(module_name), mod_contents(gen_params(json)), Macro.Env.location(__ENV__))
       _ -> nil
     end
-  end
-
-  def run_module(module_name_str) do
-    module_name = String.to_existing_atom(module_name_str)
-    initial_state = %{state: "A"}
-    IO.inspect(module_name.get_state_option(initial_state))
-    IO.inspect(module_name.first_state)
-    IO.inspect(module_name.last_states)
-
-    initial_state
-    |> module_name.get_next_state_from_selected_option("No")
-    |> module_name.transition()
-
   end
 
   def mod_contents(%{states: states, transitions: transitions, state_qns: state_qns, start_state: start_state, end_states: end_states}) do
@@ -136,6 +125,21 @@ defmodule Generate do
 
   defp get_transition_map(vals) do
     Enum.map(vals, fn({qn, end_state}) -> end_state end)
+  end
+
+  def get_file_path do
+#    Debug info
+    IO.inspect("CWD:")
+    IO.inspect(File.cwd())
+    IO.inspect(System.get_env("MIX_ENV"))
+
+
+    {:ok, path} = File.cwd()
+
+    case System.get_env("MIX_ENV") do
+      "prod" -> "#{path}/lib/backcaster-0.1.0/priv/static/flows/"
+      _ -> "#{path}/priv/static/flows/"
+    end
   end
 
   def get_json(filename) do
