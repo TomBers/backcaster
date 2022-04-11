@@ -95,12 +95,12 @@ defmodule Backcaster.TodosTemplates do
       {"Make URLs as short as possible", []},
       {"Check your Keyword is in your title tag and headings", simple_task()},
       {"Optimize Images - add alt-text, and ensure fast loading", []},
-      {"Make sure to link out to 5-8 authority sites in your article.", needs_thought()},
+      {"Link out to 4-8 (at a minimum) authoritative sites in your text.", needs_thought()},
       {"Check for Crawl Errors", simple_task()},
       {"Make Sure Your Site is Mobile-Friendly", simple_task()},
       {"Check / Fix Broken Links", simple_task()},
       {"Check Your Site’s Loading Speed", simple_task()},
-      {"Generate backlinks from social media / friends", requires_response()},
+      {"Generate backlinks from other blogging platforms and/or friends", requires_response()},
     ]
   end
 
