@@ -45,7 +45,7 @@ defmodule BurnListEdit do
               {/if}
             </div>
 
-            <div class="py-2">
+            <div class="text-center py-4">
               <button class="btn btn-ghost btn-xs" :on-click="edit">
                 <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path

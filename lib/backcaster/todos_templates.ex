@@ -88,7 +88,7 @@ defmodule Backcaster.TodosTemplates do
       {"Setup Google Search Console", simple_task()},
       {"Setup Google Analytics", simple_task()},
       {"Connect Google Analytics with the Google Search Console", simple_task()},
-      {"Discover long tail keywords With Google Suggest", needs_thought()},
+      {"Discover long-tail keywords With Google Suggest", needs_thought()},
       {"Setup - Keywordtool.io / Google Keyword Planner", simple_task()},
       {"Identify low competition keywords With KWFinder", needs_thought()},
       {"Include your keyword in your URL", simple_task()},
