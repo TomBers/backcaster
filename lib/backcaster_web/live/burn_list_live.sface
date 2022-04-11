@@ -68,13 +68,4 @@
       </div>
     </div>
   </div>
-
-  <div class="grid grid-cols-3 gap-1 max-w-lg mb-4">
-    <div class="blue mr-2" />
-    <div class="col-span-2">Actively working on</div>
-    <div class="yellow mr-2" />
-    <div class="col-span-2">Not been worked on in a while</div>
-    <div class="red mr-2" />
-    <div class="col-span-2">Is this really going to be done?</div>
-  </div>
 </div>
