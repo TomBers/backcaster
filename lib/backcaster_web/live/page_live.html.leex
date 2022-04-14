@@ -1,7 +1,8 @@
 <div class="bg-neutral text-neutral-content text-center mb-2">
     <a href="/info">
         <div tabindex="0" class="m-1 normal-case btn-ghost btn">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
+                 stroke="currentColor">
                 <path
                         stroke-linecap="round"
                         stroke-linejoin="round"
@@ -29,14 +30,16 @@
             <span class="hidden md:inline">
           Theme
         </span>
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1792 1792" class="inline-block w-4 h-4 ml-1 fill-current">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1792 1792"
+                 class="inline-block w-4 h-4 ml-1 fill-current">
                 <path d="M1395 736q0 13-10 23l-466 466q-10 10-23 10t-23-10l-466-466q-10-10-10-23t10-23l50-50q10-10 23-10t23 10l393 393 393-393q10-10 23-10t23 10l50 50q10 10 10 23z"/>
             </svg>
         </div>
         <div class="mt-16 overflow-y-auto shadow-2xl top-px dropdown-content h-96 w-52 rounded-b-box bg-base-200 text-base-content">
             <ul class="p-4 menu compact">
                 <%= for {name, label} <- Themes.all do %>
-                    <li><a href="?theme=<%= name %>" tabindex="0" data-set-theme="<%= name %>" data-act-class="active" class=<%= get_theme_class(name, @theme) %>><%= label %></a></li>
+                <li><a href="?theme=<%= name %>" tabindex="0" data-set-theme="<%= name %>" data-act-class="active"
+                       class=<%= get_theme_class(name, @theme) %>><%= label %></a></li>
                 <% end %>
             </ul>
         </div>
@@ -52,41 +55,64 @@
                 </h1>
 
 
-                <p class="text-xl">As a maker do you lose enthusiasm for your projects? Dread looking at your Jira / Trello board? Hit a wall not knowing what to do next?</p>
+                <p class="text-2xl">Simple tools to keep you on track for any project</p>
                 <br>
-                <p class="text-xl">Your tools should help you not get in the way.</p>
-                <br>
-                <p class="text-lg">Backcaster does things a little differently. Start from your goal and work backwards. Providing tools for keeping projects on track, keep your goal at the front of your mind and nudges for when you get stuck! <br><br>(No signups, no payment, get started with 1-click)</p>
+                <p class="text-md">It can be easy to lose track of the bigger picture, stop making progress and lose motivation.<br>
+                    Backcaster wants to help! Start from your goal and work backwards.  Keep your goal at the front of your mind and nudges
+                    for when you get stuck! </p>
+                    
+                    <p class="text-2xl mt-6">(No signups, no payment, get started with 1-click)</p>
 
 
                 <%= form_tag("/create-board", method: :post) %>
-                    <input type="hidden" name="theme" value="<%= @theme %>">
-                    <input class="btn btn-primary btn-lg milestone-submit my-10" type="submit" value="Get started ➡"/>
+                <input type="hidden" name="theme" value="<%= @theme %>">
+                <input class="btn btn-primary btn-lg milestone-submit my-10" type="submit" value="Start backcasting ➡"/>
                 </form>
-
-                <h1 class="text-2xl font-bold mb-10">4 steps to make progress</h1>
-                <div class="grid grid-cols-1 max-w-xl mx-auto">
-                    <div><p class="text-2xl">1) Define your ultimate goal</p><p class="mb-6">(with templates to help get you started)</p><img class="mx-auto" src="/images/goals.png"></div>
-                    <div><p class="text-2xl mt-6">2) Break down into milestones</p><p class="mb-6">(with guides for common tasks & auto Gantt chart generation)</p><img class="mx-auto" src="/images/milestones.png"></div>
-                    <div><p class="text-2xl mt-6">3) Todos for each milestone</p><p class="mb-6">(with visual history of each change; highlights when tasks are at risk of not being
-                        done)</p><img class="mx-auto" src="/images/todos.png"></div>
-                    <div><p class="text-2xl mt-6 mb-6">4) Set habits for repetitive tasks</p><img class="mx-auto" src="/images/habits.png"></div>
-                </div>
-                <br>
-                <br>
-                <p><a href="/backcast/2f5304da-da7e-4afa-9a7b-fe59a1fa628f?theme=<%= @theme %>" target="_blank" class="btn btn-primary">example 🔎  </a></p>
-
-
-                <h1 class="text-2xl font-bold mt-12">What users are saying</h1>
-                <br>
-                <div class="card text-center shadow-xl">
-                    <div class="card-body">
-                        <h2 class="card-title"><q>It is very hard to define my startup in just a sentence. This forced
-                            me to really articulate what we are doing.</q></h2>
-                        <p> - Jonathan Sinclair</p>
+                
+                <div class="max-w-lg mx-auto mb-6">
+                    <h1 class="text-2xl font-bold">What users are saying</h1>
+                    <br>
+                    <div class="card text-center shadow-xl">
+                        <div class="card-body">
+                            <h2 class="card-title"><q>It was very hard to define my startup in just a sentence. This forced
+                                me to really articulate what we are doing. It kept me on track when important decisions arose.</q></h2>
+                            <p> - Jonathan Sinclair</p>
+                        </div>
                     </div>
                 </div>
+                
+                <div class="max-w-lg mx-auto mb-6">
+                <h1 class="text-2xl font-bold">Benefits</h1>
+            
+                </div>
+                
+                
 
+                <h1 class="text-2xl font-bold mb-10">4 steps to make progress</h1>
+                <div class="grid grid-cols-1 xl:grid-cols-2 xl:gap-4 mx-auto">
+                    <div><p class="text-2xl">1) Define your ultimate goal</p>
+                        <p class="mb-6">(with templates to help get you started)</p><img class="mx-auto"
+                                                                                         src="/images/goals.png"></div>
+                    <div><p class="text-2xl mt-6">2) Break down into milestones</p>
+                        <p class="mb-6">(with guides for common tasks & auto Gantt chart generation)</p><img
+                                class="mx-auto" src="/images/milestones.png"></div>
+                    <div><p class="text-2xl mt-6">3) Todos for each milestone</p>
+                        <p class="mb-6">(with visual history of each change; highlights when tasks are at risk of not
+                            being
+                            done)</p><img class="mx-auto" src="/images/todos.png"></div>
+                    <div><p class="text-2xl mt-6 mb-6">4) Set habits for repetitive tasks</p><img class="mx-auto"
+                                                                                                  src="/images/habits.png">
+                    </div>
+                </div>
+                <br>
+                <br>
+                <p><a href="/backcast/2f5304da-da7e-4afa-9a7b-fe59a1fa628f?theme=<%= @theme %>" target="_blank"
+                      class="btn btn-primary">My backcast board used for the project 🔎 </a></p>
+
+
+        
+
+                <div class="max-w-lg mx-auto">
                 <h1 class="text-2xl font-bold mt-12 mb-12">Benefits</h1>
                 <ul class="w-full steps steps-vertical">
                     <li class="step step-primary">Eliminate noise, a simple interface surfacing only what is important.
@@ -94,18 +120,20 @@
                     <li class="step step-secondary">Todo lists that works. Don't let an endless todo list sap your
                         motivation. (have one for each milestone)
                     </li>
-                    <li class="step step-accent">Build habits; set reminders for tasks that have no end goal, but need to
+                    <li class="step step-accent">Build habits; set reminders for tasks that have no end goal, but need
+                        to
                         be done daily | weekly | monthly.
                     </li>
-                    <li class="step step-error">Collaborate. Share your URL and you can have your whole team working together in minutes.
+                    <li class="step step-error">Collaborate. Share your URL and you can have your whole team working
+                        together in minutes.
                     </li>
                 </ul>
-                <br>
+                </div>
                 <br>
                 <br>
                 <%= form_tag("/create-board", method: :post) %>
-                    <input type="hidden" name="theme" value="<%= @theme %>">
-                    <input class="btn btn-primary btn-lg milestone-submit mt-4" type="submit" value="Get started ➡"/>
+                <input type="hidden" name="theme" value="<%= @theme %>">
+                <input class="btn btn-primary btn-lg milestone-submit mt-4" type="submit" value="Start backcasting ➡"/>
                 </form>
             </div>
         </div>
