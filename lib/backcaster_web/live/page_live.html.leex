@@ -54,19 +54,18 @@
                     Backcaster.app
                 </h1>
 
-
                 <p class="text-2xl">Simple tools to keep you on track for any project</p>
                 <br>
                 <p class="text-md">It can be easy to lose track of the bigger picture, stop making progress and lose motivation.<br>
                     Backcaster wants to help! Start from your goal and work backwards.  Keep your goal at the front of your mind and nudges
                     for when you get stuck! </p>
                     
-                    <p class="text-2xl mt-6">(No signups, no payment, get started with 1-click)</p>
+                <p class="text-2xl mt-6">(No signups, no payment, get started with 1-click)</p>
 
 
                 <%= form_tag("/create-board", method: :post) %>
-                <input type="hidden" name="theme" value="<%= @theme %>">
-                <input class="btn btn-primary btn-lg milestone-submit my-10" type="submit" value="Start backcasting ➡"/>
+                    <input type="hidden" name="theme" value="<%= @theme %>">
+                    <input class="btn btn-primary btn-lg milestone-submit my-10" type="submit" value="Start backcasting ➡"/>
                 </form>
                 
                 <div class="max-w-lg mx-auto mb-10">
@@ -79,32 +78,34 @@
                     </div>
                 </div>
                 
-                <div class="mx-auto mb-10">
-                <div class="grid grid-cols-1 xl:grid-cols-3 gap-4">
-                    <div class="card bg-secondary text-secondary-content shadow-xl">
-                      <div class="card-body">
-                        <h2 class="card-title">Focus</h2>
-                        <p>Your goals are difficult enough already.  <br><br>Built from the ground up to be simple, clean and quiet. Bring your goals to the front, don't fight noisy tools.</p>
-                      </div>
-                    </div>
-                    <div class="card bg-accent text-accent-content shadow-xl">
-                      <div class="card-body">
-                        <h2 class="card-title">Creative</h2>
-                        <p>We all get a little stuck. <br><br>Built in templates to help you get you started. From common tasks for social media or getting ready for release.  If you don't know what to do today, Backcaster can help.</p>
-                      </div>
-                    </div>
-                    <div class="card bg-primary text-primary-content shadow-xl">
-                      <div class="card-body">
-                        <h2 class="card-title">Collaborative</h2>
-                        <p>A problem shared is a problem halved<br><br>Share your board easily, just send your URL to anyone and get started.  Want to show off your project? Don't make endless slide-decks, show a working document of your progress.</p>
-                      </div>
+                <div class="mx-auto">
+                    <div class="grid grid-cols-1 xl:grid-cols-3 gap-4">
+                        <div class="card bg-secondary text-secondary-content shadow-xl">
+                          <div class="card-body">
+                            <h2 class="card-title">Focus</h2>
+                            <p>Your goals are difficult enough already  <br><br>Built from the ground up to be simple, clean and quiet. Bring your goals to the front, don't fight noisy tools.</p>
+                          </div>
+                        </div>
+                        <div class="card bg-accent text-accent-content shadow-xl">
+                          <div class="card-body">
+                            <h2 class="card-title">Creative</h2>
+                            <p>We all get a little stuck <br><br>You cannot be an expert in everything! Milestone templates provide a step by step journey from market research to product launch. If you don't know what to do today, Backcaster can help.</p>
+                          </div>
+                        </div>
+                        <div class="card bg-primary text-primary-content shadow-xl">
+                          <div class="card-body">
+                            <h2 class="card-title">Collaborative</h2>
+                            <p>A problem shared is a problem halved<br><br>Share your board easily, just send your URL to anyone and get started.  Want to show off your project? Don't make endless slide-decks, show a working document of your progress.</p>
+                          </div>
+                        </div>
                     </div>
                 </div>
-        
-                </div>
                 
+                <%= form_tag("/create-board", method: :post) %>
+                    <input type="hidden" name="theme" value="<%= @theme %>">
+                    <input class="btn btn-primary btn-lg milestone-submit my-10" type="submit" value="Start backcasting ➡"/>
+                </form>
                 
-
                 <div class="grid grid-cols-1 xl:grid-cols-2 xl:gap-4 mx-auto">
                     <div><p class="text-2xl">1) Define your ultimate goal</p>
                         <p class="mb-6">(with templates to help get you started)</p><img class="mx-auto"
@@ -123,32 +124,29 @@
                 <br>
                 <br>
                 <p><a href="/backcast/2f5304da-da7e-4afa-9a7b-fe59a1fa628f?theme=<%= @theme %>" target="_blank"
-                      class="btn btn-primary">My backcast board used for building backcaster.app 🔎 </a></p>
-
-
-        
+                      class="btn btn-primary">The board used for backcaster.app 🔎 </a></p>
 
                 <div class="max-w-lg mx-auto mt-10">
-                <ul class="w-full steps steps-vertical">
-                    <li class="step step-primary">Eliminate noise, a simple interface surfacing only what is important.
-                    </li>
-                    <li class="step step-secondary">Todo lists that works. Don't let an endless todo list sap your
-                        motivation. (have one for each milestone)
-                    </li>
-                    <li class="step step-accent">Build habits; set reminders for tasks that have no end goal, but need
-                        to
-                        be done daily | weekly | monthly.
-                    </li>
-                    <li class="step step-error">Collaborate. Share your URL and you can have your whole team working
-                        together in minutes.
-                    </li>
-                </ul>
+                    <ul class="w-full steps steps-vertical">
+                        <li class="step step-primary">Eliminate noise, a simple interface surfacing only what is important.
+                        </li>
+                        <li class="step step-secondary">Todo lists that works. Don't let an endless todo list sap your
+                            motivation. (have one for each milestone)
+                        </li>
+                        <li class="step step-accent">Build habits; set reminders for tasks that have no end goal, but need
+                            to
+                            be done daily | weekly | monthly.
+                        </li>
+                        <li class="step step-error">Collaborate. Share your URL and you can have your whole team working
+                            together in minutes.
+                        </li>
+                    </ul>
                 </div>
                 <br>
                 <br>
                 <%= form_tag("/create-board", method: :post) %>
-                <input type="hidden" name="theme" value="<%= @theme %>">
-                <input class="btn btn-primary btn-lg milestone-submit mt-4" type="submit" value="Start backcasting ➡"/>
+                    <input type="hidden" name="theme" value="<%= @theme %>">
+                    <input class="btn btn-primary btn-lg milestone-submit mt-4" type="submit" value="Start backcasting ➡"/>
                 </form>
             </div>
         </div>
