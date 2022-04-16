@@ -27,7 +27,10 @@ defmodule Themes do
       {"autumn", "🍁  Autumn"},
       {"business", "💼  Business"},
       {"acid", "💊  Acid"},
-      {"lemonade", "🍋  Lemonade"}
+      {"lemonade", "🍋  Lemonade"},
+      {"night", "🦇  Night"},
+      {"coffee", "☕  Coffee"},
+      {"winter", "❄️  Winter"}
     ]
   end
 
