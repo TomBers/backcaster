@@ -3,6 +3,9 @@ defmodule BackcasterWeb.FsmLive do
 
   @impl true
   def mount(%{"fsm" => fsm_name_str} = params, _session, socket) do
+  # Remove 
+  GenFlows.build_all()
+  
     theme = Map.get(params, "theme", "dark")
 
     fsm = String.to_existing_atom(fsm_name_str)
@@ -17,6 +20,7 @@ defmodule BackcasterWeb.FsmLive do
       |> assign(:flow_chart, fsm.flow_chart())
       |> assign(:hist, [])
       |> assign(:theme, theme)
+      
     {:ok, socket}
   end
 

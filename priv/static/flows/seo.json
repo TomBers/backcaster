@@ -1,0 +1,35 @@
+{
+  "Do you want to improve your sites SEO?": {
+    "Yes": "Is it personal or professional?",
+    "No": "Keep on Trucking",
+    "What does this mean?": "Google SEO <a href='https://www.bbc.co.uk/' target='_blank'>Search</a>"
+  },
+  "Is it personal or professional?": {
+    "Personal": "Can you talk to anyone?",
+    "Professional": "Will this be important in 1 weeks time?"
+  },
+  "Can you talk to anyone?": {
+    "Yes": "Pick up the phone",
+    "No": "Have you tried Googling?"
+  },
+  "Will this be important in 1 weeks time?": {
+    "No": "Keep on Trucking",
+    "Probably": "Can you talk to anyone?"
+  },
+  "Have you tried Googling?": {
+    "Yes": "Have you tried a random page on Wikipedia?",
+    "No": "Go to Google?"
+  },
+  "Have you tried a random page on Wikipedia?": {
+    "Yes": "Are there books you can read?",
+    "No": "Try a random walk through Wiki"
+  },
+  "Are there books you can read?": {
+    "Yes": "Go Read them",
+    "No": "Have you gone for a short walk?"
+  },
+  "Have you gone for a short walk?": {
+    "Yes": "Keep on Trucking",
+    "No": "Go for a short walk!"
+  }
+}

@@ -81,8 +81,12 @@ defmodule GenFlows do
 
       defp gen_paths(label, paths) do
         paths
-        |> Enum.reduce("", fn({qn, to_state}, acc) -> acc <> "#{replace_space(label)}[\"#{label}\"] --> |#{qn}| #{replace_space(to_state)}[\"#{to_state}\"]\n" end)
+        |> Enum.reduce("", fn({qn, to_state}, acc) -> acc <> gen_path_string(HtmlSanitizeEx.strip_tags(label), qn, HtmlSanitizeEx.strip_tags(to_state)) end)
       end
+      
+    defp gen_path_string(label, qn, to_state) do
+        "#{replace_space(label)}[\"#{label}\"] --> |#{qn}| #{replace_space(to_state)}[\"#{to_state}\"]\n"
+    end
 
       defp replace_space(label) do
         String.replace(label, " ", "_")
@@ -101,13 +105,13 @@ defmodule GenFlows do
 
     gen_states =
       state_qns
-      |> Enum.flat_map(fn {key, ste} -> Enum.map(ste.values, fn({qn, end_state}) -> end_state end) ++ [ste.label] end)
+      |> Enum.flat_map(fn {_key, ste} -> Enum.map(ste.values, fn({_qn, end_state}) -> end_state end) ++ [ste.label] end)
       |> MapSet.new()
       |> MapSet.to_list()
 
     transitions =
       state_qns
-      |> Enum.flat_map(fn {key, ste} -> %{ste.label => get_transition_map(ste.values)} end)
+      |> Enum.flat_map(fn {_key, ste} -> %{ste.label => get_transition_map(ste.values)} end)
       |> Map.new()
 
     end_states =
@@ -124,7 +128,7 @@ defmodule GenFlows do
   end
 
   defp get_transition_map(vals) do
-    Enum.map(vals, fn({qn, end_state}) -> end_state end)
+    Enum.map(vals, fn({_qn, end_state}) -> end_state end)
   end
 
   def get_file_path do

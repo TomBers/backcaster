@@ -59,7 +59,8 @@ defmodule Backcaster.MixProject do
       {:hackney, "~> 1.9"},
       {:sweet_xml, "~> 0.6"},
       {:uuid, "~> 1.1"},
-      {:machinery, "~> 1.0.0"}
+      {:machinery, "~> 1.0.0"},
+      {:html_sanitize_ex, "~> 1.4"}
     ]
   end
 

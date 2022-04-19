@@ -1,15 +1,24 @@
+<style>
+  a:link {
+    text-decoration: underline;
+  }
+  .no-underline {
+    text-decoration: none !important;
+  }
+</style>
 <div class="container mx-auto text-center">
   {#for step <- @hist}
-    <h1 class="text-2xl m-4">{step.state}</h1>
+    <h1 class="text-2xl m-4">{raw step.state}</h1>
     <button class="btn btn-disabled btn-lg ml-4 mb-4">{step.opt}</button>
   {/for}
 
   {#if @finished}
-    <p class="text-2xl m-4">{@fsm_state.state}</p>
-    <a href={"#{@fsm}?theme=#{@theme}"} class="btn btn-secondary">Reset</a>
+    <p class="text-2xl m-4">{raw @fsm_state.state}</p>
+    
+    <a href={"#{@fsm}?theme=#{@theme}"} class="btn btn-secondary no-underline">Reset</a>
     <div class="mermaid mt-8 mb-8 mx-auto" id="flowchart" data-chart={@flow_chart} phx-hook="renderFsm" />
   {#else}
-    <p class="text-2xl m-4">{@fsm_state.state}</p>
+    <p class="text-2xl m-4">{raw @fsm_state.state}</p>
     {#for opt <- @state_options}
       <button :on-click="update_state" phx-value-opt={opt} class="btn btn-primary btn-lg ml-4 mb-4">{opt}</button>
     {/for}
