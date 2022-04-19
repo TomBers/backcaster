@@ -3,8 +3,6 @@ defmodule BackcasterWeb.FsmLive do
 
   @impl true
   def mount(%{"fsm" => fsm_name_str} = params, _session, socket) do
-  # Remove 
-  GenFlows.build_all()
   
     theme = Map.get(params, "theme", "dark")
 
