@@ -1,35 +1,67 @@
 {
   "Do you want to improve your sites SEO?": {
-    "Yes": "Is it personal or professional?",
+    "Yes": "Have you setup Google Search Console",
     "No": "Keep on Trucking",
-    "What does this mean?": "Google SEO <a href='https://www.bbc.co.uk/' target='_blank'>Search</a>"
+    "What does this mean?": "Start <a href='https://developers.google.com/search/docs/beginner/seo-starter-guide' target='_blank'>here</a>"
   },
-  "Is it personal or professional?": {
-    "Personal": "Can you talk to anyone?",
-    "Professional": "Will this be important in 1 weeks time?"
+  "Have you setup Google Search Console": {
+    "Yes": "Have you setup Google analytics?",
+    "No": "Take a look at <a href='https://search.google.com/search-console/about' target='_blank'>this</a>"
   },
-  "Can you talk to anyone?": {
-    "Yes": "Pick up the phone",
-    "No": "Have you tried Googling?"
+  "Have you setup Google analytics?": {
+    "Yes": "Have you connected Google Analytics with the Google Search Console?",
+    "No": "<a href='' target='_blank'>Setup GA</a>"
   },
-  "Will this be important in 1 weeks time?": {
-    "No": "Keep on Trucking",
-    "Probably": "Can you talk to anyone?"
+  "Have you connected Google Analytics with the Google Search Console?": {
+    "Yes": "Have you discover long-tail keywords With Google Suggest?",
+    "No": "<a href='' target='_blank'>Connect GA with GSC</a>"
   },
-  "Have you tried Googling?": {
-    "Yes": "Have you tried a random page on Wikipedia?",
-    "No": "Go to Google?"
+  "Have you discover long-tail keywords With Google Suggest?": {
+    "Yes": "Have you setup - Keywordtool.io / Google Keyword Planner?",
+    "No": "<a href='' target='_blank'>Google Suggest</a>"
   },
-  "Have you tried a random page on Wikipedia?": {
-    "Yes": "Are there books you can read?",
-    "No": "Try a random walk through Wiki"
+  "Have you setup - Keywordtool.io / Google Keyword Planner?": {
+    "Yes": "Have you identifed low competition keywords With KWFinder?",
+    "No": "<a href='' target='_blank'>Setup Key words</a>"
   },
-  "Are there books you can read?": {
-    "Yes": "Go Read them",
-    "No": "Have you gone for a short walk?"
+  "Have you identifed low competition keywords With KWFinder?": {
+    "Yes": "Have you checked your keyword is in your title tag and headings?",
+    "No": "<a href='' target='_blank'>KWFinder</a>"
   },
-  "Have you gone for a short walk?": {
+  "Have you checked your keyword is in your title tag and headings?": {
+    "Yes": "Have you optimized your images - add alt-text, and ensure fast loading?",
+    "No": "<a href='' target='_blank'>Check your syntax</a>"
+  },
+  "Have you optimized your images - add alt-text, and ensure fast loading?": {
+    "Yes": "Have you linked out to 4-8 (at a minimum) authoritative sites in your copy?",
+    "No": "<a href='' target='_blank'>Optimise your images</a>"
+  },
+  "Have you linked out to 4-8 (at a minimum) authoritative sites in your copy?": {
+    "Yes": "Have you optimized your images - add alt-text, and ensure fast loading?",
+    "No": "<a href='' target='_blank'>Authorative links</a>"
+  },
+  "Have you checked your keyword is in your title tag and headings?": {
+    "Yes": "Have you checked for crawl errors?",
+    "No": "<a href='' target='_blank'>Keywords</a>"
+  },
+  "Have you checked for crawl errors?": {
+    "Yes": "Have you made sure your site is mobile-friendly?",
+    "No": "<a href='' target='_blank'>Crawl errors</a>"
+  },
+  "Have you made sure your site is mobile-friendly?": {
+    "Yes": "Have you checked / fixed broken links?",
+    "No": "<a href='' target='_blank'>Mobile performance</a>"
+  },
+  "Have you checked / fixed broken links?": {
+    "Yes": "Have you checked your site’s loading speed?",
+    "No": "<a href='' target='_blank'>Check your links</a>"
+  },
+  "Have you checked your site’s loading speed?": {
+    "Yes": "Have you generated backlinks from other blogging platforms and / or friends?",
+    "No": "<a href='' target='_blank'>Loading speed</a>"
+  },
+  "Have you generated backlinks from other blogging platforms and / or friends?": {
     "Yes": "Keep on Trucking",
-    "No": "Go for a short walk!"
+    "No": "<a href='' target='_blank'>Backlinks</a>"
   }
 }
