@@ -33,16 +33,12 @@
     "No": "<a href='' target='_blank'>Check your syntax</a>"
   },
   "Have you optimized your images - add alt-text, and ensure fast loading?": {
-    "Yes": "Have you linked out to 4-8 (at a minimum) authoritative sites in your copy?",
+    "Yes": "Have you linked out to at least 4 authoritative sites in your copy?",
     "No": "<a href='' target='_blank'>Optimise your images</a>"
   },
-  "Have you linked out to 4-8 (at a minimum) authoritative sites in your copy?": {
-    "Yes": "Have you optimized your images - add alt-text, and ensure fast loading?",
-    "No": "<a href='' target='_blank'>Authorative links</a>"
-  },
-  "Have you checked your keyword is in your title tag and headings?": {
+  "Have you linked out to at least 4 authoritative sites in your copy?": {
     "Yes": "Have you checked for crawl errors?",
-    "No": "<a href='' target='_blank'>Keywords</a>"
+    "No": "<a href='' target='_blank'>Authorative links</a>"
   },
   "Have you checked for crawl errors?": {
     "Yes": "Have you made sure your site is mobile-friendly?",

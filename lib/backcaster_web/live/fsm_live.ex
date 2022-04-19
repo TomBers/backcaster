@@ -28,6 +28,7 @@ defmodule BackcasterWeb.FsmLive do
     "?theme=#{theme}"
   end
 
+  @impl true
   def handle_event("update_state", %{"opt" => opt}, socket) do
     fsm = socket.assigns.fsm
 

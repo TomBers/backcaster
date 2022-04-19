@@ -89,7 +89,9 @@ defmodule GenFlows do
     end
 
       defp replace_space(label) do
-        String.replace(label, " ", "_")
+        label
+        |> String.replace(" ", "_")
+        |> String.replace("’", "")
       end
 
     end
