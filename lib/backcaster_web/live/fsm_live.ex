@@ -3,6 +3,7 @@ defmodule BackcasterWeb.FsmLive do
 
   @impl true
   def mount(%{"fsm" => fsm_name_str} = params, _session, socket) do
+  
     theme = Map.get(params, "theme", "dark")
 
     fsm = String.to_existing_atom(fsm_name_str)
@@ -17,6 +18,7 @@ defmodule BackcasterWeb.FsmLive do
       |> assign(:flow_chart, fsm.flow_chart())
       |> assign(:hist, [])
       |> assign(:theme, theme)
+      
     {:ok, socket}
   end
 
@@ -24,6 +26,7 @@ defmodule BackcasterWeb.FsmLive do
     "?theme=#{theme}"
   end
 
+  @impl true
   def handle_event("update_state", %{"opt" => opt}, socket) do
     fsm = socket.assigns.fsm
 
