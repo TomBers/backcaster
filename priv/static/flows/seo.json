@@ -29,10 +29,10 @@
     "No": "<a href='https://kwfinder.com/' target='_blank'>KWFinder</a>"
   },
   "Have you checked your keyword is in your title tag and headings?": {
-    "Yes": "Have you optimized your images - add alt-text, and ensure fast loading?",
+    "Yes": "Have you optimized your images - add alt-text, and ensured fast loading?",
     "No": "<a href='https://www.greengeeks.com/blog/html-tags-for-seo/' target='_blank'>Check your syntax</a>"
   },
-  "Have you optimized your images - add alt-text, and ensure fast loading?": {
+  "Have you optimized your images - add alt-text, and ensured fast loading?": {
     "Yes": "Have you linked out to at least 4 authoritative sites in your copy?",
     "No": "<a href='https://contentmarketinginstitute.com/2019/03/optimize-images-seo/' target='_blank'>Optimise your images</a>"
   },
